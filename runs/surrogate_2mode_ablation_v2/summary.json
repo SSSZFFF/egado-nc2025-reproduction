@@ -1,0 +1,8 @@
+{
+  "final_J": 0.8601214541284944,
+  "total_flips": 14,
+  "fdtd_evals": 150,
+  "hit_rate": 0.09395973154362416,
+  "backend": "numpy_ridge_ensemble",
+  "wall_time_s": 5847.95
+}

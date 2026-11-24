@@ -141,6 +141,7 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - 4 模 `--ablation-mask` 使用现有 161 格候选；不带 mask 时启动器会把 Scheme-B 的 `fixed_bg` 置空，按 50×50 全图重建候选区域。
 - 当前 2 模全图模式需要 `initial.gds` 的全图 fixed 区域（启动器已自动构造）；4 模全图模式仍需先确认全图 DRC/版图口径。
 - 本目录的 `docs/SURROGATE_STATIC_REVIEW.md` 记录了接口核对、路径 fallback 与已知限制。
+- 首组 2 模 ablation 结果：`runs/surrogate_2mode_ablation_v2/REPORT.md`（150 state evals = 300 solves；final J 0.860121；14 flips；详见 `surrogate_history.csv` 和 `summary.json`）。
 
 ---
 
