@@ -1,0 +1,12 @@
+{
+  "final_J": 0.8710116991615438,
+  "total_flips": 14,
+  "fdtd_evals": 99,
+  "hit_rate": 0.14285714285714285,
+  "acquisition": "ei",
+  "has_true_adjoint": true,
+  "adjoint_refreshes": 0,
+  "tabu_resets": 1,
+  "backend": "numpy_ridge_ensemble",
+  "wall_time_s": 4565.61
+}

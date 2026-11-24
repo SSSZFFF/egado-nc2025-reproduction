@@ -142,6 +142,8 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - 当前 2 模全图模式需要 `initial.gds` 的全图 fixed 区域（启动器已自动构造）；4 模全图模式仍需先确认全图 DRC/版图口径。
 - 本目录的 `docs/SURROGATE_STATIC_REVIEW.md` 记录了接口核对、路径 fallback 与已知限制。
 - 首组 2 模 ablation 结果：`runs/surrogate_2mode_ablation_v2/REPORT.md`（150 state evals = 300 solves；final J 0.860121；14 flips；详见 `surrogate_history.csv` 和 `summary.json`）。
+- 2 模真实伴随版 v3b：`runs/surrogate_2mode_ablation_v3b/REPORT.md`（99 state evals = 198 solves + 4 adjoint solves；final J 0.871012；14 flips；`has_true_adjoint=true`）。
+- 离散伴随提取器：`extract_discrete_adjoint.py`（2 模 4 solves / 4 模 8 solves；支持 `--cell auto` 自动识别 GDS top cell）。
 
 ---
 
