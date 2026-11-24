@@ -122,6 +122,28 @@ python code/four_mode/run_final_optical_verification.py
 
 ---
 
+## Physics-residual surrogate 验证（新增）
+
+仓库根目录新增：
+
+- [physics_surrogate_digitizer.py](physics_surrogate_digitizer.py)：Stage 2 + Stage 3 合并的物理残差在线代理模型（支持 PyTorch CNN ensemble；无 torch 时自动退回 NumPy Ridge）。
+- [run_surrogate_validation.py](run_surrogate_validation.py)：2 模 / 4 模验证启动器。
+
+首轮 2 模消融：
+
+```powershell
+python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-fdtd 150
+```
+
+说明：
+
+- 2 模路径使用两级 DRC：`geometry_io.supplemental()` 快速筛选全部候选，`DBSRunner.check_drc()` 只对 Top-K 做 248 类公共 DRC 复核。
+- 4 模 `--ablation-mask` 使用现有 161 格候选；不带 mask 时启动器会把 Scheme-B 的 `fixed_bg` 置空，按 50×50 全图重建候选区域。
+- 当前 2 模全图模式需要 `initial.gds` 的全图 fixed 区域（启动器已自动构造）；4 模全图模式仍需先确认全图 DRC/版图口径。
+- 本目录的 `docs/SURROGATE_STATIC_REVIEW.md` 记录了接口核对、路径 fallback 与已知限制。
+
+---
+
 ## 复现边界（必须保留）
 
 1. **没有流片、没有实验测量。** 本仓库所有性能都是数值仿真；论文的四/五/六模实测、324 Gb/s 单通道、38.2 Tb/s 总容量不在复现范围内。
