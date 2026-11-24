@@ -265,7 +265,7 @@
   "index_sha256": "E5BBA85B107ED9F58277A126F754E272E075DFBA6C1D5F3B2AD6789F56954960",
   "report": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\handoff_portability_check\\B_rebuilt_official_DRC\\result.lyrdb",
   "log": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\handoff_portability_check\\B_rebuilt_official_DRC\\run.log",
-  "runtime": "D:\\Users\\SZF\\klayout_app.exe",
+  "runtime": "D:\\Users\\USER\\klayout_app.exe",
   "checked_at_utc": "20261011T052234_700664Z",
   "scope_note": "V0.9.0 KLayout common rules only; not all V0.9.1 handbook conditions or electrical/optical connectivity."
 }
