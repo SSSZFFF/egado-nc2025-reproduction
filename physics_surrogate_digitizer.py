@@ -355,6 +355,7 @@ class SurrogateGuidedDigitizer:
         out_dir: Path,
         candidate_mask: Optional[np.ndarray] = None,
         on_accept_fn: Optional[Callable[[np.ndarray, float, int], None]] = None,
+        verify_drc_fn: Optional[Callable[[np.ndarray], bool]] = None,
         patch_size: int = 7,
         top_k: int = 4,
         ucb_kappa: float = 0.5,
@@ -371,6 +372,7 @@ class SurrogateGuidedDigitizer:
         self.check_drc_fn = check_drc_fn
         self.eval_fn = eval_fn
         self.on_accept_fn = on_accept_fn
+        self.verify_drc_fn = verify_drc_fn
         self.out_dir = Path(out_dir)
         self.out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -502,6 +504,13 @@ class SurrogateGuidedDigitizer:
                 r, c = legal_coords[idx]
                 trial = self.state.copy()
                 trial[r, c] = not trial[r, c]
+                # Optional strict/deck-level DRC check only for the few FDTD
+                # candidates. The fast check_drc_fn above is used to screen the
+                # full candidate grid (e.g. supplemental 120 nm width/space).
+                if self.verify_drc_fn is not None and not self.verify_drc_fn(trial):
+                    round_results.append((idx, r, c, trial, -1.0, -1.0,
+                                          float(mean_dj[idx]), float(std_dj[idx])))
+                    continue
                 j_trial, _ = self._eval_cached(trial)
                 true_dj = j_trial - current_j
                 self.surrogate.add_observation(legal_patches[idx], legal_priors[idx], true_dj)

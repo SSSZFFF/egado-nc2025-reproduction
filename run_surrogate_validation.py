@@ -187,11 +187,17 @@ def run_2mode(args: argparse.Namespace) -> None:
             geometry_io.write_gds(Path(gds_path), f"{runner.scheme}_FULL_DEVICE", core, full_windows)
 
     def check_drc_2mode(trial_state: np.ndarray) -> bool:
+        # Fast screening for every candidate in the grid. Full 248-category
+        # deck checking is deferred to verify_drc_2mode() for Top-K only.
+        export_state_gds(trial_state, trial_gds)
+        res = geometry_io.supplemental(trial_gds, 120)
+        return bool(res["width"] == 0 and res["space"] == 0)
+
+    def verify_drc_2mode(trial_state: np.ndarray) -> bool:
         export_state_gds(trial_state, trial_gds)
         if runner.pdk_index_path.is_file():
             ok, _status = runner.check_drc(trial_gds)
             return bool(ok)
-        # Local lightweight fallback when the foundry deck is not installed.
         res = geometry_io.supplemental(trial_gds, 120)
         return bool(res["width"] == 0 and res["space"] == 0)
 
@@ -213,6 +219,7 @@ def run_2mode(args: argparse.Namespace) -> None:
         out_dir=out_dir,
         candidate_mask=mask,
         on_accept_fn=on_accept_2mode,
+        verify_drc_fn=verify_drc_2mode,
         top_k=args.top_k,
         ucb_kappa=args.kappa,
         tol=args.tol,
