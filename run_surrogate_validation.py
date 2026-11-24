@@ -1,0 +1,321 @@
+"""
+Drop-in Validation Launcher for SSSZFFF/egado-nc2025-reproduction
+=================================================================
+Phase 1: 2-mode (30x30) validation — plugs directly into:
+    code/dbs/handoff_2026-10-11/run_dbs.py  (OpticalEvaluator + geometry_io DRC)
+Phase 2: 4-mode (50x50) validation — plugs directly into:
+    code/four_mode/run_dbs_4mode.py         (SchemeBDBSOptimizer.check_drc + evaluate_all_channels)
+
+Place both `physics_surrogate_digitizer.py` and this script in your repo root (or `code/`),
+then run:
+    # 1) 2-mode ablation (same 108-cell mask as B_strict, apples-to-apples vs 424-solve baseline)
+    python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-fdtd 150
+
+    # 2) 2-mode full merged Stage 2+3 (no Canny mask, searches all DRC-legal pixels in 30x30)
+    python run_surrogate_validation.py --mode 2mode --repo . --max-fdtd 150
+
+    # 3) 4-mode validation (50x50, reuses SchemeBDBSOptimizer KLayout DRC + multi-process FDTD)
+    python run_surrogate_validation.py --mode 4mode --repo . --ablation-mask --max-fdtd 160
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+import numpy as np
+
+from physics_surrogate_digitizer import (
+    PhysicsContext,
+    SurrogateGuidedDigitizer,
+    downsample_to_blocks,
+)
+
+
+def _ensure_lumerical_api() -> None:
+    """Prefer the newest installed Lumerical API before importing run_dbs modules."""
+    candidates = [
+        r"D:\Program Files\ANSYS Inc\v261\Lumerical\api\python",
+        r"D:\Program Files\ANSYS Inc\v251\Lumerical\api\python",
+        r"E:\Program Files\ANSYS Inc\v251\Lumerical\api\python",
+        r"C:\Program Files\ANSYS Inc\v261\Lumerical\api\python",
+        r"C:\Program Files\ANSYS Inc\v251\Lumerical\api\python",
+    ]
+    for path in candidates:
+        if os.path.isdir(path) and path not in sys.path:
+            sys.path.insert(0, path)
+
+
+def _find_handoff(repo: Path) -> Path:
+    candidates = [
+        repo / "code" / "dbs" / "handoff_2026-10-11",
+        repo / "DBS_handoff_2026-10-11",
+        repo / "DBS_交接包_2026-10-11",
+    ]
+    for path in candidates:
+        if path.is_dir():
+            return path
+    raise FileNotFoundError(
+        "DBS handoff directory not found. Expected one of: "
+        + ", ".join(str(p) for p in candidates)
+    )
+
+
+def _find_four_mode_dir(repo: Path) -> Path:
+    candidates = [
+        repo / "code" / "four_mode",
+        repo / "EGADO-4mode",
+    ]
+    for path in candidates:
+        if path.is_dir():
+            return path
+    raise FileNotFoundError(
+        "4-mode directory not found. Expected one of: "
+        + ", ".join(str(p) for p in candidates)
+    )
+
+
+def _load_optional_physics_maps(
+    to_npz_path: Path | None,
+    rows: int,
+    cols: int,
+    fallback_state: np.ndarray,
+) -> PhysicsContext:
+    """
+    Loads Stage-1 `eps` (and optional `grad_eps`, `e2_field` once dumped from lumopt)
+    from `parameters_<n>.npz` and aggregates them onto the (rows, cols) digital grid.
+    Works out-of-the-box even if `grad_eps` has not been dumped yet (fast-start mode).
+    """
+    if to_npz_path is not None and to_npz_path.exists():
+        data = np.load(to_npz_path)
+        eps_raw = data["eps"]
+        if eps_raw.ndim == 3:
+            eps_raw = eps_raw[:, :, eps_raw.shape[2] // 2]
+        eps_block = downsample_to_blocks(eps_raw, rows, cols, mode="mean")
+
+        grad_block = None
+        if "grad_eps" in data:
+            g = data["grad_eps"]
+            if g.ndim == 2:
+                grad_block = downsample_to_blocks(g, rows, cols, mode="sum")
+            elif g.ndim == 3:
+                grad_block = np.stack(
+                    [downsample_to_blocks(g[b], rows, cols, mode="sum") for b in range(g.shape[0])],
+                    axis=0,
+                )
+
+        e2_block = None
+        if "e2_field" in data:
+            e2 = data["e2_field"]
+            if e2.ndim == 2:
+                e2_block = downsample_to_blocks(e2, rows, cols, mode="mean")
+            elif e2.ndim == 3:
+                e2_block = np.stack(
+                    [downsample_to_blocks(e2[b], rows, cols, mode="mean") for b in range(e2.shape[0])],
+                    axis=0,
+                )
+        return PhysicsContext(eps_analog=eps_block, grad_map=grad_block, e2_map=e2_block)
+
+    # Fallback: use initial binary state smoothed slightly as analog proxy
+    return PhysicsContext(eps_analog=fallback_state.astype(np.float32))
+
+
+def run_2mode(args: argparse.Namespace) -> None:
+    repo = Path(args.repo).resolve()
+    handoff_dir = _find_handoff(repo)
+    _ensure_lumerical_api()
+    sys.path.insert(0, str(handoff_dir))
+    sys.path.insert(0, str(handoff_dir / "tools"))
+
+    import geometry_io  # type: ignore
+    from run_dbs import DBSRunner, OpticalEvaluator  # type: ignore
+
+    out_dir = Path(args.out_dir).resolve() if args.out_dir else (handoff_dir / "out_surrogate_2mode")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    scratch_dir = out_dir / "scratch"
+    scratch_dir.mkdir(exist_ok=True)
+
+    # Reuse DBSRunner to load exact B_strict initial_state.npz & template paths
+    runner = DBSRunner(
+        root=handoff_dir,
+        scheme="B",
+        mode="strict",
+        output_dir=out_dir / "_bootstrap",
+        max_sweeps=1,
+        tolerance=args.tol,
+    )
+    init_state = runner.initial_state.astype(bool)
+    mask = runner.mask.astype(bool) if args.ablation_mask else None
+    rows, cols = init_state.shape
+
+    to_npz_default = repo / "code" / "two_mode" / "analysis-2mode" / "2mode_final.npz"
+    if not to_npz_default.exists():
+        to_npz_default = handoff_dir / "inputs" / "common" / "2mode_final.npz"
+    to_npz = Path(args.to_npz) if args.to_npz else to_npz_default
+    ctx = _load_optional_physics_maps(to_npz, rows, cols, init_state)
+
+    evaluator: OpticalEvaluator = runner.evaluator
+    trial_gds = scratch_dir / "surrogate_trial_2mode.gds"
+
+    # Full-grid export: fixed geometry outside all 30x30 cells, then add current
+    # state's Si cells. The handoff fixed_background.gds is B-mask-specific and
+    # cannot be reused for a no-Canny full-grid search.
+    full_fixed_core = None
+    full_windows = None
+    if not args.ablation_mask:
+        _, _, original = geometry_io.read_gds(handoff_dir / "inputs" / "B_curve_DRC120" / "initial.gds")
+        all_cells = geometry_io.selected_region(np.ones((rows, cols), dtype=bool))
+        full_fixed_core = original[geometry_io.CORE].dup() - all_cells
+        full_windows = original
+
+    def export_state_gds(trial_state: np.ndarray, gds_path: Path) -> None:
+        """Export a 30x30 state to the exact top-cell layout DBSRunner evaluates."""
+        trial_state = np.asarray(trial_state, dtype=bool)
+        if trial_state.shape != (rows, cols):
+            raise ValueError(f"Expected state shape {(rows, cols)}, got {trial_state.shape}")
+        if args.ablation_mask:
+            tmp = scratch_dir / "surrogate_state.npz"
+            np.savez(tmp, silicon_state=trial_state, candidate_mask=runner.mask)
+            geometry_io.export_geometry(handoff_dir, runner.scheme, tmp, Path(gds_path))
+        else:
+            core = full_fixed_core.dup()
+            for r, c in np.argwhere(trial_state):
+                core.insert(geometry_io.cell_box(int(r), int(c)))
+            core.merge()
+            geometry_io.write_gds(Path(gds_path), f"{runner.scheme}_FULL_DEVICE", core, full_windows)
+
+    def check_drc_2mode(trial_state: np.ndarray) -> bool:
+        export_state_gds(trial_state, trial_gds)
+        if runner.pdk_index_path.is_file():
+            ok, _status = runner.check_drc(trial_gds)
+            return bool(ok)
+        # Local lightweight fallback when the foundry deck is not installed.
+        res = geometry_io.supplemental(trial_gds, 120)
+        return bool(res["width"] == 0 and res["space"] == 0)
+
+    def eval_2mode(trial_state: np.ndarray) -> float:
+        export_state_gds(trial_state, trial_gds)
+        key = np.packbits(trial_state.astype(np.uint8)).tobytes()
+        cell_name = f"{runner.scheme}_FULL_DEVICE"
+        j_val, *_ = evaluator.evaluate_state(trial_gds, cell_name, key, scratch_dir)
+        return float(j_val)
+
+    def on_accept_2mode(state: np.ndarray, j_val: float, flip_idx: int) -> None:
+        export_state_gds(state, out_dir / f"accepted_flip{flip_idx}_J{j_val:.4f}.gds")
+
+    opt = SurrogateGuidedDigitizer(
+        initial_state=init_state,
+        physics_ctx=ctx,
+        check_drc_fn=check_drc_2mode,
+        eval_fn=eval_2mode,
+        out_dir=out_dir,
+        candidate_mask=mask,
+        on_accept_fn=on_accept_2mode,
+        top_k=args.top_k,
+        ucb_kappa=args.kappa,
+        tol=args.tol,
+        max_rounds=args.max_rounds,
+        max_fdtd_evals=args.max_fdtd,
+    )
+    summary = opt.run()
+    print("[2-mode Surrogate Finished]", summary)
+
+
+def run_4mode(args: argparse.Namespace) -> None:
+    repo = Path(args.repo).resolve()
+    four_dir = _find_four_mode_dir(repo)
+    _ensure_lumerical_api()
+    sys.path.insert(0, str(four_dir))
+
+    import klayout.db as db  # type: ignore
+    from run_dbs_4mode import CELL_NM, ORIGIN_NM, SchemeBDBSOptimizer  # type: ignore
+
+    out_dir = Path(args.out_dir).resolve() if args.out_dir else (four_dir / "out_surrogate_4mode")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    scratch_dir = out_dir / "scratch"
+    scratch_dir.mkdir(exist_ok=True)
+
+    # Reuse SchemeBDBSOptimizer for KLayout fixed_bg + check_drc + multi-process evaluate_all_channels
+    base_opt = SchemeBDBSOptimizer(out_dir=out_dir, max_sweeps=1, tol=args.tol)
+    init_state = base_opt.initial_state.astype(bool)
+    mask = base_opt.mask.astype(bool) if args.ablation_mask else None
+    rows, cols = init_state.shape
+
+    to_npz = Path(args.to_npz) if args.to_npz else None
+    if to_npz is None:
+        # Optional convenience: use the newest Stage-1 parameter snapshot if present.
+        candidates = sorted(four_dir.glob("parameters*.npz"), key=lambda p: p.stat().st_mtime, reverse=True)
+        if candidates:
+            to_npz = candidates[0]
+    ctx = _load_optional_physics_maps(to_npz, rows, cols, init_state)
+    trial_gds = scratch_dir / "surrogate_trial_4mode.gds"
+
+    if not args.ablation_mask:
+        # The Scheme-B fixed_background.gds contains fixed non-candidate cells
+        # inside the 50x50 design area. For a full-grid search those cells must
+        # become variable, so the fixed region for this run is empty (the LSF
+        # template supplies the waveguides outside the design region).
+        base_opt.fixed_bg = db.Region()
+
+    def _state_to_region(trial_state: np.ndarray) -> db.Region:
+        region = db.Region()
+        active_mask = base_opt.mask if args.ablation_mask else np.ones_like(trial_state, dtype=bool)
+        for r, c in np.argwhere(active_mask & trial_state):
+            x0 = ORIGIN_NM + int(c) * CELL_NM
+            y0 = ORIGIN_NM + int(r) * CELL_NM
+            region.insert(db.Box(x0, y0, x0 + CELL_NM, y0 + CELL_NM))
+        return region
+
+    def check_drc_4mode(trial_state: np.ndarray) -> bool:
+        ok, _w, _s = base_opt.check_drc(_state_to_region(trial_state))
+        return bool(ok)
+
+    def eval_4mode(trial_state: np.ndarray) -> float:
+        base_opt.export_gds(_state_to_region(trial_state), trial_gds)
+        j_val, _ch_list, _elapsed = base_opt.evaluate_all_channels(trial_gds)
+        return float(j_val)
+
+    def on_accept_4mode(state: np.ndarray, j_val: float, flip_idx: int) -> None:
+        base_opt.export_gds(_state_to_region(state), out_dir / f"accepted_flip{flip_idx}_J{j_val:.4f}.gds")
+
+    opt = SurrogateGuidedDigitizer(
+        initial_state=init_state,
+        physics_ctx=ctx,
+        check_drc_fn=check_drc_4mode,
+        eval_fn=eval_4mode,
+        out_dir=out_dir,
+        candidate_mask=mask,
+        on_accept_fn=on_accept_4mode,
+        top_k=args.top_k,
+        ucb_kappa=args.kappa,
+        tol=args.tol,
+        max_rounds=args.max_rounds,
+        max_fdtd_evals=args.max_fdtd,
+    )
+    summary = opt.run()
+    print("[4-mode Surrogate Finished]", summary)
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="2-mode & 4-mode Physics-Residual Online Surrogate Validation")
+    p.add_argument("--mode", choices=["2mode", "4mode"], required=True)
+    p.add_argument("--repo", type=str, default=".", help="Path to egado-nc2025-reproduction root")
+    p.add_argument("--to-npz", type=str, default=None, help="Optional Stage-1 parameters_<n>.npz path")
+    p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")
+    p.add_argument("--ablation-mask", action="store_true", help="Restrict search to existing candidate_mask")
+    p.add_argument("--top-k", type=int, default=4, help="FDTD evaluations per active-learning round")
+    p.add_argument("--kappa", type=float, default=0.5, help="UCB exploration coefficient")
+    p.add_argument("--tol", type=float, default=1e-4, help="Minimum J improvement to accept a flip")
+    p.add_argument("--max-rounds", type=int, default=50)
+    p.add_argument("--max-fdtd", type=int, default=150)
+    return p.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    if args.mode == "2mode":
+        run_2mode(args)
+    else:
+        run_4mode(args)

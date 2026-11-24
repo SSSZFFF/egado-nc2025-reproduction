@@ -15,6 +15,10 @@ __pycache__/
 checkpoints/
 scratch/
 
+# Local run outputs
+out_surrogate_*/
+pdk-index.local.json
+
 # Python environments
 .venv/
 venv/
