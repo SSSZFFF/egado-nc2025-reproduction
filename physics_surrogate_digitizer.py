@@ -496,25 +496,33 @@ class SurrogateGuidedDigitizer:
             ucb_scores = mean_dj + self.ucb_kappa * std_dj
 
             k_budget = min(self.top_k, self.max_fdtd_evals - self.fdtd_evals, len(legal_coords))
-            chosen_indices = self._select_diverse_topk(legal_coords, ucb_scores, k_budget)
+            ranked_indices = self._select_diverse_topk(legal_coords, ucb_scores, len(legal_coords))
 
-            # 3. Evaluate Top-K candidates with real FDTD
+            # 3. Evaluate Top-K candidates with real FDTD. If a candidate fails
+            # the optional strict/deck DRC check, skip it (no FDTD call, no
+            # fdtd_evals increment) and continue to the next-ranked candidate
+            # so the round still fills its FDTD budget.
             round_results = []
-            for idx in chosen_indices:
+            evaluated_this_round = 0
+            for idx in ranked_indices:
+                if evaluated_this_round >= k_budget:
+                    break
                 r, c = legal_coords[idx]
                 trial = self.state.copy()
                 trial[r, c] = not trial[r, c]
-                # Optional strict/deck-level DRC check only for the few FDTD
-                # candidates. The fast check_drc_fn above is used to screen the
-                # full candidate grid (e.g. supplemental 120 nm width/space).
                 if self.verify_drc_fn is not None and not self.verify_drc_fn(trial):
-                    round_results.append((idx, r, c, trial, -1.0, -1.0,
-                                          float(mean_dj[idx]), float(std_dj[idx])))
                     continue
                 j_trial, _ = self._eval_cached(trial)
                 true_dj = j_trial - current_j
                 self.surrogate.add_observation(legal_patches[idx], legal_priors[idx], true_dj)
                 round_results.append((idx, r, c, trial, j_trial, true_dj, float(mean_dj[idx]), float(std_dj[idx])))
+                evaluated_this_round += 1
+
+            if not round_results:
+                no_improve_rounds += 1
+                if no_improve_rounds >= self.patience_rounds:
+                    break
+                continue
 
             # 4. Online fine-tuning on replay buffer (includes both positive & negative FDTD outcomes)
             self.surrogate.fit_online(steps=20, batch_size=32)
