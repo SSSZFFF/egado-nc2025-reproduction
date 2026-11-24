@@ -1,0 +1,97 @@
+{
+  "input": "Continuous contour extracted from the original TO; no earlier 120 nm repair",
+  "source_gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\continuous_curve_trial\\original_curve_sigma20.gds",
+  "source_gds_sha256": "10A6B9E889AC12D6C35D2E09D67A59FB8CDC479EC957B214E224145268F023D0",
+  "source_actual_sp90_report": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\continuous_curve_trial\\check_original_curve_sigma20\\result.json",
+  "source_sp90_rule_categories": 248,
+  "source_sp90_violations": 2363,
+  "source_sp90_violation_counts": {
+    "WGF01": 362,
+    "WGF02": 2001
+  },
+  "cell_nm": 120,
+  "candidate_buffer_nm": 0,
+  "boundary_tolerance_nm": 0.5,
+  "material_assignment": "silicon area >= 50% -> full silicon; otherwise full oxide",
+  "optical_simulations": 0,
+  "cases": {
+    "sp90_90nm": {
+      "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\sp90_90nm_filled.gds",
+      "gds_sha256": "7B9EF3BA5902C9D7E41C0725AA6AE066D8A6A2DE275E2C35FAB8E6070EAD26AD",
+      "candidate_cells": 69,
+      "selection_basis": "actual 248-category SP90 report",
+      "rule_specific_cell_counts": {
+        "WGF01": 40,
+        "WGF02": 51
+      },
+      "filled_silicon_cells": 53,
+      "filled_oxide_cells": 16,
+      "selected_area_percent": 7.666666666666667,
+      "changed_area_um2_from_original_curve": 0.16808555,
+      "changed_area_percent_of_design": 1.2969564043209876,
+      "outside_candidate_area_difference_um2": 7e-08,
+      "selected_cells_are_homogeneous": true,
+      "gds_readback_difference_area_um2": 7e-08,
+      "gds_readback_within_0p1nm_boolean_quantization_tolerance": true,
+      "supplemental_before": {
+        "90": {
+          "width": 362,
+          "space": 2169
+        },
+        "120": {
+          "width": 981,
+          "space": 3235
+        }
+      },
+      "supplemental_after": {
+        "90": {
+          "width": 33,
+          "space": 26
+        },
+        "120": {
+          "width": 43,
+          "space": 59
+        }
+      }
+    },
+    "target_120nm": {
+      "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\target_120nm_filled.gds",
+      "gds_sha256": "E18AE7E3A5F2244EC0A31210328473DA3D05E3CD57A02C5CF5F37F0F9142D4EB",
+      "candidate_cells": 97,
+      "selection_basis": "supplemental 120 nm width/space, 85 degree angle exclusion",
+      "rule_specific_cell_counts": {
+        "MFS120_WIDTH": 55,
+        "MFS120_SPACE": 74
+      },
+      "filled_silicon_cells": 68,
+      "filled_oxide_cells": 29,
+      "selected_area_percent": 10.777777777777779,
+      "changed_area_um2_from_original_curve": 0.21287864,
+      "changed_area_percent_of_design": 1.642582098765432,
+      "outside_candidate_area_difference_um2": 7e-08,
+      "selected_cells_are_homogeneous": true,
+      "gds_readback_difference_area_um2": 7e-08,
+      "gds_readback_within_0p1nm_boolean_quantization_tolerance": true,
+      "supplemental_before": {
+        "90": {
+          "width": 362,
+          "space": 2169
+        },
+        "120": {
+          "width": 981,
+          "space": 3235
+        }
+      },
+      "supplemental_after": {
+        "90": {
+          "width": 22,
+          "space": 31
+        },
+        "120": {
+          "width": 22,
+          "space": 38
+        }
+      }
+    }
+  }
+}

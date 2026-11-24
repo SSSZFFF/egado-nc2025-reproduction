@@ -1,0 +1,505 @@
+{
+  "rule_categories": 248,
+  "category_descriptions": {
+    "WGS01": "Width of WGS TRE or (WGS CLD not WGS COR) >=90nm",
+    "WGS02": "Space between two (WGS TRE or (WGS CLD not WGS COR)) >=90nm",
+    "WGS03": "Width of WGS_COR >=90nm",
+    "WGS04": "Space between two WGS_CORs >=90nm",
+    "WGS05": "WGS_TRE or (WGS CLD not WGS COR) small notch width <=0.005um >=0.1um",
+    "WGS06": "WGS_COR small notch width <=0.005um >=0.1um",
+    "WGS07": "WGS_TRE or(WGS_CLD not WGS_COR) angle between two sides >=90 degree <=275 degree",
+    "WGS08": "WGS_COR angle between two sides >=85 degree <=270 degree",
+    "WGS09": "Width of WGS_TRE or(WGS_CLD not WGS_COR) not WGF_COR >=0.9um <=0.3um",
+    "WGS10": "After WGS etch remain area; [NON((WGS_TRE or WGS_CLD) not WGS_COR) area] >=0.2um2",
+    "WGS11": "WGS_TRE must be inside of WGF_CLD",
+    "WGS12": "WGS_TRE must overlap with WGF_COR",
+    "WGS13": "WGS_COR must be inside of WGS_CLD",
+    "WGS14": "WGS_COR must be inside of WGF_COR",
+    "WGS15": "WGS_CLD must be inside of WGF_CLD",
+    "WGS16": "WGS_COR must not touch WGS_TRE",
+    "WGM01": "Width of WGM_TRE or (WGM CLD not WGM COR)>=150nm",
+    "WGM02": "Space between two (WGM_TRE or (WGM CLD not WGM COR)) >=150nm",
+    "WGM03": "Width of WGM_COR >=150nm",
+    "WGM04": "Space between two WGM_CORs >=150nm",
+    "WGM05": "WGM_TRE or (WGM CLD not WGM COR) small notch width <=0.005um >=0.1um",
+    "WGM06": "WGM_COR small notch width <=0.005um >=0.1um",
+    "WGM07": "WGM_TRE or (WGM CLD not WGM COR) angle between two sides >=90 degree <=275 degree",
+    "WGM08": "WGM_COR angle between two sides >=85 degree <=270 degree",
+    "WGM09": "Width of (WGM_TRE or (WGM CLD not WGM COR)) not WGF_COR >=0.9um <=0.3um",
+    "WGM10": "After WGM etch remain area [NON((WGM_TRE or WGM_CLD) not WGM_COR) area] >=0.2um2",
+    "WGM11": "WGM_TRE must be inside of WGF_CLD",
+    "WGM12": "WGS_TRE must overlap with WGF_COR",
+    "WGM13": "WGM_COR must be inside of WGM_CLD",
+    "WGM14": "WGM_COR must be inside of WGF_COR",
+    "WGM15": "WGM_CLD must be inside of WGF_CLD",
+    "WGM16": "WGM_COR must not touch WGM_TRE",
+    "WGF01": "Width of WGF_COR >=90nm",
+    "WGF02": "Space between two WGF_CORs >=90nm",
+    "WGF03": "WGF_COR small notch width <=0.005um >=0.1um",
+    "WGF04": "WGF_COR angle between two sides >=85 degree <=270 degree",
+    "WGF05": "WGF_COR area >=0.2um2",
+    "WGF06": "WGF_COR must not touch SNS_TRE or be enclosed by SNF_COR when interact with SNS_TRE",
+    "WGF07": "WGF_COR must not touch (SNS_CLD not SNF_COR) or be enclosed by SNF_COR when interact with (SNS_CLD not SNF_COR)",
+    "WGF08": "(WGF_COR and SNS_TRE) enclosed by SNF_COR >=0.2um",
+    "WGF09": "(WGF_COR and (SNS_CLD not SNF_COR)) enclosed by SNF_COR >=0.2um",
+    "WGF10": "WGF_COR must be inside of WGF_CLD",
+    "WGF11": "Three consecutive etchings in the same place of silicon is not allowed;[(WGS_TRE or WGS_CLD not WGS_COR) and (WGM_TRE or WGM_CLD not WGM_COR) not WGF_COR]",
+    "NMOD01": "Width of NMOD_DRW <0.5um",
+    "NMOD02": "Space between two NMOD_DRWs <0.5um",
+    "NMOD03": "NMOD_DRW angle between two sides >=85 degree <=270 degree",
+    "PMOD01": "Width of PMOD_DRW <0.5um",
+    "PMOD02": "Space between two PMOD_DRWs <0.5um",
+    "PMOD03": "PMOD_DRW angle between two sides >=85 degree <=270 degree",
+    "NDD01": "Width of NDD_DRW <0.5um",
+    "NDD02": "Space between two NDD_DRWs <0.5um",
+    "NDD03": "NDD_DRW angle between two sides >=85 degree <=270 degree",
+    "PDD01": "Width of PDD_DRW <0.5um",
+    "PDD02": "Space between two PDD_DRWs <0.5um",
+    "PDD03": "PDD_DRW angle between two sides >=85 degree <=270 degree",
+    "NCT01": "Width of NCT_DRW <0.5um",
+    "NCT02": "Space between two NCT_DRWs <0.5um",
+    "NCT03": "NCT_DRW angle between two sides >=85 degree <=270 degree",
+    "NCT04": "NCT_DRW and 220nm Si overlap >=0.16um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "NCT05": "NCT_DRW extension of 220nm Si >=0.3um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "PCT01": "Width of PCT_DRW <0.5um",
+    "PCT02": "Space between two PCT_DRWs <0.5um",
+    "PCT03": "PCT_DRW angle between two sides >=85 degree <=270 degree",
+    "PCT04": "PCT_DRW and 220nm Si overlap >=0.18um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "PCT05": "PCT_DRW extension of 220nm Si >=0.3um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "SNS01": "Width of SNS TRE or (SNS CLD not SNS COR) >=90nm",
+    "SNS02": "Space between two (SNS_TRE or (SNS CLD not SNS COR)) >=90nm",
+    "SNS03": "Width of SNS_COR >=90nm",
+    "SNS04": "Space between two SNS_CORs >=90nm",
+    "SNS05": " SNS TRE or (SNS CLD not SNS COR) angle between two sides >=90 degree <=275 degree",
+    "SNS06": "SNS_COR angle between two sides >=85 degree <=270 degree",
+    "SNS07": "SNS TRE or (SNS CLD not SNS COR) small notch width <=0.005um >=0.1um",
+    "SNS08": "SNS_COR small notch width <=0.005um >=0.1um",
+    "SNS09": "SNS_TRE must be inside of SNF_CLD",
+    "SNS10": "SNS_TRE must overlap with SNF_COR",
+    "SNS11": "SNS_COR must be inside of SNS_CLD",
+    "SNS12": "SNS_COR must be inside of SNF_COR",
+    "SNS13": "SNS_CLD must be inside of SNF_CLD",
+    "SNS14": "SNS_COR must not touch SNS_TRE",
+    "SNF01_1": "Width of SNF COR not (SNS_TRE or ( SNS_CLD not SNS_COR) <90nm",
+    "SNF01_2": "Width of SNF COR and (SNS_TRE or ( SNS_CLD not SNS_COR) <150nm",
+    "SNF02": "Space between two SNF_CORs <90nm",
+    "SNF03": "SNF_COR angle between two sides >=85 degree <=270 degree",
+    "SNF04": "SNF_COR small notch width <=0.005um >=0.1um",
+    "SNF05": "SNF_COR must be inside of SNF_CLD",
+    "GE01": "Width of GE_DRW >=0.4um <=10um",
+    "GE02": "Space between two GE_DRWs >=0.5um",
+    "GE03": "GE_DRW must be inside of 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "GE04": "GE_DRW space to (WGS_TRE or (WGS_CLD not WGS_COR)) >=0.15um",
+    "GE05": "GE_DRW space to (WGM_TRE or (WGM_CLD not WGM_COR)) >=0.15um",
+    "GE06": "GE_DRW enclosed by WGF_COR >=0.15um",
+    "GE07": "GE_DRW must not touch SAB_REV",
+    "GE08": "GE_DRW space to SAB_REV >=1um",
+    "GE09": "GE_DRW must not touch SNF_COR",
+    "GE10": "GE_DRW space to SNF_COR >=11um",
+    "SAB01": "Width of SAB_REV >=2um",
+    "SAB02": "Space between two SAB_REVs >=0.5um",
+    "SAB03": "SAB_REV must be inside of 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "SAB04": "SAB_REV enclosed by related 220nm Si>=0.22um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "SAB05": "SAB_REV must not touch SNF_COR",
+    "SAB06": "SAB_REV space to SNF_COR >=1um",
+    "SAB07": "NON SAB_REV area >=2um2",
+    "SAB08": "SAB_REV area >=4um2",
+    "SAB09": "SAB_REV angle between two sides >=90 degree <=275 degree",
+    "SAB10": "SAB_REV must be inside of NCT_DRW/PCT_DRW",
+    "SAB11": "SAB_REV enclosed by NCT_DRW/PCT_DRW >=0.52um",
+    "CT01": "CT_DRW width (CT_DRW must be square) =0.22um",
+    "CT02": "Space between two CT_DRWs >=0.38um",
+    "CT03": "CT_DRW must be fully enclosed by 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "CT04": "CT_DRW must be fully enclosed by SAB_REV",
+    "CT05": "CT_DRW must be fully enclosed by 220nm Si>=0.18um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]",
+    "CT06": "CT_DRW must be fully enclosed by SAB_REV >=0.3um",
+    "CT07": "CT_DRW must be fully covered by (M1_DRW-M1_SLOT)",
+    "CT08": "CT_DRW must not interact with NCT_DRW and PCT_DRW at the same time",
+    "CT09": "CT_DRW must be fully enclosed by NCT_DRW/PCT_DRW",
+    "CT10": "CT_DRW enclosed by NCT_DRW >=0.12um",
+    "CT11": "CT_DRW enclosed by PCT_DRW >=0.12um",
+    "M101": "M1_DRW width >=0.5um",
+    "M102": "Width of (M1_DRW not PA_DRW)<=35um",
+    "M103": "Space between two M1_DRWs >=0.5um",
+    "M104": "CT_DRW must be fully enclosed by M1_DRW >=0.01um",
+    "M105": "When CT_DRW is at a corner of M1_DRW, at least one side of M1_DRW should exceed CT_DRW 0.12um",
+    "M106": "Space between M1_DRW lines with one or both metal line width and length are greater than 10µm",
+    "M107": "M1_DRW area >=0.56 um2",
+    "M108": "Space between a small metal island and a big metal block. (small metal island: width*length < 1um^2; big metal block: width> 25um , length> 100um)",
+    "M109": "M1_DRW angle between two sides >=85 degree <=270 degree",
+    "M110": "M1_DRW must not touch SNF_COR",
+    "M111": "Space between M1_DRW to SNF_COR >=2um",
+    "MTH01": "Width of MTH_DRW <=40um",
+    "MTH02": "Space between two MTH_DRWs >=0.5um",
+    "MTH03": "MTH_DRW area >=0.56 um2",
+    "MTH04": "MTH_DRW angle between two sides >=85 degree <=270 degree",
+    "MTH05": "MTH_DRW must be fully covered by EC1_DRW ",
+    "MTH06": "MTH_DRW enclosed by EC1_DRW >=0.5um",
+    "EC101": "Width of EC1_DRW >=0.2um",
+    "EC102": "Space between two EC1_DRWs >=0.21um",
+    "EC103": "EC1_DRW angle between two sides >=85 degree <=270 degree",
+    "EC104": "EC1_DRW small notch width <=0.005um >=0.1um",
+    "EC105": "Space between M1_DRW/M2_DRW and EC1_DRW >=2um, if designer use EC1_DRW as coupler",
+    "EC106": "Space between M1 and EC1_DRW, if EC1_DRW covered MTH_DRW >=0.5um",
+    "V101": "V1_DRW width (V1_DRW must be square)=0.26um",
+    "V102": "Space between two V1_DRWs >=0.26um",
+    "V103": "V1_DRW must be inside of (M1 and M2)or(M2 and MTH);[(M1_DRW-M1_SLOT and M2_DRW-M2_SLOT）or（MTH_DRW and M2_DRW-M2_SLOT)].",
+    "V104": "V1_DRW enclosed by M1_DRW >=0.02um",
+    "V105": "When V1_DRW is at a corner of M1_DRW, at least one side of M1_DRW should exceed V1_DRW 0.16um",
+    "V106": "V1_DRW enclosed by MTH_DRW  >=0.5um",
+    "M201": "M2_DRW width >=0.5um",
+    "M202": "Width of (M2_DRW not PA_DRW)<=35um",
+    "M203": "Space between two M2_DRWs >=0.5um",
+    "M204": "V1_DRW must be fully enclosed by M2_DRW >=0.01um",
+    "M205": "When V1_DRW is at a corner of M2_DRW, at least one side of M2_DRW should exceed V1_DRW 0.13um",
+    "M206": "Space between M2_DRW lines with one or both metal line width and length are greater than 10µm",
+    "M207": "M2_DRW area >=0.56 um2",
+    "M208": "Space between a small metal island and a big metal block. (small metal island: width*length < 1um^2; big metal block: width> 25um , length> 100um)",
+    "M209": "M2_DRW angle between two sides >=85 degree <=270 degree",
+    "EC201": "Width of EC2_DRW >=0.2um",
+    "EC202": "Space between two EC2_DRWs >=0.21um",
+    "EC203": "EC2_DRW angle between two sides >=85 degree <=270 degree",
+    "EC204": "EC2_DRW small notch width <=0.005um >=0.1um",
+    "EC205": "Space between M2_DRW/M3_DRW and EC2_DRW >=2um, if designer use EC2_DRW as coupler",
+    "V201": "V2_DRW width (V2_DRW must be square)=0.26um",
+    "V202": "Space between two V2_DRWs >=0.26um",
+    "V203": "V2_DRW must be fully enclosed by M2_DRW >=0.02um",
+    "V204": "When V2_DRW is at a corner of M2_DRW, at least one side of M2_DRW should exceed V2_DRW 0.16um",
+    "V206": "V2_DRW must be inside of (M2_DRW-M2_SLOT) AND (M3_DRW-M3_SLOT) ",
+    "M301": "M3_DRW width >=1um",
+    "M302": "Width of (M3_DRW not PA_DRW)<=35um",
+    "M303": "Space between two M3_DRWs >=1um",
+    "M304": "V2_DRW must be fully enclosed by M3_DRW >=0.09um",
+    "M305": "When V2_DRW is at a corner of M3_DRW, at least one side of M3_DRW should exceed V2_DRW 0.13um",
+    "M306": "M3_DRW angle between two sides >=85 degree <=270 degree",
+    "EC301": "Width of EC3_DRW >=0.2um",
+    "EC302": "Space between two EC3_DRWs >=0.21um",
+    "EC303": "EC3_DRW angle between two sides >=85 degree <=270 degree",
+    "EC304": "EC3_DRW small notch width <=0.005um >=0.1um",
+    "EC305": "Space between M3_DRW/TM_DRW and EC3_DRW >=2um, if designer use EC3_DRW as coupler",
+    "TV01": "TV_DRW width (TV_DRW must be square) >=0.36um",
+    "TV02": "Space between two TV_DRWs >=0.35um",
+    "TV03": "TV_DRW must be fully enclosed by M3_DRW >=0.02um",
+    "TV04": "When TV_DRW is at a corner of M3_DRW, at least one side of M3_DRW should exceed TV_DRW 0.16um",
+    "TV05": "TV_DRW must be inside of (M3_DRW-M3_SLOT) AND (TM_DRW-TM_SLOT) ",
+    "TV07": "Three consecutive VIAs are not allowed to overlap",
+    "TM01": "TM_DRW width >=1um",
+    "TM02": "Width of (TM_DRW not PA_DRW)<=35um",
+    "TM03": "Space between two TM_DRWs >=1um",
+    "TM04": "TV_DRW must be fully enclosed by TM_DRW >=0.09um",
+    "TM05": "TM_DRW angle between two sides >=85 degree <=270 degree",
+    "PA01": "PA_DRW width (Bonding pad open) >=40um",
+    "PA02": "Space between two PA_DRWs (Bonding pad open) >=7um",
+    "PA03": "PA_DRW must be inside of TM_DRW",
+    "PA04": "Enclosure of TM_DRW over PA_DRW >=1.5um",
+    "DO101": "DO1_DRW width >=2um",
+    "DO102": "Space between two DO1_DRWs >=2um",
+    "DO103": "DO1_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)",
+    "DO104": "DO1_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um",
+    "DO105": "DO1_DRW must be inside of (WGF_CLD or SNF_CLD or METAL_DUMB)",
+    "D0106": "DO1_DRW must be fully enclosed by (WGF_CLD or SNF_CLD or METAL_DUMB) >=5um",
+    "DT01": "DT_DRW width >=4um",
+    "DT02": "Space between two DT_DRWs >=4um",
+    "DT03": "DT_DRW must not touch (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW)",
+    "DT04": "DT_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)",
+    "DT05": "DT_DRW space to (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW) >=5um",
+    "DT06": "DT_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um",
+    "DT07": "DT_DRW must be inside of [METAL_DUMB and (WGF_CLD  or WGF_DUMB) and (SNF_CLD or SNF_DUMB)]or ALL_DUMB",
+    "DT08": "DT_DRW must be fully enclosed by [METAL_DUMB and (WGF_CLD or WGF_DUMB) and (SNF_CLD or SNF_DUMB)] or ALL_DUMB >=5um",
+    "DT09": "DT_DRW must be inside of DO1_DRW",
+    "DT10": "DT_DRW fully enclosed by DO1_DRW >=1.5um",
+    "UC01": "UC_DRW width >=6um",
+    "UC02": "Space between two UC_DRWs >=4um",
+    "UC03": "UC_DRW must not touch (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW)",
+    "UC04": "UC_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)",
+    "UC05": "UC_DRW space to (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW) >=5um",
+    "UC06": "UC_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um",
+    "UC07": "UC_DRW must be inside of [METAL_DUMB and (WGF_CLD  or WGF_DUMB) and (SNF_CLD or SNF_DUMB)]or ALL_DUMB",
+    "UC08": "DT_DRW must be fully enclosed by [METAL_DUMB and (WGF_CLD or WGF_DUMB) and (SNF_CLD or SNF_DUMB)] or ALL_DUMB >=5um",
+    "UC09": "UC_DRW must be inside of DO1_DRW",
+    "UC10": "UC_DRW fully enclosed by DO1_DRW >=1.5um",
+    "DEV01": "The DEV_AREA layer must enclose all chip layout patterns",
+    "DEV02": "Enclosure of WGF_COR, SNF_COR, GE_DRW, CT_DRW, M1_DRW-TM_DRW, MTH_DRW, V1_DRW-TV_DRW, EC1_DRW-EC3_DRW, LOGO_DRW by DEV_AREA layer",
+    "SL01": "Width of metal slot >=2um",
+    "SL02": "Metal slot must be fully enclosed by metal line >=5um",
+    "SL03": "Space between two metal slots >=2um",
+    "SL04": "Space between M1_SLOT and CT_DRW >=0.005um",
+    "SL05": "Space between all metal slot and via >=0.01um",
+    "SL06": "Metal slot must be rectangle and must be parallel to the coordinate axes",
+    "SL08": "The adjacent Mn slot and Mn+1 slot must not interact",
+    "LOGO01": "LOGO_DRW overlap with all other pattern is not allowed",
+    "LOGO02": "Space between LOGO_DRW and all other pattern >=10um",
+    "LOGO03": "Width of LOGO_DRW >=1um,<=35um",
+    "LOGO04": "Space between two LOGO_DRWs >=1um",
+    "LOGO05": "LOGO_DRW angle between two sides >=85 degree <=270 degree",
+    "BB01": "BBSI_AREA must not interact with Si or SiN or Ge or IMP or SAB or CT or LOGO",
+    "BB02": "BBSIN_AREA must not interact with Si or SiN or Ge or IMP or SAB or CT or M1 or LOGO",
+    "BB03": "BBEC_AREA must not interact with all other patterns except DO1_DRW or DT_DRW, and OIOEC_PORT must not interact with DT_DRW",
+    "BB04": "BBACT AREA not (M1_PINREC or M2_PINREC or M3_PINREC or TM_PINREC) must not interact with all other patterns",
+    "BB05": "(WGS_COR and BB_AREA) must touch (WGS_COR not BB_AREA) or must be enclosed by BB_AREA",
+    "BB06": "(WGS_CLD and BB_AREA) must touch (WGS_CLD not BB_AREA) or must be enclosed by BB_AREA",
+    "BB07": "(WGM_COR and BB_AREA) must touch (WGM_COR not BB_AREA) or must be enclosed by BB_AREA",
+    "BB08": "(WGM_CLD and BB_AREA) must touch (WGM_CLD not BB_AREA) or must be enclosed by BB_AREA",
+    "BB09": "(WGF_COR and BB_AREA) must touch (WGF_COR not BB_AREA) or must be enclosed by BB_AREA",
+    "BB10": "(SNS_COR and BB_AREA) must touch (SNS_COR not BB_AREA) or must be enclosed by BB_AREA",
+    "BB11": "(SNS_CLD and BB_AREA) must touch (SNS_CLD not BB_AREA) or must be enclosed by BB_AREA",
+    "BB12": "(SNF_COR and BB_AREA) must touch (SNF_COR not BB_AREA) or must be enclosed by BB_AREA",
+    "BB13": "(M1_PINREC and BB_AREA) must touch or intereact with M1_DRW",
+    "BB14": "(M1_PINREC and BB_AREA) must touch or intereact with M2_DRW",
+    "BB15": "(M1_PINREC and BB_AREA) must touch or intereact with M3_DRW",
+    "BB16": "(M1_PINREC and BB_AREA) must touch or intereact with TM_DRW",
+    "FORBID01": "FORBID AREA must not interact with all other patterns"
+  },
+  "violation_count": 38,
+  "violation_counts": {
+    "WGF01": 12,
+    "WGF02": 20,
+    "WGF03": 4,
+    "WGF04": 2
+  },
+  "items": [
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (0.6,-1.32;0.6,-1.41)|(0.6,-1.32;0.6,-1.23)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (0.51,-1.32;0.6,-1.32)|(0.69,-1.32;0.6,-1.32)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.33,-0.72;-0.24,-0.72)|(-0.15,-0.72;-0.24,-0.72)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.24,-0.72;-0.24,-0.81)|(-0.24,-0.72;-0.24,-0.63)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (1.2,-0.21;1.2,-0.12)|(1.2,-0.03;1.2,-0.12)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (1.2,-0.12;1.11,-0.12)|(1.2,-0.12;1.29,-0.12)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (0.6,0;0.51,0)|(0.6,0;0.69,0)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (0.6,-0.09;0.6,0)|(0.6,0.09;0.6,0)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.36,0.6;-0.45,0.6)|(-0.36,0.6;-0.27,0.6)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.36,0.51;-0.36,0.6)|(-0.36,0.69;-0.36,0.6)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.24,0.72;-0.33,0.72)|(-0.24,0.72;-0.15,0.72)"
+      ]
+    },
+    {
+      "category": "WGF01",
+      "values": [
+        "edge-pair: (-0.24,0.63;-0.24,0.72)|(-0.24,0.81;-0.24,0.72)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (0.6,-1.32;0.6,-1.41)|(0.6,-1.32;0.6,-1.23)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (0.51,-1.32;0.6,-1.32)|(0.69,-1.32;0.6,-1.32)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-1.8,0.36;-1.8,0.4099)|(-1.8003,0.4098;-1.8095,0.4059)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (0.6,0;0.51,0)|(0.6,0;0.69,0)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.33,-0.72;-0.24,-0.72)|(-0.15,-0.72;-0.24,-0.72)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.2,-0.12;1.11,-0.12)|(1.2,-0.12;1.29,-0.12)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.36,0.51;-0.36,0.6)|(-0.36,0.69;-0.36,0.6)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-1.8,0.36;-1.8,0.4099)|(-1.8,0.4099;-1.8003,0.4098)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.8228,1.7979;1.8327,1.7993)|(1.8,1.8;1.8,1.7947)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.24,0.72;-0.33,0.72)|(-0.24,0.72;-0.15,0.72)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.36,0.6;-0.45,0.6)|(-0.36,0.6;-0.27,0.6)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-1.8,0.36;-1.8,0.4064)|(-1.819,0.4029;-1.8289,0.4011)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.8,1.7904;1.8037,1.7919)|(1.8,1.8;1.8,1.7904)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-1.8,0.36;-1.8,0.4089)|(-1.8095,0.4059;-1.819,0.4029)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (0.6,-0.09;0.6,0)|(0.6,0.09;0.6,0)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.8131,1.7955;1.8228,1.7979)|(1.8,1.8;1.8,1.7923)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.8037,1.7919;1.8131,1.7955)|(1.8,1.8;1.8,1.7905)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.24,-0.72;-0.24,-0.81)|(-0.24,-0.72;-0.24,-0.63)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (-0.24,0.63;-0.24,0.72)|(-0.24,0.81;-0.24,0.72)"
+      ]
+    },
+    {
+      "category": "WGF02",
+      "values": [
+        "edge-pair: (1.2,-0.21;1.2,-0.12)|(1.2,-0.03;1.2,-0.12)"
+      ]
+    },
+    {
+      "category": "WGF03",
+      "values": [
+        "edge: (-1.8,0.36;-1.8,0.4099)"
+      ]
+    },
+    {
+      "category": "WGF03",
+      "values": [
+        "edge: (1.8,0.8805;1.8,0.84)"
+      ]
+    },
+    {
+      "category": "WGF03",
+      "values": [
+        "edge: (-1.8,0.91;-1.8,0.96)"
+      ]
+    },
+    {
+      "category": "WGF03",
+      "values": [
+        "edge: (1.8,1.8;1.8,1.7904)"
+      ]
+    },
+    {
+      "category": "WGF04",
+      "values": [
+        "edge-pair: (-1.8,0.36;-1.8,0.4099)/(-1.8,0.4099;-1.8003,0.4098)"
+      ]
+    },
+    {
+      "category": "WGF04",
+      "values": [
+        "edge-pair: (1.8,1.8;1.8,1.7904)/(1.8,1.7904;1.8037,1.7919)"
+      ]
+    }
+  ],
+  "status": "violations",
+  "gds": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\A_D0_audit\\final.gds",
+  "gds_sha256": "DC8F3F41CF8B05CDDA95AEE52BF853EE6E09EF3574C1D6A3843FC24F1B16E206",
+  "profile": "common",
+  "source_runset": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\config\\Wuyue_PDK_Klayout_Common_DRC_rule_V0.9.0.lydrc",
+  "source_runset_sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797",
+  "runner": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\A_D0_audit\\final_DRC\\runner.drc",
+  "runner_sha256": "B4A81C321EF687A9530533956A3E5BEA2CFDB0991DE79CA2F374F602947800CC",
+  "index": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\config\\pdk-index.local.json",
+  "index_sha256": "905CF0EE650988A86E9592922114F7660EC0FCDD704511BEEA8BBCCB7C6CEF3F",
+  "report": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\A_D0_audit\\final_DRC\\result.lyrdb",
+  "log": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\A_D0_audit\\final_DRC\\run.log",
+  "runtime": "D:\\Program Files\\klayout_app.exe",
+  "checked_at_utc": "20261012T135435_861292Z",
+  "scope_note": "V0.9.0 KLayout common rules only; not all V0.9.1 handbook conditions or electrical/optical connectivity."
+}

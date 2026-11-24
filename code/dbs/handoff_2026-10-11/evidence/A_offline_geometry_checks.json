@@ -1,0 +1,15 @@
+{
+  "scheme": "A",
+  "candidate_cells": 238,
+  "candidate_silicon_cells": 147,
+  "candidate_oxide_cells": 91,
+  "outside_candidate_difference_um2": 0.0,
+  "selected_cells_homogeneous": true,
+  "processing_layers_unchanged": true,
+  "gds": "G:\\codex_project\\inverse_design_sun\\DBS_交接包_2026-10-11\\evidence\\A_initial_rebuilt.gds",
+  "gds_sha256": "74C6D0B8F0BB6B37D970C3E1D4BAC347AD68B2E3672AE991006578129A44E2BE",
+  "top_cell": "A_FULL_DEVICE",
+  "dbu_um": 0.0001,
+  "optical_simulations": 0,
+  "reconstructed_initial_xor_um2": 0.0
+}

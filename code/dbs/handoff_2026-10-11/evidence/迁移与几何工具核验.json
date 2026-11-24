@@ -1,0 +1,57 @@
+{
+  "geometry_tests": {
+    "A_rebuild": {
+      "xor_area_um2": 0.0,
+      "required_layers_present": true
+    },
+    "B_rebuild": {
+      "xor_area_um2": 8e-08,
+      "required_layers_present": true
+    },
+    "B_one_allowed_flip": {
+      "row": 8,
+      "col": 0,
+      "outside_difference_um2": 8e-08,
+      "selected_cells_homogeneous": true
+    },
+    "outside_edit_rejected": true,
+    "nonbinary_state_rejected": true,
+    "missing_processing_layer_rejected": true,
+    "120nm_unit_controls": [
+      {
+        "feature_nm": 80,
+        "width_markers": 1,
+        "space_markers": 1
+      },
+      {
+        "feature_nm": 100,
+        "width_markers": 1,
+        "space_markers": 1
+      },
+      {
+        "feature_nm": 119,
+        "width_markers": 1,
+        "space_markers": 1
+      },
+      {
+        "feature_nm": 120,
+        "width_markers": 0,
+        "space_markers": 0
+      },
+      {
+        "feature_nm": 140,
+        "width_markers": 0,
+        "space_markers": 0
+      }
+    ]
+  },
+  "optical_simulations": 0,
+  "html_checks": {
+    "sections": 14,
+    "figure_embedded": true
+  },
+  "status": "passed_offline_geometry_and_portability_checks",
+  "checked_geometry_io_sha256": "c9b3e7c668ccb4fa2149cf1ace4fb163a7dc94b9f95666a602b5153162d23c84",
+  "input_checkpoint_sha256": "8591bcf9612dae081d454161c435289e02d7deed6faff793b8509fc600dff36d",
+  "note": "Offline input reconstruction, moved-path execution and safeguards; not optical validation"
+}

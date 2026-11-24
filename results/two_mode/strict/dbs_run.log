@@ -1,0 +1,997 @@
+[2026-10-12 16:08:43] Initialized DBSRunner for Scheme B (strict mode)
+[2026-10-12 16:08:43] Candidate cells: 108, max sweeps: 4, tol: 0.0001
+[2026-10-12 16:08:43] Evaluating baseline initial structure...
+[2026-10-12 16:10:02] Baseline initial J = 0.84982 (TE0: 0.9023, TE1: 0.7973) in 78.5s
+[2026-10-12 16:10:02] === Starting Sweep 1/4 (Current J = 0.84982) ===
+[2026-10-12 16:10:02] Sweep 1 [  1/108] Cell ( 8, 0) -> 0: DRC REJECT (supp_fail(w=12,s=2)) [0.1s, Solves: 2]
+[2026-10-12 16:10:02] Sweep 1 [  2/108] Cell ( 2, 0) -> 0: DRC REJECT (supp_fail(w=9,s=0)) [0.0s, Solves: 2]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:11:24] Sweep 1 [  3/108] Cell ( 1, 0) -> 1: ACCEPT (J: 0.85033 -> 0.85033, +0.00000) [82.5s, Solves: 4]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:12:52] Sweep 1 [  4/108] Cell ( 0, 0) -> 0: REJECT (J: 0.85019 <= 0.85043) [87.2s, Solves: 6]
+[2026-10-12 16:12:52] Sweep 1 [  5/108] Cell (26, 5) -> 0: DRC REJECT (supp_fail(w=4,s=9)) [0.0s, Solves: 6]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:12:53] Sweep 1 [  6/108] Cell (25, 5) -> 0: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 6]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:14:10] Sweep 1 [  7/108] Cell (13, 5) -> 0: REJECT (J: 0.81681 <= 0.85043) [77.2s, Solves: 8]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:15:26] Sweep 1 [  8/108] Cell (12, 5) -> 0: REJECT (J: 0.80969 <= 0.85043) [76.1s, Solves: 10]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:15:28] Sweep 1 [  9/108] Cell (27, 6) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 10]
+[2026-10-12 16:15:28] Sweep 1 [ 10/108] Cell (25, 6) -> 1: DRC REJECT (supp_fail(w=0,s=35)) [0.0s, Solves: 10]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:16:53] Sweep 1 [ 11/108] Cell (13, 6) -> 0: REJECT (J: 0.83836 <= 0.85043) [85.2s, Solves: 12]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:18:22] Sweep 1 [ 12/108] Cell (12, 6) -> 0: REJECT (J: 0.82478 <= 0.85043) [89.0s, Solves: 14]
+[2026-10-12 16:18:22] Sweep 1 [ 13/108] Cell (27, 7) -> 1: DRC REJECT (supp_fail(w=8,s=18)) [0.0s, Solves: 14]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:19:51] Sweep 1 [ 14/108] Cell (26, 7) -> 1: ACCEPT (J: 0.85149 -> 0.85149, +0.00000) [89.0s, Solves: 16]
+[2026-10-12 16:19:51] Sweep 1 [ 15/108] Cell (25, 7) -> 1: DRC REJECT (supp_fail(w=0,s=45)) [0.0s, Solves: 16]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:21:20] Sweep 1 [ 16/108] Cell (13, 7) -> 0: REJECT (J: 0.82490 <= 0.85159) [89.0s, Solves: 18]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:22:49] Sweep 1 [ 17/108] Cell (14, 8) -> 0: REJECT (J: 0.83089 <= 0.85159) [89.0s, Solves: 20]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:24:20] Sweep 1 [ 18/108] Cell (13, 8) -> 0: REJECT (J: 0.83521 <= 0.85159) [91.2s, Solves: 22]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:25:57] Sweep 1 [ 19/108] Cell (12, 8) -> 0: REJECT (J: 0.83977 <= 0.85159) [96.6s, Solves: 24]
+[2026-10-12 16:25:57] Sweep 1 [ 20/108] Cell (11, 8) -> 0: DRC REJECT (supp_fail(w=16,s=9)) [0.0s, Solves: 24]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:25:59] Sweep 1 [ 21/108] Cell (29, 9) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 24]
+[2026-10-12 16:25:59] Sweep 1 [ 22/108] Cell (28, 9) -> 1: DRC REJECT (supp_fail(w=11,s=12)) [0.0s, Solves: 24]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:27:32] Sweep 1 [ 23/108] Cell (15, 9) -> 0: REJECT (J: 0.81585 <= 0.85159) [93.0s, Solves: 26]
+[2026-10-12 16:27:32] Sweep 1 [ 24/108] Cell (14, 9) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 26]
+[2026-10-12 16:27:32] Sweep 1 [ 25/108] Cell (12, 9) -> 0: DRC REJECT (supp_fail(w=4,s=4)) [0.0s, Solves: 26]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:27:33] Sweep 1 [ 26/108] Cell (11, 9) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 26]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:27:34] Sweep 1 [ 27/108] Cell (29,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 26]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:27:36] Sweep 1 [ 28/108] Cell (20,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 26]
+[2026-10-12 16:27:36] Sweep 1 [ 29/108] Cell (19,10) -> 1: DRC REJECT (supp_fail(w=14,s=39)) [0.0s, Solves: 26]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:29:03] Sweep 1 [ 30/108] Cell (14,10) -> 0: REJECT (J: 0.81454 <= 0.85159) [87.1s, Solves: 28]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:30:32] Sweep 1 [ 31/108] Cell (13,10) -> 1: REJECT (J: 0.84032 <= 0.85159) [89.2s, Solves: 30]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:32:01] Sweep 1 [ 32/108] Cell (12,10) -> 0: REJECT (J: 0.84981 <= 0.85159) [89.1s, Solves: 32]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:33:32] Sweep 1 [ 33/108] Cell (11,10) -> 1: REJECT (J: 0.84726 <= 0.85159) [90.9s, Solves: 34]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:35:03] Sweep 1 [ 34/108] Cell (20,11) -> 0: REJECT (J: 0.81381 <= 0.85159) [91.1s, Solves: 36]
+[2026-10-12 16:35:03] Sweep 1 [ 35/108] Cell (19,11) -> 1: DRC REJECT (supp_fail(w=3,s=11)) [0.0s, Solves: 36]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:36:32] Sweep 1 [ 36/108] Cell (14,11) -> 0: REJECT (J: 0.84441 <= 0.85159) [89.1s, Solves: 38]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:38:04] Sweep 1 [ 37/108] Cell (21,12) -> 0: REJECT (J: 0.83004 <= 0.85159) [91.1s, Solves: 40]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:39:33] Sweep 1 [ 38/108] Cell (20,12) -> 1: REJECT (J: 0.83586 <= 0.85159) [89.1s, Solves: 42]
+[2026-10-12 16:39:33] Sweep 1 [ 39/108] Cell (19,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 42]
+[2026-10-12 16:39:33] Sweep 1 [ 40/108] Cell (16,12) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 42]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:41:02] Sweep 1 [ 41/108] Cell (15,12) -> 0: ACCEPT (J: 0.85766 -> 0.85766, +0.00000) [89.2s, Solves: 44]
+[2026-10-12 16:41:02] Sweep 1 [ 42/108] Cell (14,12) -> 1: DRC REJECT (supp_fail(w=0,s=33)) [0.0s, Solves: 44]
+[2026-10-12 16:41:02] Sweep 1 [ 43/108] Cell (12,12) -> 0: DRC REJECT (supp_fail(w=24,s=0)) [0.0s, Solves: 44]
+[2026-10-12 16:41:02] Sweep 1 [ 44/108] Cell (21,13) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 44]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:42:31] Sweep 1 [ 45/108] Cell (20,13) -> 0: REJECT (J: 0.84751 <= 0.85776) [89.1s, Solves: 46]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:44:00] Sweep 1 [ 46/108] Cell (17,13) -> 0: REJECT (J: 0.84332 <= 0.85776) [89.1s, Solves: 48]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:45:29] Sweep 1 [ 47/108] Cell (16,13) -> 0: REJECT (J: 0.81322 <= 0.85776) [89.2s, Solves: 50]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:47:01] Sweep 1 [ 48/108] Cell (15,13) -> 1: REJECT (J: 0.85582 <= 0.85776) [91.1s, Solves: 52]
+[2026-10-12 16:47:01] Sweep 1 [ 49/108] Cell (14,13) -> 1: DRC REJECT (supp_fail(w=12,s=17)) [0.1s, Solves: 52]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:48:30] Sweep 1 [ 50/108] Cell (22,14) -> 0: REJECT (J: 0.84536 <= 0.85776) [89.1s, Solves: 54]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:49:59] Sweep 1 [ 51/108] Cell (21,14) -> 0: REJECT (J: 0.83534 <= 0.85776) [89.2s, Solves: 56]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:51:30] Sweep 1 [ 52/108] Cell (17,14) -> 0: REJECT (J: 0.83834 <= 0.85776) [91.1s, Solves: 58]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:52:59] Sweep 1 [ 53/108] Cell (16,14) -> 0: REJECT (J: 0.85117 <= 0.85776) [89.0s, Solves: 60]
+[2026-10-12 16:52:59] Sweep 1 [ 54/108] Cell (15,14) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 60]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:53:00] Sweep 1 [ 55/108] Cell (14,14) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 60]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:54:30] Sweep 1 [ 56/108] Cell (18,15) -> 0: REJECT (J: 0.82616 <= 0.85776) [89.1s, Solves: 62]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:55:59] Sweep 1 [ 57/108] Cell (17,15) -> 0: REJECT (J: 0.84687 <= 0.85776) [89.2s, Solves: 64]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:57:28] Sweep 1 [ 58/108] Cell (16,15) -> 0: ACCEPT (J: 0.86594 -> 0.86594, +0.00000) [89.2s, Solves: 66]
+[2026-10-12 16:57:28] Sweep 1 [ 59/108] Cell (15,15) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.0s, Solves: 66]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 16:58:59] Sweep 1 [ 60/108] Cell (14,15) -> 0: ACCEPT (J: 0.86609 -> 0.86609, +0.00000) [91.1s, Solves: 68]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:00:28] Sweep 1 [ 61/108] Cell (15,16) -> 0: ACCEPT (J: 0.86661 -> 0.86661, +0.00000) [89.0s, Solves: 70]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:01:56] Sweep 1 [ 62/108] Cell (14,16) -> 0: REJECT (J: 0.86666 <= 0.86671) [87.8s, Solves: 72]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:01:57] Sweep 1 [ 63/108] Cell (15,17) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 72]
+[2026-10-12 17:01:57] Sweep 1 [ 64/108] Cell (15,18) -> 1: DRC REJECT (supp_fail(w=4,s=25)) [0.0s, Solves: 72]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:01:59] Sweep 1 [ 65/108] Cell (14,18) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 72]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:03:26] Sweep 1 [ 66/108] Cell ( 5,18) -> 1: REJECT (J: 0.86652 <= 0.86671) [87.1s, Solves: 74]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:04:33] Sweep 1 [ 67/108] Cell ( 4,18) -> 1: REJECT (J: 0.86658 <= 0.86671) [67.4s, Solves: 76]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:06:16] Sweep 1 [ 68/108] Cell ( 3,18) -> 0: ACCEPT (J: 0.86698 -> 0.86698, +0.00000) [102.7s, Solves: 78]
+[2026-10-12 17:06:16] Sweep 1 [ 69/108] Cell (14,19) -> 0: DRC REJECT (supp_fail(w=16,s=6)) [0.1s, Solves: 78]
+[2026-10-12 17:06:16] Sweep 1 [ 70/108] Cell ( 5,19) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 78]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:07:55] Sweep 1 [ 71/108] Cell ( 3,19) -> 0: ACCEPT (J: 0.86709 -> 0.86709, +0.00000) [99.1s, Solves: 80]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:07:57] Sweep 1 [ 72/108] Cell (18,20) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 80]
+[2026-10-12 17:07:57] Sweep 1 [ 73/108] Cell (17,20) -> 1: DRC REJECT (supp_fail(w=10,s=16)) [0.1s, Solves: 80]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:09:36] Sweep 1 [ 74/108] Cell ( 5,20) -> 1: REJECT (J: 0.86698 <= 0.86719) [99.1s, Solves: 82]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:11:01] Sweep 1 [ 75/108] Cell ( 4,20) -> 0: REJECT (J: 0.86714 <= 0.86719) [85.1s, Solves: 84]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:12:21] Sweep 1 [ 76/108] Cell ( 3,20) -> 0: REJECT (J: 0.86714 <= 0.86719) [79.7s, Solves: 86]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:13:57] Sweep 1 [ 77/108] Cell (23,21) -> 0: REJECT (J: 0.86516 <= 0.86719) [96.0s, Solves: 88]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:15:35] Sweep 1 [ 78/108] Cell (18,21) -> 0: REJECT (J: 0.86099 <= 0.86719) [97.9s, Solves: 90]
+[2026-10-12 17:15:35] Sweep 1 [ 79/108] Cell (17,21) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 90]
+[2026-10-12 17:15:35] Sweep 1 [ 80/108] Cell (16,21) -> 1: DRC REJECT (supp_fail(w=0,s=11)) [0.1s, Solves: 90]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:17:13] Sweep 1 [ 81/108] Cell (23,22) -> 0: REJECT (J: 0.86201 <= 0.86719) [97.9s, Solves: 92]
+[2026-10-12 17:17:13] Sweep 1 [ 82/108] Cell (18,22) -> 0: DRC REJECT (supp_fail(w=5,s=0)) [0.1s, Solves: 92]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:18:54] Sweep 1 [ 83/108] Cell (16,22) -> 0: REJECT (J: 0.86707 <= 0.86719) [101.5s, Solves: 94]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:20:20] Sweep 1 [ 84/108] Cell (23,23) -> 0: REJECT (J: 0.85868 <= 0.86719) [85.4s, Solves: 96]
+[2026-10-12 17:20:20] Sweep 1 [ 85/108] Cell (17,23) -> 1: DRC REJECT (supp_fail(w=2,s=6)) [0.1s, Solves: 96]
+[2026-10-12 17:20:20] Sweep 1 [ 86/108] Cell (16,23) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 96]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:21:49] Sweep 1 [ 87/108] Cell (23,24) -> 0: REJECT (J: 0.85879 <= 0.86719) [89.7s, Solves: 98]
+[2026-10-12 17:21:49] Sweep 1 [ 88/108] Cell (19,24) -> 1: DRC REJECT (supp_fail(w=0,s=5)) [0.1s, Solves: 98]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:23:17] Sweep 1 [ 89/108] Cell (17,24) -> 1: ACCEPT (J: 0.86730 -> 0.86730, +0.00000) [87.3s, Solves: 100]
+[2026-10-12 17:23:17] Sweep 1 [ 90/108] Cell (16,24) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 100]
+[2026-10-12 17:23:17] Sweep 1 [ 91/108] Cell (15,24) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 100]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:24:47] Sweep 1 [ 92/108] Cell (14,24) -> 1: REJECT (J: 0.86686 <= 0.86740) [89.8s, Solves: 102]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:26:18] Sweep 1 [ 93/108] Cell (13,24) -> 0: ACCEPT (J: 0.86749 -> 0.86749, +0.00000) [91.1s, Solves: 104]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:27:41] Sweep 1 [ 94/108] Cell (23,25) -> 0: REJECT (J: 0.85999 <= 0.86759) [83.7s, Solves: 106]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:29:09] Sweep 1 [ 95/108] Cell (19,25) -> 1: ACCEPT (J: 0.86932 -> 0.86932, +0.00000) [87.3s, Solves: 108]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:30:36] Sweep 1 [ 96/108] Cell (18,25) -> 1: ACCEPT (J: 0.86984 -> 0.86984, +0.00000) [87.2s, Solves: 110]
+[2026-10-12 17:30:36] Sweep 1 [ 97/108] Cell (17,25) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 110]
+[2026-10-12 17:30:36] Sweep 1 [ 98/108] Cell (16,25) -> 0: DRC REJECT (supp_fail(w=6,s=5)) [0.1s, Solves: 110]
+[2026-10-12 17:30:36] Sweep 1 [ 99/108] Cell (14,25) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 110]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:32:05] Sweep 1 [100/108] Cell (13,25) -> 1: REJECT (J: 0.86920 <= 0.86994) [89.2s, Solves: 112]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:33:39] Sweep 1 [101/108] Cell (23,26) -> 0: REJECT (J: 0.84613 <= 0.86994) [93.3s, Solves: 114]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:35:08] Sweep 1 [102/108] Cell (19,26) -> 0: REJECT (J: 0.86840 <= 0.86994) [89.2s, Solves: 116]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:36:35] Sweep 1 [103/108] Cell (18,26) -> 0: REJECT (J: 0.86929 <= 0.86994) [87.3s, Solves: 118]
+[2026-10-12 17:36:35] Sweep 1 [104/108] Cell (15,26) -> 0: DRC REJECT (supp_fail(w=6,s=6)) [0.1s, Solves: 118]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:36:37] Sweep 1 [105/108] Cell (14,26) -> 0: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 118]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:38:04] Sweep 1 [106/108] Cell (24,27) -> 0: REJECT (J: 0.84669 <= 0.86994) [87.2s, Solves: 120]
+[2026-10-12 17:38:04] Sweep 1 [107/108] Cell (23,27) -> 0: DRC REJECT (supp_fail(w=20,s=0)) [0.1s, Solves: 120]
+[2026-10-12 17:38:04] Sweep 1 [108/108] Cell (20,29) -> 1: DRC REJECT (supp_fail(w=3,s=15)) [0.1s, Solves: 120]
+[2026-10-12 17:38:04] Sweep 1 finished in 5282.3s. Accepted flips: 12
+[2026-10-12 17:38:04] === Starting Sweep 2/4 (Current J = 0.86984) ===
+[2026-10-12 17:38:04] Sweep 2 [  1/108] Cell ( 8, 0) -> 0: DRC REJECT (supp_fail(w=12,s=2)) [0.1s, Solves: 120]
+[2026-10-12 17:38:04] Sweep 2 [  2/108] Cell ( 2, 0) -> 0: DRC REJECT (supp_fail(w=9,s=0)) [0.1s, Solves: 120]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:39:33] Sweep 2 [  3/108] Cell ( 1, 0) -> 0: REJECT (J: 0.86939 <= 0.86994) [89.1s, Solves: 122]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:41:02] Sweep 2 [  4/108] Cell ( 0, 0) -> 0: REJECT (J: 0.86955 <= 0.86994) [89.0s, Solves: 124]
+[2026-10-12 17:41:02] Sweep 2 [  5/108] Cell (26, 5) -> 0: DRC REJECT (supp_fail(w=4,s=9)) [0.0s, Solves: 124]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:41:04] Sweep 2 [  6/108] Cell (25, 5) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 124]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:42:33] Sweep 2 [  7/108] Cell (13, 5) -> 0: REJECT (J: 0.83068 <= 0.86994) [89.3s, Solves: 126]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:44:01] Sweep 2 [  8/108] Cell (12, 5) -> 0: REJECT (J: 0.82185 <= 0.86994) [87.8s, Solves: 128]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:44:02] Sweep 2 [  9/108] Cell (27, 6) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 128]
+[2026-10-12 17:44:02] Sweep 2 [ 10/108] Cell (25, 6) -> 1: DRC REJECT (supp_fail(w=0,s=35)) [0.1s, Solves: 128]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:45:30] Sweep 2 [ 11/108] Cell (13, 6) -> 0: REJECT (J: 0.85181 <= 0.86994) [87.2s, Solves: 130]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:46:51] Sweep 2 [ 12/108] Cell (12, 6) -> 0: REJECT (J: 0.84094 <= 0.86994) [81.4s, Solves: 132]
+[2026-10-12 17:46:51] Sweep 2 [ 13/108] Cell (27, 7) -> 1: DRC REJECT (supp_fail(w=6,s=16)) [0.0s, Solves: 132]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:48:20] Sweep 2 [ 14/108] Cell (26, 7) -> 0: REJECT (J: 0.86874 <= 0.86994) [89.2s, Solves: 134]
+[2026-10-12 17:48:20] Sweep 2 [ 15/108] Cell (25, 7) -> 1: DRC REJECT (supp_fail(w=0,s=45)) [0.1s, Solves: 134]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:49:45] Sweep 2 [ 16/108] Cell (13, 7) -> 0: REJECT (J: 0.84521 <= 0.86994) [85.0s, Solves: 136]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:51:16] Sweep 2 [ 17/108] Cell (14, 8) -> 0: REJECT (J: 0.85309 <= 0.86994) [90.9s, Solves: 138]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:52:43] Sweep 2 [ 18/108] Cell (13, 8) -> 0: REJECT (J: 0.85851 <= 0.86994) [87.0s, Solves: 140]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:54:14] Sweep 2 [ 19/108] Cell (12, 8) -> 0: REJECT (J: 0.86840 <= 0.86994) [90.2s, Solves: 142]
+[2026-10-12 17:54:14] Sweep 2 [ 20/108] Cell (11, 8) -> 0: DRC REJECT (supp_fail(w=16,s=9)) [0.1s, Solves: 142]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:54:15] Sweep 2 [ 21/108] Cell (29, 9) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 142]
+[2026-10-12 17:54:15] Sweep 2 [ 22/108] Cell (28, 9) -> 1: DRC REJECT (supp_fail(w=11,s=12)) [0.0s, Solves: 142]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:55:40] Sweep 2 [ 23/108] Cell (15, 9) -> 0: REJECT (J: 0.82706 <= 0.86994) [85.1s, Solves: 144]
+[2026-10-12 17:55:40] Sweep 2 [ 24/108] Cell (14, 9) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 144]
+[2026-10-12 17:55:40] Sweep 2 [ 25/108] Cell (12, 9) -> 0: DRC REJECT (supp_fail(w=4,s=4)) [0.1s, Solves: 144]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:55:42] Sweep 2 [ 26/108] Cell (11, 9) -> 0: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 144]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:55:43] Sweep 2 [ 27/108] Cell (29,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 144]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:55:45] Sweep 2 [ 28/108] Cell (20,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 144]
+[2026-10-12 17:55:45] Sweep 2 [ 29/108] Cell (19,10) -> 1: DRC REJECT (supp_fail(w=14,s=39)) [0.1s, Solves: 144]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:57:14] Sweep 2 [ 30/108] Cell (14,10) -> 0: REJECT (J: 0.84335 <= 0.86994) [89.6s, Solves: 146]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 17:58:42] Sweep 2 [ 31/108] Cell (13,10) -> 1: REJECT (J: 0.84979 <= 0.86994) [87.5s, Solves: 148]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:00:10] Sweep 2 [ 32/108] Cell (12,10) -> 0: REJECT (J: 0.86974 <= 0.86994) [87.6s, Solves: 150]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:01:37] Sweep 2 [ 33/108] Cell (11,10) -> 1: REJECT (J: 0.86446 <= 0.86994) [87.3s, Solves: 152]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:03:03] Sweep 2 [ 34/108] Cell (20,11) -> 0: REJECT (J: 0.83620 <= 0.86994) [85.7s, Solves: 154]
+[2026-10-12 18:03:03] Sweep 2 [ 35/108] Cell (19,11) -> 1: DRC REJECT (supp_fail(w=3,s=11)) [0.1s, Solves: 154]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:04:33] Sweep 2 [ 36/108] Cell (14,11) -> 0: REJECT (J: 0.86466 <= 0.86994) [90.0s, Solves: 156]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:06:00] Sweep 2 [ 37/108] Cell (21,12) -> 0: REJECT (J: 0.84822 <= 0.86994) [87.5s, Solves: 158]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:07:30] Sweep 2 [ 38/108] Cell (20,12) -> 1: REJECT (J: 0.85266 <= 0.86994) [90.0s, Solves: 160]
+[2026-10-12 18:07:30] Sweep 2 [ 39/108] Cell (19,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 160]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:08:59] Sweep 2 [ 40/108] Cell (16,12) -> 0: REJECT (J: 0.81311 <= 0.86994) [89.1s, Solves: 162]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:10:26] Sweep 2 [ 41/108] Cell (15,12) -> 1: REJECT (J: 0.86013 <= 0.86994) [87.1s, Solves: 164]
+[2026-10-12 18:10:26] Sweep 2 [ 42/108] Cell (14,12) -> 1: DRC REJECT (supp_fail(w=0,s=33)) [0.1s, Solves: 164]
+[2026-10-12 18:10:26] Sweep 2 [ 43/108] Cell (12,12) -> 0: DRC REJECT (supp_fail(w=24,s=0)) [0.1s, Solves: 164]
+[2026-10-12 18:10:26] Sweep 2 [ 44/108] Cell (21,13) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 164]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:11:52] Sweep 2 [ 45/108] Cell (20,13) -> 0: ACCEPT (J: 0.87131 -> 0.87131, +0.00000) [85.7s, Solves: 166]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:13:20] Sweep 2 [ 46/108] Cell (17,13) -> 0: REJECT (J: 0.85152 <= 0.87141) [87.6s, Solves: 168]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:14:47] Sweep 2 [ 47/108] Cell (16,13) -> 0: REJECT (J: 0.82606 <= 0.87141) [87.2s, Solves: 170]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:16:15] Sweep 2 [ 48/108] Cell (15,13) -> 1: REJECT (J: 0.86460 <= 0.87141) [88.0s, Solves: 172]
+[2026-10-12 18:16:15] Sweep 2 [ 49/108] Cell (14,13) -> 1: DRC REJECT (supp_fail(w=12,s=17)) [0.1s, Solves: 172]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:17:42] Sweep 2 [ 50/108] Cell (22,14) -> 0: REJECT (J: 0.85744 <= 0.87141) [87.1s, Solves: 174]
+[2026-10-12 18:17:42] Sweep 2 [ 51/108] Cell (21,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 174]
+[2026-10-12 18:17:42] Sweep 2 [ 52/108] Cell (17,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 174]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:19:09] Sweep 2 [ 53/108] Cell (16,14) -> 0: REJECT (J: 0.85465 <= 0.87141) [87.3s, Solves: 176]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:20:39] Sweep 2 [ 54/108] Cell (15,14) -> 1: REJECT (J: 0.86356 <= 0.87141) [89.2s, Solves: 178]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:20:40] Sweep 2 [ 55/108] Cell (14,14) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 178]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:22:07] Sweep 2 [ 56/108] Cell (18,15) -> 0: REJECT (J: 0.84292 <= 0.87141) [87.0s, Solves: 180]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:23:38] Sweep 2 [ 57/108] Cell (17,15) -> 0: REJECT (J: 0.85600 <= 0.87141) [91.1s, Solves: 182]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:25:06] Sweep 2 [ 58/108] Cell (16,15) -> 1: REJECT (J: 0.85320 <= 0.87141) [88.0s, Solves: 184]
+[2026-10-12 18:25:06] Sweep 2 [ 59/108] Cell (15,15) -> 1: DRC REJECT (supp_fail(w=6,s=6)) [0.1s, Solves: 184]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:26:34] Sweep 2 [ 60/108] Cell (14,15) -> 1: REJECT (J: 0.87065 <= 0.87141) [87.9s, Solves: 186]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:28:04] Sweep 2 [ 61/108] Cell (15,16) -> 1: REJECT (J: 0.86976 <= 0.87141) [89.4s, Solves: 188]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:29:32] Sweep 2 [ 62/108] Cell (14,16) -> 0: ACCEPT (J: 0.87147 -> 0.87147, +0.00000) [87.9s, Solves: 190]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:29:33] Sweep 2 [ 63/108] Cell (15,17) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 190]
+[2026-10-12 18:29:33] Sweep 2 [ 64/108] Cell (15,18) -> 1: DRC REJECT (supp_fail(w=4,s=25)) [0.1s, Solves: 190]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:29:34] Sweep 2 [ 65/108] Cell (14,18) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 190]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:31:01] Sweep 2 [ 66/108] Cell ( 5,18) -> 1: REJECT (J: 0.87148 <= 0.87157) [86.1s, Solves: 192]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:32:29] Sweep 2 [ 67/108] Cell ( 4,18) -> 1: REJECT (J: 0.87131 <= 0.87157) [88.4s, Solves: 194]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:33:44] Sweep 2 [ 68/108] Cell ( 3,18) -> 1: REJECT (J: 0.87134 <= 0.87157) [75.1s, Solves: 196]
+[2026-10-12 18:33:44] Sweep 2 [ 69/108] Cell (14,19) -> 0: DRC REJECT (supp_fail(w=16,s=6)) [0.1s, Solves: 196]
+[2026-10-12 18:33:44] Sweep 2 [ 70/108] Cell ( 5,19) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 196]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:35:19] Sweep 2 [ 71/108] Cell ( 3,19) -> 1: REJECT (J: 0.87138 <= 0.87157) [95.1s, Solves: 198]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:35:21] Sweep 2 [ 72/108] Cell (18,20) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 198]
+[2026-10-12 18:35:21] Sweep 2 [ 73/108] Cell (17,20) -> 1: DRC REJECT (supp_fail(w=10,s=16)) [0.1s, Solves: 198]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:36:55] Sweep 2 [ 74/108] Cell ( 5,20) -> 1: ACCEPT (J: 0.87167 -> 0.87167, +0.00000) [94.0s, Solves: 200]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:38:28] Sweep 2 [ 75/108] Cell ( 4,20) -> 0: REJECT (J: 0.87169 <= 0.87177) [93.1s, Solves: 202]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:39:47] Sweep 2 [ 76/108] Cell ( 3,20) -> 0: REJECT (J: 0.87173 <= 0.87177) [79.1s, Solves: 204]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:41:08] Sweep 2 [ 77/108] Cell (23,21) -> 0: ACCEPT (J: 0.88536 -> 0.88536, +0.00000) [81.1s, Solves: 206]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:42:29] Sweep 2 [ 78/108] Cell (18,21) -> 0: REJECT (J: 0.88232 <= 0.88546) [81.1s, Solves: 208]
+[2026-10-12 18:42:29] Sweep 2 [ 79/108] Cell (17,21) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 208]
+[2026-10-12 18:42:29] Sweep 2 [ 80/108] Cell (16,21) -> 1: DRC REJECT (supp_fail(w=0,s=11)) [0.1s, Solves: 208]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:43:51] Sweep 2 [ 81/108] Cell (23,22) -> 0: REJECT (J: 0.84360 <= 0.88546) [81.9s, Solves: 210]
+[2026-10-12 18:43:51] Sweep 2 [ 82/108] Cell (18,22) -> 0: DRC REJECT (supp_fail(w=5,s=0)) [0.1s, Solves: 210]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:45:15] Sweep 2 [ 83/108] Cell (16,22) -> 0: REJECT (J: 0.88418 <= 0.88546) [84.1s, Solves: 212]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:46:46] Sweep 2 [ 84/108] Cell (23,23) -> 0: REJECT (J: 0.88273 <= 0.88546) [91.0s, Solves: 214]
+[2026-10-12 18:46:47] Sweep 2 [ 85/108] Cell (17,23) -> 1: DRC REJECT (supp_fail(w=2,s=6)) [0.1s, Solves: 214]
+[2026-10-12 18:46:47] Sweep 2 [ 86/108] Cell (16,23) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 214]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:48:16] Sweep 2 [ 87/108] Cell (23,24) -> 0: REJECT (J: 0.85903 <= 0.88546) [89.7s, Solves: 216]
+[2026-10-12 18:48:16] Sweep 2 [ 88/108] Cell (19,24) -> 1: DRC REJECT (supp_fail(w=0,s=5)) [0.1s, Solves: 216]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:49:44] Sweep 2 [ 89/108] Cell (17,24) -> 0: REJECT (J: 0.88535 <= 0.88546) [87.3s, Solves: 218]
+[2026-10-12 18:49:44] Sweep 2 [ 90/108] Cell (16,24) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 218]
+[2026-10-12 18:49:44] Sweep 2 [ 91/108] Cell (15,24) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 218]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:51:11] Sweep 2 [ 92/108] Cell (14,24) -> 1: ACCEPT (J: 0.88566 -> 0.88566, +0.00000) [87.0s, Solves: 220]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:52:25] Sweep 2 [ 93/108] Cell (13,24) -> 1: REJECT (J: 0.88505 <= 0.88576) [74.1s, Solves: 222]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:54:03] Sweep 2 [ 94/108] Cell (23,25) -> 0: REJECT (J: 0.87686 <= 0.88576) [97.8s, Solves: 224]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:55:42] Sweep 2 [ 95/108] Cell (19,25) -> 0: ACCEPT (J: 0.88625 -> 0.88625, +0.00000) [99.3s, Solves: 226]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:57:21] Sweep 2 [ 96/108] Cell (18,25) -> 0: REJECT (J: 0.88599 <= 0.88635) [99.5s, Solves: 228]
+[2026-10-12 18:57:22] Sweep 2 [ 97/108] Cell (17,25) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 228]
+[2026-10-12 18:57:22] Sweep 2 [ 98/108] Cell (16,25) -> 0: DRC REJECT (supp_fail(w=6,s=5)) [0.1s, Solves: 228]
+[2026-10-12 18:57:22] Sweep 2 [ 99/108] Cell (14,25) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 228]
+[2026-10-12 18:57:22] Sweep 2 [100/108] Cell (13,25) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 228]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 18:58:49] Sweep 2 [101/108] Cell (23,26) -> 0: REJECT (J: 0.85758 <= 0.88635) [87.3s, Solves: 230]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:00:18] Sweep 2 [102/108] Cell (19,26) -> 0: REJECT (J: 0.88579 <= 0.88635) [89.0s, Solves: 232]
+[2026-10-12 19:00:18] Sweep 2 [103/108] Cell (18,26) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 232]
+[2026-10-12 19:00:18] Sweep 2 [104/108] Cell (15,26) -> 0: DRC REJECT (supp_fail(w=6,s=6)) [0.1s, Solves: 232]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:00:20] Sweep 2 [105/108] Cell (14,26) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 232]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:01:51] Sweep 2 [106/108] Cell (24,27) -> 0: REJECT (J: 0.86459 <= 0.88635) [91.2s, Solves: 234]
+[2026-10-12 19:01:51] Sweep 2 [107/108] Cell (23,27) -> 0: DRC REJECT (supp_fail(w=20,s=0)) [0.1s, Solves: 234]
+[2026-10-12 19:01:51] Sweep 2 [108/108] Cell (20,29) -> 1: DRC REJECT (supp_fail(w=3,s=15)) [0.1s, Solves: 234]
+[2026-10-12 19:01:51] Sweep 2 finished in 5026.8s. Accepted flips: 6
+[2026-10-12 19:01:51] === Starting Sweep 3/4 (Current J = 0.88625) ===
+[2026-10-12 19:01:51] Sweep 3 [  1/108] Cell ( 8, 0) -> 0: DRC REJECT (supp_fail(w=12,s=2)) [0.1s, Solves: 234]
+[2026-10-12 19:01:51] Sweep 3 [  2/108] Cell ( 2, 0) -> 0: DRC REJECT (supp_fail(w=9,s=0)) [0.1s, Solves: 234]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:03:19] Sweep 3 [  3/108] Cell ( 1, 0) -> 0: REJECT (J: 0.88604 <= 0.88635) [87.7s, Solves: 236]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:04:48] Sweep 3 [  4/108] Cell ( 0, 0) -> 0: REJECT (J: 0.88630 <= 0.88635) [89.2s, Solves: 238]
+[2026-10-12 19:04:48] Sweep 3 [  5/108] Cell (26, 5) -> 0: DRC REJECT (supp_fail(w=4,s=9)) [0.0s, Solves: 238]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:04:49] Sweep 3 [  6/108] Cell (25, 5) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 238]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:06:16] Sweep 3 [  7/108] Cell (13, 5) -> 0: REJECT (J: 0.84939 <= 0.88635) [87.1s, Solves: 240]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:07:44] Sweep 3 [  8/108] Cell (12, 5) -> 0: REJECT (J: 0.84659 <= 0.88635) [87.6s, Solves: 242]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:07:45] Sweep 3 [  9/108] Cell (27, 6) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 242]
+[2026-10-12 19:07:45] Sweep 3 [ 10/108] Cell (25, 6) -> 1: DRC REJECT (supp_fail(w=0,s=35)) [0.1s, Solves: 242]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:09:25] Sweep 3 [ 11/108] Cell (13, 6) -> 0: REJECT (J: 0.85956 <= 0.88635) [99.0s, Solves: 244]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:11:03] Sweep 3 [ 12/108] Cell (12, 6) -> 0: REJECT (J: 0.85399 <= 0.88635) [99.0s, Solves: 246]
+[2026-10-12 19:11:04] Sweep 3 [ 13/108] Cell (27, 7) -> 1: DRC REJECT (supp_fail(w=6,s=16)) [0.0s, Solves: 246]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:12:33] Sweep 3 [ 14/108] Cell (26, 7) -> 0: REJECT (J: 0.88481 <= 0.88635) [89.0s, Solves: 248]
+[2026-10-12 19:12:33] Sweep 3 [ 15/108] Cell (25, 7) -> 1: DRC REJECT (supp_fail(w=0,s=45)) [0.1s, Solves: 248]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:14:02] Sweep 3 [ 16/108] Cell (13, 7) -> 0: REJECT (J: 0.86563 <= 0.88635) [89.2s, Solves: 250]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:15:29] Sweep 3 [ 17/108] Cell (14, 8) -> 0: REJECT (J: 0.85728 <= 0.88635) [87.3s, Solves: 252]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:16:58] Sweep 3 [ 18/108] Cell (13, 8) -> 0: REJECT (J: 0.87734 <= 0.88635) [89.0s, Solves: 254]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:18:27] Sweep 3 [ 19/108] Cell (12, 8) -> 0: REJECT (J: 0.88065 <= 0.88635) [89.0s, Solves: 256]
+[2026-10-12 19:18:27] Sweep 3 [ 20/108] Cell (11, 8) -> 0: DRC REJECT (supp_fail(w=16,s=9)) [0.1s, Solves: 256]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:18:29] Sweep 3 [ 21/108] Cell (29, 9) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 256]
+[2026-10-12 19:18:29] Sweep 3 [ 22/108] Cell (28, 9) -> 1: DRC REJECT (supp_fail(w=11,s=12)) [0.0s, Solves: 256]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:19:58] Sweep 3 [ 23/108] Cell (15, 9) -> 0: REJECT (J: 0.85214 <= 0.88635) [89.1s, Solves: 258]
+[2026-10-12 19:19:58] Sweep 3 [ 24/108] Cell (14, 9) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 258]
+[2026-10-12 19:19:58] Sweep 3 [ 25/108] Cell (12, 9) -> 0: DRC REJECT (supp_fail(w=4,s=4)) [0.1s, Solves: 258]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:19:59] Sweep 3 [ 26/108] Cell (11, 9) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 258]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:20:01] Sweep 3 [ 27/108] Cell (29,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 258]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:20:02] Sweep 3 [ 28/108] Cell (20,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 258]
+[2026-10-12 19:20:02] Sweep 3 [ 29/108] Cell (19,10) -> 1: DRC REJECT (supp_fail(w=14,s=39)) [0.1s, Solves: 258]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:21:27] Sweep 3 [ 30/108] Cell (14,10) -> 0: REJECT (J: 0.85729 <= 0.88635) [85.0s, Solves: 260]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:22:54] Sweep 3 [ 31/108] Cell (13,10) -> 1: REJECT (J: 0.86380 <= 0.88635) [87.1s, Solves: 262]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:24:18] Sweep 3 [ 32/108] Cell (12,10) -> 0: REJECT (J: 0.88479 <= 0.88635) [83.4s, Solves: 264]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:25:49] Sweep 3 [ 33/108] Cell (11,10) -> 1: REJECT (J: 0.88123 <= 0.88635) [91.1s, Solves: 266]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:27:18] Sweep 3 [ 34/108] Cell (20,11) -> 0: REJECT (J: 0.85609 <= 0.88635) [89.2s, Solves: 268]
+[2026-10-12 19:27:18] Sweep 3 [ 35/108] Cell (19,11) -> 1: DRC REJECT (supp_fail(w=3,s=11)) [0.1s, Solves: 268]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:28:44] Sweep 3 [ 36/108] Cell (14,11) -> 0: REJECT (J: 0.87882 <= 0.88635) [85.8s, Solves: 270]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:30:15] Sweep 3 [ 37/108] Cell (21,12) -> 0: REJECT (J: 0.86212 <= 0.88635) [90.9s, Solves: 272]
+[2026-10-12 19:30:15] Sweep 3 [ 38/108] Cell (20,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 272]
+[2026-10-12 19:30:15] Sweep 3 [ 39/108] Cell (19,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 272]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:31:44] Sweep 3 [ 40/108] Cell (16,12) -> 0: REJECT (J: 0.83305 <= 0.88635) [89.2s, Solves: 274]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:33:07] Sweep 3 [ 41/108] Cell (15,12) -> 1: REJECT (J: 0.87381 <= 0.88635) [83.1s, Solves: 276]
+[2026-10-12 19:33:07] Sweep 3 [ 42/108] Cell (14,12) -> 1: DRC REJECT (supp_fail(w=0,s=33)) [0.1s, Solves: 276]
+[2026-10-12 19:33:07] Sweep 3 [ 43/108] Cell (12,12) -> 0: DRC REJECT (supp_fail(w=24,s=0)) [0.1s, Solves: 276]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:34:34] Sweep 3 [ 44/108] Cell (21,13) -> 0: REJECT (J: 0.87429 <= 0.88635) [86.1s, Solves: 278]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:36:15] Sweep 3 [ 45/108] Cell (20,13) -> 1: REJECT (J: 0.86603 <= 0.88635) [101.0s, Solves: 280]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:37:56] Sweep 3 [ 46/108] Cell (17,13) -> 0: REJECT (J: 0.84846 <= 0.88635) [101.0s, Solves: 282]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:39:27] Sweep 3 [ 47/108] Cell (16,13) -> 0: REJECT (J: 0.84575 <= 0.88635) [91.0s, Solves: 284]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:40:56] Sweep 3 [ 48/108] Cell (15,13) -> 1: REJECT (J: 0.88071 <= 0.88635) [89.2s, Solves: 286]
+[2026-10-12 19:40:56] Sweep 3 [ 49/108] Cell (14,13) -> 1: DRC REJECT (supp_fail(w=12,s=17)) [0.1s, Solves: 286]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:42:25] Sweep 3 [ 50/108] Cell (22,14) -> 0: REJECT (J: 0.87158 <= 0.88635) [89.3s, Solves: 288]
+[2026-10-12 19:42:25] Sweep 3 [ 51/108] Cell (21,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 288]
+[2026-10-12 19:42:25] Sweep 3 [ 52/108] Cell (17,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 288]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:43:54] Sweep 3 [ 53/108] Cell (16,14) -> 0: REJECT (J: 0.87405 <= 0.88635) [89.2s, Solves: 290]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:45:22] Sweep 3 [ 54/108] Cell (15,14) -> 1: REJECT (J: 0.88303 <= 0.88635) [87.1s, Solves: 292]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:45:23] Sweep 3 [ 55/108] Cell (14,14) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 292]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:46:52] Sweep 3 [ 56/108] Cell (18,15) -> 0: REJECT (J: 0.85399 <= 0.88635) [89.5s, Solves: 294]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:48:19] Sweep 3 [ 57/108] Cell (17,15) -> 0: REJECT (J: 0.87321 <= 0.88635) [86.2s, Solves: 296]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:49:50] Sweep 3 [ 58/108] Cell (16,15) -> 1: REJECT (J: 0.86804 <= 0.88635) [91.5s, Solves: 298]
+[2026-10-12 19:49:50] Sweep 3 [ 59/108] Cell (15,15) -> 1: DRC REJECT (supp_fail(w=4,s=4)) [0.1s, Solves: 298]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:51:18] Sweep 3 [ 60/108] Cell (14,15) -> 1: REJECT (J: 0.88602 <= 0.88635) [88.0s, Solves: 300]
+[2026-10-12 19:51:18] Sweep 3 [ 61/108] Cell (15,16) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 300]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:52:46] Sweep 3 [ 62/108] Cell (14,16) -> 1: REJECT (J: 0.88554 <= 0.88635) [87.4s, Solves: 302]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:52:47] Sweep 3 [ 63/108] Cell (15,17) -> 1: DRC REJECT (pdk_fail(v=1)) [1.5s, Solves: 302]
+[2026-10-12 19:52:47] Sweep 3 [ 64/108] Cell (15,18) -> 1: DRC REJECT (supp_fail(w=4,s=25)) [0.1s, Solves: 302]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:52:49] Sweep 3 [ 65/108] Cell (14,18) -> 0: DRC REJECT (pdk_fail(v=1)) [1.6s, Solves: 302]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:54:16] Sweep 3 [ 66/108] Cell ( 5,18) -> 1: REJECT (J: 0.88580 <= 0.88635) [86.8s, Solves: 304]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:55:53] Sweep 3 [ 67/108] Cell ( 4,18) -> 1: REJECT (J: 0.88552 <= 0.88635) [97.5s, Solves: 306]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:57:22] Sweep 3 [ 68/108] Cell ( 3,18) -> 1: REJECT (J: 0.88555 <= 0.88635) [89.1s, Solves: 308]
+[2026-10-12 19:57:22] Sweep 3 [ 69/108] Cell (14,19) -> 0: DRC REJECT (supp_fail(w=16,s=6)) [0.1s, Solves: 308]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 19:58:51] Sweep 3 [ 70/108] Cell ( 5,19) -> 1: REJECT (J: 0.88631 <= 0.88635) [88.2s, Solves: 310]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:00:21] Sweep 3 [ 71/108] Cell ( 3,19) -> 1: REJECT (J: 0.88609 <= 0.88635) [90.8s, Solves: 312]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:00:23] Sweep 3 [ 72/108] Cell (18,20) -> 1: DRC REJECT (pdk_fail(v=1)) [1.6s, Solves: 312]
+[2026-10-12 20:00:23] Sweep 3 [ 73/108] Cell (17,20) -> 1: DRC REJECT (supp_fail(w=10,s=16)) [0.1s, Solves: 312]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:01:49] Sweep 3 [ 74/108] Cell ( 5,20) -> 0: ACCEPT (J: 0.88645 -> 0.88645, +0.00000) [85.8s, Solves: 314]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:03:14] Sweep 3 [ 75/108] Cell ( 4,20) -> 0: REJECT (J: 0.88650 <= 0.88655) [85.2s, Solves: 316]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:04:43] Sweep 3 [ 76/108] Cell ( 3,20) -> 0: REJECT (J: 0.88652 <= 0.88655) [89.1s, Solves: 318]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:06:14] Sweep 3 [ 77/108] Cell (23,21) -> 1: REJECT (J: 0.87131 <= 0.88655) [91.1s, Solves: 320]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:07:41] Sweep 3 [ 78/108] Cell (18,21) -> 0: REJECT (J: 0.88333 <= 0.88655) [86.9s, Solves: 322]
+[2026-10-12 20:07:41] Sweep 3 [ 79/108] Cell (17,21) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 322]
+[2026-10-12 20:07:41] Sweep 3 [ 80/108] Cell (16,21) -> 1: DRC REJECT (supp_fail(w=0,s=11)) [0.1s, Solves: 322]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:09:11] Sweep 3 [ 81/108] Cell (23,22) -> 0: REJECT (J: 0.84773 <= 0.88655) [89.2s, Solves: 324]
+[2026-10-12 20:09:11] Sweep 3 [ 82/108] Cell (18,22) -> 0: DRC REJECT (supp_fail(w=5,s=0)) [0.1s, Solves: 324]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:10:32] Sweep 3 [ 83/108] Cell (16,22) -> 0: REJECT (J: 0.88558 <= 0.88655) [81.3s, Solves: 326]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:12:01] Sweep 3 [ 84/108] Cell (23,23) -> 0: REJECT (J: 0.88428 <= 0.88655) [88.9s, Solves: 328]
+[2026-10-12 20:12:01] Sweep 3 [ 85/108] Cell (17,23) -> 1: DRC REJECT (supp_fail(w=2,s=6)) [0.1s, Solves: 328]
+[2026-10-12 20:12:01] Sweep 3 [ 86/108] Cell (16,23) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 328]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:13:30] Sweep 3 [ 87/108] Cell (23,24) -> 0: REJECT (J: 0.86016 <= 0.88655) [89.2s, Solves: 330]
+[2026-10-12 20:13:30] Sweep 3 [ 88/108] Cell (19,24) -> 1: DRC REJECT (supp_fail(w=2,s=7)) [0.1s, Solves: 330]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:14:59] Sweep 3 [ 89/108] Cell (17,24) -> 0: REJECT (J: 0.88642 <= 0.88655) [88.9s, Solves: 332]
+[2026-10-12 20:14:59] Sweep 3 [ 90/108] Cell (16,24) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 332]
+[2026-10-12 20:14:59] Sweep 3 [ 91/108] Cell (15,24) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 332]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:16:28] Sweep 3 [ 92/108] Cell (14,24) -> 0: REJECT (J: 0.88610 <= 0.88655) [89.1s, Solves: 334]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:17:56] Sweep 3 [ 93/108] Cell (13,24) -> 1: REJECT (J: 0.88595 <= 0.88655) [87.5s, Solves: 336]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:19:25] Sweep 3 [ 94/108] Cell (23,25) -> 0: REJECT (J: 0.87550 <= 0.88655) [89.5s, Solves: 338]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:20:54] Sweep 3 [ 95/108] Cell (19,25) -> 1: REJECT (J: 0.88583 <= 0.88655) [89.0s, Solves: 340]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:22:23] Sweep 3 [ 96/108] Cell (18,25) -> 0: REJECT (J: 0.88618 <= 0.88655) [89.0s, Solves: 342]
+[2026-10-12 20:22:23] Sweep 3 [ 97/108] Cell (17,25) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 342]
+[2026-10-12 20:22:23] Sweep 3 [ 98/108] Cell (16,25) -> 0: DRC REJECT (supp_fail(w=6,s=5)) [0.1s, Solves: 342]
+[2026-10-12 20:22:23] Sweep 3 [ 99/108] Cell (14,25) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 342]
+[2026-10-12 20:22:24] Sweep 3 [100/108] Cell (13,25) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 342]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:23:55] Sweep 3 [101/108] Cell (23,26) -> 0: REJECT (J: 0.85746 <= 0.88655) [91.0s, Solves: 344]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:25:22] Sweep 3 [102/108] Cell (19,26) -> 0: REJECT (J: 0.88599 <= 0.88655) [87.0s, Solves: 346]
+[2026-10-12 20:25:22] Sweep 3 [103/108] Cell (18,26) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 346]
+[2026-10-12 20:25:22] Sweep 3 [104/108] Cell (15,26) -> 0: DRC REJECT (supp_fail(w=6,s=6)) [0.1s, Solves: 346]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:25:23] Sweep 3 [105/108] Cell (14,26) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 346]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:26:51] Sweep 3 [106/108] Cell (24,27) -> 0: REJECT (J: 0.86468 <= 0.88655) [88.0s, Solves: 348]
+[2026-10-12 20:26:51] Sweep 3 [107/108] Cell (23,27) -> 0: DRC REJECT (supp_fail(w=20,s=0)) [0.1s, Solves: 348]
+[2026-10-12 20:26:51] Sweep 3 [108/108] Cell (20,29) -> 1: DRC REJECT (supp_fail(w=3,s=15)) [0.1s, Solves: 348]
+[2026-10-12 20:26:51] Sweep 3 finished in 5100.4s. Accepted flips: 1
+[2026-10-12 20:26:51] === Starting Sweep 4/4 (Current J = 0.88645) ===
+[2026-10-12 20:26:51] Sweep 4 [  1/108] Cell ( 8, 0) -> 0: DRC REJECT (supp_fail(w=12,s=2)) [0.1s, Solves: 348]
+[2026-10-12 20:26:51] Sweep 4 [  2/108] Cell ( 2, 0) -> 0: DRC REJECT (supp_fail(w=9,s=0)) [0.1s, Solves: 348]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:28:20] Sweep 4 [  3/108] Cell ( 1, 0) -> 0: REJECT (J: 0.88620 <= 0.88655) [88.9s, Solves: 350]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:29:49] Sweep 4 [  4/108] Cell ( 0, 0) -> 0: REJECT (J: 0.88646 <= 0.88655) [89.1s, Solves: 352]
+[2026-10-12 20:29:49] Sweep 4 [  5/108] Cell (26, 5) -> 0: DRC REJECT (supp_fail(w=4,s=9)) [0.0s, Solves: 352]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:29:51] Sweep 4 [  6/108] Cell (25, 5) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 352]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:31:20] Sweep 4 [  7/108] Cell (13, 5) -> 0: REJECT (J: 0.84962 <= 0.88655) [89.0s, Solves: 354]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:32:48] Sweep 4 [  8/108] Cell (12, 5) -> 0: REJECT (J: 0.84664 <= 0.88655) [87.8s, Solves: 356]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:32:49] Sweep 4 [  9/108] Cell (27, 6) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 356]
+[2026-10-12 20:32:49] Sweep 4 [ 10/108] Cell (25, 6) -> 1: DRC REJECT (supp_fail(w=0,s=35)) [0.1s, Solves: 356]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:34:13] Sweep 4 [ 11/108] Cell (13, 6) -> 0: REJECT (J: 0.85996 <= 0.88655) [83.5s, Solves: 358]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:35:45] Sweep 4 [ 12/108] Cell (12, 6) -> 0: REJECT (J: 0.85420 <= 0.88655) [92.2s, Solves: 360]
+[2026-10-12 20:35:45] Sweep 4 [ 13/108] Cell (27, 7) -> 1: DRC REJECT (supp_fail(w=6,s=16)) [0.0s, Solves: 360]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:37:16] Sweep 4 [ 14/108] Cell (26, 7) -> 0: REJECT (J: 0.88501 <= 0.88655) [91.1s, Solves: 362]
+[2026-10-12 20:37:16] Sweep 4 [ 15/108] Cell (25, 7) -> 1: DRC REJECT (supp_fail(w=0,s=45)) [0.1s, Solves: 362]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:38:45] Sweep 4 [ 16/108] Cell (13, 7) -> 0: REJECT (J: 0.86581 <= 0.88655) [89.0s, Solves: 364]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:40:14] Sweep 4 [ 17/108] Cell (14, 8) -> 0: REJECT (J: 0.85752 <= 0.88655) [89.1s, Solves: 366]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:41:41] Sweep 4 [ 18/108] Cell (13, 8) -> 0: REJECT (J: 0.87768 <= 0.88655) [87.0s, Solves: 368]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:43:10] Sweep 4 [ 19/108] Cell (12, 8) -> 0: REJECT (J: 0.88092 <= 0.88655) [89.2s, Solves: 370]
+[2026-10-12 20:43:10] Sweep 4 [ 20/108] Cell (11, 8) -> 0: DRC REJECT (supp_fail(w=16,s=9)) [0.1s, Solves: 370]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:43:12] Sweep 4 [ 21/108] Cell (29, 9) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 370]
+[2026-10-12 20:43:12] Sweep 4 [ 22/108] Cell (28, 9) -> 1: DRC REJECT (supp_fail(w=11,s=12)) [0.0s, Solves: 370]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:44:39] Sweep 4 [ 23/108] Cell (15, 9) -> 0: REJECT (J: 0.85239 <= 0.88655) [87.0s, Solves: 372]
+[2026-10-12 20:44:39] Sweep 4 [ 24/108] Cell (14, 9) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 372]
+[2026-10-12 20:44:39] Sweep 4 [ 25/108] Cell (12, 9) -> 0: DRC REJECT (supp_fail(w=4,s=4)) [0.1s, Solves: 372]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:44:40] Sweep 4 [ 26/108] Cell (11, 9) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 372]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:44:42] Sweep 4 [ 27/108] Cell (29,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 372]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:44:43] Sweep 4 [ 28/108] Cell (20,10) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 372]
+[2026-10-12 20:44:43] Sweep 4 [ 29/108] Cell (19,10) -> 1: DRC REJECT (supp_fail(w=14,s=39)) [0.1s, Solves: 372]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:46:09] Sweep 4 [ 30/108] Cell (14,10) -> 0: REJECT (J: 0.85730 <= 0.88655) [85.2s, Solves: 374]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:47:40] Sweep 4 [ 31/108] Cell (13,10) -> 1: REJECT (J: 0.86383 <= 0.88655) [91.3s, Solves: 376]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:49:09] Sweep 4 [ 32/108] Cell (12,10) -> 0: REJECT (J: 0.88493 <= 0.88655) [89.0s, Solves: 378]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:50:38] Sweep 4 [ 33/108] Cell (11,10) -> 1: REJECT (J: 0.88149 <= 0.88655) [89.1s, Solves: 380]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:52:07] Sweep 4 [ 34/108] Cell (20,11) -> 0: REJECT (J: 0.85626 <= 0.88655) [89.0s, Solves: 382]
+[2026-10-12 20:52:07] Sweep 4 [ 35/108] Cell (19,11) -> 1: DRC REJECT (supp_fail(w=3,s=11)) [0.1s, Solves: 382]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:53:34] Sweep 4 [ 36/108] Cell (14,11) -> 0: REJECT (J: 0.87905 <= 0.88655) [87.0s, Solves: 384]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:55:02] Sweep 4 [ 37/108] Cell (21,12) -> 0: REJECT (J: 0.86212 <= 0.88655) [88.2s, Solves: 386]
+[2026-10-12 20:55:02] Sweep 4 [ 38/108] Cell (20,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 386]
+[2026-10-12 20:55:02] Sweep 4 [ 39/108] Cell (19,12) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 386]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:56:33] Sweep 4 [ 40/108] Cell (16,12) -> 0: REJECT (J: 0.83389 <= 0.88655) [91.0s, Solves: 388]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:58:02] Sweep 4 [ 41/108] Cell (15,12) -> 1: REJECT (J: 0.87390 <= 0.88655) [89.1s, Solves: 390]
+[2026-10-12 20:58:02] Sweep 4 [ 42/108] Cell (14,12) -> 1: DRC REJECT (supp_fail(w=0,s=33)) [0.1s, Solves: 390]
+[2026-10-12 20:58:03] Sweep 4 [ 43/108] Cell (12,12) -> 0: DRC REJECT (supp_fail(w=24,s=0)) [0.1s, Solves: 390]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 20:59:30] Sweep 4 [ 44/108] Cell (21,13) -> 0: REJECT (J: 0.87430 <= 0.88655) [87.1s, Solves: 392]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:00:59] Sweep 4 [ 45/108] Cell (20,13) -> 1: REJECT (J: 0.86624 <= 0.88655) [89.2s, Solves: 394]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:02:24] Sweep 4 [ 46/108] Cell (17,13) -> 0: REJECT (J: 0.84834 <= 0.88655) [85.6s, Solves: 396]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:03:58] Sweep 4 [ 47/108] Cell (16,13) -> 0: REJECT (J: 0.84669 <= 0.88655) [93.2s, Solves: 398]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:05:27] Sweep 4 [ 48/108] Cell (15,13) -> 1: REJECT (J: 0.88095 <= 0.88655) [89.2s, Solves: 400]
+[2026-10-12 21:05:27] Sweep 4 [ 49/108] Cell (14,13) -> 1: DRC REJECT (supp_fail(w=12,s=17)) [0.1s, Solves: 400]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:06:58] Sweep 4 [ 50/108] Cell (22,14) -> 0: REJECT (J: 0.87194 <= 0.88655) [90.8s, Solves: 402]
+[2026-10-12 21:06:58] Sweep 4 [ 51/108] Cell (21,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 402]
+[2026-10-12 21:06:58] Sweep 4 [ 52/108] Cell (17,14) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 402]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:08:25] Sweep 4 [ 53/108] Cell (16,14) -> 0: REJECT (J: 0.87455 <= 0.88655) [87.1s, Solves: 404]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:09:54] Sweep 4 [ 54/108] Cell (15,14) -> 1: REJECT (J: 0.88325 <= 0.88655) [88.9s, Solves: 406]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:09:55] Sweep 4 [ 55/108] Cell (14,14) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 406]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:11:24] Sweep 4 [ 56/108] Cell (18,15) -> 0: REJECT (J: 0.85420 <= 0.88655) [89.1s, Solves: 408]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:12:53] Sweep 4 [ 57/108] Cell (17,15) -> 0: REJECT (J: 0.87378 <= 0.88655) [89.1s, Solves: 410]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:14:24] Sweep 4 [ 58/108] Cell (16,15) -> 1: REJECT (J: 0.86843 <= 0.88655) [91.0s, Solves: 412]
+[2026-10-12 21:14:24] Sweep 4 [ 59/108] Cell (15,15) -> 1: DRC REJECT (supp_fail(w=4,s=4)) [0.1s, Solves: 412]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:15:54] Sweep 4 [ 60/108] Cell (14,15) -> 1: REJECT (J: 0.88622 <= 0.88655) [89.2s, Solves: 414]
+[2026-10-12 21:15:54] Sweep 4 [ 61/108] Cell (15,16) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 414]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:17:22] Sweep 4 [ 62/108] Cell (14,16) -> 1: REJECT (J: 0.88574 <= 0.88655) [88.3s, Solves: 416]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:17:23] Sweep 4 [ 63/108] Cell (15,17) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 416]
+[2026-10-12 21:17:23] Sweep 4 [ 64/108] Cell (15,18) -> 1: DRC REJECT (supp_fail(w=4,s=25)) [0.1s, Solves: 416]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:17:25] Sweep 4 [ 65/108] Cell (14,18) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 416]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:18:49] Sweep 4 [ 66/108] Cell ( 5,18) -> 1: REJECT (J: 0.88597 <= 0.88655) [83.9s, Solves: 418]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:20:16] Sweep 4 [ 67/108] Cell ( 4,18) -> 1: REJECT (J: 0.88577 <= 0.88655) [86.9s, Solves: 420]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:21:38] Sweep 4 [ 68/108] Cell ( 3,18) -> 1: REJECT (J: 0.88586 <= 0.88655) [82.0s, Solves: 422]
+[2026-10-12 21:21:38] Sweep 4 [ 69/108] Cell (14,19) -> 0: DRC REJECT (supp_fail(w=16,s=6)) [0.1s, Solves: 422]
+[2026-10-12 21:21:38] Sweep 4 [ 70/108] Cell ( 5,19) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 422]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:07] Sweep 4 [ 71/108] Cell ( 3,19) -> 1: REJECT (J: 0.88632 <= 0.88655) [88.9s, Solves: 424]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:08] Sweep 4 [ 72/108] Cell (18,20) -> 1: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 424]
+[2026-10-12 21:23:08] Sweep 4 [ 73/108] Cell (17,20) -> 1: DRC REJECT (supp_fail(w=10,s=16)) [0.1s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:10] Sweep 4 [ 74/108] Cell ( 5,20) -> 1: REJECT (J: 0.88625 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:11] Sweep 4 [ 75/108] Cell ( 4,20) -> 0: REJECT (J: 0.88650 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:13] Sweep 4 [ 76/108] Cell ( 3,20) -> 0: REJECT (J: 0.88652 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:14] Sweep 4 [ 77/108] Cell (23,21) -> 1: REJECT (J: 0.87131 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:15] Sweep 4 [ 78/108] Cell (18,21) -> 0: REJECT (J: 0.88333 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:15] Sweep 4 [ 79/108] Cell (17,21) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+[2026-10-12 21:23:16] Sweep 4 [ 80/108] Cell (16,21) -> 1: DRC REJECT (supp_fail(w=0,s=11)) [0.0s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:17] Sweep 4 [ 81/108] Cell (23,22) -> 0: REJECT (J: 0.84773 <= 0.88655) [1.5s, Solves: 424]
+[2026-10-12 21:23:17] Sweep 4 [ 82/108] Cell (18,22) -> 0: DRC REJECT (supp_fail(w=5,s=0)) [0.0s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:18] Sweep 4 [ 83/108] Cell (16,22) -> 0: REJECT (J: 0.88558 <= 0.88655) [1.5s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:20] Sweep 4 [ 84/108] Cell (23,23) -> 0: REJECT (J: 0.88428 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:20] Sweep 4 [ 85/108] Cell (17,23) -> 1: DRC REJECT (supp_fail(w=2,s=6)) [0.1s, Solves: 424]
+[2026-10-12 21:23:20] Sweep 4 [ 86/108] Cell (16,23) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:22] Sweep 4 [ 87/108] Cell (23,24) -> 0: REJECT (J: 0.86016 <= 0.88655) [1.6s, Solves: 424]
+[2026-10-12 21:23:22] Sweep 4 [ 88/108] Cell (19,24) -> 1: DRC REJECT (supp_fail(w=2,s=7)) [0.1s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:23] Sweep 4 [ 89/108] Cell (17,24) -> 0: REJECT (J: 0.88642 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:23] Sweep 4 [ 90/108] Cell (16,24) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+[2026-10-12 21:23:23] Sweep 4 [ 91/108] Cell (15,24) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:25] Sweep 4 [ 92/108] Cell (14,24) -> 0: REJECT (J: 0.88610 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:26] Sweep 4 [ 93/108] Cell (13,24) -> 1: REJECT (J: 0.88595 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:27] Sweep 4 [ 94/108] Cell (23,25) -> 0: REJECT (J: 0.87550 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:29] Sweep 4 [ 95/108] Cell (19,25) -> 1: REJECT (J: 0.88583 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:30] Sweep 4 [ 96/108] Cell (18,25) -> 0: REJECT (J: 0.88618 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:30] Sweep 4 [ 97/108] Cell (17,25) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+[2026-10-12 21:23:30] Sweep 4 [ 98/108] Cell (16,25) -> 0: DRC REJECT (supp_fail(w=6,s=5)) [0.1s, Solves: 424]
+[2026-10-12 21:23:30] Sweep 4 [ 99/108] Cell (14,25) -> 1: DRC REJECT (supp_fail(w=0,s=6)) [0.1s, Solves: 424]
+[2026-10-12 21:23:30] Sweep 4 [100/108] Cell (13,25) -> 1: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:32] Sweep 4 [101/108] Cell (23,26) -> 0: REJECT (J: 0.85746 <= 0.88655) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:33] Sweep 4 [102/108] Cell (19,26) -> 0: REJECT (J: 0.88599 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:33] Sweep 4 [103/108] Cell (18,26) -> 0: DRC REJECT (supp_fail(w=2,s=2)) [0.1s, Solves: 424]
+[2026-10-12 21:23:33] Sweep 4 [104/108] Cell (15,26) -> 0: DRC REJECT (supp_fail(w=6,s=6)) [0.1s, Solves: 424]
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:35] Sweep 4 [105/108] Cell (14,26) -> 0: DRC REJECT (pdk_fail(v=1)) [1.4s, Solves: 424]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\scratch\trial_drc\result.json
+[2026-10-12 21:23:36] Sweep 4 [106/108] Cell (24,27) -> 0: REJECT (J: 0.86468 <= 0.88655) [1.4s, Solves: 424]
+[2026-10-12 21:23:36] Sweep 4 [107/108] Cell (23,27) -> 0: DRC REJECT (supp_fail(w=20,s=0)) [0.1s, Solves: 424]
+[2026-10-12 21:23:36] Sweep 4 [108/108] Cell (20,29) -> 1: DRC REJECT (supp_fail(w=3,s=15)) [0.1s, Solves: 424]
+[2026-10-12 21:23:36] Sweep 4 finished in 3405.0s. Accepted flips: 0
+[2026-10-12 21:23:36] Early stop condition met: 0 accepted flips in Sweep 4.
+[2026-10-12 21:23:36] === Optimization Finished. Exporting final structure... ===
+[2026-10-12 21:23:36] Running final 248-category PDK DRC...
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\DBS_handoff_2026-10-11\results\B_curve_DRC120_strict\final_DRC\result.json
+[2026-10-12 21:23:38] ALL DONE! Final J: 0.88645 (Initial: 0.84982, Gain: +0.03663)
+[2026-10-12 21:23:38] Total Flips: 19, Total Forward Solves: 424, Wall Time: 18894.4s

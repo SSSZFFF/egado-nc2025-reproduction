@@ -1,0 +1,158 @@
+{
+  "sp90_90nm": {
+    "target_nm": 90,
+    "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\sp90_90nm_optimized.gds",
+    "gds_sha256": "45F63F7805E7D42FFE2BF95BC89229B6C21A7F3A2851582B27EF101E4390F79A",
+    "initial_cells": 69,
+    "final_cells": 79,
+    "surrogate_counts_width_space_notch_angle_area": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "requires_official_drc_confirmation": true,
+    "changed_area_percent_of_design": 2.4357458333333333,
+    "outside_candidate_difference_um2": 7e-08,
+    "curve_area_outside_cells_percent": 91.22222222222223,
+    "gds_readback_difference_um2": 7e-08,
+    "geometry_evaluations": 143,
+    "elapsed_seconds": 3.563179399992805,
+    "history": [
+      {
+        "round": 1,
+        "counts": [
+          2,
+          15,
+          9,
+          1,
+          0
+        ],
+        "cells": 69,
+        "flips": 8
+      },
+      {
+        "round": 2,
+        "counts": [
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        "cells": 91,
+        "flips": 6
+      },
+      {
+        "round": 3,
+        "counts": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "cells": 100,
+        "flips": 1
+      },
+      {
+        "round": 4,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cells": 101,
+        "flips": 1
+      }
+    ],
+    "optical_simulations": 0
+  },
+  "target_120nm": {
+    "target_nm": 120,
+    "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\target_120nm_optimized.gds",
+    "gds_sha256": "A5A35DFBEC69A76BF9E9BC883537E4F9E0BBF1CF8BEBFF2A7E482DA793B3CE65",
+    "initial_cells": 97,
+    "final_cells": 108,
+    "surrogate_counts_width_space_notch_angle_area": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "requires_official_drc_confirmation": true,
+    "changed_area_percent_of_design": 3.384350694444444,
+    "outside_candidate_difference_um2": 0.0,
+    "curve_area_outside_cells_percent": 88.0,
+    "gds_readback_difference_um2": 0.0,
+    "geometry_evaluations": 211,
+    "elapsed_seconds": 7.888581299979705,
+    "history": [
+      {
+        "round": 1,
+        "counts": [
+          11,
+          0,
+          11,
+          1,
+          0
+        ],
+        "cells": 97,
+        "flips": 12
+      },
+      {
+        "round": 2,
+        "counts": [
+          1,
+          9,
+          4,
+          1,
+          0
+        ],
+        "cells": 122,
+        "flips": 6
+      },
+      {
+        "round": 3,
+        "counts": [
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        "cells": 134,
+        "flips": 2
+      },
+      {
+        "round": 4,
+        "counts": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "cells": 140,
+        "flips": 1
+      },
+      {
+        "round": 5,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cells": 141,
+        "flips": 1
+      }
+    ],
+    "optical_simulations": 0
+  }
+}

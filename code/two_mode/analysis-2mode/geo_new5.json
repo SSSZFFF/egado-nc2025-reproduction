@@ -1,0 +1,154 @@
+{
+ "repo": "G:\\codex_project\\inverse_design_sun\\EGADO-2mode",
+ "leftover_placeholders": [],
+ "in_wg_pitch_substituted": null,
+ "objects": {
+  "FDTD": {
+   "x": 0.0,
+   "y": 0.0,
+   "x span": 1.1e-05,
+   "y span": 7e-06,
+   "z span": 2e-06
+  },
+  "opt_fields": {
+   "x": 0.0,
+   "y": 0.0,
+   "x span": 9.999999999999999e-06,
+   "y span": 6e-06,
+   "z span": 2.2e-07
+  },
+  "global_index": {
+   "x": 0.0,
+   "y": 0.0,
+   "x span": 1.1e-05,
+   "y span": 7e-06,
+   "z span": 2e-06
+  },
+  "cladding": {
+   "x": 0.0,
+   "y": 0.0,
+   "x span": 1.7e-05,
+   "y span": 1.3000000000000001e-05,
+   "z span": 1e-05
+  },
+  "output wg1": {
+   "x": 8e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 6e-06,
+   "y span": 2.4999999999999998e-06,
+   "z span": 2.2e-07
+  },
+  "fom_mesh": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 4e-08,
+   "y span": 3.4999999999999995e-06,
+   "z span": 1.2e-06
+  },
+  "input wg 1": {
+   "x": -8e-06,
+   "y": 2.75e-06,
+   "x span": 6e-06,
+   "y span": 5e-07,
+   "z span": 2.2e-07
+  },
+  "input wg 2": {
+   "x": -8e-06,
+   "y": 1.375e-06,
+   "x span": 6e-06,
+   "y span": 5e-07,
+   "z span": 2.2e-07
+  },
+  "input wg 3": {
+   "x": -8e-06,
+   "y": 0.0,
+   "x span": 6e-06,
+   "y span": 5e-07,
+   "z span": 2.2e-07
+  },
+  "input wg 4": {
+   "x": -8e-06,
+   "y": -1.3750000000000004e-06,
+   "x span": 6e-06,
+   "y span": 5e-07,
+   "z span": 2.2e-07
+  },
+  "input wg 5": {
+   "x": -8e-06,
+   "y": -2.75e-06,
+   "x span": 6e-06,
+   "y span": 5e-07,
+   "z span": 2.2e-07
+  },
+  "Source_TE_mode1_1550": {
+   "x": -5.3e-06,
+   "y": 2.75e-06,
+   "x span": 0.0,
+   "y span": 1.5e-06,
+   "z span": 2e-06
+  },
+  "Source_TE_mode2_1550": {
+   "x": -5.3e-06,
+   "y": 1.375e-06,
+   "x span": 0.0,
+   "y span": 1.5e-06,
+   "z span": 2e-06
+  },
+  "Source_TE_mode3_1550": {
+   "x": -5.3e-06,
+   "y": 0.0,
+   "x span": 0.0,
+   "y span": 1.5e-06,
+   "z span": 2e-06
+  },
+  "Source_TE_mode4_1550": {
+   "x": -5.3e-06,
+   "y": -1.3750000000000004e-06,
+   "x span": 0.0,
+   "y span": 1.5e-06,
+   "z span": 2e-06
+  },
+  "Source_TE_mode5_1550": {
+   "x": -5.3e-06,
+   "y": -2.75e-06,
+   "x span": 0.0,
+   "y span": 1.5e-06,
+   "z span": 2e-06
+  },
+  "fom1": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 0.0,
+   "y span": 3.4999999999999995e-06,
+   "z span": 2e-06
+  },
+  "fom2": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 0.0,
+   "y span": 3.4999999999999995e-06,
+   "z span": 2e-06
+  },
+  "fom3": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 0.0,
+   "y span": 3.4999999999999995e-06,
+   "z span": 2e-06
+  },
+  "fom4": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 0.0,
+   "y span": 3.4999999999999995e-06,
+   "z span": 2e-06
+  },
+  "fom5": {
+   "x": 5.3e-06,
+   "y": 1.7500000000000002e-06,
+   "x span": 0.0,
+   "y span": 3.4999999999999995e-06,
+   "z span": 2e-06
+  }
+ }
+}

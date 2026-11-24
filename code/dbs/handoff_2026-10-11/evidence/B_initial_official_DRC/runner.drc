@@ -1,0 +1,558 @@
+source($input)
+RDBCH = report($report)
+#layer define
+WGS_COR=input(11,1)
+WGS_CLD=input(11,2)
+WGS_TRE=input(11,3)
+WGS_PINREC=input(11,13)
+WGM_COR=input(12,1)
+WGM_CLD=input(12,2)
+WGM_TRE=input(12,3)
+WGM_PINREC=input(12,13)
+WGF_COR=input(13,1)
+WGF_CLD=input(13,2)
+WGF_DUMB=input(13,11)
+WGF_PINREC=input(13,13)
+NMOD_DRW=input(33,9)
+PMOD_DRW=input(34,9)
+NDD_DRW=input(35,9)
+PDD_DRW=input(36,9)
+NCT_DRW=input(37,9)
+PCT_DRW=input(38,9)
+SNS_COR=input(21,1)
+SNS_CLD=input(21,2)
+SNS_TRE=input(21,3)
+SNS_PINREC=input(21,13)
+SNF_COR=input(22,1)
+SNF_CLD=input(22,2)
+SNF_DUMB=input(22,11)
+SNF_PINREC=input(22,13)
+GE_DRW=input(50,9)
+GE_DUMB=input(50,11)
+SAB_REV=input(51,8)
+CT_DRW=input(60,9)
+M1_DRW=input(71,9)
+M1_SLOT=input(71,5)
+M1_DUMB=input(71,11)
+M1_PINREC=input(71,13)
+MTH_DRW=input(80,9)
+EC1_DRW=input(90,9)
+V1_DRW=input(61,9)
+M2_DRW=input(72,9)
+M2_SLOT=input(72,5)
+M2_DUMB=input(72,11)
+M2_PINREC=input(72,13)
+EC2_DRW=input(91,9)
+V2_DRW=input(62,9)
+M3_DRW=input(73,9)
+M3_SLOT=input(73,5)
+M3_DUMB=input(73,11)
+M3_PINREC=input(73,13)
+EC3_DRW=input(92,9)
+TV_DRW=input(63,9)
+TM_DRW=input(74,9)
+TM_SLOT=input(74,5)
+TM_DUMB=input(74,11)
+TM_PINREC=input(74,13)
+PA_DRW=input(100,9)
+DO1_DRW=input(101,9)
+DT_DRW=input(110,9)
+UC_DRW=input(111,9)
+LOGO_DRW=input(226,9)
+METAL_DUMB=input(227,11)
+ALL_DUMB=input(228,11)
+DEV_AREA=input(251,16)
+BB_AREA=input(260,16)
+BB_TXT=input(260,12)
+EC_AREA=input(261,16)
+BBSI_AREA=input(265,16)
+BBSIN_AREA=input(266,16)
+BBEC_AREA=input(267,16)
+BBACT_AREA=input(268,16)
+OIOGC_PORT=input(230,14)
+OIOGC_TXT=input(230,12)
+OIOEC_PORT=input(231,14)
+OIOEC_TXT=input(231,12)
+OPC_BLK=input(271,17)
+FORBID_AREA=input(290,16)
+#Derived layers
+#SOI WG
+WGF=WGF_COR
+WGS_REV=extent.not(WGS_TRE.or((WGS_CLD).not(WGS_COR)))
+WGM_REV=extent.not(WGM_TRE.or((WGM_CLD).not(WGM_COR)))
+SIWG=WGF.not(WGS_TRE.or(WGS_CLD.not(WGS_COR))).not(WGM_TRE.or(WGM_CLD.not(WGM_COR)))
+SI=WGF.or(WGS_TRE).or(WGS_CLD).or(WGS_COR).or(WGM_TRE).or(WGM_CLD).or(WGM_COR)
+
+#SIN WG
+SNF=SNF_COR
+SNS_REV=extent.not(SNS_TRE.or((SNS_CLD).not(SNS_COR)))
+SINWG=SNF.not(SNS_TRE.or((SNS_CLD).not(SNS_COR)))
+SIN=SNF.or(SNS_TRE).or(SNS_CLD).or(SNS_COR)
+
+#REVERSE layer
+SAB=SAB_REV
+SAB_NOREV=extent.not(SAB)
+
+#IMP
+NMOD=NMOD_DRW
+PMOD=PMOD_DRW
+NDD=NDD_DRW
+PDD=PDD_DRW
+NCT=NCT_DRW
+PCT=PCT_DRW
+IMP=NMOD.or(PMOD).or(NDD).or(PDD).or(NCT).or(PCT)
+
+#DRW
+GE=GE_DRW
+CT=CT_DRW
+MTH=MTH_DRW
+PA=PA_DRW
+DO1=DO1_DRW
+DT=DT_DRW
+LOGO=LOGO_DRW
+UC=UC_DRW
+#EC
+EC1=EC1_DRW
+EC2=EC2_DRW
+EC3=EC3_DRW
+EC=EC1.or(EC2).or(EC3)
+
+#Metal&Via
+M1I=M1_DRW
+M2I=M2_DRW
+M3I=M3_DRW
+TMI=TM_DRW
+
+V1=V1_DRW
+V2=V2_DRW
+TV=TV_DRW
+
+M1=M1_DRW.not(M1_SLOT)
+M2=M2_DRW.not(M2_SLOT)
+M3=M3_DRW.not(M3_SLOT)
+TM=TM_DRW.not(TM_SLOT)
+METAL=(M1I).or(M2I).or(M3I).or(TMI)
+VIA=V1.or(V2).or(TV)
+METAL_PINREC=M1_PINREC.or(M2_PINREC).or(M3_PINREC).or(TM_PINREC)
+
+#Area
+BB=BB_AREA
+BBSI=BBSI_AREA
+BBSIN=BBSIN_AREA
+BBEC=BBEC_AREA
+BBACT=BBACT_AREA
+
+#WGS rule
+WGS_TRE.or(WGS_CLD.not(WGS_COR)).width(90.nm,angle_limit(85)).output("WGS01", "Width of WGS TRE or (WGS CLD not WGS COR) >=90nm")
+WGS_TRE.or(WGS_CLD.not(WGS_COR)).space(90.nm,angle_limit(85)).output("WGS02", "Space between two (WGS TRE or (WGS CLD not WGS COR)) >=90nm")
+WGS_COR.width(90.nm,angle_limit(85)).output("WGS03", "Width of WGS_COR >=90nm")
+WGS_COR.space(90.nm,angle_limit(45)).output("WGS04", "Space between two WGS_CORs >=90nm")
+WGS_TRE.or(WGS_CLD.not(WGS_COR)).with_angle(0,160).edges.and(WGS_TRE.or(WGS_CLD.not(WGS_COR)).with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("WGS05", "WGS_TRE or (WGS CLD not WGS COR) small notch width <=0.005um >=0.1um")
+WGS_COR.with_angle(0,160).edges.and(WGS_COR.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("WGS06", "WGS_COR small notch width <=0.005um >=0.1um")
+WGS_TRE.or(WGS_CLD.not(WGS_COR)).without_angle(89.9.degree,275.1.degree).output("WGS07", "WGS_TRE or(WGS_CLD not WGS_COR) angle between two sides >=90 degree <=275 degree")
+WGS_COR.without_angle(84.9.degree,270.1.degree).output("WGS08", "WGS_COR angle between two sides >=85 degree <=270 degree")
+WGS_TRE.or(WGS_CLD.not(WGS_COR)).not(WGF).drc(0.3.um < width < 0.9.um).output("WGS09", "Width of WGS_TRE or(WGS_CLD not WGS_COR) not WGF_COR >=0.9um <=0.3um")
+WGS_REV.with_area(0.um2,0.2.um2).output("WGS10","After WGS etch remain area; [NON((WGS_TRE or WGS_CLD) not WGS_COR) area] >=0.2um2")
+WGS_TRE.not(WGF_CLD).output("WGS11", "WGS_TRE must be inside of WGF_CLD")
+WGS_TRE.not_interacting(WGF).output("WGS12", "WGS_TRE must overlap with WGF_COR")
+WGS_COR.not(WGS_CLD).output("WGS13", "WGS_COR must be inside of WGS_CLD")
+WGS_COR.not(WGF).output("WGS14", "WGS_COR must be inside of WGF_COR")
+WGS_CLD.not(WGF_CLD).output("WGS15", "WGS_CLD must be inside of WGF_CLD")
+WGS_TRE.and(WGS_COR).output("WGS16", "WGS_COR must not touch WGS_TRE")
+
+#WGM rule
+WGM_TRE.or(WGM_CLD.not(WGM_COR)).width(150.nm,angle_limit(85)).output("WGM01", "Width of WGM_TRE or (WGM CLD not WGM COR)>=150nm")
+WGM_TRE.or(WGM_CLD.not(WGM_COR)).space(150.nm,angle_limit(85)).output("WGM02", "Space between two (WGM_TRE or (WGM CLD not WGM COR)) >=150nm")
+WGM_COR.width(150.nm,angle_limit(85)).output("WGM03", "Width of WGM_COR >=150nm")
+WGM_COR.space(150.nm,angle_limit(85)).output("WGM04", "Space between two WGM_CORs >=150nm")
+WGM_TRE.or(WGM_CLD.not(WGM_COR)).with_angle(0,160).edges.and(WGM_TRE.or(WGM_CLD.not(WGM_COR)).with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("WGM05", "WGM_TRE or (WGM CLD not WGM COR) small notch width <=0.005um >=0.1um")
+WGM_COR.with_angle(0,160).edges.and(WGM_COR.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("WGM06", "WGM_COR small notch width <=0.005um >=0.1um")
+WGM_TRE.or(WGM_CLD.not(WGM_COR)).without_angle(89.9.degree,275.1.degree).output("WGM07", "WGM_TRE or (WGM CLD not WGM COR) angle between two sides >=90 degree <=275 degree")
+WGM_COR.without_angle(84.9.degree,270.1.degree).output("WGM08", "WGM_COR angle between two sides >=85 degree <=270 degree")
+WGM_TRE.or(WGM_CLD.not(WGM_COR)).not(WGF).drc(0.3.um < width < 0.9.um).output("WGM09", "Width of (WGM_TRE or (WGM CLD not WGM COR)) not WGF_COR >=0.9um <=0.3um")
+WGM_REV.with_area(0.um2,0.2.um2).output("WGM10","After WGM etch remain area [NON((WGM_TRE or WGM_CLD) not WGM_COR) area] >=0.2um2")
+WGM_TRE.not(WGF_CLD).output("WGM11", "WGM_TRE must be inside of WGF_CLD")
+WGM_TRE.not_interacting(WGF).output("WGM12", "WGS_TRE must overlap with WGF_COR")
+WGM_COR.not(WGM_CLD).output("WGM13", "WGM_COR must be inside of WGM_CLD")
+WGM_COR.not(WGF).output("WGM14", "WGM_COR must be inside of WGF_COR")
+WGM_CLD.not(WGF_CLD).output("WGM15", "WGM_CLD must be inside of WGF_CLD")
+WGM_TRE.and(WGM_COR).output("WGM16", "WGM_COR must not touch WGM_TRE")
+
+#WGF rule
+WGF.width(90.nm,angle_limit(85)).output("WGF01", "Width of WGF_COR >=90nm")
+WGF.space(90.nm,angle_limit(85)).output("WGF02", "Space between two WGF_CORs >=90nm")
+WGF.with_angle(0,160).edges.and(WGF.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("WGF03", "WGF_COR small notch width <=0.005um >=0.1um")
+WGF.without_angle(84.9.degree,270.1.degree).output("WGF04", "WGF_COR angle between two sides >=85 degree <=270 degree")
+WGF.with_area(0.um2,0.2.um2).output("WGF05","WGF_COR area >=0.2um2")
+WGF.and(SNS_TRE).not(SNF).output("WGF06", "WGF_COR must not touch SNS_TRE or be enclosed by SNF_COR when interact with SNS_TRE")
+WGF.and(SNS_CLD.not(SNS_COR)).not(SNF).output("WGF07", "WGF_COR must not touch (SNS_CLD not SNF_COR) or be enclosed by SNF_COR when interact with (SNS_CLD not SNF_COR)")
+WGF.and(SNS_TRE).enclosed(SNF, 0.2.um).output("WGF08","(WGF_COR and SNS_TRE) enclosed by SNF_COR >=0.2um")
+WGF.and(SNS_CLD.not(SNS_COR)).enclosed(SNF, 0.2.um).output("WGF09","(WGF_COR and (SNS_CLD not SNF_COR)) enclosed by SNF_COR >=0.2um")
+WGF.not(WGF_CLD).output("WGF10", "WGF_COR must be inside of WGF_CLD")
+WGS_TRE.or(WGS_CLD).not(WGS_COR).and(WGM_TRE.or(WGM_CLD).not(WGM_COR)).not(WGF).output("WGF11", "Three consecutive etchings in the same place of silicon is not allowed;[(WGS_TRE or WGS_CLD not WGS_COR) and (WGM_TRE or WGM_CLD not WGM_COR) not WGF_COR]")
+
+#NMOD rule
+NMOD.width(0.5.um,angle_limit(85)).output("NMOD01", "Width of NMOD_DRW <0.5um")
+NMOD.space(0.5.um,angle_limit(85)).output("NMOD02", "Space between two NMOD_DRWs <0.5um")
+NMOD.without_angle(84.9.degree,270.1.degree).output("NMOD03", "NMOD_DRW angle between two sides >=85 degree <=270 degree")
+
+#PMOD rule
+PMOD.width(0.5.um,angle_limit(85)).output("PMOD01", "Width of PMOD_DRW <0.5um")
+PMOD.space(0.5.um,angle_limit(85)).output("PMOD02", "Space between two PMOD_DRWs <0.5um")
+PMOD.without_angle(84.9.degree,270.1.degree).output("PMOD03", "PMOD_DRW angle between two sides >=85 degree <=270 degree")
+
+#NDD rule
+NDD.width(0.5.um,angle_limit(85)).output("NDD01", "Width of NDD_DRW <0.5um")
+NDD.space(0.5.um,angle_limit(85)).output("NDD02", "Space between two NDD_DRWs <0.5um")
+NDD.without_angle(84.9.degree,270.1.degree).output("NDD03", "NDD_DRW angle between two sides >=85 degree <=270 degree")
+
+#PDD rule
+PDD.width(0.5.um,angle_limit(85)).output("PDD01", "Width of PDD_DRW <0.5um")
+PDD.space(0.5.um,angle_limit(85)).output("PDD02", "Space between two PDD_DRWs <0.5um")
+PDD.without_angle(84.9.degree,270.1.degree).output("PDD03", "PDD_DRW angle between two sides >=85 degree <=270 degree")
+
+#NCT rule
+NCT.width(0.5.um,angle_limit(85)).output("NCT01", "Width of NCT_DRW <0.5um")
+NCT.space(0.5.um,angle_limit(85)).output("NCT02", "Space between two NCT_DRWs <0.5um")
+NCT.without_angle(84.9.degree,270.1.degree).output("NCT03", "NCT_DRW angle between two sides >=85 degree <=270 degree")
+NCT.overlap(SIWG, 0.16.um).output("NCT04", "NCT_DRW and 220nm Si overlap >=0.16um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+NCT.enclosing(SIWG, 0.3.um).output("NCT05  ", "NCT_DRW extension of 220nm Si >=0.3um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+
+#PCT rule
+PCT.width(0.5.um,angle_limit(85)).output("PCT01", "Width of PCT_DRW <0.5um")
+PCT.space(0.5.um,angle_limit(85)).output("PCT02", "Space between two PCT_DRWs <0.5um")
+PCT.without_angle(84.9.degree,270.1.degree).output("PCT03", "PCT_DRW angle between two sides >=85 degree <=270 degree")
+PCT.overlap(SIWG, 0.18.um).output("PCT04", "PCT_DRW and 220nm Si overlap >=0.18um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+PCT.enclosing(SIWG, 0.3.um).output("PCT05  ", "PCT_DRW extension of 220nm Si >=0.3um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+
+#SNS rule
+SNS_TRE.or(SNS_CLD.not(SNS_COR)).width(90.nm,angle_limit(85)).output("SNS01", "Width of SNS TRE or (SNS CLD not SNS COR) >=90nm")
+SNS_TRE.or(SNS_CLD.not(SNS_COR)).space(90.nm,angle_limit(85)).output("SNS02", "Space between two (SNS_TRE or (SNS CLD not SNS COR)) >=90nm")
+SNS_COR.width(90.nm,angle_limit(85)).output("SNS03", "Width of SNS_COR >=90nm")
+SNS_COR.space(90.nm,angle_limit(85)).output("SNS04", "Space between two SNS_CORs >=90nm")
+SNS_TRE.or(SNS_CLD.not(SNS_COR)).without_angle(89.9.degree,275.1.degree).output("SNS05", " SNS TRE or (SNS CLD not SNS COR) angle between two sides >=90 degree <=275 degree")
+SNS_COR.without_angle(84.9.degree,270.1.degree).output("SNS06", "SNS_COR angle between two sides >=85 degree <=270 degree")
+SNS_TRE.or(SNS_CLD.not(SNS_COR)).with_angle(0,160).edges.and(SNS_TRE.or(SNS_CLD.not(SNS_COR)).with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("SNS07", "SNS TRE or (SNS CLD not SNS COR) small notch width <=0.005um >=0.1um")
+SNS_COR.with_angle(0,160).edges.and(SNS_COR.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("SNS08", "SNS_COR small notch width <=0.005um >=0.1um")
+SNS_TRE.not(SNF_CLD).output("SNS09", "SNS_TRE must be inside of SNF_CLD")
+SNS_TRE.not_interacting(SNF).output("SNS10", "SNS_TRE must overlap with SNF_COR")
+SNS_COR.not(SNS_CLD).output("SNS11", "SNS_COR must be inside of SNS_CLD")
+SNS_COR.not(SNF).output("SNS12", "SNS_COR must be inside of SNF_COR")
+SNS_CLD.not(SNF_CLD).output("SNS13", "SNS_CLD must be inside of SNF_CLD")
+SNS_TRE.and(SNS_COR).output("SNS14", "SNS_COR must not touch SNS_TRE")
+
+
+#SNF rule
+SNF.not(SNS_TRE.or(SNS_CLD.not(SNS_COR))).width(90.nm,angle_limit(85)).output("SNF01_1", "Width of SNF COR not (SNS_TRE or ( SNS_CLD not SNS_COR) <90nm")
+SNF.and(SNS_TRE.or(SNS_CLD.not(SNS_COR))).width(150.nm,angle_limit(85)).output("SNF01_2", "Width of SNF COR and (SNS_TRE or ( SNS_CLD not SNS_COR) <150nm")
+SNF.space(90.nm,angle_limit(85)).output("SNF02", "Space between two SNF_CORs <90nm")
+SNF.without_angle(84.9.degree,270.1.degree).output("SNF03", "SNF_COR angle between two sides >=85 degree <=270 degree")
+SNF.with_angle(0,160).edges.and(SNF.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("SNF04", "SNF_COR small notch width <=0.005um >=0.1um")
+SNF.not(SNF_CLD).output("SNF05", "SNF_COR must be inside of SNF_CLD")
+
+#GE rules
+GE.width(0.4.um,angle_limit(85)).output("GE01", "Width of GE_DRW >=0.4um <=10um")
+GE.sized(-5.um).sized(5.um).output("GE01", "Width of GE_DRW >=0.4um <=10um")
+GE.space(0.5.um,angle_limit(85)).output("GE02", "Space between two GE_DRWs >=0.5um")
+GE.not_inside(SIWG).output("GE03", "GE_DRW must be inside of 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+GE.separation(WGS_TRE.or(WGS_CLD.not(WGS_COR)), 0.15.um).output("GE04", "GE_DRW space to (WGS_TRE or (WGS_CLD not WGS_COR)) >=0.15um")
+GE.separation(WGM_TRE.or(WGM_CLD.not(WGM_COR)), 0.15.um).output("GE05", "GE_DRW space to (WGM_TRE or (WGM_CLD not WGM_COR)) >=0.15um")
+GE.enclosed(WGF, 0.15.um).output("GE06", "GE_DRW enclosed by WGF_COR >=0.15um")
+GE.and(SAB).output("GE07", "GE_DRW must not touch SAB_REV")
+GE.separation(SAB, 1.um).output("GE08", "GE_DRW space to SAB_REV >=1um")
+GE.and(SNF).output("GE09", "GE_DRW must not touch SNF_COR")
+GE.separation(SNF_COR, 1.um).output("GE10", "GE_DRW space to SNF_COR >=11um")
+
+#SAB rule
+SAB.width(2.um,angle_limit(85)).output("SAB01", "Width of SAB_REV >=2um")
+SAB.space(0.5.um,angle_limit(85)).output("SAB02", "Space between two SAB_REVs >=0.5um")
+SAB.not_inside(SIWG).output("SAB03", "SAB_REV must be inside of 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+SAB.enclosed(SIWG, 0.22.um).output("SAB04", "SAB_REV enclosed by related 220nm Si>=0.22um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+SAB.and(SNF).output("SAB05", "SAB_REV must not touch SNF_COR")
+SAB.separation(SNF, 1.um).output("SAB06", "SAB_REV space to SNF_COR >=1um")
+SAB_NOREV.with_area(0.um2,2.um2).output("SAB07","NON SAB_REV area >=2um2")
+SAB.with_area(0.um2,4.um2).output("SAB08","SAB_REV area >=4um2")
+SAB.without_angle(89.9.degree,275.1.degree).output("SAB09", "SAB_REV angle between two sides >=90 degree <=275 degree")
+SAB.not(NCT.or(PCT)).output("SAB10", "SAB_REV must be inside of NCT_DRW/PCT_DRW")
+SAB.enclosed(NCT.or(PCT), 0.52.um).output("SAB11", "SAB_REV enclosed by NCT_DRW/PCT_DRW >=0.52um")
+
+#CT rules
+CT_A=CT.width(220.nm).polygons
+CT_B=CT.without_area(0.0484.um2)
+CT_C=CT.non_rectangles
+CT_A.or(CT_B).or(CT_C).output("CT01", "CT_DRW width (CT_DRW must be square) =0.22um")
+CT.space(380.nm).output("CT02", "Space between two CT_DRWs >=0.38um")
+CT.not_inside(SIWG).output("CT03", "CT_DRW must be fully enclosed by 220nm Si; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+CT.not_inside(SAB).output("CT04", "CT_DRW must be fully enclosed by SAB_REV")
+CT.enclosed(SIWG, 0.18.um).output("CT05", "CT_DRW must be fully enclosed by 220nm Si>=0.18um; 220nm Si:[WGF_COR not (WGS_TRE or (WGS_CLD not WGS_COR) or WGM_TRE or (WGM_CLD not WGM_COR))]")
+CT.enclosed(SAB, 0.3.um).output("CT06", "CT_DRW must be fully enclosed by SAB_REV >=0.3um")
+CT.not_inside(M1).output("CT07", "CT_DRW must be fully covered by (M1_DRW-M1_SLOT)")
+CT.and(NCT).and(PCT).output("CT08", "CT_DRW must not interact with NCT_DRW and PCT_DRW at the same time")
+CT.not(NCT.or(PCT)).output("CT09", "CT_DRW must be fully enclosed by NCT_DRW/PCT_DRW")
+CT.enclosed(NCT, 0.12.um).output("CT10", "CT_DRW enclosed by NCT_DRW >=0.12um")
+CT.enclosed(PCT, 0.12.um).output("CT11", "CT_DRW enclosed by PCT_DRW >=0.12um")
+
+#M1 rule
+M1.width(0.5.um,angle_limit(85)).output("M101", "M1_DRW width >=0.5um")
+M1.not(PA).sized(-17.5.um).sized(17.5.um).output("M102", "Width of (M1_DRW not PA_DRW)<=35um")
+M1.space(0.5.um,angle_limit(85)).output("M103", "Space between two M1_DRWs >=0.5um")
+M1I.enclosing(CT, 0.01.um).output("M104", "CT_DRW must be fully enclosed by M1_DRW >=0.01um")
+CT.not((M1I).sized(-0.12.um)).output("M105", "When CT_DRW is at a corner of M1_DRW, at least one side of M1_DRW should exceed CT_DRW 0.12um")
+M1I.sized(-5.um).space(10.6.um).output("M106","Space between M1_DRW lines with one or both metal line width and length are greater than 10µm")
+M1.with_area(0.um2, 0.56.um2).output("M107", "M1_DRW area >=0.56 um2")
+M1.with_area(0.um2, 1.um2).sized(1.um).and(M1.with_bbox_min(25.um,1000000.um).and(M1.with_bbox_max(100.um,1000000.um))).output("M108", "Space between a small metal island and a big metal block. (small metal island: width*length < 1um^2; big metal block: width> 25um , length> 100um)")
+M1.without_angle(84.9.degree,270.1.degree).output("M109", "M1_DRW angle between two sides >=85 degree <=270 degree")
+M1.and(SNF).output("M110", "M1_DRW must not touch SNF_COR")
+M1.separation(SNF,2.um).output("M111","Space between M1_DRW to SNF_COR >=2um")
+
+#MTH rule
+MTH.width(0.5.um,angle_limit(85)).output("MTH01", "Width of MTH_DRW >=0.5um")
+MTH.sized(-20.um).sized(20.um).output("MTH01", "Width of MTH_DRW <=40um")
+MTH.space(0.5.um,angle_limit(85)).output("MTH02", "Space between two MTH_DRWs >=0.5um")
+MTH.with_area(0.um2, 0.56.um2).output("MTH03", "MTH_DRW area >=0.56 um2")
+MTH.without_angle(84.9.degree,270.1.degree).output("MTH04", "MTH_DRW angle between two sides >=85 degree <=270 degree")
+MTH.not(EC1).output("MTH05", "MTH_DRW must be fully covered by EC1_DRW ")
+MTH.enclosed(EC1, 0.499.um).output("MTH06", "MTH_DRW enclosed by EC1_DRW >=0.5um")
+
+#EC1 rule
+EC1.width(0.2.um,angle_limit(85)).output("EC101", "Width of EC1_DRW >=0.2um")
+EC1.space(0.21.um,angle_limit(85)).output("EC102", "Space between two EC1_DRWs >=0.21um")
+EC1.without_angle(84.9.degree,270.1.degree).output("EC103", "EC1_DRW angle between two sides >=85 degree <=270 degree")
+EC1.with_angle(0,160).edges.and(EC1.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("EC104", "EC1_DRW small notch width <=0.005um >=0.1um")
+EC1.and(EC_AREA).interacting(M1.or(M2)).output("EC105","Space between M1_DRW/M2_DRW and EC1_DRW >=2um, if designer use EC1_DRW as coupler")
+EC1.and(EC_AREA).separation(M1.or(M2), 2.um).output("EC105","Space between M1_DRW/M2_DRW and EC1_DRW >=2um, if designer use EC1_DRW as coupler")
+EC1.interacting(MTH).interacting(M1).output("EC106","Space between M1 and EC1_DRW, if EC1_DRW covered MTH_DRW >=0.5um")
+EC1.interacting(MTH).separation(M1,0.5.um).output("EC106","Space between M1 and EC1_DRW, if EC1_DRW covered MTH_DRW >=0.5um")
+
+#V1 rules
+V1_A=V1.width(0.26.um).polygons
+V1_B=V1.without_area(0.0676.um2)
+V1_C=V1.non_rectangles
+V1_A.or(V1_B).or(V1_C).output("V101", "V1_DRW width (V1_DRW must be square)=0.26um")
+V1.space(0.26.um).output("V102", "Space between two V1_DRWs >=0.26um")
+V1.not_inside((M1.and(M2)).or(MTH.and(M2))).output("V103", "V1_DRW must be inside of (M1 and M2)or(M2 and MTH);[(M1_DRW-M1_SLOT and M2_DRW-M2_SLOT）or（MTH_DRW and M2_DRW-M2_SLOT)].")
+V1.and(M1I).enclosed(M1I, 0.02.um).output("V104", "V1_DRW enclosed by M1_DRW >=0.02um")
+V1.not((M1I).sized(-0.16.um)).not(MTH).output("V105", "When V1_DRW is at a corner of M1_DRW, at least one side of M1_DRW should exceed V1_DRW 0.16um")
+V1.and(MTH).enclosed(MTH, 0.5.um).output("V106", "V1_DRW enclosed by MTH_DRW  >=0.5um")
+
+#M2 rule
+M2.width(0.5.um,angle_limit(85)).output("M201", "M2_DRW width >=0.5um")
+M2.not(PA).sized(-17.5.um).sized(17.5.um).output("M202", "Width of (M2_DRW not PA_DRW)<=35um")
+M2.space(0.5.um,angle_limit(85)).output("M203", "Space between two M2_DRWs >=0.5um")
+M2I.enclosing(V1, 0.01.um).output("M204", "V1_DRW must be fully enclosed by M2_DRW >=0.01um")
+V1.not((M2I).sized(-0.13.um)).output("M205", "When V1_DRW is at a corner of M2_DRW, at least one side of M2_DRW should exceed V1_DRW 0.13um")
+M2.sized(-5.um).sized(5.um).space(0.6.um,angle_limit(85)).output("M206", "Space between M2_DRW lines with one or both metal line width and length are greater than 10µm")
+M2.with_area(0.um2, 0.56.um2).output("M207", "M2_DRW area >=0.56 um2")
+M2.with_area(0.um2, 1.um2).sized(1.um).and(M2.with_bbox_min(25.um,1000000.um).and(M2.with_bbox_max(100.um,1000000.um))).output("M208", "Space between a small metal island and a big metal block. (small metal island: width*length < 1um^2; big metal block: width> 25um , length> 100um)")
+M2.without_angle(84.9.degree,270.1.degree).output("M209", "M2_DRW angle between two sides >=85 degree <=270 degree")
+
+#EC2 rule
+EC2.width(0.2.um,angle_limit(85)).output("EC201", "Width of EC2_DRW >=0.2um")
+EC2.space(0.21.um,angle_limit(85)).output("EC202", "Space between two EC2_DRWs >=0.21um")
+EC2.without_angle(84.9.degree,270.1.degree).output("EC203", "EC2_DRW angle between two sides >=85 degree <=270 degree")
+EC2.with_angle(0,160).edges.and(EC2.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("EC204", "EC2_DRW small notch width <=0.005um >=0.1um")
+EC2.and(EC_AREA).interacting(M2.or(M3)).output("EC205","Space between M2_DRW/M3_DRW and EC2_DRW >=2um, if designer use EC2_DRW as coupler")
+EC2.and(EC_AREA).separation(M2.or(M3), 2.um).output("EC205","Space between M2_DRW/M3_DRW and EC2_DRW >=2um, if designer use EC2_DRW as coupler")
+
+#V2 rules
+V2_A=V2.width(0.26.um).polygons
+V2_B=V2.without_area(0.0676.um2)
+V2_C=V2.non_rectangles
+V2_A.or(V2_B).or(V2_C).output("V201", "V2_DRW width (V2_DRW must be square)=0.26um")
+V2.space(0.26.um).output("V202", "Space between two V2_DRWs >=0.26um")
+V2.enclosed(M2I, 0.02.um).output("V203", "V2_DRW must be fully enclosed by M2_DRW >=0.02um")
+V2.not((M2I).sized(-0.16.um)).output("V204", "When V2_DRW is at a corner of M2_DRW, at least one side of M2_DRW should exceed V2_DRW 0.16um")
+V2.not_inside(M2.and(M3)).output("V206", "V2_DRW must be inside of (M2_DRW-M2_SLOT) AND (M3_DRW-M3_SLOT) ")
+
+#M3 rule
+M3.width(1.um,angle_limit(85)).output("M301", "M3_DRW width >=1um")
+M3.not(PA).sized(-17.5.um).sized(17.5.um).output("M302", "Width of (M3_DRW not PA_DRW)<=35um")
+M3.space(1.um,angle_limit(85)).output("M303", "Space between two M3_DRWs >=1um")
+M3I.enclosing(V2 , 0.09.um).output("M304", "V2_DRW must be fully enclosed by M3_DRW >=0.09um")
+V2.not((M3I).sized(-0.13.um)).output("M305", "When V2_DRW is at a corner of M3_DRW, at least one side of M3_DRW should exceed V2_DRW 0.13um")
+M3.without_angle(84.9.degree,270.1.degree).output("M306", "M3_DRW angle between two sides >=85 degree <=270 degree")
+
+#EC3 rule
+EC3.width(0.2.um,angle_limit(85)).output("EC301", "Width of EC3_DRW >=0.2um")
+EC3.space(0.21.um,angle_limit(85)).output("EC302", "Space between two EC3_DRWs >=0.21um")
+EC3.without_angle(84.9.degree,270.1.degree).output("EC303", "EC3_DRW angle between two sides >=85 degree <=270 degree")
+EC3.with_angle(0,160).edges.and(EC3.with_angle(200,360).edges).with_length(0.006.um, 0.1.um).output("EC304", "EC3_DRW small notch width <=0.005um >=0.1um")
+EC3.and(EC_AREA).interacting(M3.or(TM)).output("EC305","Space between M3_DRW/TM_DRW and EC3_DRW >=2um, if designer use EC3_DRW as coupler")
+EC3.and(EC_AREA).separation(M3.or(TM), 2.um).output("EC305","Space between M3_DRW/TM_DRW and EC3_DRW >=2um, if designer use EC3_DRW as coupler")
+
+#TV rules
+TV_A=TV.width(0.36.um).polygons
+TV_B=TV.without_area(0.1296.um2)
+TV_C=TV.non_rectangles
+TV_A.or(TV_B).or(TV_C).output("TV01", "TV_DRW width (TV_DRW must be square) >=0.36um")
+TV.space(0.35.um).output("TV02", "Space between two TV_DRWs >=0.35um")
+TV.enclosed(M3I, 0.02.um).output("TV03", "TV_DRW must be fully enclosed by M3_DRW >=0.02um")
+TV.not((M3I).sized(-0.16.um)).output("TV04", "When TV_DRW is at a corner of M3_DRW, at least one side of M3_DRW should exceed TV_DRW 0.16um")
+TV.not_inside(M3.and(TM)).output("TV05", "TV_DRW must be inside of (M3_DRW-M3_SLOT) AND (TM_DRW-TM_SLOT) ")
+TV.and(V1).and(V2).output("TV07","Three consecutive VIAs are not allowed to overlap")
+
+#TM rule
+TM.width(1.um,angle_limit(85)).output("TM01", "TM_DRW width >=1um")
+TM.not(PA).sized(-17.5.um).sized(17.5.um).output("TM02", "Width of (TM_DRW not PA_DRW)<=35um")
+TM.space(1.um,angle_limit(85)).output("TM03", "Space between two TM_DRWs >=1um")
+TMI.enclosing(TV , 0.09.um).output("TM04", "TV_DRW must be fully enclosed by TM_DRW >=0.09um")
+TM.without_angle(84.9.degree,270.1.degree).output("TM05", "TM_DRW angle between two sides >=85 degree <=270 degree")
+
+#PA rules
+PA.width(40.um,angle_limit(85)).output("PA01", "PA_DRW width (Bonding pad open) >=40um")
+PA.space(7.um,angle_limit(85)).output("PA02", "Space between two PA_DRWs (Bonding pad open) >=7um")
+PA.not(TM).output("PA03", "PA_DRW must be inside of TM_DRW")
+TM.enclosing(PA , 1.5.um).output("PA04", "Enclosure of TM_DRW over PA_DRW >=1.5um")
+
+#DO1 rules
+DO1.width(2.um,angle_limit(85)).output("DO101", "DO1_DRW width >=2um")
+DO1.space(2.um,angle_limit(85)).output("DO102", "Space between two DO1_DRWs >=2um")
+DO1.and(METAL.or(VIA).or(MTH)).output("DO103", "DO1_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)")
+DO1.separation(METAL.or(VIA).or(MTH),5.um).output("DO104", "DO1_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um")
+DO1.not(WGF_CLD.or(SNF_CLD).or(METAL_DUMB)).output("DO105", "DO1_DRW must be inside of (WGF_CLD or SNF_CLD or METAL_DUMB)")
+DO1.enclosed(WGF_CLD.or(SNF_CLD).or(METAL_DUMB), 5.um).output("D0106", "DO1_DRW must be fully enclosed by (WGF_CLD or SNF_CLD or METAL_DUMB) >=5um")
+
+#DT rules
+DT.width(4.um,angle_limit(85)).output("DT01", "DT_DRW width >=4um")
+DT.space(4.um,angle_limit(85)).output("DT02", "Space between two DT_DRWs >=4um")
+DT.and(WGF.or(SNF).or(GE).or(EC).or(CT)).output("DT03", "DT_DRW must not touch (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW)")
+DT.and(METAL.or(VIA).or(MTH)).output("DT04", "DT_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)")
+DT.separation(WGF.or(SNF).or(GE).or(EC).or(CT),5.um).output("DT05", "DT_DRW space to (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW) >=5um")
+DT.separation(METAL.or(VIA).or(MTH),5.um).output("DT06", "DT_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um")
+DT.not((METAL_DUMB.and(WGF_CLD.or(WGF_DUMB)).and(SNF_CLD.or(SNF_DUMB))).or(ALL_DUMB)).output("DT07", "DT_DRW must be inside of [METAL_DUMB and (WGF_CLD  or WGF_DUMB) and (SNF_CLD or SNF_DUMB)]or ALL_DUMB")
+DT.enclosed((METAL_DUMB.and(WGF_CLD.or(WGF_DUMB)).and(SNF_CLD.or(SNF_DUMB)).or(ALL_DUMB)),5.um).output("DT08", "DT_DRW must be fully enclosed by [METAL_DUMB and (WGF_CLD or WGF_DUMB) and (SNF_CLD or SNF_DUMB)] or ALL_DUMB >=5um")
+DT.not(DO1).output("DT09", "DT_DRW must be inside of DO1_DRW")
+DT.enclosed(DO1, 1.5.um).output("DT10", "DT_DRW fully enclosed by DO1_DRW >=1.5um")
+
+#UC rules
+UC.width(6.um,angle_limit(85)).output("UC01", "UC_DRW width >=6um")
+UC.space(4.um,angle_limit(85)).output("UC02", "Space between two UC_DRWs >=4um")
+UC.and(WGF.or(SNF).or(GE).or(EC).or(CT)).output("UC03", "UC_DRW must not touch (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW)")
+UC.and(METAL.or(VIA).or(MTH)).output("UC04", "UC_DRW must not touch (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW)")
+UC.separation(WGF.or(SNF).or(GE).or(EC).or(CT),5.um).output("UC05", "UC_DRW space to (WGF_COR or SNF_COR or GE_DRW or EC1_DRW or EC2_DRW or EC3_DRW or CT_DRW) >=5um")
+UC.separation(METAL.or(VIA).or(MTH),5.um).output("UC06", "UC_DRW space to (M1_DRW-TM_DRW or V1_DRW-TV_DRW or MTH_DRW) >=5um")
+UC.not((METAL_DUMB.and(WGF_CLD.or(WGF_DUMB)).and(SNF_CLD.or(SNF_DUMB))).or(ALL_DUMB)).output("UC07", "UC_DRW must be inside of [METAL_DUMB and (WGF_CLD  or WGF_DUMB) and (SNF_CLD or SNF_DUMB)]or ALL_DUMB")
+UC.enclosed((METAL_DUMB.and(WGF_CLD.or(WGF_DUMB)).and(SNF_CLD.or(SNF_DUMB)).or(ALL_DUMB)), 5.um).output("UC08", "DT_DRW must be fully enclosed by [METAL_DUMB and (WGF_CLD or WGF_DUMB) and (SNF_CLD or SNF_DUMB)] or ALL_DUMB >=5um")
+UC.not(DO1).output("UC09", "UC_DRW must be inside of DO1_DRW")
+UC.enclosed(DO1, 1.5.um).output("UC10", "UC_DRW fully enclosed by DO1_DRW >=1.5um")
+
+#Device_Area rules
+all_layers=WGS_COR.or(WGS_CLD).or(WGS_TRE).or(WGS_PINREC).or(WGM_COR).or(WGM_CLD).or(WGM_TRE).or(WGM_PINREC).or(WGF_COR).or(WGF_CLD).or(WGF_DUMB).or(WGF_PINREC).or(NMOD_DRW).or(PMOD_DRW).or(NDD_DRW).or(PDD_DRW).or(NCT_DRW).or(PCT_DRW).or(SNS_COR).or(SNS_CLD).or(SNF_COR).or(SNF_CLD).or(SNS_TRE).or(SNS_PINREC).or(SNF_DUMB).or(SNF_PINREC).or(GE_DRW).or(GE_DUMB).or(SAB_REV).or(CT_DRW).or(M1_DRW).or(M1_SLOT).or(M1_DUMB).or(M1_PINREC).or(MTH_DRW).or(EC1_DRW).or(V1_DRW).or(M2_DRW).or(M2_SLOT).or(M2_DUMB).or(M2_PINREC).or(EC2_DRW).or(V2_DRW).or(M3_DRW).or(M3_SLOT).or(M3_DUMB).or(M3_PINREC).or(EC3_DRW).or(TV_DRW).or(TM_DRW).or(TM_SLOT).or(TM_DUMB).or(TM_PINREC).or(PA_DRW).or(DO1_DRW).or(DT_DRW).or(LOGO_DRW).or(METAL_DUMB).or(ALL_DUMB).or(BB_AREA).or(EC_AREA).or(BB_TXT).or(BBSI).or(BBSIN).or(BBEC).or(BBACT)
+all_patterns=all_layers.merge.merge
+all_patterns.not_inside(DEV_AREA).output("DEV01", "The DEV_AREA layer must enclose all chip layout patterns")
+DEV_AREA.enclosing(WGF_COR.or(SNF_COR).or(GE_DRW).or(CT_DRW).or(METAL).or(VIA).or(MTH).or(EC).or(LOGO_DRW),1.1.um).output("DEV02", "Enclosure of WGF_COR, SNF_COR, GE_DRW, CT_DRW, M1_DRW-TM_DRW, MTH_DRW, V1_DRW-TV_DRW, EC1_DRW-EC3_DRW, LOGO_DRW by DEV_AREA layer")
+
+#SLOT rules
+M1_SLOT.width(2.um).output("SL01", "Width of metal slot >=2um")
+M2_SLOT.width(2.um).output("SL01", "Width of metal slot >=2um")
+M3_SLOT.width(2.um).output("SL01", "Width of metal slot >=2um")
+TM_SLOT.width(2.um).output("SL01", "Width of metal slot >=2um")
+M1_SLOT.enclosed(M1I, 5.um).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M2_SLOT.enclosed(M2I, 5.um).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M3_SLOT.enclosed(M3I, 5.um).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+TM_SLOT.enclosed(TMI, 5.um).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M1_SLOT.not(M1I).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M2_SLOT.not(M2I).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M3_SLOT.not(M3I).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+TM_SLOT.not(TMI).output("SL02", "Metal slot must be fully enclosed by metal line >=5um")
+M1_SLOT.space(2.um).output("SL03", "Space between two metal slots >=2um")
+M2_SLOT.space(2.um).output("SL03", "Space between two metal slots >=2um")
+M3_SLOT.space(2.um).output("SL03", "Space between two metal slots >=2um")
+TM_SLOT.space(2.um).output("SL03", "Space between two metal slots >=2um")
+M1_SLOT.separation(CT, 0.005.um).output("SL04", "Space between M1_SLOT and CT_DRW >=0.005um")
+M1_SLOT.and(CT).output("SL04", "Space between M1_SLOT and CT_DRW >=0.005um")
+M1_SLOT.separation(V1, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+M2_SLOT.separation(V1, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+M2_SLOT.separation(V2, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+M3_SLOT.separation(V2, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+M3_SLOT.separation(TV, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+TM_SLOT.separation(TV, 0.01.um).output("SL05", "Space between all metal slot and via >=0.01um")
+M1_SLOT.and(V1).output("SL05", "Space between all metal slot and via >=0.01um")
+M2_SLOT.and(V1).output("SL05", "Space between all metal slot and via >=0.01um")
+M2_SLOT.and(V2).output("SL05", "Space between all metal slot and via >=0.01um")
+M3_SLOT.and(V2).output("SL05", "Space between all metal slot and via >=0.01um")
+M3_SLOT.and(TV).output("SL05", "Space between all metal slot and via >=0.01um")
+TM_SLOT.and(TV).output("SL05", "Space between all metal slot and via >=0.01um")
+M1_SLOT.non_rectangles.output("SL06", "Metal slot must be rectangle and must be parallel to the coordinate axes")
+M2_SLOT.non_rectangles.output("SL06", "Metal slot must be rectangle and must be parallel to the coordinate axes")
+M3_SLOT.non_rectangles.output("SL06", "Metal slot must be rectangle and must be parallel to the coordinate axes")
+TM_SLOT.non_rectangles.output("SL06", "Metal slot must be rectangle and must be parallel to the coordinate axes")
+
+M1_SLOT.and(M2_SLOT).output("SL08", "The adjacent Mn slot and Mn+1 slot must not interact")
+M2_SLOT.and(M3_SLOT).output("SL08", "The adjacent Mn slot and Mn+1 slot must not interact")
+M3_SLOT.and(TM_SLOT).output("SL08", "The adjacent Mn slot and Mn+1 slot must not interact")
+
+#LOGO rules
+LOGO.and(WGF.or(SNF).or(GE).or(EC).or(CT).or(METAL).or(VIA).or(MTH).or(PA).or(DO1).or(DT)).output("LOGO01", "LOGO_DRW overlap with all other pattern is not allowed")
+LOGO.separation(WGF.or(SNF).or(GE).or(EC).or(CT).or(METAL).or(VIA).or(MTH).or(PA).or(DO1).or(DT),10.um).output("LOGO02", "Space between LOGO_DRW and all other pattern >=10um")
+LOGO.width(1.um).output("LOGO03", "Width of LOGO_DRW >=1um,<=35um")
+LOGO.sized(-17.5.um).sized(17.5.um).output("LOGO03", "Width of LOGO_DRW >=1um,<=35um")
+LOGO.space(1.um).output("LOGO04", "Space between two LOGO_DRWs >=1um")
+LOGO.without_angle(84.9.degree,270.1.degree).output("LOGO05", "LOGO_DRW angle between two sides >=85 degree <=270 degree")
+
+#BB rules
+BBSI_AREA.and(SI.or(SIN).or(IMP).or(GE).or(SAB).or(CT).or(LOGO)).output("BB01", "BBSI_AREA must not interact with Si or SiN or Ge or IMP or SAB or CT or LOGO")
+BBSI_AREA.and(SI.or(SIN).or(IMP).or(GE).or(SAB).or(CT).or(LOGO).or(M1)).output("BB02", "BBSIN_AREA must not interact with Si or SiN or Ge or IMP or SAB or CT or M1 or LOGO")
+BBEC_AREA.and(SI.or(SIN).or(IMP).or(GE).or(SAB).or(CT).or(METAL).or(VIA).or(MTH).or(PA)).output("BB03", "BBEC_AREA must not interact with all other patterns except DO1_DRW or DT_DRW, and OIOEC_PORT must not interact with DT_DRW")
+OIOEC_PORT.and(DT_DRW).output("BB03","BBEC_AREA must not interact with all other patterns except DO1_DRW or DT_DRW, and OIOEC_PORT must not interact with DT_DRW")
+BBACT_AREA.not(M1_PINREC.or(M2_PINREC).or(M3_PINREC).or(TM_PINREC)).and(SI.or(SIN).or(IMP).or(GE).or(SAB).or(CT).or(METAL).or(VIA).or(MTH).or(EC).or(PA).or(DO1).or(DT).or(LOGO)).output("BB04","BBACT AREA not (M1_PINREC or M2_PINREC or M3_PINREC or TM_PINREC) must not interact with all other patterns")
+
+overlap1=WGS_COR.and(BB_AREA)
+port1=(WGS_COR.not(BB_AREA))
+valid_contact1=overlap1.overlapping(port1.sized(0.001.um))
+safe_enclosed1=overlap1.enclosed(BB_AREA,4.um).polygons
+overlap1.not(valid_contact1.or(safe_enclosed1)).output("BB05","(WGS_COR and BB_AREA) must touch (WGS_COR not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap2=WGS_CLD.and(BB_AREA)
+port2=(WGS_CLD.not(BB_AREA))
+valid_contact2=overlap2.overlapping(port2.sized(0.001.um))
+safe_enclosed2=overlap2.enclosed(BB_AREA,2.um).polygons
+overlap2.not(valid_contact2.or(safe_enclosed2)).output("BB06","(WGS_CLD and BB_AREA) must touch (WGS_CLD not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap3=WGM_COR.and(BB_AREA)
+port3=(WGM_COR.not(BB_AREA))
+valid_contact3=overlap3.overlapping(port3.sized(0.001.um))
+safe_enclosed3=overlap3.enclosed(BB_AREA,4.um).polygons
+overlap3.not(valid_contact3.or(safe_enclosed3)).output("BB07","(WGM_COR and BB_AREA) must touch (WGM_COR not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap4=WGM_CLD.and(BB_AREA)
+port4=(WGM_CLD.not(BB_AREA))
+valid_contact4=overlap4.overlapping(port4.sized(0.001.um))
+safe_enclosed4=overlap4.enclosed(BB_AREA,2.um).polygons
+overlap4.not(valid_contact4.or(safe_enclosed4)).output("BB08","(WGM_CLD and BB_AREA) must touch (WGM_CLD not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap5=WGF_COR.and(BB_AREA)
+port5=(WGF_COR.not(BB_AREA))
+valid_contact5=overlap5.overlapping(port5.sized(0.001.um))
+safe_enclosed5=overlap5.enclosed(BB_AREA,4.um).polygons
+overlap5.not(valid_contact5.or(safe_enclosed5)).output("BB09","(WGF_COR and BB_AREA) must touch (WGF_COR not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap6=SNS_COR.and(BB_AREA)
+port6=(SNS_COR.not(BB_AREA))
+valid_contact6=overlap6.overlapping(port6.sized(0.001.um))
+safe_enclosed6=overlap6.enclosed(BB_AREA,4.um).polygons
+overlap6.not(valid_contact6.or(safe_enclosed6)).output("BB10","(SNS_COR and BB_AREA) must touch (SNS_COR not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap7=SNS_CLD.and(BB_AREA)
+port7=(SNS_CLD.not(BB_AREA))
+valid_contact7=overlap7.overlapping(port7.sized(0.001.um))
+safe_enclosed7=overlap7.enclosed(BB_AREA,2.um).polygons
+overlap7.not(valid_contact7.or(safe_enclosed7)).output("BB11","(SNS_CLD and BB_AREA) must touch (SNS_CLD not BB_AREA) or must be enclosed by BB_AREA")
+
+overlap8=SNF_COR.and(BB_AREA)
+port8=(SNF_COR.not(BB_AREA))
+valid_contact8=overlap8.overlapping(port8.sized(0.001.um))
+safe_enclosed8=overlap8.enclosed(BB_AREA,4.um).polygons
+overlap8.not(valid_contact8.or(safe_enclosed8)).output("BB12","(SNF_COR and BB_AREA) must touch (SNF_COR not BB_AREA) or must be enclosed by BB_AREA")
+
+M1_PINREC.and(BB_AREA).not_interacting(M1).output("BB13","(M1_PINREC and BB_AREA) must touch or intereact with M1_DRW")
+
+M2_PINREC.and(BB_AREA).not_interacting(M2).output("BB14","(M1_PINREC and BB_AREA) must touch or intereact with M2_DRW")
+
+M3_PINREC.and(BB_AREA).not_interacting(M3).output("BB15","(M1_PINREC and BB_AREA) must touch or intereact with M3_DRW")
+
+TM_PINREC.and(BB_AREA).not_interacting(TM).output("BB16","(M1_PINREC and BB_AREA) must touch or intereact with TM_DRW")
+
+#FORBID rules
+FORBID_AREA.and(WGF.or(SNF).or(GE).or(EC).or(CT).or(METAL).or(VIA).or(MTH).or(PA).or(DO1).or(DT)).output("FORBID01", "FORBID AREA must not interact with all other patterns")
+RDBCH.rdb.save($report)

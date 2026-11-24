@@ -1,0 +1,195 @@
+Warning: In file G:\codex_project\inverse_design_sun\EGADO-4mode\scheme_b_dbs_inputs\fixed_background.gds:
+Warning: Record length larger than 0x8000 encountered: interpreting as unsigned (position=53526, record number=34, cell=TOP)
+[2026-10-19 17:40:07] Initialized SchemeBDBSOptimizer for 4-Mode Device
+[2026-10-19 17:40:07] Candidate cells: 161, Max sweeps: 3, Tol: 0.0001
+[2026-10-19 17:40:07] Spawning 2 concurrent persistent Lumerical FDTD workers...
+[2026-10-19 17:40:12] Workers ready: ('READY', 1), ('READY', 2)
+[2026-10-19 17:40:12] Evaluating baseline initial structure across 4 channels...
+[2026-10-19 17:41:08] Shutting down persistent Lumerical workers...
+Traceback (most recent call last):
+  File "G:\codex_project\inverse_design_sun\EGADO-4mode\run_dbs_4mode.py", line 425, in <module>
+    runner.run()
+  File "G:\codex_project\inverse_design_sun\EGADO-4mode\run_dbs_4mode.py", line 303, in run
+    init_J, init_res, init_dt = self.evaluate_all_channels(baseline_gds, req_q1, res_q1, req_q2, res_q2)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex_project\inverse_design_sun\EGADO-4mode\run_dbs_4mode.py", line 237, in evaluate_all_channels
+    raise RuntimeError(f"FDTD Worker {res[1]} error on CH{res[2]}: {res[3]}")
+RuntimeError: FDTD Worker 1 error on CH3: 'Failed to evaluate code'
+Warning: In file G:\codex_project\inverse_design_sun\EGADO-4mode\scheme_b_dbs_inputs\fixed_background.gds:
+Warning: Record length larger than 0x8000 encountered: interpreting as unsigned (position=53526, record number=34, cell=TOP)
+[2026-10-19 17:44:12] Initialized SchemeBDBSOptimizer for 4-Mode Device
+[2026-10-19 17:44:12] Candidate cells: 161, Max sweeps: 3, Tol: 0.0001
+[2026-10-19 17:44:12] Evaluating baseline initial structure across 4 channels...
+[2026-10-19 17:45:55] Baseline Initial J = 48.31% (CH1: 63.65%, CH2: 47.56%, CH3: 24.26%, CH4: 57.78%) in 103.0s
+[2026-10-19 17:45:55] 
+=======================================================
+[2026-10-19 17:45:55] === Starting Sweep 1/3 (Current J = 48.31%) ===
+[2026-10-19 17:45:55] =======================================================
+[2026-10-19 17:47:33] Sweep 1 [  1/161] Cell (33, 0) -> 0: ACCEPT (J: 48.31% -> 48.69%, +0.376%) [98.0s]
+[2026-10-19 17:49:11] Sweep 1 [  2/161] Cell (29, 0) -> 1: ACCEPT (J: 48.69% -> 48.78%, +0.097%) [98.3s]
+[2026-10-19 17:49:12] Sweep 1 [  3/161] Cell (24, 0) -> 1: DRC REJECT (drc_reject(w=31,s=34)) [0.7s]
+[2026-10-19 17:50:50] Sweep 1 [  4/161] Cell (23, 0) -> 1: ACCEPT (J: 48.78% -> 48.83%, +0.047%) [97.9s]
+[2026-10-19 17:50:50] Sweep 1 [  5/161] Cell (22, 0) -> 1: DRC REJECT (drc_reject(w=0,s=9)) [0.5s]
+[2026-10-19 17:50:51] Sweep 1 [  6/161] Cell (17, 0) -> 0: DRC REJECT (drc_reject(w=3,s=0)) [0.5s]
+[2026-10-19 17:52:29] Sweep 1 [  7/161] Cell (16, 0) -> 1: ACCEPT (J: 48.83% -> 48.96%, +0.133%) [98.0s]
+[2026-10-19 17:52:29] Sweep 1 [  8/161] Cell ( 4, 0) -> 0: DRC REJECT (drc_reject(w=12,s=0)) [0.5s]
+[2026-10-19 17:52:30] Sweep 1 [  9/161] Cell ( 0, 0) -> 0: DRC REJECT (drc_reject(w=36,s=0)) [0.6s]
+[2026-10-19 17:52:30] Sweep 1 [ 10/161] Cell (33, 1) -> 0: DRC REJECT (drc_reject(w=39,s=0)) [0.5s]
+[2026-10-19 17:52:31] Sweep 1 [ 11/161] Cell (29, 1) -> 0: DRC REJECT (drc_reject(w=9,s=0)) [0.5s]
+[2026-10-19 17:52:31] Sweep 1 [ 12/161] Cell (25, 4) -> 0: DRC REJECT (drc_reject(w=18,s=0)) [0.5s]
+[2026-10-19 17:52:32] Sweep 1 [ 13/161] Cell (40, 5) -> 0: DRC REJECT (drc_reject(w=21,s=0)) [0.6s]
+[2026-10-19 17:54:10] Sweep 1 [ 14/161] Cell (25, 5) -> 0: ACCEPT (J: 48.96% -> 49.12%, +0.151%) [98.1s]
+[2026-10-19 17:55:48] Sweep 1 [ 15/161] Cell (40, 6) -> 0: ACCEPT (J: 49.12% -> 49.54%, +0.425%) [98.0s]
+[2026-10-19 17:55:49] Sweep 1 [ 16/161] Cell (35, 6) -> 0: DRC REJECT (drc_reject(w=69,s=0)) [0.8s]
+[2026-10-19 17:55:49] Sweep 1 [ 17/161] Cell (25, 6) -> 0: DRC REJECT (drc_reject(w=50,s=0)) [0.5s]
+[2026-10-19 17:57:27] Sweep 1 [ 18/161] Cell (40, 7) -> 0: ACCEPT (J: 49.54% -> 49.81%, +0.271%) [97.8s]
+[2026-10-19 17:57:28] Sweep 1 [ 19/161] Cell (37, 7) -> 0: DRC REJECT (drc_reject(w=93,s=0)) [0.5s]
+[2026-10-19 17:59:06] Sweep 1 [ 20/161] Cell (35, 7) -> 1: ACCEPT (J: 49.81% -> 49.88%, +0.069%) [97.9s]
+[2026-10-19 17:59:06] Sweep 1 [ 21/161] Cell (40, 8) -> 0: DRC REJECT (drc_reject(w=19,s=0)) [0.5s]
+[2026-10-19 17:59:07] Sweep 1 [ 22/161] Cell (36, 8) -> 0: DRC REJECT (drc_reject(w=43,s=0)) [0.6s]
+[2026-10-19 17:59:07] Sweep 1 [ 23/161] Cell (35, 8) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:00:45] Sweep 1 [ 24/161] Cell ( 0, 8) -> 0: REJECT (J: 49.84% <= 49.88%) [98.0s]
+[2026-10-19 18:00:46] Sweep 1 [ 25/161] Cell (36, 9) -> 1: DRC REJECT (drc_reject(w=0,s=42)) [0.5s]
+[2026-10-19 18:02:24] Sweep 1 [ 26/161] Cell (35, 9) -> 0: REJECT (J: 49.71% <= 49.88%) [98.0s]
+[2026-10-19 18:02:25] Sweep 1 [ 27/161] Cell (20, 9) -> 1: DRC REJECT (drc_reject(w=0,s=36)) [0.6s]
+[2026-10-19 18:02:25] Sweep 1 [ 28/161] Cell (19, 9) -> 1: DRC REJECT (drc_reject(w=26,s=101)) [0.8s]
+[2026-10-19 18:04:03] Sweep 1 [ 29/161] Cell ( 0, 9) -> 0: REJECT (J: 49.89% <= 49.88%) [98.0s]
+[2026-10-19 18:04:04] Sweep 1 [ 30/161] Cell (21,10) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:04:05] Sweep 1 [ 31/161] Cell (20,10) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:05:43] Sweep 1 [ 32/161] Cell (19,10) -> 1: REJECT (J: 49.76% <= 49.88%) [97.9s]
+[2026-10-19 18:07:21] Sweep 1 [ 33/161] Cell (22,11) -> 0: ACCEPT (J: 49.88% -> 50.19%, +0.311%) [98.1s]
+[2026-10-19 18:08:59] Sweep 1 [ 34/161] Cell (21,11) -> 1: ACCEPT (J: 50.19% -> 50.66%, +0.470%) [98.1s]
+[2026-10-19 18:08:59] Sweep 1 [ 35/161] Cell (20,11) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:10:38] Sweep 1 [ 36/161] Cell (13,11) -> 0: ACCEPT (J: 50.66% -> 50.90%, +0.240%) [98.1s]
+[2026-10-19 18:12:16] Sweep 1 [ 37/161] Cell (24,12) -> 0: ACCEPT (J: 50.90% -> 51.18%, +0.282%) [98.0s]
+[2026-10-19 18:12:16] Sweep 1 [ 38/161] Cell (23,12) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.8s]
+[2026-10-19 18:13:55] Sweep 1 [ 39/161] Cell (15,12) -> 0: ACCEPT (J: 51.18% -> 51.64%, +0.456%) [98.2s]
+[2026-10-19 18:13:55] Sweep 1 [ 40/161] Cell (14,12) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:13:56] Sweep 1 [ 41/161] Cell (12,12) -> 0: DRC REJECT (drc_reject(w=74,s=18)) [0.7s]
+[2026-10-19 18:13:57] Sweep 1 [ 42/161] Cell (25,13) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:15:35] Sweep 1 [ 43/161] Cell (24,13) -> 0: ACCEPT (J: 51.64% -> 52.75%, +1.106%) [98.1s]
+[2026-10-19 18:17:13] Sweep 1 [ 44/161] Cell (23,13) -> 0: REJECT (J: 52.05% <= 52.75%) [98.3s]
+[2026-10-19 18:17:14] Sweep 1 [ 45/161] Cell (16,13) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:17:15] Sweep 1 [ 46/161] Cell (15,13) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:17:15] Sweep 1 [ 47/161] Cell (14,13) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:18:55] Sweep 1 [ 48/161] Cell (12,13) -> 0: REJECT (J: 52.66% <= 52.75%) [100.3s]
+[2026-10-19 18:18:56] Sweep 1 [ 49/161] Cell (11,13) -> 1: DRC REJECT (drc_reject(w=0,s=85)) [0.6s]
+[2026-10-19 18:20:38] Sweep 1 [ 50/161] Cell (26,14) -> 0: ACCEPT (J: 52.75% -> 53.29%, +0.539%) [102.4s]
+[2026-10-19 18:20:39] Sweep 1 [ 51/161] Cell (25,14) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:22:22] Sweep 1 [ 52/161] Cell (24,14) -> 0: ACCEPT (J: 53.29% -> 54.50%, +1.217%) [102.6s]
+[2026-10-19 18:22:22] Sweep 1 [ 53/161] Cell (16,14) -> 1: DRC REJECT (drc_reject(w=0,s=44)) [0.6s]
+[2026-10-19 18:24:07] Sweep 1 [ 54/161] Cell (15,14) -> 0: ACCEPT (J: 54.50% -> 54.87%, +0.371%) [104.4s]
+[2026-10-19 18:24:08] Sweep 1 [ 55/161] Cell (12,14) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:25:50] Sweep 1 [ 56/161] Cell (11,14) -> 0: REJECT (J: 54.74% <= 54.87%) [102.7s]
+[2026-10-19 18:25:51] Sweep 1 [ 57/161] Cell (27,15) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.8s]
+[2026-10-19 18:27:34] Sweep 1 [ 58/161] Cell (26,15) -> 0: ACCEPT (J: 54.87% -> 56.01%, +1.132%) [102.6s]
+[2026-10-19 18:27:34] Sweep 1 [ 59/161] Cell (25,15) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:27:35] Sweep 1 [ 60/161] Cell (16,15) -> 1: DRC REJECT (drc_reject(w=0,s=93)) [0.7s]
+[2026-10-19 18:29:17] Sweep 1 [ 61/161] Cell (28,16) -> 0: REJECT (J: 55.71% <= 56.01%) [102.2s]
+[2026-10-19 18:29:18] Sweep 1 [ 62/161] Cell (27,16) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:31:01] Sweep 1 [ 63/161] Cell (26,16) -> 0: ACCEPT (J: 56.01% -> 56.71%, +0.706%) [102.7s]
+[2026-10-19 18:31:01] Sweep 1 [ 64/161] Cell (17,16) -> 1: DRC REJECT (drc_reject(w=31,s=211)) [0.7s]
+[2026-10-19 18:31:02] Sweep 1 [ 65/161] Cell (41,17) -> 1: DRC REJECT (drc_reject(w=0,s=5)) [0.6s]
+[2026-10-19 18:32:47] Sweep 1 [ 66/161] Cell (29,17) -> 0: REJECT (J: 56.54% <= 56.71%) [104.7s]
+[2026-10-19 18:32:47] Sweep 1 [ 67/161] Cell (28,17) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:32:48] Sweep 1 [ 68/161] Cell (27,17) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:34:31] Sweep 1 [ 69/161] Cell (41,18) -> 0: REJECT (J: 55.65% <= 56.71%) [102.5s]
+[2026-10-19 18:34:31] Sweep 1 [ 70/161] Cell (40,18) -> 1: DRC REJECT (drc_reject(w=0,s=63)) [0.5s]
+[2026-10-19 18:34:32] Sweep 1 [ 71/161] Cell (29,18) -> 1: DRC REJECT (drc_reject(w=0,s=94)) [0.6s]
+[2026-10-19 18:36:18] Sweep 1 [ 72/161] Cell (28,18) -> 0: ACCEPT (J: 56.71% -> 56.82%, +0.105%) [106.5s]
+[2026-10-19 18:36:19] Sweep 1 [ 73/161] Cell (41,19) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:36:20] Sweep 1 [ 74/161] Cell (40,19) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:36:21] Sweep 1 [ 75/161] Cell (31,19) -> 0: DRC REJECT (drc_reject(w=56,s=29)) [0.8s]
+[2026-10-19 18:36:21] Sweep 1 [ 76/161] Cell (28,19) -> 0: DRC REJECT (drc_reject(w=65,s=0)) [0.6s]
+[2026-10-19 18:38:04] Sweep 1 [ 77/161] Cell (41,20) -> 1: ACCEPT (J: 56.82% -> 57.80%, +0.985%) [102.6s]
+[2026-10-19 18:38:05] Sweep 1 [ 78/161] Cell (40,20) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:38:05] Sweep 1 [ 79/161] Cell (37,20) -> 1: DRC REJECT (drc_reject(w=0,s=133)) [0.6s]
+[2026-10-19 18:38:06] Sweep 1 [ 80/161] Cell (36,20) -> 1: DRC REJECT (drc_reject(w=8,s=144)) [0.7s]
+[2026-10-19 18:39:46] Sweep 1 [ 81/161] Cell (31,20) -> 0: REJECT (J: 55.49% <= 57.80%) [100.4s]
+[2026-10-19 18:39:47] Sweep 1 [ 82/161] Cell (30,20) -> 1: DRC REJECT (drc_reject(w=11,s=79)) [0.8s]
+[2026-10-19 18:41:33] Sweep 1 [ 83/161] Cell (42,21) -> 0: REJECT (J: 56.59% <= 57.80%) [106.2s]
+[2026-10-19 18:43:16] Sweep 1 [ 84/161] Cell (41,21) -> 1: REJECT (J: 55.98% <= 57.80%) [102.4s]
+[2026-10-19 18:43:16] Sweep 1 [ 85/161] Cell (37,21) -> 1: DRC REJECT (drc_reject(w=0,s=74)) [0.8s]
+[2026-10-19 18:44:59] Sweep 1 [ 86/161] Cell (32,21) -> 0: REJECT (J: 56.04% <= 57.80%) [102.3s]
+[2026-10-19 18:44:59] Sweep 1 [ 87/161] Cell (31,21) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:46:44] Sweep 1 [ 88/161] Cell (30,21) -> 1: REJECT (J: 57.70% <= 57.80%) [104.2s]
+[2026-10-19 18:46:44] Sweep 1 [ 89/161] Cell (22,21) -> 1: DRC REJECT (drc_reject(w=13,s=171)) [0.8s]
+[2026-10-19 18:46:45] Sweep 1 [ 90/161] Cell (21,21) -> 1: DRC REJECT (drc_reject(w=0,s=108)) [0.6s]
+[2026-10-19 18:46:46] Sweep 1 [ 91/161] Cell ( 0,21) -> 0: DRC REJECT (drc_reject(w=50,s=0)) [0.6s]
+[2026-10-19 18:46:46] Sweep 1 [ 92/161] Cell (42,22) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.8s]
+[2026-10-19 18:48:31] Sweep 1 [ 93/161] Cell (41,22) -> 0: REJECT (J: 57.09% <= 57.80%) [104.3s]
+[2026-10-19 18:50:13] Sweep 1 [ 94/161] Cell (38,22) -> 0: REJECT (J: 56.15% <= 57.80%) [102.3s]
+[2026-10-19 18:50:13] Sweep 1 [ 95/161] Cell (37,22) -> 1: DRC REJECT (drc_reject(w=0,s=44)) [0.6s]
+[2026-10-19 18:51:56] Sweep 1 [ 96/161] Cell (32,22) -> 1: REJECT (J: 57.33% <= 57.80%) [102.7s]
+[2026-10-19 18:51:57] Sweep 1 [ 97/161] Cell (31,22) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.8s]
+[2026-10-19 18:51:58] Sweep 1 [ 98/161] Cell (11,22) -> 0: DRC REJECT (drc_reject(w=33,s=7)) [0.7s]
+[2026-10-19 18:53:44] Sweep 1 [ 99/161] Cell (10,22) -> 0: REJECT (J: 57.72% <= 57.80%) [106.1s]
+[2026-10-19 18:53:44] Sweep 1 [100/161] Cell ( 5,22) -> 1: DRC REJECT (drc_reject(w=0,s=71)) [0.6s]
+[2026-10-19 18:55:27] Sweep 1 [101/161] Cell (42,23) -> 0: REJECT (J: 55.59% <= 57.80%) [102.8s]
+[2026-10-19 18:55:28] Sweep 1 [102/161] Cell (38,23) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 18:57:11] Sweep 1 [103/161] Cell (37,23) -> 0: REJECT (J: 56.68% <= 57.80%) [102.8s]
+[2026-10-19 18:58:53] Sweep 1 [104/161] Cell (33,23) -> 0: REJECT (J: 56.35% <= 57.80%) [102.5s]
+[2026-10-19 19:00:36] Sweep 1 [105/161] Cell (32,23) -> 1: REJECT (J: 56.51% <= 57.80%) [102.4s]
+[2026-10-19 19:00:36] Sweep 1 [106/161] Cell (10,23) -> 1: DRC REJECT (drc_reject(w=0,s=34)) [0.6s]
+[2026-10-19 19:02:18] Sweep 1 [107/161] Cell (38,24) -> 0: REJECT (J: 56.51% <= 57.80%) [102.3s]
+[2026-10-19 19:04:01] Sweep 1 [108/161] Cell (37,24) -> 0: REJECT (J: 56.40% <= 57.80%) [102.3s]
+[2026-10-19 19:04:02] Sweep 1 [109/161] Cell (33,24) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 19:05:44] Sweep 1 [110/161] Cell (32,24) -> 0: ACCEPT (J: 57.80% -> 58.44%, +0.640%) [102.7s]
+[2026-10-19 19:05:45] Sweep 1 [111/161] Cell ( 4,24) -> 0: DRC REJECT (drc_reject(w=42,s=19)) [0.7s]
+[2026-10-19 19:05:46] Sweep 1 [112/161] Cell ( 3,24) -> 0: DRC REJECT (drc_reject(w=69,s=25)) [0.8s]
+[2026-10-19 19:05:46] Sweep 1 [113/161] Cell (33,25) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.8s]
+[2026-10-19 19:07:29] Sweep 1 [114/161] Cell (33,26) -> 0: ACCEPT (J: 58.44% -> 58.63%, +0.189%) [102.3s]
+[2026-10-19 19:07:29] Sweep 1 [115/161] Cell (28,27) -> 1: DRC REJECT (drc_reject(w=0,s=122)) [0.6s]
+[2026-10-19 19:07:30] Sweep 1 [116/161] Cell (27,27) -> 1: DRC REJECT (drc_reject(w=12,s=148)) [0.7s]
+[2026-10-19 19:07:31] Sweep 1 [117/161] Cell (28,28) -> 1: DRC REJECT (drc_reject(w=29,s=159)) [0.8s]
+[2026-10-19 19:07:32] Sweep 1 [118/161] Cell (14,30) -> 1: DRC REJECT (drc_reject(w=8,s=267)) [0.8s]
+[2026-10-19 19:09:14] Sweep 1 [119/161] Cell (16,31) -> 0: ACCEPT (J: 58.63% -> 58.66%, +0.028%) [102.1s]
+[2026-10-19 19:09:14] Sweep 1 [120/161] Cell (15,31) -> 1: DRC REJECT (drc_reject(w=25,s=79)) [0.8s]
+[2026-10-19 19:10:56] Sweep 1 [121/161] Cell (38,32) -> 0: ACCEPT (J: 58.66% -> 61.48%, +2.823%) [102.0s]
+[2026-10-19 19:12:39] Sweep 1 [122/161] Cell (16,32) -> 0: REJECT (J: 61.47% <= 61.48%) [102.2s]
+[2026-10-19 19:14:19] Sweep 1 [123/161] Cell (15,32) -> 0: REJECT (J: 61.49% <= 61.48%) [100.5s]
+[2026-10-19 19:14:20] Sweep 1 [124/161] Cell (14,32) -> 0: DRC REJECT (drc_reject(w=38,s=17)) [0.8s]
+[2026-10-19 19:16:02] Sweep 1 [125/161] Cell (38,33) -> 0: ACCEPT (J: 61.48% -> 63.54%, +2.060%) [102.5s]
+[2026-10-19 19:16:03] Sweep 1 [126/161] Cell (39,34) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 19:17:45] Sweep 1 [127/161] Cell (38,34) -> 0: ACCEPT (J: 63.54% -> 65.72%, +2.174%) [102.3s]
+[2026-10-19 19:17:46] Sweep 1 [128/161] Cell (39,35) -> 0: DRC REJECT (drc_reject(w=2,s=2)) [0.7s]
+[2026-10-19 19:19:29] Sweep 1 [129/161] Cell (38,35) -> 0: REJECT (J: 65.24% <= 65.72%) [102.3s]
+[2026-10-19 19:21:11] Sweep 1 [130/161] Cell (36,35) -> 0: REJECT (J: 65.28% <= 65.72%) [102.4s]
+[2026-10-19 19:22:53] Sweep 1 [131/161] Cell (35,35) -> 0: REJECT (J: 65.55% <= 65.72%) [102.5s]
+[2026-10-19 19:22:54] Sweep 1 [132/161] Cell (31,35) -> 1: DRC REJECT (drc_reject(w=10,s=158)) [0.8s]
+[2026-10-19 19:24:37] Sweep 1 [133/161] Cell (39,36) -> 0: REJECT (J: 65.13% <= 65.72%) [102.5s]
+[2026-10-19 19:26:19] Sweep 1 [134/161] Cell (36,36) -> 0: ACCEPT (J: 65.72% -> 67.04%, +1.324%) [102.6s]
+[2026-10-19 19:27:59] Sweep 1 [135/161] Cell (35,36) -> 0: REJECT (J: 64.34% <= 67.04%) [99.9s]
+[2026-10-19 19:28:01] Sweep 1 [136/161] Cell (31,36) -> 1: DRC REJECT (drc_reject(w=0,s=87)) [1.4s]
+[2026-10-19 19:29:43] Sweep 1 [137/161] Cell (39,37) -> 0: REJECT (J: 66.21% <= 67.04%) [102.4s]
+[2026-10-19 19:31:25] Sweep 1 [138/161] Cell (36,37) -> 0: REJECT (J: 66.86% <= 67.04%) [102.4s]
+[2026-10-19 19:31:27] Sweep 1 [139/161] Cell (31,37) -> 1: DRC REJECT (drc_reject(w=0,s=73)) [1.3s]
+[2026-10-19 19:33:05] Sweep 1 [140/161] Cell (36,38) -> 0: REJECT (J: 66.81% <= 67.04%) [98.1s]
+[2026-10-19 19:33:06] Sweep 1 [141/161] Cell (31,38) -> 1: DRC REJECT (drc_reject(w=0,s=108)) [1.2s]
+[2026-10-19 19:33:07] Sweep 1 [142/161] Cell (31,39) -> 1: DRC REJECT (drc_reject(w=1,s=93)) [1.3s]
+[2026-10-19 19:33:08] Sweep 1 [143/161] Cell (31,40) -> 1: DRC REJECT (drc_reject(w=0,s=23)) [0.9s]
+[2026-10-19 19:34:54] Sweep 1 [144/161] Cell (37,41) -> 0: REJECT (J: 66.78% <= 67.04%) [106.0s]
+Warning: In file G:\codex_project\inverse_design_sun\EGADO-4mode\scheme_b_dbs_inputs\fixed_background.gds:
+Warning: Record length larger than 0x8000 encountered: interpreting as unsigned (position=53526, record number=34, cell=TOP)
+[2026-10-19 19:39:37] Initialized SchemeBDBSOptimizer for 4-Mode Device
+[2026-10-19 19:39:37] Candidate cells: 161, Max sweeps: 3, Tol: 0.0001
+[2026-10-19 19:39:37] Resumed from state_sweep1_step134.npz: Sweep 1, Step 135/161, J = 67.04%, Total Flips = 28
+[2026-10-19 19:39:37] 
+=======================================================
+[2026-10-19 19:39:37] === Starting Sweep 1/3 (Current J = 67.04%) ===
+[2026-10-19 19:39:37] =======================================================
+Warning: In file G:\codex_project\inverse_design_sun\EGADO-4mode\scheme_b_dbs_inputs\fixed_background.gds:
+Warning: Record length larger than 0x8000 encountered: interpreting as unsigned (position=53526, record number=34, cell=TOP)
+[2026-10-19 19:44:11] Initialized SchemeBDBSOptimizer for 4-Mode Device
+[2026-10-19 19:44:11] Candidate cells: 161, Max sweeps: 3, Tol: 0.0001
+[2026-10-19 19:44:11] Resumed from state_sweep1_step134.npz: Sweep 1, Step 145/161, J = 67.04%, Total Flips = 28
+[2026-10-19 19:44:11] 
+=======================================================
+[2026-10-19 19:44:11] === Starting Sweep 1/3 (Current J = 67.04%) ===
+[2026-10-19 19:44:11] =======================================================
+[2026-10-19 19:45:55] Sweep 1 [145/161] Cell (37,42) -> 1: REJECT (J: 64.23% <= 67.04%) [104.8s]
+[2026-10-19 19:47:35] Sweep 1 [146/161] Cell (36,42) -> 0: ACCEPT (J: 67.04% -> 68.20%, +1.161%) [99.4s]
+[2026-10-19 19:49:17] Sweep 1 [147/161] Cell (37,43) -> 1: REJECT (J: 66.27% <= 68.20%) [102.0s]
+[2026-10-19 19:51:05] Sweep 1 [148/161] Cell (36,43) -> 0: ACCEPT (J: 68.20% -> 68.27%, +0.069%) [108.0s]
+[2026-10-19 19:52:51] Sweep 1 [149/161] Cell (37,44) -> 1: REJECT (J: 66.42% <= 68.27%) [106.3s]
+[2026-10-19 19:52:52] Sweep 1 [150/161] Cell (49,45) -> 0: DRC REJECT (drc_reject(w=20,s=0)) [1.0s]

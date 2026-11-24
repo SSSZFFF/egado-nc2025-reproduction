@@ -1,0 +1,88 @@
+{
+  "device": "Four-mode MDM Multiplexer (TE0 -> TE0, TE1, TE2, TE3)",
+  "paper_reference": "Nat. Commun. 16, 2372 (2025) Supplementary Note 3C / Fig. S10",
+  "design_region": {
+    "x_span_um": 6.0,
+    "y_span_um": 6.0,
+    "thickness_nm": 220.0,
+    "grid_pixels": "50 x 50 (120 nm x 120 nm)",
+    "initial_state": "All-Si initial pattern (Fig. S10(a))"
+  },
+  "inputs": [
+    {
+      "channel": 1,
+      "width_nm": 500,
+      "y_center_um": 2.25,
+      "injected_mode": "TE0"
+    },
+    {
+      "channel": 2,
+      "width_nm": 500,
+      "y_center_um": 0.75,
+      "injected_mode": "TE0"
+    },
+    {
+      "channel": 3,
+      "width_nm": 500,
+      "y_center_um": -0.75,
+      "injected_mode": "TE0"
+    },
+    {
+      "channel": 4,
+      "width_nm": 500,
+      "y_center_um": -2.25,
+      "injected_mode": "TE0"
+    }
+  ],
+  "input_spacing_edge_to_edge_um": 1.0,
+  "input_pitch_center_to_center_um": 1.5,
+  "output": {
+    "width_um": 1.8,
+    "y_center_um": 2.1,
+    "y_top_edge_um": 3.0,
+    "y_bottom_edge_um": 1.2,
+    "alignment": "Top-aligned with design area upper boundary",
+    "target_modes": [
+      {
+        "input_channel": 1,
+        "target_mode": "TE0"
+      },
+      {
+        "input_channel": 2,
+        "target_mode": "TE1"
+      },
+      {
+        "input_channel": 3,
+        "target_mode": "TE2"
+      },
+      {
+        "input_channel": 4,
+        "target_mode": "TE3"
+      }
+    ]
+  },
+  "simulation": {
+    "wavelength_center_nm": 1550.0,
+    "wavelength_span_nm": 40.0,
+    "core_material": "Si (Silicon) - Palik",
+    "cladding_material": "SiO2 (Glass) - Palik",
+    "mesh_size_nm": 20,
+    "fdtd_dimension": "3D",
+    "z_symmetry": "Symmetric (z min bc)",
+    "fdtd_span_um": [
+      7.0,
+      7.0,
+      2.0
+    ]
+  },
+  "generated_files": {
+    "master_fsp": "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\four_mode_TO_initial.fsp",
+    "layout_image": "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\four_mode_TO_layout.png",
+    "mode_fsp_files": [
+      "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\TO_base\\TE_mode_0_TO.fsp",
+      "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\TO_base\\TE_mode_1_TO.fsp",
+      "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\TO_base\\TE_mode_2_TO.fsp",
+      "F:\\codex_project\\inverse_design_sun\\EGADO-4mode\\TO_base\\TE_mode_3_TO.fsp"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "created_date": "2026-10-11",
+  "scope": "portable_geometry_and_DBS_instructions_no_optical_simulation",
+  "A_candidates": 238,
+  "A_initial_silicon_candidates": 147,
+  "A_initial_silicon_all_900": 709,
+  "B_candidates": 108,
+  "B_initial_silicon_candidates": 66,
+  "intersection": 106,
+  "A_only": 132,
+  "B_only": 2,
+  "B_geometry_sha256": "A5A35DFBEC69A76BF9E9BC883537E4F9E0BBF1CF8BEBFF2A7E482DA793B3CE65",
+  "checkpoint_sha256": "8591BCF9612DAE081D454161C435289E02D7DEED6FAFF793B8509FC600DFF36D",
+  "source_versions": {
+    "numpy": "2.4.4",
+    "klayout": "0.30.6",
+    "scikit_image": "0.23.2",
+    "scipy": "1.17.1",
+    "matplotlib": "3.9.0",
+    "splayout": "0.5.15"
+  },
+  "simulation_backend_included": false,
+  "legacy_reference_scripts_portable": false,
+  "simulation_template_included": true,
+  "simulation_template_executed_in_lumerical": false,
+  "common_external_silicon": "same B source geometry outside [-1.8,1.8]^2 for both schemes",
+  "A_initial_gds_sha256": "CBB5E561C5D2444CDD9D6740CFE6C403F228AAC0319B80F2F8C1E53365AF0B7D",
+  "A_initial_official_DRC": {
+    "rule_categories": 248,
+    "violation_count": 22,
+    "violation_counts": {
+      "WGF01": 4,
+      "WGF02": 12,
+      "WGF03": 4,
+      "WGF04": 2
+    },
+    "source_runset_sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797"
+  },
+  "A_initial_supplemental_120nm": {
+    "width": 4,
+    "space": 12,
+    "threshold_dbu": 1200,
+    "ignore_angle_deg": 85
+  },
+  "B_initial_gds_sha256": "A5A35DFBEC69A76BF9E9BC883537E4F9E0BBF1CF8BEBFF2A7E482DA793B3CE65",
+  "B_initial_official_DRC": {
+    "rule_categories": 248,
+    "violation_count": 0,
+    "violation_counts": {},
+    "source_runset_sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797"
+  },
+  "B_initial_supplemental_120nm": {
+    "width": 0,
+    "space": 0,
+    "threshold_dbu": 1200,
+    "ignore_angle_deg": 85
+  },
+  "guide_markdown": "两方案DBS_跨电脑操作指南.md",
+  "guide_html": "两方案DBS_操作指南.html",
+  "guide_sections": 14,
+  "packaging": "UTF8_paths_relative_inputs_embedded_guide_figure_no_original_PDK_or_FDTD_runtime",
+  "original_pdk_lydrc_included": false,
+  "generated_drc_runner_snapshots_included": true
+}

@@ -1,0 +1,11 @@
+{
+  "gds": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\A_D0_audit\\final.gds",
+  "gds_sha256": "DC8F3F41CF8B05CDDA95AEE52BF853EE6E09EF3574C1D6A3843FC24F1B16E206",
+  "dbu_um": 0.0001,
+  "threshold_nm": 120,
+  "threshold_dbu": 1200,
+  "ignore_angle_deg": 85,
+  "width": 12,
+  "space": 20,
+  "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+}

@@ -1,0 +1,11 @@
+{
+  "gds": "G:\\codex_project\\inverse_design_sun\\DBS_交接包_2026-10-11\\inputs\\B_curve_DRC120\\initial.gds",
+  "gds_sha256": "A5A35DFBEC69A76BF9E9BC883537E4F9E0BBF1CF8BEBFF2A7E482DA793B3CE65",
+  "dbu_um": 0.0001,
+  "threshold_nm": 120,
+  "threshold_dbu": 1200,
+  "ignore_angle_deg": 85,
+  "width": 0,
+  "space": 0,
+  "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+}

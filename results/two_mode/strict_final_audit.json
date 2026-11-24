@@ -1,0 +1,420 @@
+{
+  "audit": "read_only_strict_final_and_stage2",
+  "root": "G:\\codex_project\\inverse_design_sun",
+  "fdtd_or_new_drc_invoked": false,
+  "strict": {
+    "directory": "G:\\codex_project\\inverse_design_sun\\results\\B_curve_DRC120_strict",
+    "final_gds_sha256": "9D36B3007C14087D7B4B18A8759347C4156F31BD84A45D3506EF865895100148",
+    "drc_gds_sha256": "9D36B3007C14087D7B4B18A8759347C4156F31BD84A45D3506EF865895100148",
+    "drc_gds_hash_matches_local": true,
+    "drc_report_path_exists_from_current_workspace": false,
+    "drc_rule_categories": 248,
+    "drc_violation_count": 0,
+    "drc_status": "passed",
+    "drc_scope_note": "V0.9.0 KLayout common rules only; not all V0.9.1 handbook conditions or electrical/optical connectivity.",
+    "supplemental": {
+      "gds": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\B_curve_DRC120_strict\\final.gds",
+      "gds_sha256": "9D36B3007C14087D7B4B18A8759347C4156F31BD84A45D3506EF865895100148",
+      "dbu_um": 0.0001,
+      "threshold_nm": 120,
+      "threshold_dbu": 1200,
+      "ignore_angle_deg": 85,
+      "width": 0,
+      "space": 0,
+      "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+    },
+    "initial_optical": {
+      "saved_J": 0.8498172946522708,
+      "recomputed_J": 0.8498172946522708,
+      "J_abs_error": 0.0,
+      "shape": [
+        2,
+        2,
+        11
+      ],
+      "wavelength_nm": [
+        1570.0,
+        1565.9061277705343,
+        1561.8335500650194,
+        1557.7821011673152,
+        1553.7516170763258,
+        1549.741935483871,
+        1545.7528957528957,
+        1541.7843388960207,
+        1537.8361075544176,
+        1533.9080459770116,
+        1530.0000000000002
+      ],
+      "target_mean": {
+        "top_to_TE0": 0.9023038478363208,
+        "bottom_to_TE1": 0.797330741468221
+      },
+      "target_min": {
+        "top_to_TE0": 0.9005829608432993,
+        "bottom_to_TE1": 0.7845844536654412
+      },
+      "target_max": {
+        "top_to_TE0": 0.9069586496855238,
+        "bottom_to_TE1": 0.8073735462341453
+      },
+      "insertion_loss_db_from_mean": {
+        "top_to_TE0": 0.4464719059807414,
+        "bottom_to_TE1": 0.9836149115230131,
+        "mean_of_two_channel_dB": 0.7150434087518772
+      },
+      "crosstalk_ratio_db_from_means": {
+        "top_input_to_TE1": -15.191288823386929,
+        "bottom_input_to_TE0": -17.423204634341168
+      },
+      "crosstalk_worst_frequency_db": {
+        "top_input_to_TE1": -14.70467763725572,
+        "bottom_input_to_TE0": -16.627804873743784
+      },
+      "cross_mean": {
+        "top_input_to_TE1": 0.027303852369111727,
+        "bottom_input_to_TE0": 0.01443171837797037
+      }
+    },
+    "final_optical": {
+      "saved_J": 0.8864491685714293,
+      "recomputed_J": 0.8864491685714293,
+      "J_abs_error": 0.0,
+      "shape": [
+        2,
+        2,
+        11
+      ],
+      "wavelength_nm": [
+        1570.0,
+        1565.9061277705343,
+        1561.8335500650194,
+        1557.7821011673152,
+        1553.7516170763258,
+        1549.741935483871,
+        1545.7528957528957,
+        1541.7843388960207,
+        1537.8361075544176,
+        1533.9080459770116,
+        1530.0000000000002
+      ],
+      "target_mean": {
+        "top_to_TE0": 0.9152911879984216,
+        "bottom_to_TE1": 0.8576071491444371
+      },
+      "target_min": {
+        "top_to_TE0": 0.9077371303410271,
+        "bottom_to_TE1": 0.8309339407821408
+      },
+      "target_max": {
+        "top_to_TE0": 0.9227924357016988,
+        "bottom_to_TE1": 0.8734992571721215
+      },
+      "insertion_loss_db_from_mean": {
+        "top_to_TE0": 0.38440718804850976,
+        "bottom_to_TE1": 0.6671160729095287,
+        "mean_of_two_channel_dB": 0.5257616304790192
+      },
+      "crosstalk_ratio_db_from_means": {
+        "top_input_to_TE1": -17.435723609952614,
+        "bottom_input_to_TE0": -19.861997689140722
+      },
+      "crosstalk_worst_frequency_db": {
+        "top_input_to_TE1": -16.616406979542187,
+        "bottom_input_to_TE0": -19.512333424713532
+      },
+      "cross_mean": {
+        "top_input_to_TE1": 0.016519120462619972,
+        "bottom_input_to_TE0": 0.008852962483417236
+      }
+    },
+    "history": {
+      "rows": 432,
+      "accepted": 19,
+      "evaluated_after_drc": 229,
+      "drc_passed": 229,
+      "drc_pdk_failed": 44,
+      "drc_supplemental_failed": 159,
+      "reported_forward_solves_last": 424,
+      "reconstructed_accept_delta_min": 0.00010100000000001774,
+      "reconstructed_accept_delta_max": 0.013693999999999984,
+      "reconstructed_J_before_mismatch_count": 19,
+      "reconstructed_J_before_mismatches": [
+        {
+          "sweep": 1,
+          "step": 3,
+          "logged_J_before": 0.85033,
+          "reconstructed_J_before": 0.8498172946522708
+        },
+        {
+          "sweep": 1,
+          "step": 14,
+          "logged_J_before": 0.851491,
+          "reconstructed_J_before": 0.85033
+        },
+        {
+          "sweep": 1,
+          "step": 41,
+          "logged_J_before": 0.857661,
+          "reconstructed_J_before": 0.851491
+        },
+        {
+          "sweep": 1,
+          "step": 58,
+          "logged_J_before": 0.865942,
+          "reconstructed_J_before": 0.857661
+        },
+        {
+          "sweep": 1,
+          "step": 60,
+          "logged_J_before": 0.866087,
+          "reconstructed_J_before": 0.865942
+        },
+        {
+          "sweep": 1,
+          "step": 61,
+          "logged_J_before": 0.866615,
+          "reconstructed_J_before": 0.866087
+        },
+        {
+          "sweep": 1,
+          "step": 68,
+          "logged_J_before": 0.866984,
+          "reconstructed_J_before": 0.866615
+        },
+        {
+          "sweep": 1,
+          "step": 71,
+          "logged_J_before": 0.867085,
+          "reconstructed_J_before": 0.866984
+        },
+        {
+          "sweep": 1,
+          "step": 89,
+          "logged_J_before": 0.867302,
+          "reconstructed_J_before": 0.867085
+        },
+        {
+          "sweep": 1,
+          "step": 93,
+          "logged_J_before": 0.867485,
+          "reconstructed_J_before": 0.867302
+        },
+        {
+          "sweep": 1,
+          "step": 95,
+          "logged_J_before": 0.869317,
+          "reconstructed_J_before": 0.867485
+        },
+        {
+          "sweep": 1,
+          "step": 96,
+          "logged_J_before": 0.869841,
+          "reconstructed_J_before": 0.869317
+        },
+        {
+          "sweep": 2,
+          "step": 45,
+          "logged_J_before": 0.871311,
+          "reconstructed_J_before": 0.869841
+        },
+        {
+          "sweep": 2,
+          "step": 62,
+          "logged_J_before": 0.871467,
+          "reconstructed_J_before": 0.871311
+        },
+        {
+          "sweep": 2,
+          "step": 74,
+          "logged_J_before": 0.871667,
+          "reconstructed_J_before": 0.871467
+        },
+        {
+          "sweep": 2,
+          "step": 77,
+          "logged_J_before": 0.885361,
+          "reconstructed_J_before": 0.871667
+        },
+        {
+          "sweep": 2,
+          "step": 92,
+          "logged_J_before": 0.885658,
+          "reconstructed_J_before": 0.885361
+        },
+        {
+          "sweep": 2,
+          "step": 95,
+          "logged_J_before": 0.886254,
+          "reconstructed_J_before": 0.885658
+        },
+        {
+          "sweep": 3,
+          "step": 74,
+          "logged_J_before": 0.886449,
+          "reconstructed_J_before": 0.886254
+        }
+      ],
+      "max_evaluated_trial_minus_logged_before": 6.899999999998574e-05
+    },
+    "final_state_sha256": "06A61539E91CA26E82E80375DE655249F0D48EC0260E3148D02C902CD4C25DDB"
+  },
+  "stage2": {
+    "directory": "G:\\codex_project\\inverse_design_sun\\results\\B_curve_stage2_joint",
+    "final_gds_sha256": "8E82018C4317184D3FF92062E329C1B18E6D6E998FBACB9254B7E427A37DE6C7",
+    "drc_gds_sha256": "8E82018C4317184D3FF92062E329C1B18E6D6E998FBACB9254B7E427A37DE6C7",
+    "drc_gds_hash_matches_local": true,
+    "drc_report_path_exists_from_current_workspace": false,
+    "drc_rule_categories": 248,
+    "drc_violation_count": 0,
+    "drc_status": "passed",
+    "drc_scope_note": "V0.9.0 KLayout common rules only; not all V0.9.1 handbook conditions or electrical/optical connectivity.",
+    "supplemental": {
+      "gds": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\B_curve_stage2_joint\\final.gds",
+      "gds_sha256": "8E82018C4317184D3FF92062E329C1B18E6D6E998FBACB9254B7E427A37DE6C7",
+      "dbu_um": 0.0001,
+      "threshold_nm": 120,
+      "threshold_dbu": 1200,
+      "ignore_angle_deg": 85,
+      "width": 0,
+      "space": 0,
+      "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+    },
+    "initial_optical": {
+      "saved_J": 0.88644916857143,
+      "recomputed_J": 0.88644916857143,
+      "J_abs_error": 0.0,
+      "shape": [
+        2,
+        2,
+        11
+      ],
+      "wavelength_nm": [
+        1570.0,
+        1565.9061277705343,
+        1561.8335500650194,
+        1557.7821011673152,
+        1553.7516170763258,
+        1549.741935483871,
+        1545.7528957528957,
+        1541.7843388960207,
+        1537.8361075544176,
+        1533.9080459770116,
+        1530.0000000000002
+      ],
+      "target_mean": {
+        "top_to_TE0": 0.9152911879984219,
+        "bottom_to_TE1": 0.857607149144438
+      },
+      "target_min": {
+        "top_to_TE0": 0.9077371303410273,
+        "bottom_to_TE1": 0.8309339407821406
+      },
+      "target_max": {
+        "top_to_TE0": 0.9227924357016993,
+        "bottom_to_TE1": 0.8734992571721221
+      },
+      "insertion_loss_db_from_mean": {
+        "top_to_TE0": 0.38440718804850815,
+        "bottom_to_TE1": 0.6671160729095242,
+        "mean_of_two_channel_dB": 0.5257616304790163
+      },
+      "crosstalk_ratio_db_from_means": {
+        "top_input_to_TE1": -17.43572360995263,
+        "bottom_input_to_TE0": -19.861997689140722
+      },
+      "crosstalk_worst_frequency_db": {
+        "top_input_to_TE1": -16.616406979542194,
+        "bottom_input_to_TE0": -19.51233342471353
+      },
+      "cross_mean": {
+        "top_input_to_TE1": 0.016519120462619923,
+        "bottom_input_to_TE0": 0.008852962483417237
+      }
+    },
+    "final_optical": {
+      "saved_J": 0.88644916857143,
+      "recomputed_J": 0.88644916857143,
+      "J_abs_error": 0.0,
+      "shape": [
+        2,
+        2,
+        11
+      ],
+      "wavelength_nm": [
+        1570.0,
+        1565.9061277705343,
+        1561.8335500650194,
+        1557.7821011673152,
+        1553.7516170763258,
+        1549.741935483871,
+        1545.7528957528957,
+        1541.7843388960207,
+        1537.8361075544176,
+        1533.9080459770116,
+        1530.0000000000002
+      ],
+      "target_mean": {
+        "top_to_TE0": 0.9152911879984219,
+        "bottom_to_TE1": 0.857607149144438
+      },
+      "target_min": {
+        "top_to_TE0": 0.9077371303410273,
+        "bottom_to_TE1": 0.8309339407821406
+      },
+      "target_max": {
+        "top_to_TE0": 0.9227924357016993,
+        "bottom_to_TE1": 0.8734992571721221
+      },
+      "insertion_loss_db_from_mean": {
+        "top_to_TE0": 0.38440718804850815,
+        "bottom_to_TE1": 0.6671160729095242,
+        "mean_of_two_channel_dB": 0.5257616304790163
+      },
+      "crosstalk_ratio_db_from_means": {
+        "top_input_to_TE1": -17.43572360995263,
+        "bottom_input_to_TE0": -19.861997689140722
+      },
+      "crosstalk_worst_frequency_db": {
+        "top_input_to_TE1": -16.616406979542194,
+        "bottom_input_to_TE0": -19.51233342471353
+      },
+      "cross_mean": {
+        "top_input_to_TE1": 0.016519120462619923,
+        "bottom_input_to_TE0": 0.008852962483417237
+      }
+    },
+    "history": {
+      "rows": 119,
+      "accepted": 0,
+      "evaluated_after_drc": 49,
+      "drc_passed": 49,
+      "drc_pdk_failed": 10,
+      "drc_supplemental_failed": 60,
+      "reported_forward_solves_last": 100,
+      "reconstructed_accept_delta_min": null,
+      "reconstructed_accept_delta_max": null,
+      "reconstructed_J_before_mismatch_count": 0,
+      "reconstructed_J_before_mismatches": [],
+      "max_evaluated_trial_minus_logged_before": 8.099999999999774e-05
+    },
+    "final_state_sha256": "06A61539E91CA26E82E80375DE655249F0D48EC0260E3148D02C902CD4C25DDB"
+  },
+  "strict_stage2_state_equal": true,
+  "strict_stage2_T_max_abs_difference": 3.1086244689504383e-15,
+  "strict_stage2_state_diff_count": 0,
+  "checkpoint_consistency": {
+    "exists": true,
+    "metadata": {
+      "sweep": 1,
+      "next_step": 100,
+      "current_J": 0.886253549412136,
+      "total_flips": 18,
+      "forward_solves": 228,
+      "wall_time_s": 10118.447774648666
+    },
+    "state_path": "G:\\codex_project\\inverse_design_sun\\results\\B_curve_DRC120_strict\\checkpoints\\state_sweep2_step100.npz",
+    "state_path_exists": true,
+    "state_diff_count_vs_final": 1
+  },
+  "config_status": "offline_geometry_inputs_verified_no_FDTD_or_optical_DBS_has_been_run"
+}

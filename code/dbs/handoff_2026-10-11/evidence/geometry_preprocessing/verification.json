@@ -1,0 +1,62 @@
+{
+  "sp90_90nm": {
+    "initial_candidates": 69,
+    "final_cells": 79,
+    "silicon_cells": 55,
+    "oxide_cells": 24,
+    "retained_initial_candidates": 63,
+    "restored_initial_candidates": 6,
+    "added_interface_cells": 16,
+    "curve_region_retained_percent_of_design": 91.22222222222223,
+    "changed_area_percent_of_design_from_curve": 2.4357458333333333,
+    "official_sp90_categories": 248,
+    "official_sp90_violations": 0,
+    "supplemental_width_spacing_nm": 90,
+    "supplemental_width": 0,
+    "supplemental_space": 0,
+    "outside_active_difference_um2": 7e-08,
+    "selected_cells_homogeneous": true,
+    "cld_and_dev_unchanged": true,
+    "port_component_ids": {
+      "IN_TOP": 1,
+      "IN_BOTTOM": 1,
+      "OUT": 1
+    },
+    "all_three_ports_on_same_silicon_component": true,
+    "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\sp90_90nm_optimized.gds",
+    "gds_sha256": "45F63F7805E7D42FFE2BF95BC89229B6C21A7F3A2851582B27EF101E4390F79A",
+    "official_report": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\check_sp90_90nm_optimized\\result.lyrdb",
+    "rule_sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797",
+    "optical_simulations": 0
+  },
+  "target_120nm": {
+    "initial_candidates": 97,
+    "final_cells": 108,
+    "silicon_cells": 66,
+    "oxide_cells": 42,
+    "retained_initial_candidates": 84,
+    "restored_initial_candidates": 13,
+    "added_interface_cells": 24,
+    "curve_region_retained_percent_of_design": 88.0,
+    "changed_area_percent_of_design_from_curve": 3.384350694444444,
+    "official_sp90_categories": 248,
+    "official_sp90_violations": 0,
+    "supplemental_width_spacing_nm": 120,
+    "supplemental_width": 0,
+    "supplemental_space": 0,
+    "outside_active_difference_um2": 0.0,
+    "selected_cells_homogeneous": true,
+    "cld_and_dev_unchanged": true,
+    "port_component_ids": {
+      "IN_TOP": 1,
+      "IN_BOTTOM": 1,
+      "OUT": 1
+    },
+    "all_three_ports_on_same_silicon_component": true,
+    "gds": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\target_120nm_optimized.gds",
+    "gds_sha256": "A5A35DFBEC69A76BF9E9BC883537E4F9E0BBF1CF8BEBFF2A7E482DA793B3CE65",
+    "official_report": "G:\\codex_project\\inverse_design_sun\\analysis-review-20261011\\curve_then_grid_trial\\check_target_120nm_optimized\\result.lyrdb",
+    "rule_sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797",
+    "optical_simulations": 0
+  }
+}

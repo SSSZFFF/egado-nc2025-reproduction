@@ -1,0 +1,118 @@
+{
+  "protocol_id": "masked_DBS_B_strict_manufacturing_v1",
+  "input_checkpoint": "inputs/common/2mode_final.npz",
+  "input_checkpoint_sha256": "8591BCF9612DAE081D454161C435289E02D7DEED6FAFF793B8509FC600DFF36D",
+  "geometry": {
+    "design_x_um": 3.6,
+    "design_y_um": 3.6,
+    "grid_shape": [
+      30,
+      30
+    ],
+    "pitch_nm": 120,
+    "origin_um": [
+      -1.8,
+      -1.8
+    ],
+    "rows": "increasing_y",
+    "columns": "increasing_x",
+    "state_definition": "True_or_1_is_silicon",
+    "z_min_nm": -110,
+    "z_max_nm": 110,
+    "input_width_nm": 500,
+    "input_y_um": [
+      0.65,
+      -0.65
+    ],
+    "output_width_nm": 900,
+    "output_y_um": 1.35
+  },
+  "material": {
+    "model": "constant_real_index_frozen_from_TO",
+    "eps_silicon": 12.085214794079695,
+    "eps_oxide": 2.0851426458070788,
+    "n_silicon": 3.4763795526495227,
+    "n_oxide": 1.4440023011779028,
+    "dispersion": "disabled_for_primary_comparison"
+  },
+  "optical": {
+    "wavelength_min_nm": 1530,
+    "wavelength_max_nm": 1570,
+    "frequency_points": 11,
+    "sample_grid": "Lumerical_actual_frequency_vector_sorted_and_recorded",
+    "input_mode_numbers": [
+      1,
+      1
+    ],
+    "target_output_mode_numbers": [
+      1,
+      2
+    ],
+    "physical_mapping": [
+      "top_input_TE0_to_output_TE0",
+      "bottom_input_TE0_to_output_TE1"
+    ],
+    "objective": "mean_over_actual_11_samples_and_two_target_T_forward_spectra",
+    "objective_formula": "J = (mean(T_top_to_TE0) + mean(T_bottom_to_TE1)) / 2",
+    "design_mesh_nm": [
+      20,
+      20,
+      20
+    ],
+    "source_mesh_nm": [
+      20,
+      20,
+      20
+    ],
+    "output_monitor_mesh_nm": [
+      20,
+      20,
+      20
+    ],
+    "mesh_accuracy": 3,
+    "simulation_time_fs": 5000,
+    "auto_shutoff_min": 1e-05,
+    "force_symmetric_z_mesh": true,
+    "z_min_bc": "Symmetric",
+    "other_boundaries": "PML; verify in the generated FSP",
+    "fdtd_span_um": [
+      4.6,
+      4.6,
+      2.0
+    ],
+    "source_x_um": -2.1,
+    "output_monitor_x_um": 2.1
+  },
+  "dbs": {
+    "candidate_scope": "same_frozen_108_cells",
+    "scan_order": "column_by_column_top_to_bottom",
+    "max_sweeps": 4,
+    "min_initial_sweeps": 1,
+    "tie_policy": "keep_current_state",
+    "acceptance_tolerance_J": 0.0001,
+    "tolerance_status": "provisional; calibrate by repeatability before full run",
+    "early_stop": "no_accepted_flips_in_a_complete_sweep",
+    "seed": 20261011,
+    "state_evaluation": "evaluate_both_states; caching_allowed_with_full_geometry_and_solver_config_key",
+    "drc_policy": "strict_official_248_rules_plus_supplemental_120nm_width_space_before_optical_evaluation"
+  },
+  "schemes": {
+    "B": {
+      "folder": "inputs/B_curve_DRC120",
+      "candidate_count": 108,
+      "initialization": "geometry_optimized_hybrid_curve_plus_108_cells"
+    }
+  },
+  "official_drc": {
+    "version": "Wuyue_common_V0.9.0",
+    "expected_categories": 248,
+    "sha256": "DB18D3B7CD4FAB7D7CA42B4D1A8572E8F072306EE90F29758F61F3CB799AE797"
+  },
+  "supplemental_drc": {
+    "silicon_width_nm": 120,
+    "silicon_space_nm": 120,
+    "ignore_angle_deg": 85,
+    "note": "extra_width_space_checks_only_not_a_complete_120nm_foundry_deck"
+  },
+  "status": "offline_geometry_inputs_verified_no_FDTD_or_optical_DBS_has_been_run"
+}

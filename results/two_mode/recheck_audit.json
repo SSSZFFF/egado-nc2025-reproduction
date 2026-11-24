@@ -1,0 +1,274 @@
+{
+  "source": "G:\\codex_project\\inverse_design_sun\\optical_recheck_results",
+  "solver_runs_performed_by_this_audit": 0,
+  "target_J": 0.92,
+  "cases": {
+    "raw": {
+      "J": 0.9248399921070093,
+      "target_transmission": [
+        0.9504059983801035,
+        0.899273985833915
+      ],
+      "cross_transmission": [
+        0.018535534813111945,
+        0.01799285680716534
+      ],
+      "target_IL_db": [
+        0.22090831353666052,
+        0.46107969660255144
+      ],
+      "equivalent_IL_from_J_db": 0.33933398672826415,
+      "mean_channel_equivalent_IL_db": 0.340994005069606,
+      "input_normalized_cross_db": [
+        -17.31994878583298,
+        -17.448998762827348
+      ],
+      "target_normalized_cross_db": [
+        -17.09904047229632,
+        -16.987919066224794
+      ],
+      "two_monitored_modes_power_sum": [
+        0.9689415331932155,
+        0.9172668426410804
+      ],
+      "purity_within_only_two_monitored_modes": [
+        0.9808703268689218,
+        0.9803842720888519
+      ],
+      "target_min": [
+        0.9439140200257358,
+        0.886949811458424
+      ],
+      "target_max": [
+        0.9567058333320788,
+        0.9061457637719107
+      ],
+      "official_DRC_violations": 103,
+      "gds_sha256": "C04FDAB854C887F45E5BD3E1CBBC0072E8CE96B6F718CEB4EA22FCBE5549AE39",
+      "spectra_sha256": "A437D8D90FEDD99BB22EC30946C20A347F6D14D7559EDE5637F1A39507D2F51D",
+      "meets_target": true,
+      "recorded_evaluator_seconds": 166.78877909999574
+    },
+    "rollback": {
+      "J": 0.8417895577303994,
+      "target_transmission": [
+        0.9061555109441943,
+        0.7774236045166045
+      ],
+      "cross_transmission": [
+        0.02622768208313372,
+        0.014885769268959348
+      ],
+      "target_IL_db": [
+        0.42797263968507027,
+        1.0934227724259635
+      ],
+      "equivalent_IL_from_J_db": 0.7479646591063137,
+      "mean_channel_equivalent_IL_db": 0.7606977060555169,
+      "input_normalized_cross_db": [
+        -15.812400892413589,
+        -18.27228716903623
+      ],
+      "target_normalized_cross_db": [
+        -15.384428252728519,
+        -17.178864396610262
+      ],
+      "two_monitored_modes_power_sum": [
+        0.9323831930273281,
+        0.7923093737855639
+      ],
+      "purity_within_only_two_monitored_modes": [
+        0.9718702757843845,
+        0.9812121757466571
+      ],
+      "target_min": [
+        0.9051227628396066,
+        0.7646975678567122
+      ],
+      "target_max": [
+        0.9095758233084322,
+        0.7837435636401898
+      ],
+      "official_DRC_violations": 0,
+      "gds_sha256": "132A9F00ECB3E6C1631D7FF4E4EEA34A322175E53448AFE14AA1D48F7BDFD88D",
+      "spectra_sha256": "D4973C413067AE66165B0385D05EF16129448693CE37B16A7FA0CB67038AF655",
+      "meets_target": false,
+      "recorded_evaluator_seconds": 118.4713827999949,
+      "delta_J": -0.08305043437660986,
+      "delta_percentage_points": -8.305043437660986,
+      "relative_change_percent": -8.979978708252103,
+      "target_delta_percentage_points": [
+        -4.425048743590921,
+        -12.185038131731051
+      ],
+      "added_IL_db": [
+        0.20706432614840975,
+        0.6323430758234121
+      ]
+    },
+    "curve_healed": {
+      "J": 0.7513953476847601,
+      "target_transmission": [
+        0.8179531888159658,
+        0.6848375065535544
+      ],
+      "cross_transmission": [
+        0.01740827064129686,
+        0.007511943369092028
+      ],
+      "target_IL_db": [
+        0.8727155014364181,
+        1.6441246263699514
+      ],
+      "equivalent_IL_from_J_db": 1.2413149822803968,
+      "mean_channel_equivalent_IL_db": 1.2584200639031846,
+      "input_normalized_cross_db": [
+        -17.592443700800224,
+        -21.242476947812886
+      ],
+      "target_normalized_cross_db": [
+        -16.719728199363807,
+        -19.598352321442935
+      ],
+      "two_monitored_modes_power_sum": [
+        0.8353614594572627,
+        0.6923494499226464
+      ],
+      "purity_within_only_two_monitored_modes": [
+        0.9791607926793665,
+        0.9891500695639589
+      ],
+      "target_min": [
+        0.8098833926369184,
+        0.6712752561139809
+      ],
+      "target_max": [
+        0.8239591459261245,
+        0.7020126515693698
+      ],
+      "official_DRC_violations": 0,
+      "gds_sha256": "89EE22F7D347F5F9DFF8D86BEDF210480D022F24FE2917C14599B805FB3F79AE",
+      "spectra_sha256": "17598BFE088DFB29EEC393473574C171AF4ED03660DBF4394C961CE0855312C7",
+      "meets_target": false,
+      "recorded_evaluator_seconds": 156.340349399994,
+      "delta_J": -0.17344464442224916,
+      "delta_percentage_points": -17.344464442224915,
+      "relative_change_percent": -18.75401646798386,
+      "target_delta_percentage_points": [
+        -13.245280956413774,
+        -21.443647928036068
+      ],
+      "added_IL_db": [
+        0.6518071878997576,
+        1.1830449297674
+      ]
+    }
+  },
+  "logs": {
+    "raw_source1": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 8.75613e-06,
+      "iterations": 6855,
+      "physical_time_s": 2.613914e-13,
+      "engine_wall_seconds": 31.186832,
+      "engine_executable": "fdtd-engine.exe",
+      "device": "GPU",
+      "engine_threads": 14,
+      "engine_processes": 1,
+      "gpu_precision": "real32",
+      "system_error_codes": [
+        "10054"
+      ],
+      "system_error_after_success_line": true,
+      "log_sha256": "8C4602D52CBE5393DBD3F0D4B81B4AC1DAC1A42102EA9E95D70AB6C59DB630AD"
+    },
+    "raw_source2": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 9.9391e-06,
+      "iterations": 7562,
+      "physical_time_s": 2.883504e-13,
+      "engine_wall_seconds": 50.61819,
+      "engine_executable": "fdtd-engine-msmpi.exe",
+      "device": "CPU",
+      "engine_threads": 1,
+      "engine_processes": 14,
+      "gpu_precision": null,
+      "system_error_codes": [],
+      "system_error_after_success_line": false,
+      "log_sha256": "AE09753E5648E1C3AD80CC2E642326EC401408D99F577CACF9E0D0DD021450DC"
+    },
+    "rollback_source1": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 8.97252e-06,
+      "iterations": 7461,
+      "physical_time_s": 2.844991e-13,
+      "engine_wall_seconds": 15.766492,
+      "engine_executable": "fdtd-engine.exe",
+      "device": "GPU",
+      "engine_threads": 14,
+      "engine_processes": 1,
+      "gpu_precision": "real32",
+      "system_error_codes": [],
+      "system_error_after_success_line": false,
+      "log_sha256": "91D14CF0DF64E6B65729C749825389D490DF7ED246CB602AB788AA4B633B44AC"
+    },
+    "rollback_source2": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 8.9005e-06,
+      "iterations": 7966,
+      "physical_time_s": 3.037555e-13,
+      "engine_wall_seconds": 25.016876,
+      "engine_executable": "fdtd-engine.exe",
+      "device": "GPU",
+      "engine_threads": 14,
+      "engine_processes": 1,
+      "gpu_precision": "real32",
+      "system_error_codes": [],
+      "system_error_after_success_line": false,
+      "log_sha256": "D1B19526C13AEE30DA88A408866759824E477A5D3BB128BCA4EDEA14616E81F7"
+    },
+    "curve_healed_source1": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 8.63905e-06,
+      "iterations": 8572,
+      "physical_time_s": 3.268632e-13,
+      "engine_wall_seconds": 40.198326,
+      "engine_executable": "fdtd-engine.exe",
+      "device": "GPU",
+      "engine_threads": 14,
+      "engine_processes": 1,
+      "gpu_precision": "real32",
+      "system_error_codes": [],
+      "system_error_after_success_line": false,
+      "log_sha256": "B2C16E021C217DE7FD8A7A835FBBA0F478BEF4DFEA3046E62D83403E93A37FA5"
+    },
+    "curve_healed_source2": {
+      "success": true,
+      "autoshutoff_criterion_satisfied": true,
+      "last_auto_shutoff": 9.10103e-06,
+      "iterations": 9279,
+      "physical_time_s": 3.538222e-13,
+      "engine_wall_seconds": 39.025393,
+      "engine_executable": "fdtd-engine.exe",
+      "device": "GPU",
+      "engine_threads": 14,
+      "engine_processes": 1,
+      "gpu_precision": "real32",
+      "system_error_codes": [],
+      "system_error_after_success_line": false,
+      "log_sha256": "6E079215E11C29EB48F39203B1CBF81FBEAB0AB1175364A4D0AEB885E159AF91"
+    }
+  },
+  "historical_legal_initial_J": 0.8498172946522704,
+  "raw_difference_vs_historical": 4.2521773935266793e-07,
+  "engine_device_counts": {
+    "GPU": 5,
+    "CPU": 1
+  },
+  "validation": "passed; archived spectra, source results, input provenance and logged completion agree"
+}

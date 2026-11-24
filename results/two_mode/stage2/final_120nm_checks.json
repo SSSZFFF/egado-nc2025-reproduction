@@ -1,0 +1,11 @@
+{
+  "gds": "F:\\codex_project\\inverse_design_sun\\DBS_handoff_2026-10-11\\results\\B_curve_stage2_joint\\final.gds",
+  "gds_sha256": "8E82018C4317184D3FF92062E329C1B18E6D6E998FBACB9254B7E427A37DE6C7",
+  "dbu_um": 0.0001,
+  "threshold_nm": 120,
+  "threshold_dbu": 1200,
+  "ignore_angle_deg": 85,
+  "width": 0,
+  "space": 0,
+  "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+}

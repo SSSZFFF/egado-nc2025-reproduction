@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this reproduction archive, please cite the original paper and this repository."
+title: "EGADO (Nature Communications 2025) reproduction archive"
+abstract: "Independent reproduction and audit of Sun et al., Edge-guided inverse design of digital metamaterial-based mode multiplexers, Nature Communications 16, 2372 (2025)."
+version: "1.0.0"
+date-released: "2026-11-24"
+license: MIT
+references:
+  - type: article
+    title: "Edge-guided inverse design of digital metamaterial-based mode multiplexers for high-capacity multi-dimensional optical interconnect"
+    authors:
+      - family-names: Sun
+        given-names: A.
+      - family-names: Xing
+        given-names: S.
+      - family-names: Deng
+        given-names: X.
+    journal: Nature Communications
+    volume: 16
+    start: 2372
+    year: 2025
+    doi: "10.1038/s41467-025-57689-7"

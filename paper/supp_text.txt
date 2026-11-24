@@ -1,0 +1,1082 @@
+
+=== PAGE 1 ===
+ 
+ 
+Supplementary Information for 
+Edge-guided inverse design of digital metamaterial-
+based mode multiplexers for high-capacity multi-
+dimensional optical interconnect  
+Aolong Sun1,2,3,†, Sizhe Xing1,2,†, Xuyu Deng1,2,3, Ruoyu Shen1,3, An Yan1,2, Fangchen 
+Hu3, Yuqin Yuan1,2, Boyu Dong1,2, Junhao Zhao1,2, Ouhan Huang1,2, Ziwei Li1,2, 
+Jianyang Shi1,2, Yingjun Zhou1,2, Chao Shen1,2, Yiheng Zhao3, Bingzhou Hong3, Wei 
+Chu3,*, Junwen Zhang1,2,* Haiwen Cai3 &Nan Chi1,2,* 
+1School of Information Science and Technology, Fudan University, Shanghai, China 
+2Key Laboratory for Information Science of Electromagnetic Waves (MoE), Fudan University, Shanghai, China 
+3Zhangjiang Laboratory, Shanghai, China 
+†These authors contributed equally to this work. 
+*Corresponding authors: junwenzhang@fudan.edu.cn, chuwei@zjlab.ac.cn ,nanchi@fudan.edu.cn 
+  
+=== PAGE 2 ===
+ 
+ 
+Contents 
+Supplementary Note 1: An overview of the EG-ADO ...................................................................... 1 
+A. Topology optimization based on the adjoint method ........................................................ 1 
+B. Index mapping based on edge information ....................................................................... 3 
+C. Digital optimization based on the direct binary search method ........................................ 4 
+D. Performance evolution during the optimization process ................................................... 4 
+E. Estimation of optimization time consumption .................................................................. 5 
+Supplementary Note 2: Calculation of mode effective index ........................................................... 7 
+Supplementary Note 3: Supplementary simulation results for mode MUXs .................................... 8 
+A. Five-mode MUX ............................................................................................................... 8 
+B. Two-mode MUX ............................................................................................................. 11 
+C. Four-mode MUX ............................................................................................................. 13 
+D. Fabrication tolerance of the five-mode MUX ................................................................. 14 
+Supplementary Note 4: Conversion process of index patterns during the optimization ................. 17 
+Supplementary Note 5: Discussions on the conversion rate ........................................................... 19 
+Supplementary Note 6: Supplementary information for the on-chip interconnect experiments ..... 20 
+A. Chip packaging ............................................................................................................... 20 
+B. System frequency response ............................................................................................. 21 
+C. Detailed experiment set-up and DSP flow ...................................................................... 22 
+D. Operation methods for generating the WDM signal ....................................................... 23 
+E. Principle of PS-PAM signal generation ........................................................................... 24 
+F. NGMI performance of the multi-dimensional experiment .............................................. 26 
+G. Potential performance estimation of the ultra-high-capacity interconnect ...................... 27 
+Supplementary Note 7: Scalability validation ................................................................................. 29 
+Supplementary Note 8: Strategies for system scaling and flexibility ............................................. 32 
+A. Potential approach for higher integration in system ........................................................ 32 
+B. Flexibly routed MDM circuits ........................................................................................ 32 
+C. Polarization division multiplexing .................................................................................. 34 
+Supplementary Note 9: Equipment models ..................................................................................... 36 
+References ....................................................................................................................................... 37 
+ 
+ 
+=== PAGE 3 ===
+1 
+ 
+Supplementary Note 1: An overview of the EG-ADO 1 
+As inverse design continues to evolve within the field of photonics, numerous 2 
+methodologies have been developed and widely adopted. These inverse -designed 3 
+devices based on metamater ials can generally be categorized into analog and digital 4 
+metamaterials. Analog metamaterials can be optimized using gradient -based topology 5 
+optimization algorithms, with the adjoint method being the most prevalent 1. This 6 
+method calculates the optimization sensitivity of design parameters in the focused  7 
+region through two electromagnetic simulations, allowing efficient inverse design by 8 
+updating these parameters with a suitable optimizer. The two simulations include a 9 
+forward simulation using the incident source as excitation and an adjoint sim ulation 10 
+using reciprocal displacement current as excitation source 2. However, gradient-based 11 
+optimization often requires fine electromagnetic computation grids and results in 12 
+devices with irregular and extremely small features, posing significant challenges for 13 
+reliable fabrication tolerance. In contrast, digital metamaterials 3,4, with their larger 14 
+minimum feature sizes (>100 nm) and more regular geometries , offer enhanced  15 
+fabrication stability, makin g them well -suited for large -scale production through 16 
+commercial foundries.  Nonetheless, traditional optimization methods for digital 17 
+metamaterials are inefficient and time-intensive5.   18 
+The edge-guided analog-and-digital optimization (EG-ADO) method proposed in 19 
+this paper combines the efficiency of topology optimization with the fabrication 20 
+robustness of digital designs. It extracts edge information from analog patterns using 21 
+image edge detection techniques and uses this information to guide the transformation 22 
+from analog to digital patterns, achieving efficient and low -loss conversion. The EG -23 
+ADO method consists of three main stages , detailed step-by-step in this section. For a 24 
+detailed illustration of the pattern conversion process during optimization, please refer 25 
+to Supplementary Note 4. 26 
+A. Topology optimization based on the adjoint method 27 
+The first stage in the EG-ADO process involves using the adjoint method for gradient-28 
+based optimization of the permittivity distribution within the design region. The adjoint 29 
+method utilizes one forward and one backward electromagnetic simulation to calculate 30 
+the gradient of the objective function F, namely the figure of merit (FOM), with respect 31 
+to the design parameters.  In this context, the design parameters are the relative 32 
+permittivity values 𝜀𝜀𝑟𝑟(𝐱𝐱) at position 𝐱𝐱. In this study, we treat the design as a linear 33 
+electromagnetic system, where the state of the entire system during the forward 34 
+electromagnetic simulation is described by Maxwell's equations with free currents: 35 
+𝛻𝛻 × 𝛻𝛻 × 𝐄𝐄(𝐱𝐱) −
+𝜔𝜔02
+𝑐𝑐2 𝜀𝜀𝑟𝑟(𝐱𝐱)𝐄𝐄(𝐱𝐱) = −𝑖𝑖𝜔𝜔0𝜇𝜇0𝐉𝐉(𝐱𝐱)              (S1) 36 
+In this model, 𝐄𝐄(𝐱𝐱) represents the electric field distribution within the design region, 37 
+𝜔𝜔0 is the angular frequency of light, 𝑐𝑐 denotes the speed of light in vacuum, 𝜇𝜇0 is the 38 
+magnetic permeability in vacuum, and 𝐉𝐉(𝐱𝐱)  is the current source. We can further 39 
+express this model as: 40 
+𝐴𝐴(𝛆𝛆𝐫𝐫)𝐞𝐞 = 𝐛𝐛(𝛆𝛆𝐫𝐫)                           (S2) 41 
+In this equation, 𝐴𝐴 is a linear operator that characterizes the Maxwell equations and 42 
+=== PAGE 4 ===
+2 
+ 
+the distribution of relative permittivity,  𝐛𝐛  is a vector representing the light source, 1 
+while 𝛆𝛆𝐫𝐫 and 𝐞𝐞 are vectors that describe the distribution of relative permittivity and 2 
+the electric field within the design region, respectively. The derivative of this equation 3 
+with respect to 𝛆𝛆𝐫𝐫 yields: 4 
+𝐴𝐴(𝛆𝛆𝐫𝐫) 𝜕𝜕𝐞𝐞
+𝜕𝜕𝛆𝛆𝐫𝐫
+=
+𝜕𝜕𝐛𝐛(𝛆𝛆𝐫𝐫)
+𝜕𝜕𝛆𝛆𝐫𝐫
+−
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝛆𝛆𝐫𝐫
+𝐞𝐞                       (S3) 5 
+In the backward electromagnetic simulation, also known as the adjoint simulation, the 6 
+light source is placed at the location of the objective-function monitor from the forward 7 
+simulation. This repositioning allows for another round of electromagnetic computation, 8 
+where the resulting electric field distribution (the adjoint field) 𝐞𝐞𝐚𝐚𝐚𝐚𝐚𝐚 satisfies: 9 
+𝐴𝐴𝑇𝑇(𝛆𝛆𝐫𝐫)𝐞𝐞𝐚𝐚𝐚𝐚𝐚𝐚 = − �
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝐞𝐞�
+𝑇𝑇
+                       (S4) 10 
+Taking the transpose of both sides of the equation yields: 11 
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝐞𝐞 = −𝐞𝐞𝐚𝐚𝐚𝐚𝐚𝐚
+𝑇𝑇𝐴𝐴(𝛆𝛆𝐫𝐫)                         (S5) 12 
+To calculate the gradient of the objective function 𝐹𝐹  with respect to the design 13 
+parameters, we seek to determine: 14 
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝛆𝛆𝐫𝐫
+=
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝐞𝐞 ⋅
+𝜕𝜕𝐞𝐞
+𝜕𝜕𝛆𝛆𝐫𝐫
+                           (S6) 15 
+Substituting (S5) and (S3) into (S6) we can obtain: 16 
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝛆𝛆𝐫𝐫
+= −𝐞𝐞𝐚𝐚𝐚𝐚𝐚𝐚
+𝑇𝑇𝐴𝐴(𝛆𝛆𝐫𝐫) ⋅
+𝜕𝜕𝐞𝐞
+𝜕𝜕𝛆𝛆𝐫𝐫
+                      (S7)  17 
+= −𝐞𝐞𝐚𝐚𝐚𝐚𝐚𝐚
+𝑇𝑇 �
+𝜕𝜕𝐛𝐛(𝛆𝛆𝐫𝐫)
+𝜕𝜕𝛆𝛆𝐫𝐫
+−
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝛆𝛆𝐫𝐫
+𝐞𝐞�                    (S8) 18 
+We employ the commercial electromagnetic simulation software, ANSYS Lumerical 19 
+FDTD, to obtain the field distributions for both forward and adjoint simulations. This 20 
+allows us to calculate the gradient based on (S8), which is then optimized using the L-21 
+BFGS optimizer to finalize the design of the analog metamaterial. The simulation 22 
+employs a mesh size of 20×20× 44 nm³ ( x, y, z), with the x -y plane mesh refined 23 
+sufficiently to ensure accurate gradient information. We adopt a universal topology 24 
+optimization workflow that includes two key phases: grayscale optimization and 25 
+binarization. In the first phase, the permittivity values of pixels are allowed to vary 26 
+continuously between 𝜀𝜀𝑆𝑆𝑆𝑆 and 𝜀𝜀𝑆𝑆𝑆𝑆𝑂𝑂2. In the second phase, to avoid sharp angles and 27 
+isolated holes with small feature sizes that could hinder subsequent digital optimization, 28 
+a circular Heaviside filter with a radius twice the pixel side length of the digital 29 
+metamaterial is convolved with the permittivity p attern after each iteration  in the 30 
+binarization phase. The Heaviside filter can be expressed as: 31 
+𝜀𝜀𝑆𝑆 =
+𝜀𝜀𝑆𝑆𝑆𝑆+𝜀𝜀𝑆𝑆𝑆𝑆𝑂𝑂2
+2 +
+𝑡𝑡𝑡𝑡𝑡𝑡ℎ�𝛽𝛽�
+𝜀𝜀𝑆𝑆
+𝛥𝛥
+𝜀𝜀−
+𝜀𝜀𝑆𝑆𝑆𝑆+𝜀𝜀𝑆𝑆𝑆𝑆𝑂𝑂2
+2𝛥𝛥
+𝜀𝜀 ��
+2 𝑡𝑡𝑡𝑡𝑡𝑡ℎ�𝛽𝛽
+2�
+𝛥𝛥𝜀𝜀               (S9) 32 
+where 𝜀𝜀𝑆𝑆  represents the pixel permittivity, 𝛥𝛥 𝜀𝜀  i s the difference between 𝜀𝜀𝑆𝑆𝑆𝑆  and 33 
+𝜀𝜀𝑆𝑆𝑆𝑆𝑂𝑂2, and β is a hyperparameter that can be modified to increase the discreteness of the 34 
+analog pattern. We incrementally increase β to push the permittivity values toward their 35 
+=== PAGE 5 ===
+3 
+ 
+boundaries, in order to obtain the final binary distribution. The evolution process of the 1 
+permittivity profiles for the two -mode multiplexer (MUX) during the topology 2 
+optimization is shown in Fig. S1(a). Discussions regarding the filter model and fil ter 3 
+radius can be found in Reference6. 4 
+B. Index mapping based on edge information 5 
+ 6 
+Fig. S1 (a) Evolution of the permittivity distribution for the two-mode MUX during the topology optimization stage. 7 
+(b) Normalized permittivity distribution of a two -mode MUX after topology optimization. (c) Obtained edge map 8 
+after edge detection using the Canny algorithm. (d) Concept schematic of the max-pooling operation with D = 2. (e) 9 
+Obtained feature map and (f) decision map of the two-mode MUX.  10 
+Following the optimization of analog metamaterials  using the adjoint method, the 11 
+permittivity distribution within the design region, termed the analog pattern, is extracted 12 
+and processed using the Canny edge detection algorithm7. Given that the analog pattern 13 
+can be regarded as a single- channel grayscale image, the workflow  for Canny edge 14 
+detection in this wo rk includes smoothing with a Gaussian filter, directional gradient 15 
+calculation using the Sobel operator, non-maximum suppression, double thresholding, 16 
+and finally edge tracking by hysteresis. Fig. S1(b) displays the normalized permittivity 17 
+distribution of a two-mode MUX after topology optimization, and Fig. S1(c) shows the 18 
+edge map obtained using the Canny edge detector, where white pixels (value of 1) 19 
+indicate edges and black pixels (value of 0) indicate non-edge areas. 20 
+Due to the small pixel size of the analog pattern (20 nm×20 nm in this design) 21 
+relative to the significantly larger pixel size required for the target digital pattern (120  22 
+nm×120 nm in this design), a pooling operation is required to adjust the pixel 23 
+dimensions, as depicted in Fig. S1(d). Max pooling is employed, where the pooling 24 
+kernel is an all -one matrix. The scaling factor of pooling can be expressed as S AD = 25 
+PA/PD, where P A and PD are the pixel side length of the analog and digital patterns, 26 
+respectively. This process convolves the  final edge map with the pooling kernel to 27 
+
+=== PAGE 6 ===
+4 
+ 
+generate a feature map  (Fig. S1( e)). Subsequently, this feature map undergoes 1 
+binarization to form a decision matrix (Fig. S1(f)), with all non-zero elements assigned 2 
+a value of 1. According to Fig. S1(d), the value of pixel y11 in the feature map is set to 3 
+0 only if every pixel in the corresponding area ( x11-x77) in the edge map is non-edge. 4 
+The index mapping is then conducted based on the decision matrix. Direct mapping of 5 
+the index is only performed if the corresponding region in the analog pattern consists 6 
+entirely of non- edge pixels; otherwise, the pixel state is labeled  as TBD (i.e., “to be 7 
+determined”). 8 
+Additionally, to discuss the relationship between conversion efficiency and 9 
+optimization performance, we introduce a dilation coefficient D  which determines the 10 
+size of the pooling kernel as S AD+D. Increasing D raises the proportion of TBD pixels 11 
+and can be visually understood as thickening the boundaries (see Supplementary Note 12 
+4). When D is greater than 0, as illustrated in Fig. S1(d), the edge map is surrounded by 13 
+padding of width D/2. The stride of the pooling operation, set to the scaling factor SAD, 14 
+facilitates the conversion of the pixel size of the analog pattern to that required for the 15 
+digital pattern. 16 
+C. Digital optimization based on the direct binary search method 17 
+Following the index mapping based on the decision map, we obtain the converted 18 
+pattern of the device, which includes pixels directly mapped to Si and SiO 2, as well as 19 
+pixels where the material remains to be determined. Subsequently, we employ the direct 20 
+binary search (DBS) method to specifically determine the materials for TBD pixels. For 21 
+each TBD pixel, its index is alternately set to 𝑛𝑛𝑆𝑆𝑆𝑆 = 3.48 and 𝑛𝑛𝑆𝑆𝑆𝑆𝑂𝑂2 = 1.44 , and one 22 
+3D FDTD simulation is conducted for each setting to calculate the FOM. The material 23 
+that yields the better  FOM is then selected for that pixel. After a complete round of 24 
+iteration through all TBD pixels, the optimization concludes. The pixel traversal during 25 
+this optimization is conducted in a column-wise direction. The detailed workflow of the 26 
+DBS method can be found in Reference8. 27 
+D. Performance evolution during the optimization process 28 
+To better illustrate the optimization process, we present a graph showing the evolution 29 
+of device performance and fabrication difficulty during both the topology optimization 30 
+(TO) and digital optimization (DO) stages (see Fig. S 2), for the five -mode MUX. 31 
+Device performance is quantified by the insertion loss across five mode channels. Note 32 
+that the insertion loss here refers to the mean value calculated across 11 evenly spaced 33 
+wavelength points (ranging from 1530 to 1570 nm). Fabrication difficulty is represented 34 
+by the proportion of edge pixels, with a higher proportion indicating greater sensitivity 35 
+to fabrication variations. During the initial phase of the TO stage (i.e., grayscale 36 
+optimization), the d evice performance improves rapidly due to the efficiency of the 37 
+adjoint method, with insertion loss dropping to near zero. However, since no index 38 
+constraints are applied at this phase, the proportion of edge pixels increases sharply, 39 
+exceeding 60%. In the subsequent binarization phase of TO, the edge pixel proportion 40 
+is reduced to about 25%, and the device performance slightly degrades. Although this 41 
+binarization phase helps mitigate structure complexity, it is insufficient for ensuring 42 
+=== PAGE 7 ===
+5 
+ 
+robust fabrication. At this stage, the design still contains numerous edge pixels, and 1 
+features such as small gaps and sharp corners remain. The following edge -guided 2 
+analog-to-digital conversion and DO stages are aimed to transform the optimized 3 
+analog metamaterial into a digital metamaterial that is easier to fabricate. As shown in 4 
+the DO stage, the proportion of edge pixels progressively decreases to zero, while the 5 
+device insertion loss experiences a minor increase (by approximately 1.1 dB on 6 
+average). This stage focuses on balancing performance preservation with 7 
+manufacturability, enabling robust fabrication while maintaining low insertion loss. 8 
+ 9 
+Fig. S2 Evolution of device insertion loss and proportion of edge pixels. Insets are the permittivity distribution 10 
+of the design region of the five-mode MUX after various iterations.  11 
+E. Estimation of optimization time consumption 12 
+To estimate the optimization time consumption of the traditional DBS method and our 13 
+proposed EG-ADO method, we first measure the time required for a single run of 3D -14 
+FDTD simulations for the 5- mode and 6- mode MUXs individually on a desktop 15 
+computer. The specifications of the hardware and the  simulation settings are provided 16 
+in the Supplementary Table 1. The results show that for the 5- mode MUX, the 17 
+simulation time using CPU and GPU is 274 seconds and 68 seconds, respectively. For 18 
+the more complex 6 -mode MUX with a larger simulation domain, the time is 880 19 
+seconds and 90 seconds for CPU and GPU, respectively.  20 
+Based on these measurements, we use the fitted results from Fig. 2(e)  in the main 21 
+text to calculate the required number of days for designing the 5- mode and 6-mode 22 
+MUXs using the DBS algorithm on both CPU and GPU. Additionally, we calculate the 23 
+optimization time consumption when using the GPU with the novel EG-ADO algorithm. 24 
+The results are presented in Fig. S3. When utilizing the CPU with the DBS algorithm, 25 
+the optimization time consumptions for the two MUX designs are approximately 298 26 
+days and 1,767 days, respectively, which are highly impractical. With GPU acceleration, 27 
+the required time consumptions are reduced to 74 days and 180 days, respectively, 28 
+
+=== PAGE 8 ===
+6 
+ 
+which may also become unacceptable when considering parameter fine-tuning process, 1 
+trial-and-error iterations, and other practical considerations. In contrast, employing the 2 
+EG-ADO algorithm significantly reduces the time consumptions to just 12 days and 18 3 
+days for the two MUXs, respectively, thereby substantially shortening the optimization 4 
+cycle. 5 
+Supplementary Table 1 Specifications of the hardware and simulation settings 6 
+Parameter Value 
+CPU Intel i9-10850K @3.60GHz 
+GPU Nvidia GeForce RTX 4070 
+RAM size (GB) 64 
+Simulation solver Lumerical 3D-FDTD 
+Mesh size (nm
+3
+) 30 × 30 × 22 
+Simulation size for 5-mode MUX (μm
+3
+) 11 × 7 × 2 
+Simulation size for 6-mode MUX (μm
+3
+) 11 × 9 × 2 
+ 7 
+Fig. S3 Time consumption comparison for optimization of five -mode and six -mode MUXs using different 8 
+processors and inverse design algorithms. 9 
+  10 
+5
+6
+0 100 200 300 1700 1800
+Time Consumption (day)
+Mode Count
+ EG-ADO w/GPU
+ DBS w/GPU
+ DBS w/CPU
+=== PAGE 9 ===
+7 
+ 
+Supplementary Note 2: Calculation of mode effective index 1 
+To determine the appropriate widths for the input and output waveguides of the mode 2 
+MUXs, we use the FDE solver of ANSYS Lumerical MODE ( Fig. S4(a)) to calculate 3 
+the effective index of various orthogonal modes. We conduct two- dimensional 4 
+simulations, assuming the waveguide is infinitely long in the direction of light 5 
+propagation, and set the boundary conditions on all four sides to perfectly matched 6 
+layers (PMLs). The background index is set to 1.44. For the waveguide core, we set the 7 
+height to 220 nm and the material to silicon, and sweep the width from 300 nm to 3000 8 
+nm to determine the effective indices of different modes at various widths. Around the 9 
+waveguide, we use a small mesh size of 5×11 nm². The two-dimensional set-up exhibits 10 
+a fast computational speed, facilitating the implementation of a very fine mesh to obtain 11 
+accurate indices. Fig. S4(b) shows the evolution in the effective indices of the first six 12 
+TE modes at the wavelength of 1550 nm. As the width increases, high- order modes 13 
+gradually appear. We set the width of the single -mode waveguide at 500 nm, and the 14 
+widths for the  multimode waveguides in two-mode, four-mode, five-mode, and six-15 
+mode MUX s are sequentially set to 900 nm, 1800 nm, 2500 nm, and 3000 nm, 16 
+respectively, to accommodate the corresponding modes. Fig. S4(c) depicts the mode 17 
+profiles for TE0 to TE5 modes at a waveguide width of 3000 nm  as the wavelength is 18 
+set to 1550 nm. 19 
+ 20 
+Fig. S4 Mode effective index simulation. (a) Schematic of the simulation region in FDE solver. (b) Calculated 21 
+effective index for TE0-TE5 modes at different waveguide width at the wavelength of 1550 nm. (c) Simulated 22 
+mode profiles for TE0-TE5 modes at a waveguide width of 3000 nm. 23 
+  24 
+
+=== PAGE 10 ===
+8 
+ 
+Supplementary Note 3: Supplementary simulation results for mode 1 
+MUXs 2 
+A. Five-mode MUX 3 
+ 4 
+Fig. S5 Supplementary simulation results for the five-mode MUX. a-c Obtained converted patterns of the five -5 
+mode MUX optimized with (a) D = 0, (b) D = 2, and (c) D = 4, respectively. d-f Calculated conversion efficiency 6 
+of the five -mode MUX optimized with (d) D = 0, (e) D = 2, and  (f) D = 4, respectively. Shaded areas indicate 7 
+minimum and maximum values across all input channels, and solid lines indicate the average values. g S chematic 8 
+diagram of the five-mode MUX optimized with D = 4. h-l Simulated transmission spectra of the selected MUX when 9 
+the TE 0 mode is incident from CH1 to CH5 at the wavelength range of 1530 to 1570 nm. Insets include the 10 
+annotations of the input port. 11 
+The detailed design process and simulation results of the five-mode MUX are given in 12 
+this section. Three different dilation coefficients ( D = 0, 2, 4) are applied to conduct 13 
+
+=== PAGE 11 ===
+9 
+ 
+edge extraction and pooling convolution on the same analog pattern of a five -mode 1 
+MUX, resulting in the converted patterns displayed in Fig. S 5(a)-(c). The pixel 2 
+conversion rate ( C) during index mapping, defined as the ratio of pixels undergoing 3 
+direct index mapping to the total number of pixels , decreases linearly from 83.6% to 4 
+74.7% as D  increases. It can be observed that the grey region along the material 5 
+boundaries dilates with the increase of D. The variation in conversion efficiency 6 
+introduced by the change of D is illustrated through the transmission spectra shown in 7 
+Fig. S5(d)-(f). The results reveal that expanding the number of TBD pixels does not 8 
+obtain significant performance improvement. For data transmission purposes, we select 9 
+the MUX optimized at D = 4 as the final structure due to its superior channel uniformity. 10 
+Fig. S5(h)-(l) displays the simulated transmission spectra for each mode when TE 0 11 
+mode is input from CH1 to CH5, across the wavelength range of 1530- 1570 nm. The 12 
+insertion losses at 1550 nm for the five channels are 0.81 dB, 1.19 dB, 1.29 dB, 1.93 13 
+dB, and 1.43 dB, respectively. The crosstalk values are −22.67 dB, −23.83 dB, −20.61 14 
+dB, −18.79 dB, and −17.10 dB for the five channels, respectively, at the wavelength of 15 
+1550 nm. 16 
+To evaluate the mode conversion efficiency of the device more comprehensively, 17 
+we conduct additional numerical simulations focusing on its backward reflection and 18 
+scattering. The schematic of reflection and scattering is illustrated in Fig. S 6(a). The 19 
+simulation results for five input channels are shown in Fig. S 6(b)-(f). At 1550 nm, the 20 
+maximum backward reflection levels for the five channels of the five- mode MUX are 21 
+-17.1 dB, - 17.2 dB, - 21.3 dB, - 16.5 dB, and - 16.6 dB, respectively. Across the entire 22 
+1530-1570 nm wavelength range, the backward reflection levels for the five channels 23 
+are less than -15.8 dB, -16.0 dB, -17.3 dB, -15.1 dB, and -16.5 dB, respectively. These 24 
+values indicate minimal reflected power returning to the input waveguides. Moreover, 25 
+with the availability of on -chip passive isolators 9, the residual reflection can be 26 
+effectively mitigated, ensuring stable operation and preventing interference with the 27 
+light source. On the othe r hand, scattering appears to be relatively insensitive to 28 
+wavelength, with upward/downward scattering levels below - 16 dB for all mode 29 
+channels in the entire 40 nm range. To further investigate the impact of scattering on 30 
+the transmission direction of the  multimode waveguide, we examine the optical field 31 
+distribution at the interface between the MUX output port and the multimode 32 
+waveguide. Fig. S 7 depicts the simulated distribution of the normalized E -field 33 
+magnitude in logarithmic scale when TE0 is input from CH-1. The magnitude contour 34 
+of 0.01 closely adheres to the boundaries of the MUX and the multimode waveguide, 35 
+which proves that the optical field remains well- confined within the waveguide, with 36 
+minimal scattering or mode coupling throughout the propagation path. This observation 37 
+can be attributed to the placement of the figure of merit monitor during the inverse 38 
+design optimization, which is positioned very close to the MUX output port (0.3 μ m). 39 
+This proximity ensures that the optical field is already  highly purified into the target 40 
+eigenmodes as it exits the MUX. 41 
+=== PAGE 12 ===
+10 
+ 
+ 1 
+Fig. S 6 Simulation results of reflection and scattering analysis. a Schematic of the reflection and scattering 2 
+direction. b-f Transmission spectra of the reflected and scattered light when the source is input from CH1 -CH5, 3 
+respectively.  4 
+ 5 
+Fig. S7 Simulated distribution of the normalized E-field magnitude in logarithmic scale for CH-1 input. White 6 
+contour lines indicating magnitude levels of 0.1, 0.01, and 0.001 are added. The boundary of the five-mode MUX is 7 
+marked with black solid lines. 8 
+
+=== PAGE 13 ===
+11 
+ 
+B. Two-mode MUX 1 
+Using the EG-ADO method, we numerically design an extra two-mode MUX as a proof 2 
+of concept. The schematic of this two-mode MUX is depicted in Fig. S8. It features two 3 
+single-mode input waveguides with a width of 500 nm and a spacing of 1.3 μm, a square 4 
+design area of 3.6×3.6 μm², and a multimode output waveguide with a width of 900 nm. 5 
+The final optimized digital pattern with a dilation coefficient 𝐷𝐷  = 2 is shown in Fig. 6 
+S8(b). We also examin e how the performance of the two- mode MUX changes with 7 
+different values of the dilation coefficient D. The same analog pattern is digitized using 8 
+three dilation coefficients ( D = 0, 2, 4), and the transmission spectra within the 9 
+wavelength range of 1500-1600 nm for the resulting devices are  shown in Fig. S9(a)-10 
+(c). The performance of these devices is  remarkably similar, with the D  = 2 11 
+configuration showing slightly lower insertion loss than the other two cases. Fig. S9(d) 12 
+and (e) display the transmission spectra for the TE0 mode injecting from the upper and 13 
+lower ports, respectively. For both channels, the insertion loss at 1550 nm is less than 14 
+0.6 dB, and crosstalk remains below -22 dB across the entire 100 nm wavelength range. 15 
+ 16 
+Fig. S8 (a) Schematic of the two-mode MUX. (b) The final structure of the digital-metamaterial-based two-mode 17 
+MUX. The pixel size is 120×120 nm2. 18 
+
+=== PAGE 14 ===
+12 
+ 
+ 1 
+Fig. S 9 Device performance of the two -mode MUX. (a) -(c) Conversion efficiency of the two-mode MUXs 2 
+optimized with D = 0, D = 2, and D = 4. The solid line depicts the average value of  both modes, while the shadow 3 
+represents the lowest and highest ranges. (d)-(e) Simulated transmission spectra of the two-mode MUX. 4 
+  5 
+
+=== PAGE 15 ===
+13 
+ 
+C. Four-mode MUX 1 
+ 2 
+Fig. S10 (a) Initial structure of the four-mode MUX. Insets depict the ideal mode profiles for TE0-TE3 in the 3 
+output multimode waveguide. (b)-(d) Simulated conversion efficiency of the four-mode MUXs optimized with D 4 
+= 0, D = 2, and D = 4. The solid line depicts the average value of both modes, while the shadow represents the 5 
+lowest and highest ranges. Insets represent the converted pattern of each configuration. (e) The final structure of 6 
+the four-mode MUX optimized with D = 2. 7 
+In the main manuscript, we have presented experimental results for the four -mode 8 
+MUX, and here we display the corresponding numerical simulation results in Fig. S 10 9 
+and S11. Fig. S10(a) illustrates the initial structure of the four -mode MUX, with each 10 
+pixel of the initial pattern composed of Si. The device includes four single-mode input 11 
+waveguides, each 500 nm wide with a 1 μ m spacing, and a 1.8 μ m wide multimode 12 
+output waveguide. The design area of the device spans 6×6 μ m². We also explore the 13 
+performance of devices optimized with various dilation coefficients, as depicted in Fig. 14 
+S10(b)-(d), identifying the configuration with D = 2 as offering the best average 15 
+performance. Fig. S10(e) showcases the final digital pattern of this optimal four -mode 16 
+MUX. Fig. S11 provides the transmission spectra for the four channels, with the specific 17 
+input channels marked in each figure . At 1550 nm, this four -mode MUX achieves an 18 
+insertion loss below 1 dB for all modes, with crosstalk maintained under -17 dB across 19 
+the entire 100 nm wavelength range. 20 
+
+=== PAGE 16 ===
+14 
+ 
+ 1 
+Fig. S11 (a)-(d) Simulated transmission spectra of the selected four -mode MUX. Insets include the annotations of 2 
+the input port and schematics of the light propagation for each mode channel.   3 
+D. Fabrication tolerance of the five-mode MUX 4 
+We explore the performance variability of the designed five -mode MUX under 5 
+fabrication errors through numerical simulations. We considered two types of 6 
+fabrication errors: (1) variations in etching hole size and (2) changes in the waveguide 7 
+side-wall angle, as shown in Fig. S 12. Specifically, we examine changes in insertion 8 
+loss and crosstalk when the side lengths of etched square holes fluctuate within a ±20 9 
+nm range, as depicted in Fig. S13. It is observed that the insertion losses for each mode 10 
+remain relatively stable with pixel size variations from -20 nm to +10 nm . The loss 11 
+fluctuations remain within 1 dB for all five modes at 1550 nm, aligning with findings 12 
+from Reference4. The crosstalk of the five-mode MUX is more sensitive to changes in 13 
+pixel size because mismatches in the effective index significantly alter the profiles of 14 
+converted modes in the multimode output waveguide. Within a ±10 nm variation, 15 
+crosstalks for the five modes at 1550 nm still remain below -16 dB, -18 dB, -15 dB, -16 
+15 dB, and -16 dB, respectively. Even under substantial deviations of ±20 nm, the worst 17 
+crosstalk across the entire C band for this device still stays below -12 dB. According to 18 
+batch testing data from different wafers provided by a mainstream commercial 19 
+foundry10, the average waveguide width variation is approximately ±6.4 nm. Given this, 20 
+the fabrication tolerance of the designed five-mode MUX falls within acceptable limits 21 
+
+=== PAGE 17 ===
+15 
+ 
+for robust mass production. 1 
+ 2 
+Fig. S12 Schematic representation of two types of fabrication errors. a Variations in etching pixel size, where 3 
+the gray dashed box indicates the ideal pixel size. b The waveguide side-wall angle variations. The gray dashed box 4 
+represents the cross-section of the ideal waveguide with vertical side-walls. 5 
+ 6 
+Fig. S13 The simulated transmission spectra of the five-mode MUX under ±20 nm pixel  size variations. (a) 7 
+Simulated insertion losses and  (b)-(e) simulated mode-convert crosstalks for CH1 input. (g) Simulated insertion 8 
+losses and (f), (h)-(j) simulated mode-convert crosstalks for CH2 input. (m) Simulated insertion losses and (k)-(l), 9 
+(n)-(o) simulated mode-convert crosstalks for CH3 input. (s) Simulated insertion losses and (p)-(r), (t) simulated 10 
+mode-convert crosstalks for CH4 input. (y) Simulated insertion losses and (u)-(x) simulated mode-convert crosstalks 11 
+for CH5 input. 12 
+
+=== PAGE 18 ===
+16 
+ 
+Additionally, we perform simulations for the five-mode MUX to evaluate the impact of side-1 
+wall angle variations, specifically con sidering the ideal vertical case as well as non -ideal cases of 2 
+85° and 80°. To simulate practical fabrication conditions in commercial foundries, the ideal 3 
+rectangular waveguide is modified into a trapezoidal shape, with the middle width of the trapezoid 4 
+matching that of the ideal waveguide, as depicted in Fig. S 12(b). The transmission spectra of the 5 
+five-mode MUX under 10° side-wall angle variations are presented in Fig. S14. These results show 6 
+that the insertion loss slightly increases as the side-wall angle decreases from 90° to 80°; however, 7 
+the variation remains within 1 dB across the entire 1530–1570 nm wavelength range. Furthermore, 8 
+at a side-wall angle of 80°, the crosstalk values for the five modes at 1550 nm remain below -20 dB, 9 
+-16 dB, -16 dB, -25 dB, and -24 dB, respectively. Across the entire C-band, the crosstalk values for 10 
+the five modes remain below - 18 dB, - 15 dB, - 15 dB, -20 dB, and -23 dB, respectively. These 11 
+findings further validate the robustness of the device under realistic fabrication conditions. 12 
+ 13 
+Fig. S14 The simulated transmission spectra of the five-mode MUX under 10° side -wall angle variations. (a) 14 
+Simulated insertion losses and  (b)-(e) simulated mode-convert crosstalks for CH1 input. (g) Simulated insertion 15 
+losses and (f), (h)-(j) simulated mode-convert crosstalks for CH2 input. (m) Simulated insertion losses and (k)-(l), 16 
+(n)-(o) simulated mode-convert crosstalks for CH3 input. (s) Simulated insertion losses and (p)-(r), (t) simulated 17 
+mode-convert crosstalks for CH4 input. (y) Simulated insertion losses and (u)-(x) simulated mode-convert crosstalks 18 
+for CH5 input. 19 
+
+=== PAGE 19 ===
+17 
+ 
+Supplementary Note 4: Conversion process of index patterns during 1 
+the optimization 2 
+In this section, we present the evolution of index patterns during the EG -ADO 3 
+optimization process for two- mode (Fig. S15), four -mode (Fig. S16), and five -mode 4 
+MUXs (Fig. S17). We display the analog pattern, edge map, decision map, and final 5 
+converted pattern for each MUX. As the dilation coefficient D increases, the white areas 6 
+in the decision map (representing edge pixels) expand, and correspondingly, the number 7 
+of TBD pixel s in the converted pattern increases. This indicates that as D  increases, 8 
+pixels more distant from the original boundaries between Si and SiO 2 in the analog 9 
+pattern are less likely to convert directly and are instead designated as TBD. These 10 
+pixels require further confirmation through the DBS method in the third stage of EG-11 
+ADO. 12 
+ 13 
+Fig. S15 The evolution of index patterns for the two-mode MUXs. 14 
+
+=== PAGE 20 ===
+18 
+ 
+ 1 
+Fig. S16 The evolution of index patterns for the four-mode MUXs. 2 
+ 3 
+Fig. S17 The evolution of index patterns for the five-mode MUXs. 4 
+  5 
+
+=== PAGE 21 ===
+19 
+ 
+Supplementary Note 5: Discussions on the conversion rate 1 
+As detailed in Supplementary Note 4, the proportion of TBD pixels increases with the 2 
+dilation coefficient D. Fig. S18 explores the conversion rates of two-mode, four-mode, 3 
+and five -mode MUXs as D  changes, where the conversion rate is defined as the 4 
+proportion of pixels that directly undergo index mapping relative to the total pixel count. 5 
+For each MUX, the analog pattern remains the same, only the dilation coefficient D  is 6 
+varied. At D = 0, the direct conversion rates for the two -mode, four-mode, and five -7 
+mode MUXs are notably high at 71.22%, 76.52%, and 83.64% respectively, requiring 8 
+only a few  DBS iterations for digital optimization. The conversion rates for all three 9 
+MUXs show a linear decrease as D  increases. MUXs that support more modes 10 
+demonstrate higher conversion rates under identical dilation coefficients, as evidenced 11 
+across the configurations examined. The increased efficiency is attributed to a larger 12 
+device footprint, which inherently contains regions where optical power transmission 13 
+is minimal (as illustrated in Fig. S 11 insets). In these regions, reduced sensitivity of 14 
+optimization parameters leads to minimal modifications in the local index, resulting in 15 
+extensive areas comprised of non- edge pixels. Consequently, our EG-ADO method is 16 
+particularly advantageous for devices supporting high-order modes and proves effective 17 
+for designs with large footprints. This advantage is highlighted in Fig. 2(e) in the main 18 
+manuscript, where EG -ADO outperforms traditional digital optimization methods, 19 
+showing a significant reduction in computational complexity with an increasing number 20 
+of modes.  21 
+ 22 
+Fig. S18 The conversion rate at different dilation coefficients for two-mode, four-mode, and five-mode 23 
+MUXs 24 
+  25 
+
+=== PAGE 22 ===
+20 
+ 
+Supplementary Note 6: Supplementary information for the on-chip 1 
+interconnect experiments 2 
+A. Chip packaging 3 
+ 4 
+Fig. S1 9 Measured transmission spectra of the packaged five-mode MDM chip. The inset presents the 5 
+macroscopic image of the packaged chip. 6 
+To enhance stability of signal transmission experiments, we package the five -mode 7 
+MUX chip using two pairs of 8- channel vertical coupling fiber arrays, utilizing five 8 
+channels per array. The fiber arrays are aligned at an 8-degree angle, while the optimal 9 
+incident angle for the grating couplers is approximately 10.5 degrees . The angle 10 
+mismatch results in a red-shift of the center wavelength of the back-to-back MUX link 11 
+from the designed 1550 nm. Fig. S19 illustrates the transmission spectra for each mode 12 
+after packaging, where th e total loss per channel includes contributions from two 13 
+grating couplers, two MUXs, and a multimode bus waveguide. It can be observed that 14 
+the peak  wavelength shifts by approximately 15 nm. The total loss at the center 15 
+wavelength for all channels remains below 15 dB, indicating that the packaging does 16 
+not introduce additional loss. Notably, the  coupling loss introduced by the input and 17 
+output grating couplers is approximately 11 dB, accounting for a significant portion of 18 
+the total loss. Reducing the loss from the grating couplers 11–13 or adopting edge 19 
+couplers14–16 could significantly enhance the performance of high- speed signal 20 
+transmission by increasing the signal-to-noise ratio (SNR). The inset in Fig. S19 shows 21 
+a macroscopic image of the packaged chip. 22 
+  23 
+
+=== PAGE 23 ===
+21 
+ 
+B. System frequency response 1 
+During the single -λ transmission experiments, we measure the end -to-end frequency 2 
+response of the system, which includes components such as the digital -to-analog 3 
+convertor (DAC), Mach Zehnder modulator (MZM), photodiode (PD), analog- to-4 
+digital convertor (ADC), and high- speed cables. The system frequency response is 5 
+measured using Keysight IQtools by transmitting multi- tone signals across the 0-64 6 
+GHz range, distributed evenly across 200 frequency points 17. The normalized end-to-7 
+end channel response is shown in Fig. S20. This system has an approximate 10- dB 8 
+bandwidth of 57 GHz. 9 
+ 10 
+Fig. S20 Measured end-to-end system frequency response for the single-λ experiment. 11 
+  12 
+
+=== PAGE 24 ===
+22 
+ 
+C. Detailed experiment set-up and DSP flow 1 
+ 2 
+Fig. S21 Detailed experiment set -up and DSP flow . a Experimental setup for the  single-λ MDM transmission 3 
+experiment of the packaged five-mode chip. The insets (i) and (ii) display the measured optical spectra of the optical 4 
+signal after the MZM and before the PD, respectively. MZM, Mach-Zehnder modulator; AWG, arbitrary waveform 5 
+generator; EDFA, erbium-doped fiber amplifier; DL, delay line; PC, polarization controller; VOA, variable optical 6 
+attenuator; PD, photodiode; OSC, oscilloscope; DSP , digital signal processing. b Schematic of the experimental set-7 
+up for the  multi-dimensional transmission experiments. EA, electrical amplifier; ASE, amplified spontaneous 8 
+emission source; GF-ASE, gain-flattening ASE source; WSS, wavelength selective switch; FC, fiber coupler; OBPF, 9 
+optical band-pass filter. c DSP flow at the transmitter and receiver sides for both the single-λ and multi-dimensional 10 
+interconnect experiments. d Picture of the system set-up. 11 
+
+=== PAGE 25 ===
+23 
+ 
+The detailed experimental set -up schematics for single -λ and multi-dimensional 1 
+interconnect are presented in Fig. S 21(a)-(b). Both experiments share the same digital 2 
+signal processing (DSP) workflow, as illustrated in Fig. S21(c). At the transmitter side, 3 
+a pseudo-random binary sequence (PRBS) is first generated, which is then mapped into 4 
+pulse amplitude modulation (PAM)  symbols for the single -λ experiment and 5 
+probability-shaping PAM (PS-PAM) symbols for the multi-dimensional experiment. A 6 
+single-tap lookup table (LUT) is employed to pre-compensate for nonlinear distortions. 7 
+These symbols are then resampled and pulse -shaped using a root-raised cosine (RRC) 8 
+filter with a roll-off factor of 0.1. Linear pre-equalization is then performed to partially 9 
+compensate for bandwidth limitations before the signal is finally sent to the arbitrary 10 
+waveform generator (AWG).  11 
+At the receiver, signals captured by the oscilloscope are first resampled and passed 12 
+through a matched filter. Clock synchronization is conducted to ensure accurate data 13 
+acquisition and to recover the clock signal from the received signals. To compensate for 14 
+nonlinear effects in the signal, a third-order V olterra non-linear equalization (VNLE) is 15 
+employed. In the single -wavelength experiment, the VNLE uses tap counts of 151, 7, 16 
+and 7 for the three orders. For the mul ti-dimensional experiment, the tap counts are 17 
+adjusted to 201, 1, and 1, respectively, to tailor the response for each scenario. Finally, 18 
+the bit error rate (BER) and normalized generalized mutual information (NGMI) are 19 
+calculated to assess the quality of the received signal.  20 
+Additionally, the picture of the system setup is provided in Fig. S21(d).  21 
+D. Operation methods for generating the WDM signal 22 
+In the multi- dimensional experiment for WDM signal transmission, we generate a 23 
+composite signal encompassing all 88 channels, comprising the modulated optical 24 
+signals from three lasers and an ASE noise that fills the C-band. Fig. S22 illustrates the 25 
+process of generating the ASE channels. Initially, we obtain the optical spectrum (Fig. 26 
+S22(a)) generated by the  two cascaded EDFA s. To ensure uniform power across all 27 
+WDM channels, we extract the relevant spectral range (1531 -1565.8 nm) from the 28 
+initial spectrum. We then adjust the attenuation spectrum on the wavelength selective 29 
+switch (WSS) to achieve spectral flattening based on the power information. The 30 
+attenuation at the three signal channels is maximized (60 dB) to create spectral slots. 31 
+For the remaining ASE channels, we periodically adjust the attenuation to form a comb-32 
+like spectrum with 50 GHz frequency intervals. Fig. S22(c)-(e) displays the attenuation 33 
+spectra sent to the WSS when the central channel index of the excavated slots is set to 34 
+1, 44, and 88, respectively. 35 
+=== PAGE 26 ===
+24 
+ 
+ 1 
+Fig. S22 Operation methods for creating the ASE channels.  a-b The initial optical spectrum generated by the 2 
+cascaded EDFAs in the range of (a) 188 to 199 THz and (b) 191.55 to 191.6 THz. c-e The attenuation spectra sent 3 
+to the WSS when the central channel index is (c) 1, (d) 44, and (e) 88, respectively. 4 
+E. Principle of PS-PAM signal generation 5 
+PS technique has proven to be an efficient way to control source entropy 18,19. By 6 
+changing the constellation distribution towards a Maxwell -Boltzmann distribution, it 7 
+can flexibly adjust the entropy of the constellation to an arbitrary value. The probability 8 
+distribution of the generated PS-PAM-M symbols can be expressed as20: 9 
+𝑝𝑝𝑆𝑆 =
+𝑒𝑒𝑒𝑒𝑒𝑒(−𝑣𝑣⋅𝑦𝑦𝑆𝑆2)
+∑ 𝑒𝑒𝑒𝑒𝑒𝑒(−𝑣𝑣⋅𝑦𝑦𝑗𝑗2)𝑀𝑀
+𝑗𝑗=1
+                       (S10) 10 
+where yi is the modulation value of the i-th symbol, and v is the weight of PS. In PAM, 11 
+
+=== PAGE 27 ===
+25 
+ 
+the squared amplitude of each modulation symbol yi represents the concept of "energy," 1 
+and this energy is influenced by the parameter v. This results in a probability distribution 2 
+where the likelihood of selecting each signal level is exponentially inversely related to 3 
+its energy. When v > 0, signals with lower energy (i.e., lower squared amplitudes) have 4 
+a higher probability of occurrenc e, whereas higher energy signals are less likely, and 5 
+vice versa. This type of distribution is advantageous in communication systems that 6 
+require power control or need to adapt to channel conditions such as attenuation or noise 7 
+levels. By adjusting v, the average energy of the signal can be optimized, thus enhancing 8 
+overall system performance by reducing power consumption or improving reliability.  9 
+To demonstrate the impact of PS on PAM signals, we generate 1000 PS -PAM-8 10 
+symbols under various values of v . The histograms, as shown in Fig. S 23, indicate a 11 
+uniform distribution of symbols at v  = 0, which shifts towards more frequent 12 
+occurrences of lower energy symbols as v  increases. Fig. S 24 plots the relationship 13 
+between the entropy of the PS -PAM-8 signals and  v, illustrating how adjusting v can 14 
+flexibly control the entropy and, consequently, the efficiency of signal transmission. As 15 
+v increases further, the modulated signal progressively approximates the PAM-2 format. 16 
+ 17 
+Fig. S23 Histograms for 1000 PS-PAM-8 symbols generated with (a) v = 0, (b) v = 0.01, (c) v = 0.05, and (d) v 18 
+= 0.1, respectively. 19 
+
+=== PAGE 28 ===
+26 
+ 
+ 1 
+Fig. S24 Entropies of the transmitted PS-PAM-8 signal under different v. 2 
+F. NGMI performance of the multi-dimensional experiment 3 
+Here we provide the NGMI performance of the entire 440 channels in the multi -4 
+dimensional experiment, as shown in Fig. S 25. All channels achieve an NGMI above 5 
+the 0.8116 threshold, with 432 channels maintaining NGMI values exceeding 0.89. The 6 
+0.8116 NGMI threshold corresponds to an overall code rate of 0.7519 using the SD+HD 7 
+concatenated FEC code, as suggested in Reference21. 8 
+ 9 
+Fig. S25 NGMI performance of the multi-dimensional experiment across all 88 wavelength channels for five 10 
+modes. The evident fall of NGMI values at the last few channels is due to the high coupling loss introduced by the 11 
+grating couplers. 12 
+  13 
+
+=== PAGE 29 ===
+27 
+ 
+G. Potential performance estimation of the ultra-high-capacity interconnect 1 
+ 2 
+Fig. S26 Potential performance estimation. (a) Average on-chip loss of all five modes for the five -mode MDM 3 
+chip. (b) Relationship between the measured NDR and the on -chip loss. The red line indicates the linear fit of the 4 
+scatter plot. 5 
+In the MDM chip, grating couplers are employed to connect waveguides and fibers. 6 
+However, their wavelength sensitivity has obscured the performance of our designed 7 
+broadband five-mode MUX. During the experiment, we observed that the data rate of 8 
+each signal channel correlates positively with the device loss at its corresponding 9 
+wavelength. The measured net data rates (NDR) for  all channels are plotted as a 10 
+function of post-packaging on-chip loss in Fig. S26(b). According to Shannon's theorem, 11 
+the system capacity C in relation to the SNR is expressed as: 12 
+𝐶𝐶 = 𝐵𝐵 ⋅ 𝑙𝑙𝑙𝑙𝑙𝑙2(1 + 𝑆𝑆𝑆𝑆𝑆𝑆)                    (S 11) 13 
+where B is the system bandwidth. When the SNR is given in decibels (SNRdB), (S11) is 14 
+rewritten as: 15 
+𝐶𝐶 = 𝐵𝐵 ⋅ 𝑙𝑙𝑙𝑙𝑙𝑙2 �1 + 10
+𝑆𝑆𝑆𝑆𝑅𝑅𝑑𝑑𝑑𝑑
+10 �                  (S12) 16 
+In this experiment, the SNR i s much greater than 1, which leads to: 17 
+𝐶𝐶 ≈ 𝐵𝐵 ⋅ 𝑙𝑙𝑙𝑙𝑙𝑙2 �10
+𝑆𝑆𝑆𝑆𝑅𝑅𝑑𝑑𝑑𝑑
+10 �                    (S13)  18 
+=
+𝐵𝐵
+𝑙𝑙𝑙𝑙𝑙𝑙2 10 ⋅ 𝑆𝑆𝑆𝑆𝑆𝑆𝑑𝑑𝐵𝐵                       (S14) 19 
+Gi
+ven the relatively small nonlinear coefficients of silicon, we can adopt the  linear 20 
+relationship between the system capacity and SNR dB. Therefore, we perform a linear 21 
+regression of the measured net data rates (NDR) against losses, represented by the red 22 
+line in Fig. S26(d).  23 
+There are two primary approaches to augment system capacity: 24 
+1. Reducing insertion l oss: Utilizing edge couplers with lower loss and broader 25 
+bandwidth for chip-to-fiber connection can significantly improve performance. As 26 
+shown in Supplementary Table 2, state -of-the-art broadband edge couplers on the 27 
+SOI platform feature losses below 2 dB and offer substantial bandwidth advantages. 28 
+
+=== PAGE 30 ===
+28 
+ 
+2. Expanding spectral resources: Leveraging the flat transmission response of our 1 
+designed five-mode MUX, we propose expanding the spectral resources to include 2 
+the S+C+L bands (1500-1600 nm), covering a total bandwidth of 12.5 THz across 3 
+250 DWDM channels.  4 
+Fig. S26(a) displays the average losses for all five modes across this bandwidth, all 5 
+under 4 dB. This allows on- chip total loss to be reduced  to below 8 dB  with the 6 
+implementation of edge couplers, yielding an estimated rate of 174.4 Gb/s per channel 7 
+according to the  linear f it. Consequently, the supported capacity for on- chip optical 8 
+interconnects could reach 250 (wavelength channels) × 5 (mode channels) × 174 Gb/s 9 
+= 0.218 Pb/s, paving the way for next -generation optical on- chip data -center 10 
+interconnect (DCI)22 and the cutting-edge optical compute interconnect (OCI)23. 11 
+Supplementary Table 2 List of state-of-the-art broadband edge couplers on the SOI platform 12 
+Year Reference Loss (dB) Bandwidth (nm) 
+202114 1.81 120 
+202015 1.59 92 
+ 13 
+  14 
+=== PAGE 31 ===
+29 
+ 
+Supplementary Note 7: Scalability validation 1 
+The EG-ADO method introduced in this study is not limited to the inverse design of the 2 
+experimentally validated five -mode MUX. We have extended its application by 3 
+designing an ultra -compact six-mode MUX to verify the scalability of the algorithm.  4 
+This six-mode MUX requires only 1.57 times the number of simulations needed for the 5 
+inverse-design of the five -mode MUX. Fig. S27(a) and (b) illustrate the schematic of 6 
+the device, with a design region of 10×8 µm² and a 3 µm wide multimode output 7 
+waveguide to support the first six TE modes. The spacing between input waveguides is 8 
+set at 1 µm. The MFS  of 120 nm ensures compatibility with commercial foundry 9 
+processes. The transmission spectra of the six -mode MUX, shown in Fig. S 27(c)-(h), 10 
+indicate insertion losses of 0.88 dB, 1.24 dB, 1.75 dB, 1.81 dB, 1.73 dB, and 1.79 dB 11 
+for the six mode channels at 1550 nm, with crosstalks of - 19.6 dB, -19.16 dB, -20.46 12 
+dB, -17.26 dB, -17.52 dB, and -21.48 dB, respectively. Broadband optimization ensures 13 
+that the worst crosstalk across the entire C -band remains below - 15 dB, with notably 14 
+flat transmission spectra for all channels.  15 
+This six-mode MUX is fabricated using the same process as the four -mode and 16 
+five-mode MUXs. T he microscope image of the fabricated back -to-back six-mode 17 
+MDM circuit is shown in F ig. S28. This circuit includes six input ports (I 1-I6) and six 18 
+output ports (O 1-O6), which uses grating couplers for fiber -chip coupling. The 19 
+transmission spectra of the s ix-mode MDM circuit are measured and normalized by 20 
+subtracting the coupling losses, as shown in Fig. S29. At 1550 nm, the insertion losses 21 
+for the six channels of the back-to-back circuit are 2.7 dB, 2.8 dB, 2.5 dB, 4.4 dB, 2.0 22 
+dB, and 3.2 dB, respectively. The corresponding measured crosstalks at 1550 nm are 23 
+−18 dB, −17 dB, −18 dB, −17 dB, −16 dB, and −17 dB, respectively. Across the entire 24 
+C-band, the insertion losses for the six channels of the back-to-back circuit are less than 25 
+3.0 dB, 3.4 dB, 3.5 dB, 4.8 dB, 3.1 dB, and 4.0 dB, respectively. The corresponding 26 
+measured crosstalks across the C-band are less than −12 dB, −12 dB, −13 dB, −14 dB, 27 
+−13 dB, and −14 dB, respectively. Since the total link loss includes both a MUX and a 28 
+DEMUX, the insertion loss of a single six- mode MUX is approximated as half of the 29 
+measured loss of the back -to-back circuit , which is consistent with the simulation 30 
+results. This outcome highlights the potential of the EG -ADO method in advancing 31 
+complex, large-area, and high-performance photonic devices. 32 
+=== PAGE 32 ===
+30 
+ 
+ 1 
+Fig. S27 Structure and performance of the six -mode MUX. (a) Schematic and channel annotations of the six-2 
+mode MUX. (b) Final digital pattern of the six-mode MUX. (c)-(h) Simulated transmission spectra of the optimized 3 
+six-mode MUX. Insets depict the light propagation process for each mode channel. 4 
+ 5 
+
+=== PAGE 33 ===
+31 
+ 
+ 1 
+Fig. S2 8 Microscope image of the fabricated six -mode MDM circuit. This picture includes the bare fibers 2 
+currently used for fiber-chip coupling. 3 
+ 4 
+Fig. S29 (a)-(f) Measured transmission spectra of the six-mode circuit when the light is incident from I1 to I6. 5 
+6 
+
+=== PAGE 34 ===
+32 
+ 
+Supplementary Note 8: Strategies for system scaling and flexibility 1 
+A. Potential approach for higher integration in system 2 
+Leveraging existing solutions for  advanced photonic devices, we can achieve greater 3 
+integration level for CMOS -compatible multi- dimensional on- chip optical 4 
+interconnects. Recent demonstrations 24,25 show that signal transmission based on 5 
+integrated optical frequency combs incurs only minimal power penalties compared to 6 
+tunable lasers, making them a viable alternative to bulky laser systems. Reports on 7 
+integrated turn-key microcombs26 and electrically-driven mode-locked microcombs27 8 
+offer promising prospects in terms of operational stability and reconfigurability.  9 
+In addition to optical frequency combs, compact microring modulators (MRMs) 10 
+present another avenue for enhancing integration. The inherent wavelength- selective 11 
+properties of MRMs, derived from cavity r esonance, allow them to be cascaded to 12 
+generate wavelength -division multiplexing (WDM) signals. Both 300 Gb s -1 13 
+interconnects based on single MRM 28 and potential terabit -level signal modulation 14 
+using cascaded MRMs 29 have been successfully demonstrated. An energy- efficient 15 
+MRM30 capable of operating under 1V has also been proposed, allowing direct drive 16 
+by CMOS electronics.  17 
+The integration challenge is not limited to on -chip devic es but also extends to 18 
+efficient signal coupling and transmission across different system levels. Innovations 19 
+in low-loss, wide-bandwidth multimode chip-to-fiber couplers31 and multimode fibers32 20 
+have enabled flexible transmission of multi -dimensional signals across server racks in 21 
+datacenters. These advancements address critical interconnect needs at various 22 
+hierarchical levels, supporting efficient, high-capacity data transmission in large-scale 23 
+computing systems. 24 
+B. Flexibly routed MDM circuits 25 
+The proposed digital metamaterial- based mode MUXs can be seamlessly combined 26 
+with on- chip multimode signal processing/switching 33,34 and routing elements 35, to 27 
+further enhance functionality. However, flexible routing for multimode waveguides 28 
+necessitates the use of multimode bends. Conventional  multimode waveguide bends 29 
+require increasingly large bend radii (> 100 μm) as the number of modes increases and 30 
+the waveguide width expands, in order to mitigate mode crosstalk and radiation. This 31 
+limitation poses significant challenges to integration density and scalability.  32 
+To further assess the viability of multimode schemes, here we present an inversely 33 
+designed ultra-compact multimode waveguide bend (MWB) based on a quasi-uniform 34 
+B-spline curve. This 90° MWB supports the transmission of TE0 to TE4 modes, with an 35 
+equivalent radius of only 25 µm. The centerline path of the bend is controlled using the 36 
+quasi-uniform B -spline formulation, while the widths of nine key path points are 37 
+optimized through Particle Swarm Optimization (PSO), as shown in Fig. S30(a). 38 
+Numerical simulation results (see Fig. S30(b) -(f)) show that at 1550 nm, the insertion 39 
+losses for TE 0 to TE4 modes are 0.13 dB, 0.18 dB, 0.30 dB, 0.12 dB, and 0.20 dB, 40 
+respectively. The corresponding crosstalk values are -17.7 dB, -16.0 dB, -16.1 dB, -17.7 41 
+dB, and -22.6 dB at 1550 nm. The light field distributions for TE0 to TE4 modes inside 42 
+=== PAGE 35 ===
+33 
+ 
+the MWB are shown in Fig. S31(b)-(f). 1 
+ 2 
+Fig. S30 Design principle and results of the five-mode waveguide bend. a Schematic of the structure and control 3 
+points of the MWB. Green points are the key path points for controlling waveguide width, while the orange points 4 
+determine the curve shape of the MWB centerline. b-f Simulated transmission spectra of the MWB when the input 5 
+mode is set to TE0 to TE4, respectively. The mode indices 1-5 denote TE0-TE4, respectively. 6 
+To demonstrate the flexibility of on-chip multi-mode routing and (de)multiplexing, 7 
+we evaluate the light propagation process of a multi-mode photonic circuit comprising 8 
+a pair of the proposed five -mode MUX/DEMUX and two 90° MWBs. The light field 9 
+distribution for the transmission of high- order mode (TE 4) across the link (see Fig. 10 
+S31(g)) shows mi nimal radiation loss and inter -mode crosstalk in the MWB. These 11 
+results validate that our device and design methodology hold potential for integration 12 
+into more complex on- chip MDM systems, enabling flexible, scalable on -chip MDM 13 
+
+=== PAGE 36 ===
+34 
+ 
+link for future optical compute interconnect applications. 1 
+ 2 
+Fig. S31 Light propagation process. a 3D schematic of the MWB. b-f The light field distributions of the TE0, TE1, 3 
+TE2, TE3 and TE4 modes inside the bent waveguide at 1550 nm. g The light field distribution of the MDM photonic 4 
+circuit when the converted mode is TE4. 5 
+C. Polarization division multiplexing 6 
+Another approach to enhance system flexibility and increase multiplexing dimensions 7 
+is the introduction of polarization division multiplexing. As a proof of concept, we 8 
+conduct additional numerical simulations and design a dual -polarization five -mode 9 
+MUX using the EG-ADO method. This device (see Fig. S32) successfully converts both 10 
+input TM0 and TE0 modes from five different waveguides into TM0 and TE0-TE3 modes 11 
+in a single multimode waveguide. This MUX exhibits a small footprint of 8×6 μm², 12 
+with a minimum feature size of 120 nm. The input waveguide width is 500 nm and the 13 
+output multimode waveguide is set to 1800 nm wide for accommodate the 14 
+corresponding TE/TM modes. 15 
+ 16 
+Fig. S32 Device structure and mode conversion process of the inverse-designed dual -polarization five-mode 17 
+MUX. The pixel side length is 120 nm. 18 
+
+=== PAGE 37 ===
+35 
+ 
+The transmission spectra of this MUX over the 1530–1570 nm  wavelength range 1 
+are shown in Fig. S33, exhibiting exceptional flatness across all modes. Due to the 2 
+orthogonality of the electromagnetic field distributions, there is negligible crosstalk 3 
+between TE and TM modes. For the TM 0 input, the insertion loss at 1550 nm is 0.64 4 
+dB. For the four TE 0 input channels, the respective insertion losses are 1.46 dB, 1.86 5 
+dB, 1.38 dB, and 1.31 dB, with crosstalks of - 23.4 dB, -17.4 dB, -22.4 dB, and -18.8 6 
+dB, respectively. 7 
+ 8 
+Fig. S33 Device performance of the dual-polarization five-mode MUX. a-e Simulated transmission spectra when 9 
+the TM0/TE0 mode is incident from CH1 to CH5 at the wavelength range of 1530 to 1570 nm. Insets include the 10 
+light propagation processes and converted mode profiles at the output multimode waveguide for each mode channel. 11 
+  12 
+
+=== PAGE 38 ===
+36 
+ 
+Supplementary Note 9: Equipment models 1 
+The main equipment used in this paper along with their model types are listed in 2 
+Supplementary Table 3. 3 
+Supplementary Table 3 List of instruments and components used in the measurement and characterization setups 4 
+Equipment Model 
+Arbitrary Waveform Generator 
+Keysight M8199B 
+Keysight M8194A 
+Oscilloscope Keysight UXR0594BP 
+Optical Spectrum Analyzer Yokogawa AQ6370D 
+Photodiode Finisar XPDV4121R 
+Mach-Zehnder Modulator 
+NOEIC MZ135-LN60 
+Sumicem T.MXH 1.5-20PD-ADC-LV 
+Tunable Laser Keysight N7714A 
+Passive Optical Component Testing Platform EXFO CTP10 
+Frequency Sweep Laser EXFO T100S 
+Polarization Scrambler EPS1000 
+Erbium-Doped Fiber Amplifier 
+OVLINK EDFA-C-BA-GF-26-PM-B 
+OVLINK EYDFA-C-HP-BA-30-PM-B 
+Amonics AEDFA-23-B-FA 
+Wavelength Selective Switch Finisar Waveshaper 4000S 
+Optical Band-Pass Filter EXFO XTM-50-SCL-U 
+Variable Optical Attenuator OVLINK SVOA-1000 
+ 5 
+=== PAGE 39 ===
+37 
+ 
+References 
+1. Lalau-Keraly, C. M., Bhargava, S., Miller, O. D. & Yablonovitch, E. Adjoint shape optimization 
+applied to electromagnetic design. Opt. Express, OE 21, 21693–21701 (2013). 
+2. Meng, Y . et al. Optical meta-waveguides for integrated photonics and beyond. Light Sci Appl 10, 
+235 (2021). 
+3. Zhou, H. et al.  Dielectric Metasurfaces Enabled Ultradensely Integrated Multidimensional 
+Optical System. Laser & Photonics Reviews 16, 2100521 (2022). 
+4. Liu, Y . et al. Arbitrarily routed mode-division multiplexed photonic circuits for dense integration. 
+Nat Commun 10, 3263 (2019). 
+5. Sun, A. et al. Inverse design of an ultra -compact dual-band wavelength demultiplexing power 
+splitter with detailed analysis of hyperparameters. Opt. Express, OE 31, 25415–25437 (2023). 
+6. Bourdin, B. Filters in topology optimization. International Journal for Numerical Methods in 
+Engineering 50, 2143–2158 (2001). 
+7. Canny, J. A Computational Approach to Edge Detection. IEEE Transactions on Pattern Analysis 
+and Machine Intelligence PAMI-8, 679–698 (1986). 
+8. Shen, R. et al. Recent progress on inverse design for integrated photonic devices: methodology 
+and applications. JNP 18, 010901 (2024). 
+9. White, A. D. et al.  Integrated passive nonlinear optical isolators. Nat. Photon. 17, 143– 149 
+(2023). 
+10. Siew, S. Y . et al.  Review of Silicon Photonics Technology and Platform Development. J. 
+Lightwave Technol. 39, 4374–4389 (2021). 
+11. Benedikovic, D. et al. High‐efficiency single etch step apodized surface grating coupler using 
+subwavelength structure. Laser & Photonics Reviews 8, (2014). 
+12. Marchetti, R. et al. High-efficiency grating-couplers: demonstration of a new design strategy. Sci 
+Rep 7, 16670 (2017). 
+13. Yang, M. et al. High-performance grating couplers on 220-nm thick silicon by inverse design for 
+perfectly vertical coupling. Sci Rep 13, 18112 (2023). 
+14. He, A., Guo, X., Wang, T. & Su, Y . Ultracompact Fiber-to-Chip Metamaterial Edge Coupler. ACS 
+Photonics 8, 3226–3233 (2021). 
+15. He, A., Guo, X., Wang, K., Zhang, Y . & Su, Y . Low Loss, Large Bandwidth Fiber-Chip Edge 
+Couplers Based on Silicon- on-Insulator Platform. J. Lightwave Technol., JLT  38, 4780–4786 
+(2020). 
+16. Mu, X., Wu, S., Cheng, L. & Fu, H. Y . Edge Couplers in Silicon Photonic Integrated Circuits: A 
+Review. Applied Sciences 10, 1538 (2020). 
+17. Keysight. Keysight IQtools. Keysight https://www.keysight.com/us/en/lib/software-
+detail/computer-software/keysight-iqtools.html. 
+18. Xing, S. et al. Demonstration of flexible access in a rate -adaptive visible light communication 
+system with constellation probabilistic shaping. Opt. Express 29, 34441 (2021). 
+19. Xing, S. et al. Demonstration of PS-QAM Based Flexible Coherent PON in Burst -Mode With 
+300G Peak Rate and Ultra-Wide Dynamic Range. Journal of Lightwave Technology 41, 1230–
+1239 (2023). 
+20. Yan, A. et al. Net-432-Gb/s/λ PS-PAM transmission based on advanced DSP and single DAC for 
+400 G/λ IM/DD links. Opt. Lett. 49, 1656 (2024). 
+=== PAGE 40 ===
+38 
+ 
+21. Hu, Q. et al.  Ultrahigh-Net-Bitrate 363 Gbit/s PAM -8 and 279 Gbit/s Polybinary Optical 
+Transmission Using Plasmonic Mach-Zehnder Modulator. Journal of Lightwave Technology 40, 
+3338–3346 (2022). 
+22. Spyropoulou, M. et al. The future of multi -terabit datacenter interconnects based on tight c o-
+integration of photonics and electronics technologies. in Optical Fiber Communication 
+Conference (OFC) 2023 (2023), paper Tu3I.3 Tu3I.3 (Optica Publishing Group, 2023). 
+doi:10.1364/OFC.2023.Tu3I.3. 
+23. Intel Demonstrates First Fully Integrated Optical I/O Chiplet. Intel 
+https://www.intel.com/content/www/us/en/newsroom/news/intel-unveils-first-integrated-
+optical-io-chiplet.html. 
+24. Rizzo, A. et al. Massively scalable Kerr comb-driven silicon photonic link. Nat. Photon. 17, 781–
+790 (2023). 
+25. Shu, H. et al. Microcomb-driven silicon photonic systems. Nature 605, 457–463 (2022). 
+26. Shen, B. et al. Integrated turnkey soliton microcombs. Nature 582, 365–369 (2020). 
+27. Ling, J. et al. Electrically empowered microcomb laser. Nat Commun 15, 4192 (2024). 
+28. Hu, F. et al. 300-Gbps optical interconnection using neural -network based silicon microring 
+modulator. Commun Eng 2, 1–9 (2023). 
+29. Yuan, Y . et al. A 5 × 200 Gbps microring modulator silicon chip empowered by two-segment Z-
+shape junctions. Nat Commun 15, 918 (2024). 
+30. Hsu, W.-C. et al. Sub-volt high-speed silicon MOSCAP microring modulator driven by high-
+mobility conductive oxide. Nat Commun 15, 826 (2024). 
+31. Li, K., Cao, X. & Wang, J. Broadband and efficient multi -mode fiber-chip edge coupler on a 
+silicon platform assisted with a nano-slot waveguide. Opt. Express, OE 30, 47249–47263 (2022). 
+32. Lee, S.-Y ., Parot, V . J., Bouma, B. E. & Villiger, M. Efficient dispersion modeling in optical 
+multimode fiber. Light Sci Appl 12, 31 (2023). 
+33. Das, A., Zhang, G., Mojaver, H. R. & Liboiron-Ladouceur, O. Scalable Two-Mode 3-Port and 4-
+Port Mode Insensitive Silicon Photonic Switches. IEEE Photonics Technology Letters 33, 557–
+560 (2021). 
+34. Niu, J. et al.  Topology-optimized silicon -based dual -mode 4 × 4 electro -optic switch. 
+Nanophotonics 11, 4869–4878 (2022). 
+35. Wu, H. et al. Ultra-Sharp Multimode Waveguide Bends with Subwavelength Gratings. Laser & 
+Photonics Reviews 13, 1800119 (2019). 
+ 

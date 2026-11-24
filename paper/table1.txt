@@ -1,0 +1,17 @@
+Table 1Performance comparison of experimentally demonstrated mode MUXs on SOIYear/referenceMode countIL (dB)MFS (nm)CT (dB)Area (μm2)MDF (μm2)AlgorithmMethodData Rate
+201725 | 3 | 0.2 | 120 | −20 | 3.6 × 310 | 124 | ADC | Forward-designed | N.A. | 
+202124 | 4 | 1.8 | 125 | −15.5 | 4.2 × 49a | 12.86 | TWC | N.A. | 
+202323 | 5 | 3.4 | 100 | −15 | 12.3 × 60a | 29.52 | ADC | N.A. | 
+202322 | 5 | 3.8 | 100 | −20 | 18.3 × 32.6a | 23.86 | ADC | N.A. | 
+202139 | 2 | 0.9 | 90 | −15 | 2.4 × 3 | 1.8 | DBS | Inverse-designed | 25 Gb s−1 × 2b | 
+201840 | 2 | 1.0 | 90 | −24 | 2.4 × 3 | 1.8 | DBS | N.A. | 
+201646 | 2 | 1.2 | 32 | −12 | 2.6 × 4.22 | 2.74 | TO | N.A. | 
+202047 | 2 | 1 | 90 | −15.6 | 2.55 × 3.55 | 2.26 | TO | N.A. | 
+20199 | 3 | 1.0 | 120 | −20 | 3.4 × 3.9 | 1.47 | DBS | 112 Gb s−1 × 3b | 
+202235 | 4 | 1.48 | 90 | −13 | 4.8 × 4.8 | 1.44 | DBS | N.A. | 
+202038 | 4 | 1.5 | 130 | −19 | 5.4 × 6 | 2.02 | DBS | N.A. | 
+202145 | 4 | 1.4 | 120 | −15 | 6 × 6.8 | 2.55 | DBS | N.A. | 
+202226 | 4 | 0.5 to 3c | 80 | −13 to −18c | 6.5 × 6.5 | 2.64 | TO | 1.12 Tb s−1 | 
+This work | 4 | 1.24 | 120 | −18 | 6 × 6 | 2.25 | EG-ADO | N.A. | 
+This work | 5 | 1.97 | 120 | −20 | 6 × 10 | 2.4 | EG-ADO | 38.2 Tb s−1 | 
+IL insertion loss, MFS minimum feature size, CT crosstalk, MDF mode density factor, ADC adiabatic directional coupler, TWC triple-waveguide coupler, DBS direct binary search, TO topology optimization, N.A. not available. aActual footprint obtained from the SEM image. bTransmission experiments based on single-port operation. cNot given directly in the literature but can be observed from the figure.

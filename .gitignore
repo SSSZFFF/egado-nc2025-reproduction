@@ -1,0 +1,34 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Lumerical / large simulation artifacts
+*.fsp
+*.h5
+*.mat
+*.mph
+*.lms
+*.log
+*.lyrdb
+checkpoints/
+scratch/
+
+# Python environments
+.venv/
+venv/
+env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Keep selected result logs explicitly
+!results/two_mode/strict/dbs_run.log
+!results/two_mode/stage2/dbs_run.log
+!results/two_mode/A_D0/dbs_run.log
+!results/four_mode/dbs_run.log
+!code/four_mode/to_4mode_resume.log
