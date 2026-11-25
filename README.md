@@ -144,6 +144,7 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - 首组 2 模 ablation 结果：`runs/surrogate_2mode_ablation_v2/REPORT.md`（150 state evals = 300 solves；final J 0.860121；14 flips；详见 `surrogate_history.csv` 和 `summary.json`）。
 - 2 模真实伴随版 v3b：`runs/surrogate_2mode_ablation_v3b/REPORT.md`（99 state evals = 198 solves + 4 adjoint solves；final J 0.871012；14 flips；`has_true_adjoint=true`）。
 - 2 模伴随刷新版 v3c：`runs/surrogate_2mode_ablation_v3c/REPORT.md`（101 states = 202 solves + 7×4 adjoint solves；final J 0.872816；16 flips；`adjoint_refreshes=7`）。
+- 2 模纯伴随刷新对照组 v4a：`runs/surrogate_2mode_ablation_v4a_pure_adjoint/REPORT.md`（110 states = 220 solves + 22×4 adjoint solves；final J 0.861105；10 flips；`pure_adjoint=true`）。
 - 离散伴随提取器：`extract_discrete_adjoint.py`（2 模 4 solves / 4 模 8 solves；支持 `--cell auto` 自动识别 GDS top cell）。
 
 ---

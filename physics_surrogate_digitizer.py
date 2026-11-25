@@ -170,6 +170,25 @@ class PhysicsContext:
 
         return np.stack(channels, axis=0).astype(np.float32)
 
+    def extract_physics_features(self, silicon_state: np.ndarray, r: int, c: int) -> np.ndarray:
+        """6-dim rotation/translation-invariant physics features (avoids d >> n overfitting in Ridge)."""
+        rows, cols = silicon_state.shape
+        cur = 1.0 if bool(silicon_state[r, c]) else 0.0
+        delta_si = (1.0 - cur) - cur  # +1 (0->1) or -1 (1->0)
+        lin_prior = self.linear_prior(silicon_state, r, c)
+        center_e2 = float(np.mean(self.e2_map[:, r, c]))
+
+        r0, r1 = max(0, r - 1), min(rows, r + 2)
+        c0, c1 = max(0, c - 1), min(cols, c + 2)
+        nbr_grad = float(np.mean(self.grad_map[:, r0:r1, c0:c1]) * delta_si)
+        nbr_si_frac = float(np.mean(silicon_state[r0:r1, c0:c1]))
+        abs_prior = abs(lin_prior)
+
+        return np.array(
+            [lin_prior, center_e2, nbr_grad, nbr_si_frac, delta_si, abs_prior],
+            dtype=np.float32,
+        )
+
 
 # =============================================================================
 # 2. Acquisition Function (Gaussian Expected Improvement, pure NumPy)
@@ -232,13 +251,17 @@ class OnlinePhysicsSurrogate:
         ensemble_size: int = 5,
         lr: float = 3e-3,
         weight_decay: float = 1e-3,
-        ridge_lambda: float = 5.0,
+        ridge_lambda: float = 2.0,
+        min_samples: int = 8,
+        pure_adjoint: bool = False,
         device: Optional[str] = None,
         seed: int = 42,
     ):
         self.in_channels = in_channels
         self.ensemble_size = ensemble_size
         self.ridge_lambda = ridge_lambda
+        self.min_samples = min_samples
+        self.pure_adjoint = pure_adjoint
         self.rng = np.random.default_rng(seed)
         self.patches: list[np.ndarray] = []
         self.priors: list[float] = []
@@ -282,7 +305,7 @@ class OnlinePhysicsSurrogate:
 
     def fit_online(self, steps: int = 20, batch_size: int = 32) -> float:
         n = len(self.targets)
-        if n < 4:
+        if self.pure_adjoint or n < self.min_samples:
             return 0.0
 
         X = np.stack(self.patches, axis=0)
@@ -314,8 +337,9 @@ class OnlinePhysicsSurrogate:
         feats = np.concatenate([X.reshape(n, -1), P[:, None], np.ones((n, 1), dtype=np.float32)], axis=1)
         d = feats.shape[1]
         reg = self.ridge_lambda * np.eye(d, dtype=np.float32)
-        reg[-2, -2] = 0.1   # Keep linear physics prior lightly regularized
-        reg[-1, -1] = 0.0   # Unregularized bias
+        reg[0, 0] = 0.05   # 6D feature lin_prior
+        reg[-2, -2] = 0.05 # independent prior column
+        reg[-1, -1] = 0.0  # bias
         for m_idx in range(self.ensemble_size):
             idx = self.rng.integers(0, n, size=n)
             Xm, ym = feats[idx], y[idx]
@@ -325,8 +349,8 @@ class OnlinePhysicsSurrogate:
     def predict(self, patches: Sequence[np.ndarray], priors: Sequence[float]) -> tuple[np.ndarray, np.ndarray]:
         m = len(patches)
         P = np.asarray(priors, dtype=np.float32)
-        if len(self.targets) < 4:
-            return 0.01 * P, np.full(m, 0.002, dtype=np.float32)
+        if self.pure_adjoint or len(self.targets) < self.min_samples:
+            return 0.01 * P, np.full(m, 1e-4, dtype=np.float32)
 
         X = np.stack(patches, axis=0)
         if self.use_torch:
@@ -361,6 +385,8 @@ class SurrogateGuidedDigitizer:
         candidate_mask: Optional[np.ndarray] = None,
         verify_drc_fn: Optional[Callable[[np.ndarray], bool]] = None,
         on_accept_fn: Optional[Callable[[np.ndarray, float, int], None]] = None,
+        pure_adjoint: bool = False,
+        compact_features: Optional[bool] = None,
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
         refresh_every_flips: int = 5,
         refresh_no_improve_rounds: int = 4,
@@ -385,6 +411,10 @@ class SurrogateGuidedDigitizer:
         self.verify_drc_fn = verify_drc_fn  # Optional Tier-2 full 248-rule PDK DRC
         self.eval_fn = eval_fn
         self.on_accept_fn = on_accept_fn
+        self.pure_adjoint = pure_adjoint
+        # No PyTorch => use the 6D compact physics features. With PyTorch
+        # the CNN path can continue to use the 7x7 multichannel patch.
+        self.compact_features = (not HAS_TORCH) if compact_features is None else compact_features
         self.refresh_physics_fn = refresh_physics_fn
         self.refresh_every_flips = refresh_every_flips
         self.refresh_no_improve_rounds = refresh_no_improve_rounds
@@ -410,7 +440,11 @@ class SurrogateGuidedDigitizer:
         self.patience_rounds = patience_rounds
 
         sample_patch = self.ctx.extract_patch(self.state, 0, 0, patch_size=self.patch_size)
-        self.surrogate = OnlinePhysicsSurrogate(in_channels=sample_patch.shape[0], seed=seed)
+        self.surrogate = OnlinePhysicsSurrogate(
+            in_channels=6 if self.compact_features else sample_patch.shape[0],
+            pure_adjoint=pure_adjoint,
+            seed=seed,
+        )
 
         self.eval_cache: dict[bytes, float] = {}
         self.tabu_coords: set[tuple[int, int]] = set()
@@ -441,12 +475,15 @@ class SurrogateGuidedDigitizer:
             self.tabu_coords.discard(coord)
 
     def _score_candidates(self, mean_dj: np.ndarray, std_dj: np.ndarray, priors: Optional[Sequence[float]] = None) -> np.ndarray:
+        prior_arr = np.asarray(priors, dtype=np.float32) if priors is not None else np.zeros(len(mean_dj), dtype=np.float32)
+        if self.pure_adjoint:
+            return prior_arr
         if self.acquisition == "ei":
             scores = expected_improvement(mean_dj, std_dj, threshold=self.ei_threshold)
             # Tie-breaker: when EI collapses to 0, still prefer the direction
             # indicated by the fresh first-order adjoint prior instead of array order.
             if priors is not None:
-                scores = scores + 1e-6 * np.asarray(priors, dtype=np.float32)
+                scores = scores + 1e-6 * prior_arr
             return scores
         return mean_dj + self.ucb_kappa * std_dj
 
@@ -518,7 +555,12 @@ class SurrogateGuidedDigitizer:
                 if not self.check_drc_fn(trial):
                     continue
                 legal_coords.append((r, c))
-                legal_patches.append(self.ctx.extract_patch(self.state, r, c, self.patch_size))
+                feat = (
+                    self.ctx.extract_physics_features(self.state, r, c)
+                    if self.compact_features
+                    else self.ctx.extract_patch(self.state, r, c, self.patch_size)
+                )
+                legal_patches.append(feat)
                 legal_priors.append(self.ctx.linear_prior(self.state, r, c))
 
             if not legal_coords:
@@ -659,6 +701,8 @@ class SurrogateGuidedDigitizer:
             "fdtd_evals": self.fdtd_evals,
             "hit_rate": self.total_flips / max(1, self.fdtd_evals - 1),
             "acquisition": self.acquisition,
+            "pure_adjoint": self.pure_adjoint,
+            "compact_features": self.compact_features,
             "has_true_adjoint": self.ctx.has_true_adjoint,
             "adjoint_refreshes": self.adjoint_refreshes,
             "refresh_errors": self.refresh_errors,

@@ -249,7 +249,9 @@ def run_2mode(args: argparse.Namespace) -> None:
         candidate_mask=mask,
         on_accept_fn=on_accept_2mode,
         verify_drc_fn=verify_drc_2mode,
-        refresh_physics_fn=refresh_physics_2mode,
+        pure_adjoint=args.pure_adjoint,
+        compact_features=None,
+        refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
         refresh_every_flips=args.refresh_every_flips,
         refresh_no_improve_rounds=args.refresh_no_improve_rounds,
         top_k=args.top_k,
@@ -329,6 +331,8 @@ def run_4mode(args: argparse.Namespace) -> None:
         out_dir=out_dir,
         candidate_mask=mask,
         on_accept_fn=on_accept_4mode,
+        pure_adjoint=args.pure_adjoint,
+        compact_features=None,
         top_k=args.top_k,
         acquisition=args.acquisition,
         ei_threshold=args.ei_threshold,
@@ -350,13 +354,15 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--ablation-mask", action="store_true", help="Restrict search to existing candidate_mask")
     p.add_argument("--top-k", type=int, default=4, help="FDTD evaluations per active-learning round")
     p.add_argument("--acquisition", choices=["ei", "ucb"], default="ei", help="EI or raw UCB acquisition")
+    p.add_argument("--pure-adjoint", action="store_true", help="Pure refreshed adjoint ranking (no Ridge)")
+    p.add_argument("--enable-refresh", action="store_true", help="Refresh discrete adjoint during the run")
     p.add_argument("--ei-threshold", type=float, default=1e-4, help="EI improvement threshold")
     p.add_argument("--refresh-every-flips", type=int, default=5, help="Refresh discrete adjoint after this many accepted flips")
     p.add_argument("--refresh-no-improve-rounds", type=int, default=4, help="Refresh discrete adjoint after this many no-improvement rounds")
     p.add_argument("--kappa", type=float, default=0.5, help="UCB exploration coefficient")
     p.add_argument("--tol", type=float, default=1e-4, help="Minimum J improvement to accept a flip")
-    p.add_argument("--max-rounds", type=int, default=50)
-    p.add_argument("--max-fdtd", type=int, default=150)
+    p.add_argument("--max-rounds", type=int, default=120)
+    p.add_argument("--max-fdtd", type=int, default=150, help="State evaluations; 2-mode uses 2 forward solves/state")
     return p.parse_args()
 
 

@@ -1,0 +1,517 @@
+[2026-11-25 13:57:03] Initialized DBSRunner for Scheme B (strict mode)
+[2026-11-25 13:57:03] Candidate cells: 108, max sweeps: 1, tol: 0.0001
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #1 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_1.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #2 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_2.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #3 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_3.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #4 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_4.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #5 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_5.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #6 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_6.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #7 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_7.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #8 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_8.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #9 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_9.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #10 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_10.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #11 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_11.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #12 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_12.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #13 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_13.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #14 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_14.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #15 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_15.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #16 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_16.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #17 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_17.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #18 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_18.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #19 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_19.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #20 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_20.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #21 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_21.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #22 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\adjoint_refresh_22.npz (blocks=30x30, solves=4)
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v4a_pure_adjoint\_bootstrap\scratch\trial_drc\result.json
+[2-mode Surrogate Finished] {'final_J': 0.861105241711247, 'total_flips': 10, 'fdtd_evals': 110, 'hit_rate': 0.09174311926605505, 'acquisition': 'ei', 'pure_adjoint': True, 'compact_features': True, 'has_true_adjoint': True, 'adjoint_refreshes': 22, 'refresh_errors': 0, 'tabu_resets': 0, 'backend': 'numpy_ridge_ensemble', 'wall_time_s': 10750.85}
