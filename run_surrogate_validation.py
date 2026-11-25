@@ -32,6 +32,7 @@ from physics_surrogate_digitizer import (
     SurrogateGuidedDigitizer,
     downsample_to_blocks,
 )
+from extract_discrete_adjoint import extract_discrete_adjoint
 
 
 def _ensure_lumerical_api() -> None:
@@ -211,6 +212,34 @@ def run_2mode(args: argparse.Namespace) -> None:
     def on_accept_2mode(state: np.ndarray, j_val: float, flip_idx: int) -> None:
         export_state_gds(state, out_dir / f"accepted_flip{flip_idx}_J{j_val:.4f}.gds")
 
+    # Refresh the exact discrete adjoint on the current accepted layout every
+    # `--refresh-every-flips` flips, or after a run of no-improvement rounds.
+    refresh_count = 0
+    template_path = handoff_dir / "tools" / "common_device_template.lsf"
+
+    def refresh_physics_2mode(state: np.ndarray) -> PhysicsContext:
+        nonlocal refresh_count
+        refresh_count += 1
+        refresh_gds = out_dir / f"refresh_input_{refresh_count}.gds"
+        refresh_npz = out_dir / f"adjoint_refresh_{refresh_count}.npz"
+        export_state_gds(state, refresh_gds)
+        print(f"[Surrogate] refreshing discrete adjoint #{refresh_count} on accepted state...", flush=True)
+        extract_discrete_adjoint(
+            gds_path=refresh_gds,
+            cell_name="auto",
+            template_path=template_path,
+            out_npz=refresh_npz,
+            mode_count=2,
+            roi_um=3.6,
+            out_wg_x_um=2.1,
+            out_wg_yspan_um=1.9,
+            rows=rows,
+            cols=cols,
+            freq_points=11,
+            scratch_dir=out_dir / f"refresh_scratch_{refresh_count}",
+        )
+        return _load_optional_physics_maps(refresh_npz, rows, cols, state)
+
     opt = SurrogateGuidedDigitizer(
         initial_state=init_state,
         physics_ctx=ctx,
@@ -220,7 +249,12 @@ def run_2mode(args: argparse.Namespace) -> None:
         candidate_mask=mask,
         on_accept_fn=on_accept_2mode,
         verify_drc_fn=verify_drc_2mode,
+        refresh_physics_fn=refresh_physics_2mode,
+        refresh_every_flips=args.refresh_every_flips,
+        refresh_no_improve_rounds=args.refresh_no_improve_rounds,
         top_k=args.top_k,
+        acquisition=args.acquisition,
+        ei_threshold=args.ei_threshold,
         ucb_kappa=args.kappa,
         tol=args.tol,
         max_rounds=args.max_rounds,
@@ -296,6 +330,8 @@ def run_4mode(args: argparse.Namespace) -> None:
         candidate_mask=mask,
         on_accept_fn=on_accept_4mode,
         top_k=args.top_k,
+        acquisition=args.acquisition,
+        ei_threshold=args.ei_threshold,
         ucb_kappa=args.kappa,
         tol=args.tol,
         max_rounds=args.max_rounds,
@@ -313,6 +349,10 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")
     p.add_argument("--ablation-mask", action="store_true", help="Restrict search to existing candidate_mask")
     p.add_argument("--top-k", type=int, default=4, help="FDTD evaluations per active-learning round")
+    p.add_argument("--acquisition", choices=["ei", "ucb"], default="ei", help="EI or raw UCB acquisition")
+    p.add_argument("--ei-threshold", type=float, default=1e-4, help="EI improvement threshold")
+    p.add_argument("--refresh-every-flips", type=int, default=5, help="Refresh discrete adjoint after this many accepted flips")
+    p.add_argument("--refresh-no-improve-rounds", type=int, default=4, help="Refresh discrete adjoint after this many no-improvement rounds")
     p.add_argument("--kappa", type=float, default=0.5, help="UCB exploration coefficient")
     p.add_argument("--tol", type=float, default=1e-4, help="Minimum J improvement to accept a flip")
     p.add_argument("--max-rounds", type=int, default=50)

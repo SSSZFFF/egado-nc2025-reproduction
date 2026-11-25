@@ -11,7 +11,7 @@ Upgrades over v2 (based on 2-mode B_strict ablation diagnosis):
      - Replaces raw UCB (`mean + kappa * std`), which suffered from "dead-corner
        bias" (weak-field corners have mean ~ 0, while high-field core cells have
        negative mean but large upside tail).
-     - EI above `ei_threshold` (default 5e-4) naturally favors high-upside core
+     - EI above `ei_threshold` (default 1e-4, aligned with `tol`) naturally favors high-upside core
        pixels over dead corners that can only yield +1e-4.
   3. True Adjoint-Gradient Residual Support + Optional Periodic Refresh:
      - Properly tracks `_has_true_grad` even when `e2_map` is omitted.
@@ -175,7 +175,7 @@ class PhysicsContext:
 # 2. Acquisition Function (Gaussian Expected Improvement, pure NumPy)
 # =============================================================================
 
-def expected_improvement(mean: np.ndarray, std: np.ndarray, threshold: float = 5e-4) -> np.ndarray:
+def expected_improvement(mean: np.ndarray, std: np.ndarray, threshold: float = 1e-4) -> np.ndarray:
     """
     Compute Gaussian Expected Improvement E[max(0, dJ - threshold)]:
       - Suppresses weak-field dead corners where mean ~ 0 and std ~ 0.
@@ -265,6 +265,21 @@ class OnlinePhysicsSurrogate:
         self.priors.append(float(linear_prior))
         self.targets.append(float(true_delta_j))
 
+    def reset_replay(self, keep_last: int = 8) -> None:
+        """Drop stale observations after a fresh adjoint refresh.
+
+        Keeps only the most recent `keep_last` samples so the new exact linear
+        prior leads the next acquisition round instead of old-structure labels.
+        """
+        if keep_last <= 0:
+            self.patches.clear()
+            self.priors.clear()
+            self.targets.clear()
+            return
+        self.patches = self.patches[-keep_last:]
+        self.priors = self.priors[-keep_last:]
+        self.targets = self.targets[-keep_last:]
+
     def fit_online(self, steps: int = 20, batch_size: int = 32) -> float:
         n = len(self.targets)
         if n < 4:
@@ -347,11 +362,12 @@ class SurrogateGuidedDigitizer:
         verify_drc_fn: Optional[Callable[[np.ndarray], bool]] = None,
         on_accept_fn: Optional[Callable[[np.ndarray, float, int], None]] = None,
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
-        refresh_every_flips: int = 6,
+        refresh_every_flips: int = 5,
+        refresh_no_improve_rounds: int = 4,
         patch_size: int = 7,
         top_k: int = 2,
         acquisition: str = "ei",
-        ei_threshold: float = 5e-4,
+        ei_threshold: float = 1e-4,
         ucb_kappa: float = 0.5,
         tabu_unlock_radius: int = 3,
         accept_cooldown_rounds: int = 5,
@@ -371,6 +387,7 @@ class SurrogateGuidedDigitizer:
         self.on_accept_fn = on_accept_fn
         self.refresh_physics_fn = refresh_physics_fn
         self.refresh_every_flips = refresh_every_flips
+        self.refresh_no_improve_rounds = refresh_no_improve_rounds
         self.out_dir = Path(out_dir)
         self.out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -402,6 +419,7 @@ class SurrogateGuidedDigitizer:
         self.total_flips = 0
         self.tabu_resets = 0
         self.adjoint_refreshes = 0
+        self.refresh_errors = 0
 
     def _eval_cached(self, state: np.ndarray) -> tuple[float, bool]:
         key = np.packbits(state.astype(np.uint8)).tobytes()
@@ -422,10 +440,30 @@ class SurrogateGuidedDigitizer:
         for coord in to_unlock:
             self.tabu_coords.discard(coord)
 
-    def _score_candidates(self, mean_dj: np.ndarray, std_dj: np.ndarray) -> np.ndarray:
+    def _score_candidates(self, mean_dj: np.ndarray, std_dj: np.ndarray, priors: Optional[Sequence[float]] = None) -> np.ndarray:
         if self.acquisition == "ei":
-            return expected_improvement(mean_dj, std_dj, threshold=self.ei_threshold)
+            scores = expected_improvement(mean_dj, std_dj, threshold=self.ei_threshold)
+            # Tie-breaker: when EI collapses to 0, still prefer the direction
+            # indicated by the fresh first-order adjoint prior instead of array order.
+            if priors is not None:
+                scores = scores + 1e-6 * np.asarray(priors, dtype=np.float32)
+            return scores
         return mean_dj + self.ucb_kappa * std_dj
+
+    def _refresh_physics(self) -> None:
+        if self.refresh_physics_fn is None:
+            return
+        try:
+            new_ctx = self.refresh_physics_fn(self.state)
+        except Exception as exc:
+            self.refresh_errors += 1
+            print(f"[Surrogate] physics refresh failed (ignored): {exc}", flush=True)
+            return
+        if new_ctx is not None:
+            self.ctx = new_ctx
+        self.adjoint_refreshes += 1
+        self.surrogate.reset_replay(keep_last=8)
+        self.tabu_coords.clear()
 
     def run(self) -> dict:
         t0 = time.time()
@@ -492,7 +530,7 @@ class SurrogateGuidedDigitizer:
 
             # 2. Batched surrogate scoring (milliseconds)
             mean_dj, std_dj = self.surrogate.predict(legal_patches, legal_priors)
-            acq_scores = self._score_candidates(mean_dj, std_dj)
+            acq_scores = self._score_candidates(mean_dj, std_dj, legal_priors)
             order = np.argsort(-acq_scores)
 
             # 3. Pick Top-K with spatial diversity + Tier-2 PDK DRC verification (skip & backfill)
@@ -573,13 +611,18 @@ class SurrogateGuidedDigitizer:
                     and self.refresh_every_flips > 0
                     and self.total_flips % self.refresh_every_flips == 0
                 ):
-                    self.ctx = self.refresh_physics_fn(self.state)
-                    self.adjoint_refreshes += 1
-                    self.tabu_coords.clear()
+                    self._refresh_physics()
             else:
                 no_improve_rounds += 1
                 for item in round_results:
                     self.tabu_coords.add((item[1], item[2]))
+                if (
+                    self.refresh_physics_fn is not None
+                    and self.refresh_no_improve_rounds > 0
+                    and no_improve_rounds >= self.refresh_no_improve_rounds
+                ):
+                    self._refresh_physics()
+                    no_improve_rounds = 0
 
             hit_rate = self.total_flips / max(1, self.fdtd_evals - 1)
             wall_s = time.time() - t0
@@ -618,6 +661,7 @@ class SurrogateGuidedDigitizer:
             "acquisition": self.acquisition,
             "has_true_adjoint": self.ctx.has_true_adjoint,
             "adjoint_refreshes": self.adjoint_refreshes,
+            "refresh_errors": self.refresh_errors,
             "tabu_resets": self.tabu_resets,
             "backend": "pytorch_cnn_ensemble" if self.surrogate.use_torch else "numpy_ridge_ensemble",
             "wall_time_s": round(time.time() - t0, 2),
