@@ -454,6 +454,7 @@ class SurrogateGuidedDigitizer:
         self.tabu_resets = 0
         self.adjoint_refreshes = 0
         self.refresh_errors = 0
+        self.last_refresh_flip_count = 0
 
     def _eval_cached(self, state: np.ndarray) -> tuple[float, bool]:
         key = np.packbits(state.astype(np.uint8)).tobytes()
@@ -487,20 +488,26 @@ class SurrogateGuidedDigitizer:
             return scores
         return mean_dj + self.ucb_kappa * std_dj
 
-    def _refresh_physics(self) -> None:
+    def _refresh_physics(self) -> bool:
         if self.refresh_physics_fn is None:
-            return
+            return False
+        # Never refresh the same accepted state twice. This prevents the
+        # no-improve trigger from burning solves on an unchanged layout.
+        if self.total_flips <= self.last_refresh_flip_count:
+            return False
         try:
             new_ctx = self.refresh_physics_fn(self.state)
         except Exception as exc:
             self.refresh_errors += 1
             print(f"[Surrogate] physics refresh failed (ignored): {exc}", flush=True)
-            return
+            return False
         if new_ctx is not None:
             self.ctx = new_ctx
         self.adjoint_refreshes += 1
+        self.last_refresh_flip_count = self.total_flips
         self.surrogate.reset_replay(keep_last=8)
         self.tabu_coords.clear()
+        return True
 
     def run(self) -> dict:
         t0 = time.time()
@@ -663,8 +670,8 @@ class SurrogateGuidedDigitizer:
                     and self.refresh_no_improve_rounds > 0
                     and no_improve_rounds >= self.refresh_no_improve_rounds
                 ):
-                    self._refresh_physics()
-                    no_improve_rounds = 0
+                    if self._refresh_physics():
+                        no_improve_rounds = 0
 
             hit_rate = self.total_flips / max(1, self.fdtd_evals - 1)
             wall_s = time.time() - t0
