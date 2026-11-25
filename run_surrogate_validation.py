@@ -255,6 +255,7 @@ def run_2mode(args: argparse.Namespace) -> None:
         refresh_every_flips=args.refresh_every_flips,
         refresh_no_improve_rounds=args.refresh_no_improve_rounds,
         top_k=args.top_k,
+        mag_top_n=args.mag_top_n,
         acquisition=args.acquisition,
         ei_threshold=args.ei_threshold,
         ucb_kappa=args.kappa,
@@ -334,6 +335,7 @@ def run_4mode(args: argparse.Namespace) -> None:
         pure_adjoint=args.pure_adjoint,
         compact_features=None,
         top_k=args.top_k,
+        mag_top_n=args.mag_top_n,
         acquisition=args.acquisition,
         ei_threshold=args.ei_threshold,
         ucb_kappa=args.kappa,
@@ -353,6 +355,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")
     p.add_argument("--ablation-mask", action="store_true", help="Restrict search to existing candidate_mask")
     p.add_argument("--top-k", type=int, default=4, help="FDTD evaluations per active-learning round")
+    p.add_argument("--mag-top-n", type=int, default=36, help="Keep only top-N candidates by |linear prior| (0 disables)")
     p.add_argument("--acquisition", choices=["ei", "ucb"], default="ei", help="EI or raw UCB acquisition")
     p.add_argument("--pure-adjoint", action="store_true", help="Pure refreshed adjoint ranking (no Ridge)")
     p.add_argument("--enable-refresh", action="store_true", help="Refresh discrete adjoint during the run")
@@ -363,6 +366,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--tol", type=float, default=1e-4, help="Minimum J improvement to accept a flip")
     p.add_argument("--max-rounds", type=int, default=120)
     p.add_argument("--max-fdtd", type=int, default=150, help="State evaluations; 2-mode uses 2 forward solves/state")
+
     return p.parse_args()
 
 

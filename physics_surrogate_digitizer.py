@@ -338,6 +338,7 @@ class OnlinePhysicsSurrogate:
         d = feats.shape[1]
         reg = self.ridge_lambda * np.eye(d, dtype=np.float32)
         reg[0, 0] = 0.05   # 6D feature lin_prior
+        reg[5, 5] = 0.05   # 6D feature abs_prior (strong nonlinear amplitude)
         reg[-2, -2] = 0.05 # independent prior column
         reg[-1, -1] = 0.0  # bias
         for m_idx in range(self.ensemble_size):
@@ -350,7 +351,7 @@ class OnlinePhysicsSurrogate:
         m = len(patches)
         P = np.asarray(priors, dtype=np.float32)
         if self.pure_adjoint or len(self.targets) < self.min_samples:
-            return 0.01 * P, np.full(m, 1e-4, dtype=np.float32)
+            return 0.01 * np.abs(P), np.full(m, 1e-4, dtype=np.float32)
 
         X = np.stack(patches, axis=0)
         if self.use_torch:
@@ -392,6 +393,7 @@ class SurrogateGuidedDigitizer:
         refresh_no_improve_rounds: int = 4,
         patch_size: int = 7,
         top_k: int = 2,
+        mag_top_n: int = 36,
         acquisition: str = "ei",
         ei_threshold: float = 1e-4,
         ucb_kappa: float = 0.5,
@@ -428,6 +430,7 @@ class SurrogateGuidedDigitizer:
         )
         self.patch_size = patch_size
         self.top_k = top_k
+        self.mag_top_n = mag_top_n
         self.acquisition = acquisition.lower()
         self.ei_threshold = ei_threshold
         self.ucb_kappa = ucb_kappa
@@ -478,13 +481,13 @@ class SurrogateGuidedDigitizer:
     def _score_candidates(self, mean_dj: np.ndarray, std_dj: np.ndarray, priors: Optional[Sequence[float]] = None) -> np.ndarray:
         prior_arr = np.asarray(priors, dtype=np.float32) if priors is not None else np.zeros(len(mean_dj), dtype=np.float32)
         if self.pure_adjoint:
-            return prior_arr
+            return np.abs(prior_arr)
         if self.acquisition == "ei":
             scores = expected_improvement(mean_dj, std_dj, threshold=self.ei_threshold)
-            # Tie-breaker: when EI collapses to 0, still prefer the direction
-            # indicated by the fresh first-order adjoint prior instead of array order.
+            # Tie-breaker: when EI collapses to 0, still prefer high-|g| core
+            # pixels, independent of the sign of the first-order prior.
             if priors is not None:
-                scores = scores + 1e-6 * prior_arr
+                scores = scores + 1e-6 * np.abs(prior_arr)
             return scores
         return mean_dj + self.ucb_kappa * std_dj
 
@@ -569,6 +572,14 @@ class SurrogateGuidedDigitizer:
                 )
                 legal_patches.append(feat)
                 legal_priors.append(self.ctx.linear_prior(self.state, r, c))
+
+            # Magnitude-first core-pool filter: do not let signed first-order
+            # priors bury strong nonlinear pixels such as (23,21) at rank 99.
+            if self.mag_top_n > 0 and len(legal_coords) > self.mag_top_n:
+                mag_order = np.argsort(-np.abs(np.asarray(legal_priors, dtype=np.float32)))[: self.mag_top_n]
+                legal_coords = [legal_coords[int(i)] for i in mag_order]
+                legal_patches = [legal_patches[int(i)] for i in mag_order]
+                legal_priors = [legal_priors[int(i)] for i in mag_order]
 
             if not legal_coords:
                 if self.tabu_coords and self.tabu_resets < 1:
@@ -763,6 +774,7 @@ def _run_self_test() -> None:
                 eval_fn=synthetic_fom,
                 out_dir=Path(tmp),
                 top_k=2,
+                mag_top_n=0,
                 acquisition="ei",
                 ei_threshold=5e-4,
                 max_rounds=60,
