@@ -1,0 +1,15 @@
+{
+  "strategy": "passwise_magnitude",
+  "pass_top_n": [
+    36,
+    36
+  ],
+  "final_J": 0.8663097776775801,
+  "total_flips": 5,
+  "fdtd_evals": 47,
+  "hit_rate": 0.10869565217391304,
+  "adjoint_refreshes": 1,
+  "refresh_errors": 0,
+  "has_true_adjoint": true,
+  "wall_time_s": 3594.96
+}

@@ -1,0 +1,108 @@
+[2026-11-25 22:20:36] Initialized DBSRunner for Scheme B (strict mode)
+[2026-11-25 22:20:36] Candidate cells: 108, max sweeps: 1, tol: 0.0001
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+[Surrogate] refreshing discrete adjoint #1 on accepted state...
+[Adjoint] Auto-detected GDS top cell: B_FULL_DEVICE
+[Adjoint] Channel 1/2: running FORWARD solve...
+[Adjoint] Channel 1/2: running ADJOINT (backward) solve...
+[Adjoint] Channel 2/2: running FORWARD solve...
+[Adjoint] Channel 2/2: running ADJOINT (backward) solve...
+[Adjoint] Saved discrete adjoint maps to F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\adjoint_refresh_1.npz (blocks=30x30, solves=4)
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 1 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v5_passwise\_bootstrap\scratch\trial_drc\result.json
+[2-mode Surrogate Finished] {'strategy': 'passwise_magnitude', 'pass_top_n': [36, 36], 'final_J': 0.8663097776775801, 'total_flips': 5, 'fdtd_evals': 47, 'hit_rate': 0.10869565217391304, 'adjoint_refreshes': 1, 'refresh_errors': 0, 'has_true_adjoint': True, 'wall_time_s': 3594.96}

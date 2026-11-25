@@ -147,6 +147,7 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - 2 模纯伴随刷新对照组 v4a：`runs/surrogate_2mode_ablation_v4a_pure_adjoint/REPORT.md`（110 states = 220 solves + 22×4 adjoint solves；final J 0.861105；10 flips；`pure_adjoint=true`）。
 - 关键像素消融（`(23,21)` 初始/中间态排名）：`runs/key_pixel_ablation/REPORT.md`；结论是 `(23,21)` 在中间态 signed prior 仍为负（96/108），但 `|prior|` 为 14/108，支持“幅值指路、符号不可盲信”。
 - 2 模幅值 Top-36 版 v4c：`runs/surrogate_2mode_ablation_v4c_mag_top36/REPORT.md`（81 states = 162 solves + 6×4 adjoint solves；final J 0.859395；11 flips；`mag_top_n=36`）。
+- 2 模 Passwise 版 v5：`runs/surrogate_2mode_ablation_v5_passwise/REPORT.md`（47 states = 94 solves + 4 adjoint solves；final J 0.866310；5 flips；`strategy=passwise`）。
 - 离散伴随提取器：`extract_discrete_adjoint.py`（2 模 4 solves / 4 模 8 solves；支持 `--cell auto` 自动识别 GDS top cell）。
 
 ---

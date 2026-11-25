@@ -28,6 +28,7 @@ from pathlib import Path
 import numpy as np
 
 from physics_surrogate_digitizer import (
+    PasswiseMagnitudeDigitizer,
     PhysicsContext,
     SurrogateGuidedDigitizer,
     downsample_to_blocks,
@@ -240,29 +241,46 @@ def run_2mode(args: argparse.Namespace) -> None:
         )
         return _load_optional_physics_maps(refresh_npz, rows, cols, state)
 
-    opt = SurrogateGuidedDigitizer(
-        initial_state=init_state,
-        physics_ctx=ctx,
-        check_drc_fn=check_drc_2mode,
-        eval_fn=eval_2mode,
-        out_dir=out_dir,
-        candidate_mask=mask,
-        on_accept_fn=on_accept_2mode,
-        verify_drc_fn=verify_drc_2mode,
-        pure_adjoint=args.pure_adjoint,
-        compact_features=None,
-        refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
-        refresh_every_flips=args.refresh_every_flips,
-        refresh_no_improve_rounds=args.refresh_no_improve_rounds,
-        top_k=args.top_k,
-        mag_top_n=args.mag_top_n,
-        acquisition=args.acquisition,
-        ei_threshold=args.ei_threshold,
-        ucb_kappa=args.kappa,
-        tol=args.tol,
-        max_rounds=args.max_rounds,
-        max_fdtd_evals=args.max_fdtd,
-    )
+    top_n_list = [int(x.strip()) for x in args.pass_top_n.split(",") if x.strip()]
+    if args.strategy == "passwise":
+        opt = PasswiseMagnitudeDigitizer(
+            initial_state=init_state,
+            physics_ctx=ctx,
+            check_drc_fn=check_drc_2mode,
+            verify_drc_fn=verify_drc_2mode,
+            eval_fn=eval_2mode,
+            out_dir=out_dir,
+            candidate_mask=mask,
+            on_accept_fn=on_accept_2mode,
+            refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
+            pass_top_n=top_n_list,
+            tol=args.tol,
+            max_fdtd_evals=args.max_fdtd,
+        )
+    else:
+        opt = SurrogateGuidedDigitizer(
+            initial_state=init_state,
+            physics_ctx=ctx,
+            check_drc_fn=check_drc_2mode,
+            eval_fn=eval_2mode,
+            out_dir=out_dir,
+            candidate_mask=mask,
+            on_accept_fn=on_accept_2mode,
+            verify_drc_fn=verify_drc_2mode,
+            pure_adjoint=args.pure_adjoint,
+            compact_features=None,
+            refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
+            refresh_every_flips=args.refresh_every_flips,
+            refresh_no_improve_rounds=args.refresh_no_improve_rounds,
+            top_k=args.top_k,
+            mag_top_n=args.mag_top_n,
+            acquisition=args.acquisition,
+            ei_threshold=args.ei_threshold,
+            ucb_kappa=args.kappa,
+            tol=args.tol,
+            max_rounds=args.max_rounds,
+            max_fdtd_evals=args.max_fdtd,
+        )
     summary = opt.run()
     print("[2-mode Surrogate Finished]", summary)
 
@@ -324,25 +342,42 @@ def run_4mode(args: argparse.Namespace) -> None:
     def on_accept_4mode(state: np.ndarray, j_val: float, flip_idx: int) -> None:
         base_opt.export_gds(_state_to_region(state), out_dir / f"accepted_flip{flip_idx}_J{j_val:.4f}.gds")
 
-    opt = SurrogateGuidedDigitizer(
-        initial_state=init_state,
-        physics_ctx=ctx,
-        check_drc_fn=check_drc_4mode,
-        eval_fn=eval_4mode,
-        out_dir=out_dir,
-        candidate_mask=mask,
-        on_accept_fn=on_accept_4mode,
-        pure_adjoint=args.pure_adjoint,
-        compact_features=None,
-        top_k=args.top_k,
-        mag_top_n=args.mag_top_n,
-        acquisition=args.acquisition,
-        ei_threshold=args.ei_threshold,
-        ucb_kappa=args.kappa,
-        tol=args.tol,
-        max_rounds=args.max_rounds,
-        max_fdtd_evals=args.max_fdtd,
-    )
+    top_n_list = [int(x.strip()) for x in args.pass_top_n.split(",") if x.strip()]
+    if args.strategy == "passwise":
+        opt = PasswiseMagnitudeDigitizer(
+            initial_state=init_state,
+            physics_ctx=ctx,
+            check_drc_fn=check_drc_4mode,
+            verify_drc_fn=None,
+            eval_fn=eval_4mode,
+            out_dir=out_dir,
+            candidate_mask=mask,
+            on_accept_fn=on_accept_4mode,
+            refresh_physics_fn=None,
+            pass_top_n=top_n_list,
+            tol=args.tol,
+            max_fdtd_evals=args.max_fdtd,
+        )
+    else:
+        opt = SurrogateGuidedDigitizer(
+            initial_state=init_state,
+            physics_ctx=ctx,
+            check_drc_fn=check_drc_4mode,
+            eval_fn=eval_4mode,
+            out_dir=out_dir,
+            candidate_mask=mask,
+            on_accept_fn=on_accept_4mode,
+            pure_adjoint=args.pure_adjoint,
+            compact_features=None,
+            top_k=args.top_k,
+            mag_top_n=args.mag_top_n,
+            acquisition=args.acquisition,
+            ei_threshold=args.ei_threshold,
+            ucb_kappa=args.kappa,
+            tol=args.tol,
+            max_rounds=args.max_rounds,
+            max_fdtd_evals=args.max_fdtd,
+        )
     summary = opt.run()
     print("[4-mode Surrogate Finished]", summary)
 
@@ -350,6 +385,8 @@ def run_4mode(args: argparse.Namespace) -> None:
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="2-mode & 4-mode Physics-Residual Online Surrogate Validation")
     p.add_argument("--mode", choices=["2mode", "4mode"], required=True)
+    p.add_argument("--strategy", choices=["surrogate", "passwise"], default="surrogate")
+    p.add_argument("--pass-top-n", type=str, default="36,36,48", help="Comma-separated Top-N per pass")
     p.add_argument("--repo", type=str, default=".", help="Path to egado-nc2025-reproduction root")
     p.add_argument("--to-npz", type=str, default=None, help="Optional Stage-1 parameters_<n>.npz path")
     p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")

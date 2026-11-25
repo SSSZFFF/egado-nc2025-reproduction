@@ -738,6 +738,201 @@ class SurrogateGuidedDigitizer:
         return summary
 
 
+class PasswiseMagnitudeDigitizer:
+    """
+    v5: Pass-wise Adjoint-Magnitude Guided Digital Search (MG-DS).
+    - Pass 1 uses initial `physics_ctx` (0 extra solves at start).
+    - Within each pass, visits the Top-N `|linear_prior|` pixels at most ONCE (no loops).
+    - Between passes, refreshes exact adjoint ONLY if >= 1 flip was accepted in the
+      previous pass, then re-ranks Top-N and re-enables coupled pixels (e.g. (23, 21)).
+    """
+
+    def __init__(
+        self,
+        initial_state: np.ndarray,
+        physics_ctx: PhysicsContext,
+        check_drc_fn: Callable[[np.ndarray], bool],
+        eval_fn: Callable[[np.ndarray], float],
+        out_dir: Path,
+        candidate_mask: Optional[np.ndarray] = None,
+        verify_drc_fn: Optional[Callable[[np.ndarray], bool]] = None,
+        on_accept_fn: Optional[Callable[[np.ndarray, float, int], None]] = None,
+        refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
+        pass_top_n: Sequence[int] = (36, 36, 48),
+        tol: float = 1e-4,
+        max_fdtd_evals: int = 120,
+    ):
+        self.state = initial_state.astype(bool).copy()
+        self.rows, self.cols = self.state.shape
+        self.ctx = physics_ctx
+        self.check_drc_fn = check_drc_fn
+        self.verify_drc_fn = verify_drc_fn
+        self.eval_fn = eval_fn
+        self.on_accept_fn = on_accept_fn
+        self.refresh_physics_fn = refresh_physics_fn
+        self.pass_top_n = list(pass_top_n)
+        self.tol = tol
+        self.max_fdtd_evals = max_fdtd_evals
+        self.out_dir = Path(out_dir)
+        self.out_dir.mkdir(parents=True, exist_ok=True)
+
+        self.mask = (
+            np.ones((self.rows, self.cols), dtype=bool)
+            if candidate_mask is None
+            else candidate_mask.astype(bool).copy()
+        )
+        self.eval_cache: dict[bytes, float] = {}
+        self.fdtd_evals = 0
+        self.total_flips = 0
+        self.adjoint_refreshes = 0
+        self.refresh_errors = 0
+
+    def _eval_cached(self, state: np.ndarray) -> tuple[float, bool]:
+        key = np.packbits(state.astype(np.uint8)).tobytes()
+        if key in self.eval_cache:
+            return self.eval_cache[key], True
+        j_val = float(self.eval_fn(state))
+        self.eval_cache[key] = j_val
+        self.fdtd_evals += 1
+        return j_val, False
+
+    def run(self) -> dict:
+        t0 = time.time()
+        current_j, _ = self._eval_cached(self.state)
+        best_j = current_j
+
+        hist_path = self.out_dir / "surrogate_history.csv"
+        with open(hist_path, "w", newline="", encoding="utf-8") as f:
+            csv.writer(f).writerow(
+                [
+                    "pass_idx",
+                    "queue_rank",
+                    "row",
+                    "col",
+                    "flipped_to",
+                    "signed_prior",
+                    "abs_prior",
+                    "true_dJ",
+                    "J_trial",
+                    "J_current",
+                    "accepted",
+                    "fdtd_evals",
+                    "hit_rate",
+                    "wall_time_s",
+                ]
+            )
+
+        all_coords = [tuple(int(v) for v in x) for x in np.argwhere(self.mask)]
+
+        for p_idx, top_n in enumerate(self.pass_top_n, start=1):
+            if self.fdtd_evals >= self.max_fdtd_evals:
+                break
+
+            # Build ordered queue by |linear_prior| descending (independent of sign)
+            scored = []
+            for r, c in all_coords:
+                sp = self.ctx.linear_prior(self.state, r, c)
+                scored.append((abs(sp), sp, r, c))
+            scored.sort(key=lambda x: x[0], reverse=True)
+            pass_queue = scored[: min(top_n, len(scored))]
+
+            accepted_in_pass = 0
+            for q_rank, (abs_p, signed_p, r, c) in enumerate(pass_queue, start=1):
+                if self.fdtd_evals >= self.max_fdtd_evals:
+                    break
+
+                trial = self.state.copy()
+                trial[r, c] = not trial[r, c]
+                key = np.packbits(trial.astype(np.uint8)).tobytes()
+                if key in self.eval_cache:
+                    continue
+                if not self.check_drc_fn(trial):
+                    continue
+                if self.verify_drc_fn is not None and not self.verify_drc_fn(trial):
+                    continue
+
+                j_trial, _ = self._eval_cached(trial)
+                true_dj = j_trial - current_j
+                accepted = j_trial > current_j + self.tol
+
+                if accepted:
+                    self.state = trial
+                    current_j = j_trial
+                    best_j = max(best_j, current_j)
+                    self.total_flips += 1
+                    accepted_in_pass += 1
+                    np.savez(
+                        self.out_dir / f"state_pass{p_idx}_flip{self.total_flips}.npz",
+                        silicon_state=self.state,
+                        candidate_mask=self.mask,
+                        J=current_j,
+                    )
+                    if self.on_accept_fn is not None:
+                        self.on_accept_fn(self.state, current_j, self.total_flips)
+
+                hit_rate = self.total_flips / max(1, self.fdtd_evals - 1)
+                with open(hist_path, "a", newline="", encoding="utf-8") as f:
+                    csv.writer(f).writerow(
+                        [
+                            p_idx,
+                            q_rank,
+                            r,
+                            c,
+                            int(trial[r, c]),
+                            f"{signed_p:.6f}",
+                            f"{abs_p:.6f}",
+                            f"{true_dj:.6f}",
+                            f"{j_trial:.6f}",
+                            f"{current_j:.6f}",
+                            int(accepted),
+                            self.fdtd_evals,
+                            f"{hit_rate:.4f}",
+                            f"{time.time() - t0:.2f}",
+                        ]
+                    )
+
+            # Stop early if a full pass yielded zero accepted flips
+            if accepted_in_pass == 0:
+                break
+
+            # Refresh exact adjoint ONCE between passes (only when structure changed & more passes remain)
+            if (
+                p_idx < len(self.pass_top_n)
+                and self.refresh_physics_fn is not None
+                and self.fdtd_evals < self.max_fdtd_evals
+            ):
+                try:
+                    new_ctx = self.refresh_physics_fn(self.state)
+                except Exception as exc:
+                    self.refresh_errors += 1
+                    print(f"[Passwise] physics refresh failed (ignored): {exc}", flush=True)
+                    new_ctx = None
+                if new_ctx is not None:
+                    self.ctx = new_ctx
+                    self.adjoint_refreshes += 1
+
+        summary = {
+            "strategy": "passwise_magnitude",
+            "pass_top_n": self.pass_top_n,
+            "final_J": best_j,
+            "total_flips": self.total_flips,
+            "fdtd_evals": self.fdtd_evals,
+            "hit_rate": self.total_flips / max(1, self.fdtd_evals - 1),
+            "adjoint_refreshes": self.adjoint_refreshes,
+            "refresh_errors": self.refresh_errors,
+            "has_true_adjoint": self.ctx.has_true_adjoint,
+            "wall_time_s": round(time.time() - t0, 2),
+        }
+        (self.out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        np.savez(
+            self.out_dir / "final_state.npz",
+            silicon_state=self.state,
+            candidate_mask=self.mask,
+            J=best_j,
+        )
+        return summary
+
+
 def _run_self_test() -> None:
     import tempfile
 
