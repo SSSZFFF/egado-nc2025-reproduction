@@ -826,6 +826,23 @@ class PasswiseMagnitudeDigitizer:
                     "wall_time_s",
                 ]
             )
+        pair_hist_path = self.out_dir / "pair_history.csv"
+        with open(pair_hist_path, "w", newline="", encoding="utf-8") as f:
+            csv.writer(f).writerow(
+                [
+                    "pass_idx",
+                    "r1",
+                    "c1",
+                    "r2",
+                    "c2",
+                    "true_dJ",
+                    "J_trial",
+                    "J_current",
+                    "accepted",
+                    "fdtd_evals",
+                    "wall_time_s",
+                ]
+            )
 
         all_coords = [tuple(int(v) for v in x) for x in np.argwhere(self.mask)]
 
@@ -933,7 +950,24 @@ class PasswiseMagnitudeDigitizer:
 
                         j_trial, _ = self._eval_cached(trial)
                         true_dj = j_trial - current_j
-                        if j_trial > current_j + self.tol:
+                        pair_accepted = j_trial > current_j + self.tol
+                        with open(pair_hist_path, "a", newline="", encoding="utf-8") as f:
+                            csv.writer(f).writerow(
+                                [
+                                    p_idx,
+                                    r1,
+                                    c1,
+                                    r2,
+                                    c2,
+                                    f"{true_dj:.6f}",
+                                    f"{j_trial:.6f}",
+                                    f"{current_j:.6f}",
+                                    int(pair_accepted),
+                                    self.fdtd_evals,
+                                    f"{time.time() - t0:.2f}",
+                                ]
+                            )
+                        if pair_accepted:
                             self.state = trial
                             current_j = j_trial
                             best_j = max(best_j, current_j)

@@ -149,8 +149,20 @@ def run_2mode(args: argparse.Namespace) -> None:
         tolerance=args.tol,
     )
     init_state = runner.initial_state.astype(bool)
-    mask = runner.mask.astype(bool) if args.ablation_mask else None
     rows, cols = init_state.shape
+    if not args.ablation_mask:
+        # Full-grid mode: initialize from the actual initial.gds raster over
+        # all 30x30 cells. runner.initial_state only contains the 108 Canny
+        # candidates and would make the other 792 cells incorrectly oxide.
+        _, _, original_init = geometry_io.read_gds(handoff_dir / "inputs" / "B_curve_DRC120" / "initial.gds")
+        full_init = np.zeros((rows, cols), dtype=bool)
+        for r, c in np.argwhere(np.ones((rows, cols), dtype=bool)):
+            box = geometry_io.cell_box(int(r), int(c))
+            cell_area = float(box.area())
+            core_frac = float((original_init[geometry_io.CORE] & geometry_io.db.Region(box)).area()) / cell_area
+            full_init[r, c] = core_frac > 0.5
+        init_state = full_init
+    mask = runner.mask.astype(bool) if args.ablation_mask else None
 
     to_npz_default = repo / "code" / "two_mode" / "analysis-2mode" / "2mode_final.npz"
     if not to_npz_default.exists():

@@ -1,0 +1,1 @@
+pass_idx,queue_rank,row,col,flipped_to,signed_prior,abs_prior,true_dJ,J_trial,J_current,accepted,fdtd_evals,hit_rate,wall_time_s

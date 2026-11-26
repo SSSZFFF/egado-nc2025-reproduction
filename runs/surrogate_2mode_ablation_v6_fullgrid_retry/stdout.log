@@ -1,0 +1,3 @@
+[2026-11-26 16:16:34] Initialized DBSRunner for Scheme B (strict mode)
+[2026-11-26 16:16:34] Candidate cells: 108, max sweeps: 1, tol: 0.0001
+[2-mode Surrogate Finished] {'strategy': 'passwise_magnitude', 'pass_top_n': [48, 60, 36], 'final_J': 0.7647604071559595, 'total_flips': 0, 'fdtd_evals': 1, 'hit_rate': 0.0, 'adjoint_refreshes': 0, 'refresh_errors': 0, 'pair_escapes': 0, 'has_true_adjoint': True, 'wall_time_s': 67.61}
