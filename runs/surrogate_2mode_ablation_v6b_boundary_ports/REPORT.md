@@ -33,8 +33,26 @@ Run: `F:\codex_project\inverse_design_sun\runs\surrogate_2mode_ablation_v6b_boun
 
 - vs baseline final `0.886449`：**+0.000220**
 - vs baseline 226 solves `0.886254`：**+0.000415**
+- **达到 0.886669 的关键点实际在 `fdtd_evals = 89`：178 forward solves + 4 初始伴随 = 182 总 solves**；后续 Pass 3 + 6 组 pair 是收敛确认，不参与“首次达标”预算。
 - 总 solves：**254 vs 424（减少约 40%）**
-- 所有日志均为 `common: 248 categories, 0 violations`
+- 所有 **accepted 状态及最终 `final_audit.gds`** 均通过 248 类 PDK DRC 0 违例；试探阶段的 `trial_drc` 曾出现 1/2 个 violations，均被 Tier-2 门控拦截，没有进入 FDTD 或接受状态。
+
+## 光谱审计（独立复算）
+
+对 v6b `final_audit.gds` 重新跑 2 输入光谱，并与 `B_strict` 的 `final_spectra.npz` 对比：
+
+| 指标 | v6b | baseline | Δ |
+|---|---:|---:|---:|
+| J | 0.886669 | 0.886449 | **+0.000220** |
+| IL TE0 (dB) | 0.3764 | 0.3844 | **−0.0080** |
+| IL TE1 (dB) | 0.6734 | 0.6671 | +0.0063 |
+| IL mean (dB) | 0.5249 | 0.5258 | **−0.00084** |
+| CT mean TE0→TE1 (dB) | −17.1748 | −17.4357 | **+0.2609** |
+| CT mean TE1→TE0 (dB) | −18.7426 | −19.8620 | **+1.1194** |
+| CT worst TE0→TE1 (dB) | −16.4993 | −16.6164 | +0.1171 |
+| CT worst TE1→TE0 (dB) | −18.5223 | −19.5123 | +0.9900 |
+
+结论：平均 IL 略好（−0.00084 dB），但 **第二通道串扰变差约 1.12 dB**（worst 约 0.99 dB），不是“完全没有退化”。如果论文/指标要求 CT 不劣于 baseline，需要把 CT 加入接受判据或做 Pareto 收尾；如果只按 J/target 指标，这组仍是合格突破。
 
 ## 关键翻转
 
@@ -73,6 +91,11 @@ Pass 3（Top-30 重扫）没有新的 accepted flip；最后的 pair escape 6 �
 - `summary.json`
 - `surrogate_history.csv`
 - `pair_history.csv`
+- `spectrum_audit.json`
+- `final_spectra.npz`
+- `final_DRC_result.json`
+- `final_120nm_checks.json`
+- `final_audit.gds`
 - `convergence.png`
 - `stdout.log` / `stderr.log`
 - `final_state.npz`

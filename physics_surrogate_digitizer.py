@@ -773,6 +773,7 @@ class PasswiseMagnitudeDigitizer:
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
         pass_top_n: Sequence[int] = (36, 36, 48),
         pair_escape_top_m: int = 4,
+        pair_escape_min_margin: float = -0.006,
         active_boundary: bool | Sequence[bool] = False,
         tol: float = 1e-4,
         max_fdtd_evals: int = 120,
@@ -787,6 +788,7 @@ class PasswiseMagnitudeDigitizer:
         self.refresh_physics_fn = refresh_physics_fn
         self.pass_top_n = list(pass_top_n)
         self.pair_escape_top_m = pair_escape_top_m
+        self.pair_escape_min_margin = pair_escape_min_margin
         self.active_boundary = active_boundary
         self.tol = tol
         self.max_fdtd_evals = max_fdtd_evals
@@ -804,6 +806,7 @@ class PasswiseMagnitudeDigitizer:
         self.adjoint_refreshes = 0
         self.refresh_errors = 0
         self.pair_escapes = 0
+        self.pair_escape_skips = 0
 
     def _eval_cached(self, state: np.ndarray) -> tuple[float, bool]:
         key = np.packbits(state.astype(np.uint8)).tobytes()
@@ -959,7 +962,12 @@ class PasswiseMagnitudeDigitizer:
                     # negative single-flip loss) and test all pair flips.
                     rejected_in_pass.sort(key=lambda x: x[0], reverse=True)
                     top_m = rejected_in_pass[: self.pair_escape_top_m]
-                    for (_, r1, c1), (_, r2, c2) in combinations(top_m, 2):
+                    near_zero = [item for item in top_m if item[0] > self.pair_escape_min_margin]
+                    if len(near_zero) < 2:
+                        self.pair_escape_skips += 1
+                        if not escaped:
+                            break
+                    for (_, r1, c1), (_, r2, c2) in combinations(near_zero, 2):
                         if self.fdtd_evals >= self.max_fdtd_evals:
                             break
                         trial = self.state.copy()
@@ -1038,6 +1046,7 @@ class PasswiseMagnitudeDigitizer:
             "adjoint_refreshes": self.adjoint_refreshes,
             "refresh_errors": self.refresh_errors,
             "pair_escapes": self.pair_escapes,
+            "pair_escape_skips": self.pair_escape_skips,
             "has_true_adjoint": self.ctx.has_true_adjoint,
             "wall_time_s": round(time.time() - t0, 2),
         }

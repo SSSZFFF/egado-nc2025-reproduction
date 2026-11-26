@@ -153,7 +153,7 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - v6 全图 900 格启动核对：`runs/surrogate_2mode_ablation_v6_fullgrid_retry/REPORT.md`；full-grid 初始二值化产生 8 nm space DRC 违规，需保留原始 core 矢量/partial-cell 后再启动。
 - v6 全图 900 格矢量 exporter 修复版：`runs/surrogate_2mode_ablation_v6_fullgrid_fixed/REPORT.md`（134 states = 268 solves + 2×4 adjoint solves；final J 0.870482；6 flips；`B_SURROGATE_FULL`）。
 - v6b 动态边界预检查：`runs/v6_boundary_check/REPORT.md`（full_init boundary=292，legal=85；v6 accepted 6 中仅 2 在边界上，`(22,14)` +0.008121 非边界，严格边界过滤会误杀）。
-- 2 模 v6b 动态边界 + 端口保护：`runs/surrogate_2mode_ablation_v6b_boundary_ports/REPORT.md`（123 states = 246 forward solves + 2×4 adjoint solves；final J **0.886669**，超过 baseline 0.886449；14 flips）。
+- 2 模 v6b 动态边界 + 端口保护：`runs/surrogate_2mode_ablation_v6b_boundary_ports/REPORT.md`（123 states = 246 forward solves + 2×4 adjoint solves；final J **0.886669**，超过 baseline 0.886449；14 flips；独立光谱审计 `spectrum_audit.json`：IL mean 0.5249 vs 0.5258 dB，CT 第二通道 −18.74 vs −19.86 dB）。
 - 离散伴随提取器：`extract_discrete_adjoint.py`（2 模 4 solves / 4 模 8 solves；支持 `--cell auto` 自动识别 GDS top cell）。
 
 ---

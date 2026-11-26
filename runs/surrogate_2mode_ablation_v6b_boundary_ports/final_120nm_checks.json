@@ -1,0 +1,11 @@
+{
+  "gds": "F:\\codex_project\\inverse_design_sun\\runs\\surrogate_2mode_ablation_v6b_boundary_ports\\final_audit.gds",
+  "gds_sha256": "C42B2EDCBF3FCE5EDEB1FD3FFA7882C2751DF6D7AA55C0C968A373823FC41391",
+  "dbu_um": 0.0001,
+  "threshold_nm": 120,
+  "threshold_dbu": 1200,
+  "ignore_angle_deg": 85,
+  "width": 0,
+  "space": 0,
+  "scope": "Supplemental Si width and space only; not a full foundry rule deck"
+}
