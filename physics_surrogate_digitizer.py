@@ -29,6 +29,7 @@ import json
 import math
 import time
 from dataclasses import dataclass
+from itertools import combinations
 from pathlib import Path
 from typing import Callable, Optional, Sequence
 
@@ -760,6 +761,7 @@ class PasswiseMagnitudeDigitizer:
         on_accept_fn: Optional[Callable[[np.ndarray, float, int], None]] = None,
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
         pass_top_n: Sequence[int] = (36, 36, 48),
+        pair_escape_top_m: int = 4,
         tol: float = 1e-4,
         max_fdtd_evals: int = 120,
     ):
@@ -772,6 +774,7 @@ class PasswiseMagnitudeDigitizer:
         self.on_accept_fn = on_accept_fn
         self.refresh_physics_fn = refresh_physics_fn
         self.pass_top_n = list(pass_top_n)
+        self.pair_escape_top_m = pair_escape_top_m
         self.tol = tol
         self.max_fdtd_evals = max_fdtd_evals
         self.out_dir = Path(out_dir)
@@ -787,6 +790,7 @@ class PasswiseMagnitudeDigitizer:
         self.total_flips = 0
         self.adjoint_refreshes = 0
         self.refresh_errors = 0
+        self.pair_escapes = 0
 
     def _eval_cached(self, state: np.ndarray) -> tuple[float, bool]:
         key = np.packbits(state.astype(np.uint8)).tobytes()
@@ -849,6 +853,7 @@ class PasswiseMagnitudeDigitizer:
                 pass_queue = scored[: min(top_n, len(scored))]
 
             accepted_in_pass = 0
+            rejected_in_pass: list[tuple[float, int, int]] = []
             for q_rank, (abs_p, signed_p, r, c) in enumerate(pass_queue, start=1):
                 if self.fdtd_evals >= self.max_fdtd_evals:
                     break
@@ -880,6 +885,8 @@ class PasswiseMagnitudeDigitizer:
                     )
                     if self.on_accept_fn is not None:
                         self.on_accept_fn(self.state, current_j, self.total_flips)
+                else:
+                    rejected_in_pass.append((true_dj, r, c))
 
                 hit_rate = self.total_flips / max(1, self.fdtd_evals - 1)
                 with open(hist_path, "a", newline="", encoding="utf-8") as f:
@@ -904,7 +911,47 @@ class PasswiseMagnitudeDigitizer:
 
             # Stop early if a full pass yielded zero accepted flips
             if accepted_in_pass == 0:
-                break
+                escaped = False
+                if self.pair_escape_top_m >= 2 and len(rejected_in_pass) >= 2:
+                    # Take the M rejected pixels closest to zero (least
+                    # negative single-flip loss) and test all pair flips.
+                    rejected_in_pass.sort(key=lambda x: x[0], reverse=True)
+                    top_m = rejected_in_pass[: self.pair_escape_top_m]
+                    for (_, r1, c1), (_, r2, c2) in combinations(top_m, 2):
+                        if self.fdtd_evals >= self.max_fdtd_evals:
+                            break
+                        trial = self.state.copy()
+                        trial[r1, c1] = not trial[r1, c1]
+                        trial[r2, c2] = not trial[r2, c2]
+                        key = np.packbits(trial.astype(np.uint8)).tobytes()
+                        if key in self.eval_cache:
+                            continue
+                        if not self.check_drc_fn(trial):
+                            continue
+                        if self.verify_drc_fn is not None and not self.verify_drc_fn(trial):
+                            continue
+
+                        j_trial, _ = self._eval_cached(trial)
+                        true_dj = j_trial - current_j
+                        if j_trial > current_j + self.tol:
+                            self.state = trial
+                            current_j = j_trial
+                            best_j = max(best_j, current_j)
+                            self.total_flips += 2
+                            accepted_in_pass += 1
+                            self.pair_escapes += 1
+                            escaped = True
+                            np.savez(
+                                self.out_dir / f"state_pass{p_idx}_pair_flip{self.total_flips}.npz",
+                                silicon_state=self.state,
+                                candidate_mask=self.mask,
+                                J=current_j,
+                            )
+                            if self.on_accept_fn is not None:
+                                self.on_accept_fn(self.state, current_j, self.total_flips)
+                            break
+                if not escaped:
+                    break
 
             # Refresh exact adjoint ONCE between passes (only when structure changed & more passes remain)
             if (
@@ -931,6 +978,7 @@ class PasswiseMagnitudeDigitizer:
             "hit_rate": self.total_flips / max(1, self.fdtd_evals - 1),
             "adjoint_refreshes": self.adjoint_refreshes,
             "refresh_errors": self.refresh_errors,
+            "pair_escapes": self.pair_escapes,
             "has_true_adjoint": self.ctx.has_true_adjoint,
             "wall_time_s": round(time.time() - t0, 2),
         }

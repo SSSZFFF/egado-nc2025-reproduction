@@ -1,0 +1,10 @@
+[PairEscape] creating DBSRunner...
+[2026-11-26 14:33:35] Initialized DBSRunner for Scheme B (strict mode)
+[2026-11-26 14:33:35] Candidate cells: 108, max sweeps: 1, tol: 0.0001
+[PairEscape] base_J=0.869772422 true=95 mask=108
+[PairEscape] top4 = [(13, 25), (20, 13), (23, 21), (23, 25)]
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\v5b_pair_escape\_bootstrap\scratch\trial_drc\result.json
+(13,25)+(20,13): J=0.868648208 dJ=-0.001124214
+common: 248 categories, 0 violations
+Report: F:\codex_project\inverse_design_sun\runs\v5b_pair_escape\_bootstrap\scratch\trial_drc\result.json

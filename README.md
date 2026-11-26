@@ -149,6 +149,7 @@ python run_surrogate_validation.py --mode 2mode --repo . --ablation-mask --max-f
 - 2 模幅值 Top-36 版 v4c：`runs/surrogate_2mode_ablation_v4c_mag_top36/REPORT.md`（81 states = 162 solves + 6×4 adjoint solves；final J 0.859395；11 flips；`mag_top_n=36`）。
 - 2 模 Passwise 版 v5：`runs/surrogate_2mode_ablation_v5_passwise/REPORT.md`（47 states = 94 solves + 4 adjoint solves；final J 0.866310；5 flips；`strategy=passwise`）。
 - 2 模沙漏三 Pass 版 v5b：`runs/surrogate_2mode_ablation_v5b_hourglass/REPORT.md`（113 states = 226 solves + 2×4 adjoint solves；final J 0.869772；12 flips；`pass_top_n=36,0,30`）。
+- v5b 2-flip 耦合逃逸：`runs/v5b_pair_escape/REPORT.md`（`(20,13)+(23,21)` J=0.882015，+0.012243；其余 5 组为负）；pair 后续短 Pass 见 `runs/surrogate_2mode_ablation_v5c_pair_continue/REPORT.md`（0 新翻转，局部极值）。
 - 离散伴随提取器：`extract_discrete_adjoint.py`（2 模 4 solves / 4 模 8 solves；支持 `--cell auto` 自动识别 GDS top cell）。
 
 ---
