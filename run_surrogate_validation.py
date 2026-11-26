@@ -155,6 +155,7 @@ def run_2mode(args: argparse.Namespace) -> None:
         # all 30x30 cells. runner.initial_state only contains the 108 Canny
         # candidates and would make the other 792 cells incorrectly oxide.
         _, _, original_init = geometry_io.read_gds(handoff_dir / "inputs" / "B_curve_DRC120" / "initial.gds")
+        original_regions = original_init
         full_init = np.zeros((rows, cols), dtype=bool)
         for r, c in np.argwhere(np.ones((rows, cols), dtype=bool)):
             box = geometry_io.cell_box(int(r), int(c))
@@ -173,16 +174,37 @@ def run_2mode(args: argparse.Namespace) -> None:
     evaluator: OpticalEvaluator = runner.evaluator
     trial_gds = scratch_dir / "surrogate_trial_2mode.gds"
 
-    # Full-grid export: fixed geometry outside all 30x30 cells, then add current
-    # state's Si cells. The handoff fixed_background.gds is B-mask-specific and
-    # cannot be reused for a no-Canny full-grid search.
-    full_fixed_core = None
-    full_windows = None
+    # Full-grid export: use the original vector CORE as the base and apply
+    # cell add/subtract operations. This preserves the sub-cell curves that a
+    # pure 900-cell boolean raster cannot represent (and avoids false DRC).
+    base_full_core = None
     if not args.ablation_mask:
-        _, _, original = geometry_io.read_gds(handoff_dir / "inputs" / "B_curve_DRC120" / "initial.gds")
-        all_cells = geometry_io.selected_region(np.ones((rows, cols), dtype=bool))
-        full_fixed_core = original[geometry_io.CORE].dup() - all_cells
-        full_windows = original
+        base_full_core = original_regions[geometry_io.CORE].merged()
+
+        def build_full_core(state: np.ndarray):
+            s = np.asarray(state, dtype=bool)
+            diff = s ^ full_init
+            if not np.any(diff):
+                return base_full_core.dup()
+            core = base_full_core.dup()
+            add_mask = diff & s
+            sub_mask = diff & (~s)
+            if np.any(add_mask):
+                core = core | geometry_io.selected_region(add_mask)
+            if np.any(sub_mask):
+                core = core - geometry_io.selected_region(sub_mask)
+            core.merge()
+            return core
+
+        def export_gds(state: np.ndarray, path: Path) -> None:
+            core = build_full_core(state)
+            geometry_io.write_gds(path, "B_SURROGATE_FULL", core, original_regions)
+
+        def check_drc_full_fast(state: np.ndarray) -> bool:
+            core = build_full_core(state)
+            w = core.width_check(1200, ignore_angle=85).count()
+            sp = core.space_check(1200, ignore_angle=85).count()
+            return bool(w == 0 and sp == 0)
 
     def export_state_gds(trial_state: np.ndarray, gds_path: Path) -> None:
         """Export a 30x30 state to the exact top-cell layout DBSRunner evaluates."""
@@ -194,15 +216,13 @@ def run_2mode(args: argparse.Namespace) -> None:
             np.savez(tmp, silicon_state=trial_state, candidate_mask=runner.mask)
             geometry_io.export_geometry(handoff_dir, runner.scheme, tmp, Path(gds_path))
         else:
-            core = full_fixed_core.dup()
-            for r, c in np.argwhere(trial_state):
-                core.insert(geometry_io.cell_box(int(r), int(c)))
-            core.merge()
-            geometry_io.write_gds(Path(gds_path), f"{runner.scheme}_FULL_DEVICE", core, full_windows)
+            export_gds(trial_state, Path(gds_path))
 
     def check_drc_2mode(trial_state: np.ndarray) -> bool:
         # Fast screening for every candidate in the grid. Full 248-category
         # deck checking is deferred to verify_drc_2mode() for Top-K only.
+        if not args.ablation_mask:
+            return check_drc_full_fast(trial_state)
         export_state_gds(trial_state, trial_gds)
         res = geometry_io.supplemental(trial_gds, 120)
         return bool(res["width"] == 0 and res["space"] == 0)
@@ -218,7 +238,7 @@ def run_2mode(args: argparse.Namespace) -> None:
     def eval_2mode(trial_state: np.ndarray) -> float:
         export_state_gds(trial_state, trial_gds)
         key = np.packbits(trial_state.astype(np.uint8)).tobytes()
-        cell_name = f"{runner.scheme}_FULL_DEVICE"
+        cell_name = "B_SURROGATE_FULL" if not args.ablation_mask else f"{runner.scheme}_FULL_DEVICE"
         j_val, *_ = evaluator.evaluate_state(trial_gds, cell_name, key, scratch_dir)
         return float(j_val)
 
