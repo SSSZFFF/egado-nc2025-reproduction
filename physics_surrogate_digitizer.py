@@ -740,9 +740,10 @@ class SurrogateGuidedDigitizer:
 
 class PasswiseMagnitudeDigitizer:
     """
-    v5: Pass-wise Adjoint-Magnitude Guided Digital Search (MG-DS).
-    - Pass 1 uses initial `physics_ctx` (0 extra solves at start).
-    - Within each pass, visits the Top-N `|linear_prior|` pixels at most ONCE (no loops).
+    v5b: Pass-wise Adjoint-Magnitude Guided Digital Search (MG-DS).
+    - DRC-legal candidates are filtered BEFORE the Top-N truncation.
+    - Pass N uses `pass_top_n[N]`; a value <= 0 means "all remaining legal pixels".
+    - Within each pass, visits each queued pixel at most ONCE (no loops).
     - Between passes, refreshes exact adjoint ONLY if >= 1 flip was accepted in the
       previous pass, then re-ranks Top-N and re-enables coupled pixels (e.g. (23, 21)).
     """
@@ -828,13 +829,24 @@ class PasswiseMagnitudeDigitizer:
             if self.fdtd_evals >= self.max_fdtd_evals:
                 break
 
-            # Build ordered queue by |linear_prior| descending (independent of sign)
+            # Build ordered queue from DRC-LEGAL candidates first; this avoids
+            # wasting a Pass quota on candidates that KLayout rejects.
             scored = []
             for r, c in all_coords:
+                trial = self.state.copy()
+                trial[r, c] = not trial[r, c]
+                key = np.packbits(trial.astype(np.uint8)).tobytes()
+                if key in self.eval_cache:
+                    continue
+                if not self.check_drc_fn(trial):
+                    continue
                 sp = self.ctx.linear_prior(self.state, r, c)
                 scored.append((abs(sp), sp, r, c))
             scored.sort(key=lambda x: x[0], reverse=True)
-            pass_queue = scored[: min(top_n, len(scored))]
+            if top_n <= 0:
+                pass_queue = scored
+            else:
+                pass_queue = scored[: min(top_n, len(scored))]
 
             accepted_in_pass = 0
             for q_rank, (abs_p, signed_p, r, c) in enumerate(pass_queue, start=1):
@@ -850,7 +862,6 @@ class PasswiseMagnitudeDigitizer:
                     continue
                 if self.verify_drc_fn is not None and not self.verify_drc_fn(trial):
                     continue
-
                 j_trial, _ = self._eval_cached(trial)
                 true_dj = j_trial - current_j
                 accepted = j_trial > current_j + self.tol
