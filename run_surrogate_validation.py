@@ -286,6 +286,8 @@ def run_2mode(args: argparse.Namespace) -> None:
             on_accept_fn=on_accept_2mode,
             refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
             pass_top_n=top_n_list,
+            pair_escape_top_m=4,
+            active_boundary=args.active_boundary,
             tol=args.tol,
             max_fdtd_evals=args.max_fdtd,
         )
@@ -387,6 +389,8 @@ def run_4mode(args: argparse.Namespace) -> None:
             on_accept_fn=on_accept_4mode,
             refresh_physics_fn=None,
             pass_top_n=top_n_list,
+            pair_escape_top_m=4,
+            active_boundary=args.active_boundary,
             tol=args.tol,
             max_fdtd_evals=args.max_fdtd,
         )
@@ -419,6 +423,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--mode", choices=["2mode", "4mode"], required=True)
     p.add_argument("--strategy", choices=["surrogate", "passwise"], default="surrogate")
     p.add_argument("--pass-top-n", type=str, default="36,36,48", help="Comma-separated Top-N per pass")
+    p.add_argument("--active-boundary", action="store_true", help="Use dynamic 4-neighbour Si/air boundary mask")
     p.add_argument("--repo", type=str, default=".", help="Path to egado-nc2025-reproduction root")
     p.add_argument("--to-npz", type=str, default=None, help="Optional Stage-1 parameters_<n>.npz path")
     p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")

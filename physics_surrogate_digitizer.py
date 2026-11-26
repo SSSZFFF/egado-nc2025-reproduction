@@ -739,6 +739,17 @@ class SurrogateGuidedDigitizer:
         return summary
 
 
+def active_boundary_mask(state: np.ndarray) -> np.ndarray:
+    """Dynamic 4-neighbour silicon/air interface mask (Discrete Active Boundary)."""
+    s = np.asarray(state, dtype=bool)
+    b = np.zeros_like(s, dtype=bool)
+    b[1:, :] |= s[1:, :] != s[:-1, :]
+    b[:-1, :] |= s[:-1, :] != s[1:, :]
+    b[:, 1:] |= s[:, 1:] != s[:, :-1]
+    b[:, :-1] |= s[:, :-1] != s[:, 1:]
+    return b
+
+
 class PasswiseMagnitudeDigitizer:
     """
     v5b: Pass-wise Adjoint-Magnitude Guided Digital Search (MG-DS).
@@ -762,6 +773,7 @@ class PasswiseMagnitudeDigitizer:
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
         pass_top_n: Sequence[int] = (36, 36, 48),
         pair_escape_top_m: int = 4,
+        active_boundary: bool = False,
         tol: float = 1e-4,
         max_fdtd_evals: int = 120,
     ):
@@ -775,6 +787,7 @@ class PasswiseMagnitudeDigitizer:
         self.refresh_physics_fn = refresh_physics_fn
         self.pass_top_n = list(pass_top_n)
         self.pair_escape_top_m = pair_escape_top_m
+        self.active_boundary = active_boundary
         self.tol = tol
         self.max_fdtd_evals = max_fdtd_evals
         self.out_dir = Path(out_dir)
@@ -844,11 +857,12 @@ class PasswiseMagnitudeDigitizer:
                 ]
             )
 
-        all_coords = [tuple(int(v) for v in x) for x in np.argwhere(self.mask)]
-
         for p_idx, top_n in enumerate(self.pass_top_n, start=1):
             if self.fdtd_evals >= self.max_fdtd_evals:
                 break
+
+            allowed_mask = self.mask & active_boundary_mask(self.state) if self.active_boundary else self.mask
+            all_coords = [tuple(int(v) for v in x) for x in np.argwhere(allowed_mask)]
 
             # Build ordered queue from DRC-LEGAL candidates first; this avoids
             # wasting a Pass quota on candidates that KLayout rejects.
