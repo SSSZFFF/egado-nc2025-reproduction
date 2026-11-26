@@ -773,7 +773,7 @@ class PasswiseMagnitudeDigitizer:
         refresh_physics_fn: Optional[Callable[[np.ndarray], PhysicsContext]] = None,
         pass_top_n: Sequence[int] = (36, 36, 48),
         pair_escape_top_m: int = 4,
-        active_boundary: bool = False,
+        active_boundary: bool | Sequence[bool] = False,
         tol: float = 1e-4,
         max_fdtd_evals: int = 120,
     ):
@@ -861,7 +861,18 @@ class PasswiseMagnitudeDigitizer:
             if self.fdtd_evals >= self.max_fdtd_evals:
                 break
 
-            allowed_mask = self.mask & active_boundary_mask(self.state) if self.active_boundary else self.mask
+            if isinstance(self.active_boundary, (list, tuple)):
+                use_boundary = bool(self.active_boundary[min(p_idx - 1, len(self.active_boundary) - 1)])
+            else:
+                use_boundary = bool(self.active_boundary)
+            if use_boundary:
+                allowed_mask = self.mask & active_boundary_mask(self.state)
+            else:
+                allowed_mask = self.mask.copy()
+                # Protect the first/last two columns (input/output port entries)
+                # when interior pixels are enabled in later passes.
+                allowed_mask[:, :2] = False
+                allowed_mask[:, -2:] = False
             all_coords = [tuple(int(v) for v in x) for x in np.argwhere(allowed_mask)]
 
             # Build ordered queue from DRC-LEGAL candidates first; this avoids

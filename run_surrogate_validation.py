@@ -274,6 +274,9 @@ def run_2mode(args: argparse.Namespace) -> None:
         return _load_optional_physics_maps(refresh_npz, rows, cols, state)
 
     top_n_list = [int(x.strip()) for x in args.pass_top_n.split(",") if x.strip()]
+    pass_active = None
+    if getattr(args, "pass_active_boundary", None):
+        pass_active = [bool(int(x.strip())) for x in args.pass_active_boundary.split(",") if x.strip()]
     if args.strategy == "passwise":
         opt = PasswiseMagnitudeDigitizer(
             initial_state=init_state,
@@ -287,7 +290,7 @@ def run_2mode(args: argparse.Namespace) -> None:
             refresh_physics_fn=refresh_physics_2mode if args.enable_refresh else None,
             pass_top_n=top_n_list,
             pair_escape_top_m=4,
-            active_boundary=args.active_boundary,
+            active_boundary=pass_active if pass_active is not None else args.active_boundary,
             tol=args.tol,
             max_fdtd_evals=args.max_fdtd,
         )
@@ -377,6 +380,9 @@ def run_4mode(args: argparse.Namespace) -> None:
         base_opt.export_gds(_state_to_region(state), out_dir / f"accepted_flip{flip_idx}_J{j_val:.4f}.gds")
 
     top_n_list = [int(x.strip()) for x in args.pass_top_n.split(",") if x.strip()]
+    pass_active = None
+    if getattr(args, "pass_active_boundary", None):
+        pass_active = [bool(int(x.strip())) for x in args.pass_active_boundary.split(",") if x.strip()]
     if args.strategy == "passwise":
         opt = PasswiseMagnitudeDigitizer(
             initial_state=init_state,
@@ -390,7 +396,7 @@ def run_4mode(args: argparse.Namespace) -> None:
             refresh_physics_fn=None,
             pass_top_n=top_n_list,
             pair_escape_top_m=4,
-            active_boundary=args.active_boundary,
+            active_boundary=pass_active if pass_active is not None else args.active_boundary,
             tol=args.tol,
             max_fdtd_evals=args.max_fdtd,
         )
@@ -424,6 +430,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--strategy", choices=["surrogate", "passwise"], default="surrogate")
     p.add_argument("--pass-top-n", type=str, default="36,36,48", help="Comma-separated Top-N per pass")
     p.add_argument("--active-boundary", action="store_true", help="Use dynamic 4-neighbour Si/air boundary mask")
+    p.add_argument("--pass-active-boundary", type=str, default=None, help="Comma-separated 0/1 active-boundary flags per pass")
     p.add_argument("--repo", type=str, default=".", help="Path to egado-nc2025-reproduction root")
     p.add_argument("--to-npz", type=str, default=None, help="Optional Stage-1 parameters_<n>.npz path")
     p.add_argument("--out-dir", type=str, default=None, help="Output directory for checkpoints & history")
